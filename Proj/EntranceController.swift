@@ -9,7 +9,8 @@
 import UIKit
 
 class EntranceController: UIViewController {
-
+    @IBOutlet weak var welcomeLable: UILabel!
+    
     @IBAction func entranceAction(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -19,8 +20,10 @@ class EntranceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-        // Do any additional setup after loading the view.
+
+        welcomeLable.text = NSLocalizedString("WELCOME", comment: "")
+        
+        
     }
 	
 	override func viewWillAppear(_ animated: Bool) {

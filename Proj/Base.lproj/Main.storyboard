@@ -116,6 +116,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="MWT-fx-U81"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="welcomeLable" destination="AQj-W0-5ts" id="pMw-T2-NAe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaG-rr-9Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
