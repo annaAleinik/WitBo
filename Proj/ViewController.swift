@@ -12,8 +12,10 @@ import Speech
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
+    
+    @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
+    
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         if audioEngene.isRunning {
             audioEngene.stop()
@@ -98,7 +100,7 @@ class ViewController: UIViewController {
             var isFinal = false // 9
             
             if result != nil { // 10
-                self.textField.text = result?.bestTranscription.formattedString
+                self.lableMassage.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
             

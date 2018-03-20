@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* EntranceController.swift */; };
 		84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5121205FB6E400A8F6DD /* AppDelegate.swift */; };
 		84FC5124205FB6E400A8F6DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5123205FB6E400A8F6DD /* ViewController.swift */; };
 		84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FC5125205FB6E400A8F6DD /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84A8B9E62060F8A3005A7200 /* EntranceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceController.swift; sourceTree = "<group>"; };
 		84FC511E205FB6E400A8F6DD /* Proj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FC5121205FB6E400A8F6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FC5123205FB6E400A8F6DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				84FC5121205FB6E400A8F6DD /* AppDelegate.swift */,
 				84FC5123205FB6E400A8F6DD /* ViewController.swift */,
 				84FC5125205FB6E400A8F6DD /* Main.storyboard */,
+				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
 				84FC5128205FB6E400A8F6DD /* Assets.xcassets */,
 				84FC512A205FB6E400A8F6DD /* LaunchScreen.storyboard */,
 				84FC512D205FB6E400A8F6DD /* Info.plist */,
@@ -214,6 +217,7 @@
 			files = (
 				84FC5124205FB6E400A8F6DD /* ViewController.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
+				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
