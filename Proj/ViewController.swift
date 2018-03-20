@@ -10,12 +10,12 @@ import UIKit
 import Speech
 
 
-class ViewController: UIViewController {
+class SpeachViewController: UIViewController {
 
     
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
-    
+	
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         if audioEngene.isRunning {
             audioEngene.stop()
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         recordButton.isEnabled = false
-        
+		
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -134,7 +134,7 @@ class ViewController: UIViewController {
     
 }
         
-extension ViewController: SFSpeechRecognizerDelegate {
+extension SpeachViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             recordButton.isEnabled = true

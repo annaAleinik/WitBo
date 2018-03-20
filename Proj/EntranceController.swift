@@ -19,9 +19,22 @@ class EntranceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
         // Do any additional setup after loading the view.
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setupNavBar()
+	}
+	
+	func setupNavBar () {
+		let bar = self.navigationController?.navigationBar
+		bar?.setBackgroundImage(UIImage(), for: .default)
+		bar?.shadowImage = UIImage()
+		bar?.isTranslucent = true
+		bar?.tintColor = .black
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
