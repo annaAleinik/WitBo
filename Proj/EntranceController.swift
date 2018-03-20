@@ -20,8 +20,10 @@ class EntranceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        welcomeLable.text = NSLocalizedString("WELCOME", comment: "")
+		
+		let str = NSLocalizedString("STR_WELCOME", comment: "")
+        welcomeLable.text = str
+		
         
         
     }
