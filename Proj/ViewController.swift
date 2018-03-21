@@ -9,13 +9,23 @@
 import UIKit
 import Speech
 
-
-class SpeachViewController: UIViewController {
-
-    
+class SpeachViewController: UIViewController, TimerManagerDelegate {
+   
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
 	
+    let timerManager = TimerManager()
+
+    //MARK: --TimerManagerDelegate
+    func handleOutOfTime() {
+        print("minuts and sec == 0")
+        
+    }
+    
+    
+    //MARK:-- Speach
+    
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         if audioEngene.isRunning {
             audioEngene.stop()
@@ -37,7 +47,6 @@ class SpeachViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         recordButton.isEnabled = false
 		
         speechRecognizer?.delegate = self
@@ -132,6 +141,7 @@ class SpeachViewController: UIViewController {
         
     }
     
+    
 }
         
 extension SpeachViewController: SFSpeechRecognizerDelegate {
@@ -141,5 +151,16 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
         } else {
             recordButton.isEnabled = false
         }
+    }
+    
+    
+   override func viewWillAppear(_ animated: Bool) {
+    timerManager.delegate = self
+    timerManager.runTimer()
+
+    }
+    
+  override  func viewDidAppear(_ animated: Bool) {
+    
     }
 }
