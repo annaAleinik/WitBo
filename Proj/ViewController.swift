@@ -15,15 +15,28 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
 	
-    let timerManager = TimerManager()
+	let timerManager = TimerManager()
 
-    //MARK: --TimerManagerDelegate
-    func handleOutOfTime() {
-        print("minuts and sec == 0")
-        
-    }
-    
-    
+
+	//MARK: Life cycle
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		timerManager.delegate = self
+		timerManager.runTimer()
+		
+	}
+	
+	override  func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		timerManager.pauseTimer()
+	}
+	
+	//MARK: --TimerManagerDelegate
+	func handleOutOfTime() {
+		print("minuts and sec == 0")
+		
+	}
+	
     //MARK:-- Speach
     
     @IBAction func recordButtonTapped(_ sender: UIButton) {
@@ -154,13 +167,5 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
     }
     
     
-   override func viewWillAppear(_ animated: Bool) {
-    timerManager.delegate = self
-    timerManager.runTimer()
 
-    }
-    
-  override  func viewDidAppear(_ animated: Bool) {
-    
-    }
 }

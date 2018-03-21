@@ -21,11 +21,13 @@ class TimerManager {
     var delegate : TimerManagerDelegate? = nil
     
     var minutes = 1 //This variable will hold a starting value of
-    var seconds = 3
+    var seconds = 10
     var timer = Timer()
     var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
     
     func runTimer() {
+		guard seconds != 0 else {return}
+		
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
                                      selector: (#selector(updateTimer)),
@@ -37,12 +39,17 @@ class TimerManager {
     @objc func updateTimer() {
         seconds -= 1     //This will decrement(count down)the seconds.
         minutes -= 1
-        
+        print(seconds)
         if seconds == 0 {
             delegate?.handleOutOfTime()
+			timer.invalidate()
         }
 
     }
+	
+	func pauseTimer() {
+		timer.invalidate()
+	}
     
     func timeString(time:TimeInterval) -> String {
         let minutes = Int(time) / 60 % 60
