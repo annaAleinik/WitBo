@@ -16,6 +16,8 @@ class EntranceController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
+        
+        APIService.sharedInstance.getLogin()
     }
     
     override func viewDidLoad() {
