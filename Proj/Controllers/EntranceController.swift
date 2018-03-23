@@ -17,7 +17,9 @@ class EntranceController: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        APIService.sharedInstance.getLogin()
+        APIService.sharedInstance.postLogin()
+        
+        
     }
     
     override func viewDidLoad() {
