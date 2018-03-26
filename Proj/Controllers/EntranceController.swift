@@ -11,6 +11,11 @@ import UIKit
 class EntranceController: UIViewController {
     @IBOutlet weak var welcomeLable: UILabel!
     
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var registrationButton: UIButton!
+    
     @IBAction func entranceAction(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -25,9 +30,16 @@ class EntranceController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let str = NSLocalizedString("STR_WELCOME", comment: "")
-        welcomeLable.text = str
-		
+		let strWelcome = NSLocalizedString("STR_WELCOME", comment: "")
+        welcomeLable.text = strWelcome
+        
+        let strEmail = NSLocalizedString("STR_EMAIL", comment: "")
+        emailField.placeholder = strEmail
+        
+        let strPassword = NSLocalizedString("STR_PASSWORD", comment: "")
+        passwordField.placeholder = strPassword
+        
+
         
         
     }

@@ -8,11 +8,28 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 
 class CustomAlertViewController: UIViewController {
 
     @IBAction func watchAdsAction(_ sender: UIButton) {
+       
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),
+                                                    withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+
+        
+        func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                                didRewardUserWith reward: GADAdReward) {
+            print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+        }
+
+        //add appdelegate method
+        
+        
     }
+    
+    
     @IBAction func clouseAlertAction(_ sender: UIButton) {
         self.removeFromParentViewController()
         self.view.removeFromSuperview()

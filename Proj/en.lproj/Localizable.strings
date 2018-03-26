@@ -7,3 +7,13 @@
 */
 
 STR_WELCOME = "Welcome";
+STR_EMAIL = "E-mail";
+STR_PASSWORD = "Password";
+STR_SIGNUP = "Sign Up";
+STR_REGISTRATION = "Registration";
+STR_RECORDTOUCH = "Click and speak";
+STR_RECORDTOUCH = "Click and speak";
+STR_LASTMASSAGE = "Last massage";
+
+
+

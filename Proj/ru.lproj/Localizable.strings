@@ -7,3 +7,9 @@
 */
 
 STR_WELCOME = "Добро пожаловать";
+STR_EMAIL = "Емайл";
+STR_PASSWORD = "Пароль";
+STR_SIGNUP = "Вход";
+STR_REGISTRATION = "Регистрация";
+STR_RECORDTOUCH = "Нажмите и говорите";
+STR_LASTMASSAGE = "Последние сообщения";

@@ -35,10 +35,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
     func handleOutOfTime() {
         print("minuts and sec == 0")
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController //add alert
         vc.view.backgroundColor = UIColor.black .withAlphaComponent(0.6)
         self.addChildViewController(vc)
         self.view.addSubview(vc.view)
+        
+        self.recordButton.isEnabled = false // block button after 10 sec
     }
     
     func updateUI(sec: Int) {

@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+
 class APIService {
     
    static let sharedInstance = APIService()
@@ -32,13 +33,35 @@ class APIService {
         
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response.description)
-        }
+            
+            do {
+                let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
+                print(loginData)
+                
+                UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
+
+                
+            }catch let error{
+                print(error)
+            }
+            }
         
     }
     
     
+    func postAuth() {
+        let params = ["secret":"secret","email":"email", "token":"token",]
+        
+        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/auth")
+        
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params).response { (response) in
+            print(response)
+        }
+        
+    }
     
-    let userDefaults = UserDefaults.standard
+
+    
         
     
 
