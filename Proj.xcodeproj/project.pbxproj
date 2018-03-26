@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080915032068ED6400814642 /* CustomAlertViewController.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
 		824F915B80F6875D7A45B015 /* Pods_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080915032068ED6400814642 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,15 +78,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080915022068CA8D00814642 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				849945E52063CA8800E631A9 /* APIService.swift */,
+				842724E920626ADD006B936E /* TimerManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		84A19C242062A5EB0043751A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				080915022068CA8D00814642 /* Service */,
 				84FC5123205FB6E400A8F6DD /* ViewController.swift */,
-				849945E52063CA8800E631A9 /* APIService.swift */,
 				84A19C272062B35F0043751A /* TableViewSettings.swift */,
 				849945E72063E74200E631A9 /* RegistrationVC.swift */,
 				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
-				842724E920626ADD006B936E /* TimerManager.swift */,
+				080915032068ED6400814642 /* CustomAlertViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -326,6 +337,7 @@
 				84FC5124205FB6E400A8F6DD /* ViewController.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
 				842724EA20626ADD006B936E /* TimerManager.swift in Sources */,
+				080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,
 				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,

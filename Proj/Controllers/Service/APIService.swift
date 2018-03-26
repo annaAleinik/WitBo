@@ -14,7 +14,7 @@ class APIService {
    static let sharedInstance = APIService()
  
     func postRegistration() {
-        let params = ["name":"name","email":"email", "password":"password","lang":"lang","tatif":"tarif"]
+        let params = ["name":"name","email":"email", "password":"password","lang":"lang","tariff":"tariff"]
         
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/register")
         
@@ -36,9 +36,10 @@ class APIService {
         
     }
     
+    
+    
     let userDefaults = UserDefaults.standard
-    
-    
+        
     
 
 }

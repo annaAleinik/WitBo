@@ -10,7 +10,7 @@ import UIKit
 import Speech
 
 class SpeachViewController: UIViewController, TimerManagerDelegate {
-   
+    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -23,19 +23,28 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
 		timerManager.runTimer()
-		
-	}
+   }
 	
 	override  func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		timerManager.pauseTimer()
+        
 	}
-	
-	//MARK: --TimerManagerDelegate
-	func handleOutOfTime() {
-		print("minuts and sec == 0")
-		
-	}
+    
+    //MARK: --TimerManagerDelegate
+    func handleOutOfTime() {
+        print("minuts and sec == 0")
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController
+        vc.view.backgroundColor = UIColor.black .withAlphaComponent(0.6)
+        self.addChildViewController(vc)
+        self.view.addSubview(vc.view)
+    }
+    
+    func updateUI(sec: Int) {
+            self.timeLabel.text = String(sec)
+    }
+
 	
     //MARK:-- Speach
     

@@ -12,6 +12,7 @@ import Foundation
 
 protocol TimerManagerDelegate {
     func handleOutOfTime()
+    func updateUI(sec: Int) 
 }
 
 class TimerManager {
@@ -44,7 +45,10 @@ class TimerManager {
             delegate?.handleOutOfTime()
 			timer.invalidate()
         }
-
+        
+        DispatchQueue.main.async {
+            self.delegate?.updateUI(sec: self.seconds)
+        }
     }
 	
 	func pauseTimer() {
@@ -56,7 +60,8 @@ class TimerManager {
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i", minutes, seconds)
     }
-
+    
+    
 }
 
 
