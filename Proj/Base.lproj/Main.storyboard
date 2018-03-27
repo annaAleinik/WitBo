@@ -69,8 +69,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLJ-aE-IS3">
-                                <rect key="frame" x="84" y="398" width="153" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLJ-aE-IS3">
+                                <rect key="frame" x="130.5" y="401" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ouC-EX-ckH"/>
+                                </constraints>
                                 <state key="normal" title="Вход">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -78,8 +81,8 @@
                                     <action selector="entranceAction:" destination="kjR-Uw-vIj" eventType="touchUpInside" id="OeB-4T-Fnb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-x9-y8Z">
-                                <rect key="frame" x="104" y="430" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-x9-y8Z">
+                                <rect key="frame" x="114.5" y="436" width="92" height="30"/>
                                 <state key="normal" title="Регистрация">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -138,9 +141,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="OWD-7N-Vqf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="568" id="rNf-FE-ldz"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-VC-Dt2">
                                 <rect key="frame" x="15" y="350" width="290" height="20.5"/>
@@ -184,10 +184,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mSb-VC-Dt2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="3IB-At-a70"/>
-                            <constraint firstItem="OWD-7N-Vqf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7qs-ao-t8n"/>
                             <constraint firstItem="9oH-zE-F6v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Ify-ZW-eZO"/>
                             <constraint firstItem="9oH-zE-F6v" firstAttribute="top" secondItem="Lda-WK-IoM" secondAttribute="bottom" constant="25" id="KWa-EA-4ML"/>
                             <constraint firstItem="mSb-VC-Dt2" firstAttribute="top" secondItem="9oH-zE-F6v" secondAttribute="bottom" constant="15" id="MLz-pv-9Ah"/>
+                            <constraint firstItem="OWD-7N-Vqf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YaL-V1-KdI"/>
                             <constraint firstItem="WSU-5G-oUP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aXd-9o-1GX"/>
                             <constraint firstAttribute="trailing" secondItem="OWD-7N-Vqf" secondAttribute="trailing" id="fmk-fI-VEq"/>
                             <constraint firstItem="WSU-5G-oUP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="kgR-1V-x6F"/>

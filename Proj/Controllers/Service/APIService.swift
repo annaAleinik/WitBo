@@ -25,7 +25,7 @@ class APIService {
             }
     }
 
-    func postLogin() {
+    func loginWith(login : String, password : String, completion : @escaping (Bool, Error?) -> Void) {
         
         let params = ["login":"example@mail.com", "password":"123456"]
         
@@ -33,26 +33,28 @@ class APIService {
         
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response.description)
-            
-            do {
-                let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
-                print(loginData.secret)
+            switch response.result {
+            case .success(let resp):
+                do {
+                    let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
+                    print(loginData.secret)
+                    
+                    UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
+                    UserDefaults.standard.set(true, forKey: "ISAVTORI`E")
+                    completion(true, nil)
+                    
+                }catch let error{
+                    print(error)
+                }
                 
-                UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
-                UserDefaults.standard.set(true, forKey: "ISAVTORI`E")
-
-                
-            }catch let error{
+            case .failure(let error):
                 print(error)
+                completion(false, error)
             }
-            }
+
+        }
     }
-    
-    func loginWith(login : String, password : String, completion : @escaping (Bool, NSError?) -> Void) {
-        
-    }
-    
-    
+
     func postAuth() {
         
         let secret =  UserDefaults.standard.string(forKey: "SECRET")!
