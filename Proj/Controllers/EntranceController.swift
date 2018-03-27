@@ -23,7 +23,7 @@ class EntranceController: UIViewController {
         self.present(vc, animated: true, completion: nil)
         
         APIService.sharedInstance.postLogin()
-        APIService.sharedInstance.postAuth()
+
         
         
     }

@@ -48,6 +48,10 @@ class APIService {
             }
     }
     
+    func loginWith(login : String, password : String, completion : @escaping (Bool, NSError?) -> Void) {
+        
+    }
+    
     
     func postAuth() {
         
