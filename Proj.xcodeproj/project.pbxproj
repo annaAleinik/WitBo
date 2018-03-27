@@ -13,6 +13,7 @@
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
 		824F915B80F6875D7A45B015 /* Pods_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
+		843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D2C69206A58D70008D9A1 /* LoginStruct.swift */; };
 		849945E62063CA8800E631A9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E52063CA8800E631A9 /* APIService.swift */; };
 		849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E72063E74200E631A9 /* RegistrationVC.swift */; };
 		84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C272062B35F0043751A /* TableViewSettings.swift */; };
@@ -43,6 +44,7 @@
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		843D2C69206A58D70008D9A1 /* LoginStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStruct.swift; sourceTree = "<group>"; };
 		849945E52063CA8800E631A9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		849945E72063E74200E631A9 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		84A19C272062B35F0043751A /* TableViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSettings.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				849945E52063CA8800E631A9 /* APIService.swift */,
 				842724E920626ADD006B936E /* TimerManager.swift */,
 				084A20CB206930AD0009E4B2 /* parseJSON.swift */,
+				843D2C69206A58D70008D9A1 /* LoginStruct.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */,
 				084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
+				843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,
 				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
 			);

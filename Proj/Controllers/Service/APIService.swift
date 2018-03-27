@@ -21,8 +21,8 @@ class APIService {
         
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params).response { (response) in
             print(response)
-        }
-    
+           
+            }
     }
 
     func postLogin() {
@@ -36,21 +36,24 @@ class APIService {
             
             do {
                 let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
-                print(loginData)
+                print(loginData.secret)
                 
                 UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
+                UserDefaults.standard.set(true, forKey: "ISAVTORI`E")
 
                 
             }catch let error{
                 print(error)
             }
             }
-        
     }
     
     
     func postAuth() {
-        let params = ["secret":"secret","email":"email", "token":"token",]
+        
+        let secret =  UserDefaults.standard.string(forKey: "SECRET")!
+        
+        let  params = ["secret" : secret]
         
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/auth")
         
