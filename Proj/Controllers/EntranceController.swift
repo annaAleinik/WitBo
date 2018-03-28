@@ -22,15 +22,18 @@ class EntranceController: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        APIService.sharedInstance.loginWith(login: "", password: "") { (success, error) in
+        APIService.sharedInstance.loginWith(login: "", password: "") { (succcses, erroe) in
             print("Hui")
-            APIService.sharedInstance.postAuthWith(secret: "", completion: { (success, error) in
-                print(" WOrkING")
-            })     }
-
         
-        
+            APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
+                print("Working")
+            
+            APIService.sharedInstance.userData(token: "") { (succses, error) in
+                print("HELLO")
+            }
+        }
     }
+}
     
     override func viewDidLoad() {
         super.viewDidLoad()

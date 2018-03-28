@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct userModel {
+struct userModel : Decodable{
     let name : String
     let email : String
     let language : String
