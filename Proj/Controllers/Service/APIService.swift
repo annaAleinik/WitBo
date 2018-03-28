@@ -113,5 +113,26 @@ class APIService {
     }
 
 
+    
+    
+    //MARK : -- Massage requests
+    
+    func pushMassageUser(mySTR : String)  {
+        
+        let params = ["receiverId" : "2", "token" : "1", "text" : mySTR, "lang" : "lang"]
+        
+        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/push/2/1")
+        
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
+            print(response.description)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 

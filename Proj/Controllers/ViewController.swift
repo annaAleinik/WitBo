@@ -17,7 +17,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
 	
 	let timerManager = TimerManager()
 
-
 	//MARK: Life cycle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -134,6 +133,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
             
             if result != nil { // 10
                 self.lableMassage.text = result?.bestTranscription.formattedString
+                APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
+
                 isFinal = (result?.isFinal)!
             }
             
@@ -162,7 +163,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
         } catch {
             print("Не удается стартонуть движок")
         }
-        
+
     }
     
     
