@@ -24,8 +24,9 @@ class EntranceController: UIViewController {
         
         APIService.sharedInstance.loginWith(login: "", password: "") { (success, error) in
             print("Hui")
-            APIService.sharedInstance.postAuth()
-        }
+            APIService.sharedInstance.postAuthWith(secret: "", completion: { (success, error) in
+                print(" WOrkING")
+            })     }
 
         
         
