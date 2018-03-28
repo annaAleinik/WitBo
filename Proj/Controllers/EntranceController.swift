@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntranceController: UIViewController {
+class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var welcomeLable: UILabel!
     
     @IBOutlet weak var emailField: UITextField!
@@ -37,7 +37,9 @@ class EntranceController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
+        
 		let strWelcome = NSLocalizedString("STR_WELCOME", comment: "")
         welcomeLable.text = strWelcome
         
@@ -46,9 +48,6 @@ class EntranceController: UIViewController {
         
         let strPassword = NSLocalizedString("STR_PASSWORD", comment: "")
         passwordField.placeholder = strPassword
-        
-
-        
         
     }
 	
@@ -71,6 +70,18 @@ class EntranceController: UIViewController {
     }
     
 
+    // MARK: - KeyBoard hide
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //Preesser return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     /*
     // MARK: - Navigation
 
