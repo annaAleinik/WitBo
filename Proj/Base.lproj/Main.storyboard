@@ -231,7 +231,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-PA-UQB">
-                                <rect key="frame" x="132.5" y="295.5" width="55" height="30"/>
+                                <rect key="frame" x="132.5" y="335.5" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -241,7 +241,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KAm-IF-Sam">
-                                <rect key="frame" x="50" y="100.5" width="220" height="150"/>
+                                <rect key="frame" x="50" y="100.5" width="220" height="190"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsf-pM-nSC">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
@@ -261,8 +261,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Xs-dVm">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gvv-KP-PKI">
                                         <rect key="frame" x="0.0" y="120" width="220" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Xs-dVm">
+                                        <rect key="frame" x="0.0" y="160" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -287,6 +293,13 @@
                         <viewLayoutGuide key="safeArea" id="lKW-sd-Yyd"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="emailField" destination="gge-DD-g8O" id="Fxv-QV-b9C"/>
+                        <outlet property="langField" destination="nFg-Xs-dVm" id="K9v-rE-BVt"/>
+                        <outlet property="nameField" destination="bsf-pM-nSC" id="t9p-b5-Pf7"/>
+                        <outlet property="passwordField" destination="bVi-rz-mDb" id="FHU-fS-VGN"/>
+                        <outlet property="repiatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IpQ-Cr-7sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gYQ-Nr-kYb" userLabel="Exit" sceneMemberID="exit"/>

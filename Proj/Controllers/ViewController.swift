@@ -22,6 +22,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
 		timerManager.runTimer()
+        
    }
 	
 	override  func viewWillDisappear(_ animated: Bool) {
@@ -29,6 +30,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
 		timerManager.pauseTimer()
         
 	}
+    
     
     //MARK: --TimerManagerDelegate
     func handleOutOfTime() {
@@ -40,12 +42,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
         self.view.addSubview(vc.view)
         
         self.recordButton.isEnabled = false // block button after 10 sec
+        
     }
     
     func updateUI(sec: Int) {
-            self.timeLabel.text = String(sec)
+        self.timeLabel.text = String(sec)
     }
-
 	
     //MARK:-- Speach
     

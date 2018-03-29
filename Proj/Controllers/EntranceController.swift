@@ -22,7 +22,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        APIService.sharedInstance.loginWith(login: "", password: "") { (succcses, erroe) in
+        APIService.sharedInstance.loginWith(login: emailField.text!, password: passwordField.text!) { (succcses, erroe) in
             print("Hui")
         
             APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
