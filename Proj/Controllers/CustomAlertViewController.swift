@@ -10,15 +10,15 @@
 import UIKit
 
 class CustomAlertViewController: UIViewController {
-
+   
     @IBAction func watchAdsAction(_ sender: UIButton) {
-       
+        
     }
     
-    
     @IBAction func clouseAlertAction(_ sender: UIButton) {
-        self.removeFromParentViewController()
-        self.view.removeFromSuperview()
+        
+        self.tabBarController?.selectedIndex = 2
+        
     }
     
     override func viewDidLoad() {

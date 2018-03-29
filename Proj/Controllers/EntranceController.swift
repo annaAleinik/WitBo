@@ -16,13 +16,28 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
     
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+
+    
     @IBAction func entranceAction(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        APIService.sharedInstance.loginWith(login: emailField.text!, password: passwordField.text!) { (succcses, erroe) in
+        
+        let login = emailField.text
+        let password = passwordField.text
+        
+        isValidEmail(testStr: login!)
+        
+        APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
             print("Hui")
         
             APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in

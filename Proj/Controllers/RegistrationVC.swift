@@ -27,15 +27,17 @@ class RegistrationVC: UIViewController {
         passwordField.placeholder = "Password"
         langField.placeholder = "Lang"
         repiatPassword.placeholder = "Repiat password"
-        
-        let namef = nameField.text
-
     }
 
     
     @IBAction func tapRegistratiomButton(_ sender: UIButton) {
         
-        APIService.sharedInstance.postRegistration(name: nameField.text!, email: emailField.text!, password: passwordField.text!, lang: langField.text!)
+        let name = nameField.text
+        let email = emailField.text
+        let password = passwordField.text
+        let lang = langField.text
+        
+        APIService.sharedInstance.postRegistration(name: name!, email: email!, password: password!, lang: lang!)
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")

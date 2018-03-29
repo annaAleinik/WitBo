@@ -3,5 +3,6 @@ use_frameworks!
 
 target ‘Proj’ do
  pod 'Alamofire', '~> 4.7'
- pod 'ROGoogleTranslate'
+pod 'Google-Mobile-Ads-SDK'
+
 end

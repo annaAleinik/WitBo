@@ -115,7 +115,6 @@ class APIService {
 
 
     
-    
     //MARK : -- Massage requests
     
     func pushMassageUser(mySTR : String)  {
@@ -138,7 +137,7 @@ class APIService {
         
         Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
             .responseJSON {responce in
-                print(responce.data)
+                print(responce)
                 }
     }
     
