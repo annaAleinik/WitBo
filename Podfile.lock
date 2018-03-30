@@ -1,15 +1,28 @@
 PODS:
   - Alamofire (4.7.0)
   - Google-Mobile-Ads-SDK (7.30.0)
+  - SwiftValidator (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Google-Mobile-Ads-SDK
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :commit: 6cff6cac3e02a617f7cf11323e18526a117d5673
+    :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
+  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
-PODFILE CHECKSUM: 0853d5be3b94d6ee8a7ab388a9d1f4cdaee724b2
+PODFILE CHECKSUM: 5a0dd42d8828c7e77b4f8f46f1e52f9c57d004d0
 
 COCOAPODS: 1.4.0

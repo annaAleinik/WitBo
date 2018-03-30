@@ -7,47 +7,71 @@
 //
 
 import UIKit
+import SwiftValidator
 
-class EntranceController: UIViewController, UITextFieldDelegate{
-    @IBOutlet weak var welcomeLable: UILabel!
+
+class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
+
+    let validator = Validator()
+
     
+    @IBOutlet weak var welcomeLable: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
-    }
-
-    
-    @IBAction func entranceAction(_ sender: UIButton) {
-        
+    func validationSuccessful() {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        
         let login = emailField.text
         let password = passwordField.text
         
-        isValidEmail(testStr: login!)
-        
         APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
             print("Hui")
-        
+            
             APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
                 print("Working")
-            
-            APIService.sharedInstance.userData(token: "") { (succses, error) in
-                print("HELLO")
+                
+                APIService.sharedInstance.userData(token: "") { (succses, error) in
+                    print("HELLO")
+                }
             }
         }
+        
     }
+    
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+            error.errorLabel?.textColor = UIColor.white
+        }
+    }
+    
+//    func isValidEmail(testStr:String) -> Bool {
+//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//
+//        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+//        return emailTest.evaluate(with: testStr)
+//    }
+
+    
+    @IBAction func entranceAction(_ sender: UIButton) {
+        
+        validator.validate(self)
+
+        
 }
     
     override func viewDidLoad() {
@@ -63,10 +87,16 @@ class EntranceController: UIViewController, UITextFieldDelegate{
         
         let strPassword = NSLocalizedString("STR_PASSWORD", comment: "")
         passwordField.placeholder = strPassword
+       
+        //MARK: -- Validator
         
+        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email requered"), EmailRule(message: "Invalid email")])
+
+        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [RequiredRule(message: "password Requered")])
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
+	
+    override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setupNavBar()
 	}
@@ -79,10 +109,6 @@ class EntranceController: UIViewController, UITextFieldDelegate{
 		bar?.tintColor = .black
 	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     // MARK: - KeyBoard hide
