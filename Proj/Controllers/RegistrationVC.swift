@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationVC: UIViewController {
+class RegistrationVC: UIViewController , UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -27,6 +27,12 @@ class RegistrationVC: UIViewController {
         passwordField.placeholder = "Password"
         langField.placeholder = "Lang"
         repiatPassword.placeholder = "Repiat password"
+        
+       self.nameField.delegate = self
+       self.emailField.delegate = self
+      self.passwordField.delegate = self
+       self.langField.delegate = self
+       self.repiatPassword.delegate = self
     }
 
     
@@ -45,7 +51,33 @@ class RegistrationVC: UIViewController {
         
     }
     
-   
+    // MARK: - KeyBoard hide
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //Preesser return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == nameField {
+            textField.resignFirstResponder()
+            emailField.becomeFirstResponder()
+        }else if textField == emailField {
+            textField.resignFirstResponder()
+            passwordField.becomeFirstResponder()
+        }else if textField == passwordField {
+            textField.resignFirstResponder()
+            repiatPassword.becomeFirstResponder()
+        }else if textField == repiatPassword{
+            textField.resignFirstResponder()
+            langField.becomeFirstResponder()
+        }else if textField == langField {
+            textField.resignFirstResponder
+        }
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 

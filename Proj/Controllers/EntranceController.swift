@@ -59,19 +59,10 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         }
     }
     
-//    func isValidEmail(testStr:String) -> Bool {
-//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//
-//        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//        return emailTest.evaluate(with: testStr)
-//    }
-
     
     @IBAction func entranceAction(_ sender: UIButton) {
         
         validator.validate(self)
-
-        
 }
     
     override func viewDidLoad() {
@@ -93,6 +84,9 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email requered"), EmailRule(message: "Invalid email")])
 
         validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [RequiredRule(message: "password Requered")])
+        
+        emailField.tag = 0 //Increment accordingly
+
     }
 	
 	
@@ -119,6 +113,13 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     //Preesser return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        if textField == emailField {
+            textField.resignFirstResponder()
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            textField.resignFirstResponder
+        }
         return true
     }
     

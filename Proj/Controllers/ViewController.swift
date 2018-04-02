@@ -8,13 +8,14 @@
 
 import UIKit
 import Speech
+import AVFoundation
 
-class SpeachViewController: UIViewController, TimerManagerDelegate {
+class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
-	
+    
 	let timerManager = TimerManager()
 
 	//MARK: Life cycle
@@ -30,7 +31,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
 		timerManager.pauseTimer()
         
 	}
-    
     
     //MARK: --TimerManagerDelegate
     func handleOutOfTime() {
@@ -119,7 +119,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest() // 4
         
-        
          let inputNode = audioEngene.inputNode
         
         guard let recognitionRequest = recognitionRequest else { // 6
@@ -136,10 +135,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
             if result != nil { // 10
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
-
+                
                 //MARK: --Translate
                APIService.sharedInstance.translate(q: (result?.bestTranscription.formattedString)!)
-                
+    
                 isFinal = (result?.isFinal)!
             }
             
@@ -170,7 +169,20 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
         }
 
     }
+    //MARK--AVSpeechSynthesizer
+
+    @IBAction func ReadButton(_ sender: AnyObject) {
+
+        let utterance = AVSpeechUtterance(string : lableMassage.text!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ru")
+        utterance.postUtteranceDelay = 3.0
+        
+        let readSound = AVSpeechSynthesizer()
+        readSound.delegate = self
+        readSound.speak(utterance)
+        
     
+    }
     
 }
         
@@ -182,6 +194,7 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
             recordButton.isEnabled = false
         }
     }
+    
     
     
 
