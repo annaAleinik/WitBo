@@ -137,6 +137,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate {
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
 
+                //MARK: --Translate
+               APIService.sharedInstance.translate(q: (result?.bestTranscription.formattedString)!)
+                
                 isFinal = (result?.isFinal)!
             }
             

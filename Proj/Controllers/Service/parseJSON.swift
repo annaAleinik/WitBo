@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LoginStruct : Decodable {
+struct LoginStruct : Codable {
     var secret : String
     var tariff : String
     

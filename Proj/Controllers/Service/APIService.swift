@@ -30,7 +30,7 @@ class APIService {
    
     func loginWith(login : String, password : String, completion : @escaping (Bool, Error?) -> Void) {
         
-        let params = ["login":"tykans@gmail.com", "password":"pzkpfw"]
+        let params = ["login":login, "password":password]
         
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/login")
         
@@ -142,6 +142,37 @@ class APIService {
     }
     
     
+   
+    //MARK:--translate
     
+    func translate(q:String) {
+     
+        let params = ["q"       : q,
+                      "target"  :"en" ,
+                      "format"  :"text" ,
+                      "model"   :"nmt",
+                      "key"     :"AIzaSyDsyGqbTyUwc_ZqUNkKL4wDkce2Pn5dBjo"]
+        
+        let url = URL(string:"https://translation.googleapis.com/language/translate/v2")
+        
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
+            print(response)
+        
+            switch response.result{
+            case .success(let resp):
+                do {
+                    let myData = try JSONDecoder().decode(dataModel.self, from: response.data!)
+                    
+                    print(myData.translations)
+                    
+                }catch let error {
+                    print(error)
+                }case .failure(let error):
+                    print(error)
+                }
+            
+        }
+        
 }
 
+}
