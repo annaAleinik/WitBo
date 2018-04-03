@@ -21,18 +21,20 @@ class AuthorizationService {
 		Alamofire.request(AuthRouter.login(username: username, password: password))
 			.validate()
 			.responseJSON { (response) in
-
-				do {
-					let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
-					self.useLoginStruct(loginData)
-					complition(.success(loginData))
-				}catch let error{
-					print(error)
-				}
+			
+				print("")
 		}
+//			.responseDecodableObject { (response:DataResponse<LoginStruct>) in
+//				guard let loginData = response.result.value else {
+//					let error = NetworkError.networkError(responseData: response.data, error: response.error)
+//					complition(.failure(error))
+//					return
+//				}
+//				self.useLoginStruct(loginData)
+//		}
 	}
 	
-	func useLoginStruct(_ loginData:LoginStruct) {
+	private func useLoginStruct(_ loginData:LoginStruct) {
 		Defaults[.secret] = loginData.secret
 		
 	}

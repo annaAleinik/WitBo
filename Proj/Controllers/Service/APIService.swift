@@ -33,7 +33,7 @@ class APIService {
         
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response.description)
-            
+			
             do {
                 let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
                 print(loginData.secret)

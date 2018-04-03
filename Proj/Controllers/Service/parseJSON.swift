@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct LoginStruct : Decodable {
-    var secret : String
-    var tariff : String
+struct LoginStruct : Codable {
+    var secret : String = ""
+    var tariff : String = ""
     
 }
 

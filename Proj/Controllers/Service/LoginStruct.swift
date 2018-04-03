@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct loginStruct : Decodable {
+struct loginStruct : Codable {
     
     let secret : String
     let tariff : String

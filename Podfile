@@ -5,4 +5,5 @@ target ‘Proj’ do
  pod 'Alamofire', '~> 4.7'
  pod 'SwiftyUserDefaults'
  pod 'CodableAlamofire'
+ pod "ROGoogleTranslate"
 end
