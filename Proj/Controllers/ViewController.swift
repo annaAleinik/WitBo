@@ -17,7 +17,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBOutlet weak var recordButton: UIButton!
     
 	let timerManager = TimerManager()
-
+    var STRMassage : String?
 	//MARK: Life cycle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -110,7 +110,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         let audioSession = AVAudioSession.sharedInstance() // 2
         do { // 3
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+           try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -134,6 +135,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             
             if result != nil { // 10
                 self.lableMassage.text = result?.bestTranscription.formattedString
+                self.STRMassage = result?.bestTranscription.formattedString
+                
                 APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
                 
                 //MARK: --Translate
@@ -172,10 +175,14 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     //MARK--AVSpeechSynthesizer
 
     @IBAction func ReadButton(_ sender: AnyObject) {
-
-        let utterance = AVSpeechUtterance(string : lableMassage.text!)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ru")
+        STRMassage = lableMassage.text
+        let utterance = AVSpeechUtterance(string: STRMassage!)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
         utterance.postUtteranceDelay = 3.0
+        
+        if (STRMassage? .isEmpty)! {
+            print("ISEMPTY LABLE")
+        }
         
         let readSound = AVSpeechSynthesizer()
         readSound.delegate = self
