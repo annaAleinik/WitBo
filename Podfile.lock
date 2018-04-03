@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.0)
+  - Alamofire (4.7.1)
   - Google-Mobile-Ads-SDK (7.30.0)
   - SwiftValidator (4.0.0)
 
@@ -19,7 +19,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 

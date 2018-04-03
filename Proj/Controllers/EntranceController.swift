@@ -30,21 +30,6 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
         self.present(vc, animated: true, completion: nil)
         
-        let login = emailField.text
-        let password = passwordField.text
-        
-        APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
-            print("Hui")
-            
-            APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
-                print("Working")
-                
-                APIService.sharedInstance.userData(token: "") { (succses, error) in
-                    print("HELLO")
-                }
-            }
-        }
-        
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
@@ -61,8 +46,22 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     
     
     @IBAction func entranceAction(_ sender: UIButton) {
-        
+        let login = emailField.text
+        let password = passwordField.text
+
         validator.validate(self)
+        
+        APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
+            print("HI")
+            
+            APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
+                print("Working")
+                
+                APIService.sharedInstance.userData(token: "") { (succses, error) in
+                    print("HELLO")
+                }
+            }
+        }
 }
     
     override func viewDidLoad() {

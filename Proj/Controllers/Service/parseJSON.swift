@@ -10,7 +10,7 @@ import Foundation
 
 struct LoginStruct : Codable {
     var secret : String
-    var tariff : String
+   // var tariff : String
     
 }
 

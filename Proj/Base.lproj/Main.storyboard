@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9l-fp-WhF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9l-fp-WhF">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -78,7 +78,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="entranceAction:" destination="kjR-Uw-vIj" eventType="touchUpInside" id="OeB-4T-Fnb"/>
+                                    <action selector="entranceAction:" destination="kjR-Uw-vIj" eventType="touchUpInside" id="i8m-Y3-Hjy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUe-fC-M15">
@@ -117,7 +117,6 @@
                         <outlet property="passwordErrorLabel" destination="XUe-fC-M15" id="uZA-Gd-Df3"/>
                         <outlet property="passwordField" destination="PNG-4E-i2d" id="PKa-rz-lVN"/>
                         <outlet property="registrationButton" destination="LBo-x9-y8Z" id="q9T-Bf-NXM"/>
-                        <outlet property="signUpButton" destination="LLJ-aE-IS3" id="KRO-gg-aNB"/>
                         <outlet property="welcomeLable" destination="AQj-W0-5ts" id="pMw-T2-NAe"/>
                     </connections>
                 </viewController>
