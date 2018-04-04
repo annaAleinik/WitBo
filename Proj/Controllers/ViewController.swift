@@ -9,8 +9,28 @@
 import UIKit
 import Speech
 import AVFoundation
+import Starscream
 
-class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate {
+class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WebSocketDelegate {
+    
+    @IBOutlet weak var printText: UILabel!
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("--------connect")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("--------disconect")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("--------vdfsv" + text)
+        printText.text = text
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("--------vdfsv")
+    }
+    
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
@@ -18,6 +38,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
 	let timerManager = TimerManager()
     var STRMassage : String?
+    var socket : WebSocket!
+    
 	//MARK: Life cycle
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -29,6 +51,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 	override  func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		timerManager.pauseTimer()
+        socket.disconnect()
         
 	}
     
@@ -74,6 +97,15 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         // Do any additional setup after loading the view, typically from a nib.
         recordButton.isEnabled = false
 		
+        
+        //MARK:-- Socket
+        var request = URLRequest(url: URL(string: "ws://35.226.224.13:9090")!)
+        request.timeoutInterval = 5
+        socket = WebSocket(request: request)
+        socket.delegate = self
+        socket.connect()
+        
+        
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -187,8 +219,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let readSound = AVSpeechSynthesizer()
         readSound.delegate = self
         readSound.speak(utterance)
-        
-    
+        let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
+        print("-------" + json)
+        socket.write(string: json)
+        socket.write(string: "{\"action\":\"intro\",\"data\":{\"client_id\":\"888\"}}")
     }
     
 }

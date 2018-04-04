@@ -212,6 +212,13 @@
                                     <action selector="ReadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s95-yY-AkL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEB-4e-EKO">
+                                <rect key="frame" x="30" y="450" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.92874357828663268" green="1" blue="0.89240952024597153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -237,6 +244,7 @@
                     <navigationItem key="navigationItem" id="lM6-Vn-yJx"/>
                     <connections>
                         <outlet property="lableMassage" destination="mSb-VC-Dt2" id="Nqd-iH-rds"/>
+                        <outlet property="printText" destination="CEB-4e-EKO" id="AoA-0j-Uuk"/>
                         <outlet property="recordButton" destination="WSU-5G-oUP" id="HQB-Sn-zac"/>
                         <outlet property="timeLabel" destination="lrU-Z9-EJI" id="Xgv-LZ-WhH"/>
                     </connections>
