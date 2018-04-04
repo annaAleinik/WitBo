@@ -14,6 +14,7 @@ class APIService {
     
    static let sharedInstance = APIService()
  
+    var userName : String?
     
     func postRegistration(name: String,email: String, password: String, lang: String) {
         
@@ -101,7 +102,7 @@ class APIService {
             case .success(let resp):
                 do {
                     let userData = try JSONDecoder().decode(userModel.self, from: response.data!)
-                    print(userData.name)
+                    self.userName = userData.name
                     
                     completion(true, nil)
                 }catch let error{

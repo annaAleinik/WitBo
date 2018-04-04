@@ -80,9 +80,9 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
        
         //MARK: -- Validator
         
-        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email requered"), EmailRule(message: "Invalid email")])
+        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email required"), EmailRule(message: "Invalid email")])
 
-        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [RequiredRule(message: "password Requered")])
+        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [RequiredRule(message: "password required")])
         
         emailField.tag = 0 //Increment accordingly
 

@@ -233,7 +233,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="i9h-Uu-3oQ"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icon_message" id="i9h-Uu-3oQ"/>
                     <navigationItem key="navigationItem" id="lM6-Vn-yJx"/>
                     <connections>
                         <outlet property="lableMassage" destination="mSb-VC-Dt2" id="Nqd-iH-rds"/>
@@ -351,7 +351,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="dL1-na-OdB"/>
                         <segue destination="uTW-78-Iz2" kind="relationship" relationship="viewControllers" id="XOF-7d-Oob"/>
                         <segue destination="ZQP-EQ-Mnj" kind="relationship" relationship="viewControllers" id="JP5-j9-5Jf"/>
-                        <segue destination="pcc-Xo-vQB" kind="relationship" relationship="viewControllers" id="rXv-T5-GJs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4C-Ls-Nw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,7 +380,7 @@
                             <outlet property="delegate" destination="ZQP-EQ-Mnj" id="rT1-1O-Z9u"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="icon_message" id="Yve-RG-TDT"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_contacts" id="Yve-RG-TDT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJh-Je-SVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,15 +425,15 @@
                                                     <rect key="frame" x="16" y="2" width="50" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-6Q-qDl">
-                                                    <rect key="frame" x="74" y="0.0" width="74" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-5e-ZjA">
+                                                    <rect key="frame" x="74" y="19" width="74" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-5e-ZjA">
-                                                    <rect key="frame" x="74" y="19" width="74" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-6Q-qDl">
+                                                    <rect key="frame" x="74" y="2" width="74" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -452,39 +451,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="icon_settings" id="xyc-ld-CdZ"/>
+                    <connections>
+                        <outlet property="fullNameUsersLable" destination="dTJ-6Q-qDl" id="V8Z-3g-MRG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlX-BQ-nop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1644.375" y="648.5915492957746"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="nP2-IK-WP0">
-            <objects>
-                <tableViewController id="pcc-Xo-vQB" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bX4-ui-Fq4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AqV-gg-Zmb">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AqV-gg-Zmb" id="B4x-cb-vwv">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="pcc-Xo-vQB" id="fMC-bW-27d"/>
-                            <outlet property="delegate" destination="pcc-Xo-vQB" id="bIh-uV-XIb"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="icon_contacts" id="RkD-J4-L8m"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pxl-Dt-W0C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-671" y="713"/>
         </scene>
         <!--Custom Alert View Controller-->
         <scene sceneID="aic-HA-i5Y">
