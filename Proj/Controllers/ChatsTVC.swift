@@ -9,7 +9,8 @@
 import UIKit
 
 class ChatsTVC: UITableViewController {
-
+    var myIndex : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CellContacts", bundle: nil), forCellReuseIdentifier: "CustomCellContcts")
@@ -50,6 +51,11 @@ class ChatsTVC: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       myIndex = indexPath.row
+        tabBarController?.selectedIndex = 0
+    }
     
     
     /*

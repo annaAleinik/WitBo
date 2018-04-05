@@ -9,13 +9,15 @@
 import Foundation
 import Starscream
 
-
 class SocketManagerClass: UIViewController, WebSocketDelegate {
+   
+    static let sharedInstanse = SocketManagerClass()
     
     var socket: WebSocket!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         var request = URLRequest(url: URL(string: "ws://35.226.224.13:9090")!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
@@ -26,25 +28,19 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     // MARK: Websocket Delegate Methods.
     
     func websocketDidConnect(socket: WebSocketClient) {
-        print("websocket is connected")
+        print("websocketDidConnect")
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        if let e = error as? WSError {
-            print("websocket is disconnected: \(e.message)")
-        } else if let e = error {
-            print("websocket is disconnected: \(e.localizedDescription)")
-        } else {
-            print("websocket disconnected")
-        }
+        print("websocketDidDisconnect")
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("Received text: \(text)")
+        print("websocketDidReceiveMessage" + text)
+//        printText.text = text
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("Received data: \(data.count)")
+        print("websocketDidReceiveData")
     }
-    
 }
