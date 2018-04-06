@@ -6,5 +6,4 @@ target ‘Proj’ do
 pod 'Google-Mobile-Ads-SDK'
 pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
 pod 'Starscream', '~> 3.0.2'
-
 end

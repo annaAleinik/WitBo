@@ -15,6 +15,10 @@ class APIService {
    static let sharedInstance = APIService()
  
     var userName : String?
+    var userLang :String?
+    
+    var dict = ["ru-RU":"ru" , "en-En" : "en"]
+    
     
     func postRegistration(name: String,email: String, password: String, lang: String) {
         
@@ -103,6 +107,7 @@ class APIService {
                 do {
                     let userData = try JSONDecoder().decode(userModel.self, from: response.data!)
                     self.userName = userData.name
+                    self.userLang = userData.language
                     
                     completion(true, nil)
                 }catch let error{
@@ -148,8 +153,13 @@ class APIService {
     
     func translate(q:String) {
      
+        // let  detectedLangPhone = Locale.preferredLanguages[0] //detected lang iphone
+        
+        let arrOfStr = userLang?.components(separatedBy: "-")
+        let resultStr = arrOfStr?.first
+        
         let params = ["q"       : q,
-                      "target"  :"en" ,
+                      "target"  : resultStr ,
                       "format"  :"text" ,
                       "model"   :"nmt",
                       "key"     :"AIzaSyDsyGqbTyUwc_ZqUNkKL4wDkce2Pn5dBjo"]
