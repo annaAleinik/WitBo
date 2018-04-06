@@ -21,7 +21,6 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
-    
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     
@@ -122,15 +121,4 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         return true
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

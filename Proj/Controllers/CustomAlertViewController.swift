@@ -10,15 +10,13 @@
 import UIKit
 import GoogleMobileAds
 
-class CustomAlertViewController: UIViewController, GADRewardBasedVideoAdDelegate {
+class CustomAlertViewController: UIViewController, GADRewardBasedVideoAdDelegate , AdsManagerDelegate {
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
          print("rewardBasedVideoAd")
-        TimerManager.timerManager.seconds = TimerManager.timerManager.seconds + 10
-        tabBarController?.selectedIndex = 0
-        TimerManager.timerManager.runTimer()
+       // TimerManager.timerManager.seconds = TimerManager.timerManager.seconds + 10
+      //  tabBarController?.selectedIndex = 0
     }
-    
     
     
     @IBAction func watchAdsAction(_ sender: UIButton) {
@@ -34,17 +32,25 @@ class CustomAlertViewController: UIViewController, GADRewardBasedVideoAdDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        let request = GADRequest()
-        // Requests test ads on test devices.
-        request.testDevices = ["2077ef9a63d2b398840261c8221a0c9b"]
-        GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
 
     }
 
     // MARK: GADRewardBasedVideoAdDelegate
+    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("rewardBasedVideoAdDidStartPlaying")
+    }
     
+    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("rewardBasedVideoAdDidCompletePlaying")
+
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "firstControl") as! SpeachViewController
+        self.present(vc, animated: true, completion: nil)
+
+    }
     
 }
 

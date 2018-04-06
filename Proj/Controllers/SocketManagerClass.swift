@@ -17,7 +17,9 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+}
+    
+    func socketsConnecting(){
         var request = URLRequest(url: URL(string: "ws://35.226.224.13:9090")!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
@@ -25,7 +27,7 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
         socket.connect()
     }
     
-    // MARK: Websocket Delegate Methods.
+    //MARK: -- WEBSOCKETS
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("websocketDidConnect")
@@ -37,10 +39,12 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("websocketDidReceiveMessage" + text)
-//        printText.text = text
+       // printText.text = text
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("websocketDidReceiveData")
     }
+    
+    
 }
