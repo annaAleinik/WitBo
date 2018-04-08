@@ -13,66 +13,22 @@ import Starscream
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate {
     
-    @IBOutlet weak var printText: UILabel!
+    @IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     
 	let timerManager = TimerManager()
     var STRMassage : String?
+    let extraTime = 600
     
     
 	//MARK: Life cycle
     
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		timerManager.delegate = self
-		timerManager.runTimer()
-        
-   }
-	
-	override  func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		timerManager.pauseTimer()
-        
-	}
-    
-    //MARK: --TimerManagerDelegate
-    func handleOutOfTime() {
-        print("minuts and sec == 0")
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlertViewController") as! CustomAlertViewController //add alert
-        vc.view.backgroundColor = UIColor.black .withAlphaComponent(0.6)
-        self.addChildViewController(vc)
-        self.view.addSubview(vc.view)
-        
-        self.recordButton.isEnabled = false // block button after 10 sec
-        
+    class func viewController() -> SpeachViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return  storyboard.instantiateViewController(withIdentifier: String(describing: SpeachViewController.self)) as! SpeachViewController
     }
-    
-    func updateUI(sec: Int) {
-        self.timeLabel.text = String(sec)
-    }
-	
-    //MARK:-- Speach
-    
-    @IBAction func recordButtonTapped(_ sender: UIButton) {
-        if audioEngene.isRunning {
-            audioEngene.stop()
-            recognitionRequest?.endAudio()
-            recordButton.isEnabled = false
-            recordButton.setTitle("Начать запись", for: .normal)
-        } else {
-            startRecording()
-            recordButton.setTitle("Остановить запись", for: .normal)
-        }
-    }
-    
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
-    
-    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    var recognitionTask: SFSpeechRecognitionTask?
-    let audioEngene = AVAudioEngine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,13 +56,73 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             case .restricted:
                 buttonState = false
                 print("Распознавание речи не поддерживается на этом устройстве")
-        }
+            }
             
             DispatchQueue.main.async { // 6
                 self.recordButton.isEnabled = buttonState // 7
             }
+        }
     }
-}
+    
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		timerManager.delegate = self
+		timerManager.runTimer()
+        if self.timerManager.seconds == 0 {
+            self.presentAlertController()
+        }
+   }
+	
+	override  func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		timerManager.pauseTimer()
+        
+	}
+    
+    // handler closed ads
+    func adHadBeenWatched(watched:Bool) {
+        if watched {
+            self.timerManager.seconds = self.extraTime
+            self.timerManager.delegate = self
+            self.timerManager.runTimer()
+        }else {
+            self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
+        }
+    }
+    
+    //MARK: --TimerManagerDelegate
+    func handleOutOfTime() {
+        print("minuts and sec == 0")
+        self.presentAlertController()
+        self.recordButton.isEnabled = false // block button after 10 sec
+    }
+    
+    func updateUI(sec: String) {
+        guard (self.timeLabel != nil) else {return}
+        self.timeLabel.text = sec
+    }
+	
+    //MARK:-- Speach
+    
+    @IBAction func recordButtonTapped(_ sender: UIButton) {
+        if audioEngene.isRunning {
+            audioEngene.stop()
+            recognitionRequest?.endAudio()
+            recordButton.isEnabled = false
+            recordButton.setTitle("Начать запись", for: .normal)
+        } else {
+            startRecording()
+            recordButton.setTitle("Остановить запись", for: .normal)
+        }
+    }
+    
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
+    
+    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    var recognitionTask: SFSpeechRecognitionTask?
+    let audioEngene = AVAudioEngine()
+    
+
     
     func startRecording() {
         
@@ -145,10 +161,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.STRMassage = result?.bestTranscription.formattedString
                 
                 APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
-                
-                //MARK: --Translate
-               APIService.sharedInstance.translate(q: (result?.bestTranscription.formattedString)!)
-    
                 isFinal = (result?.isFinal)!
             }
             
@@ -212,6 +224,11 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
         }
     }
     
+    private func presentAlertController () {
+        let vc = CustomAlertViewController.viewController()
+        vc.presentedVC = self
+        self.present(vc, animated: false, completion: nil)
+    }
     
     
 

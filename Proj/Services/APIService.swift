@@ -135,7 +135,7 @@ class APIService {
     }
     
     
-    func chackLastmessage(){
+    func checkLastMessage(){
        
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
         
