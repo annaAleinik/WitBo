@@ -135,44 +135,40 @@ class APIService {
     }
     
     
-    func checkLastMessage(completion : @escaping (LastMassageModel, Error?) -> Void){
+    func checkLastMessage(completion : @escaping (DataModel, Error?) -> Void){
        
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
         
         let params = ["partnerId": "1" , "token" : "3"]
-        
+		
         Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
-            .responseJSON {responce in
-                print(responce)
-                
-                var massage : LastMassageModel? = nil
-                
-                switch responce.result {
-                case .success(let resp):
-                    
-                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: responce.data!)
-                        
-                        
-                        
-                }
-                
-                if massage != nil {
-                    translate(q: (massage?.body)!, completion: completion)
-                    
-                }else {
-                    print("Error - no translate")
-                }
-                    
-                    }
-                }
-                
-    
+			.responseJSON { responce in
+				
+				let massage : LastMassageModel?
+				
+				switch responce.result {
+				case .success(let resp):
+					do { massage = try JSONDecoder().decode(LastMassageModel.self, from: resp.data!)
+					}
+					catch {
+						print ("---> Error Decoder")
+					}
+				case .failure(let error):
+					print("---> Request failure")
+				}
+				if message != nil {
+					self.translate(q:message.body, completion:completion)
+				} else {
+					print("---> have no messages")
+				}
+		}
+
     }
     
    
     //MARK:--translate
     
-    func translate(q:String, completion : @escaping (Bool, Error?) -> Void) {
+    func translate(q:String, completion : @escaping (DataModel, Error?) -> Void) {
      
         let loc = NSLocale.autoupdatingCurrent
         let code = loc.languageCode
@@ -194,10 +190,9 @@ class APIService {
             switch response.result{
             case .success(let resp):
                 do {
-                    let myData = try JSONDecoder().decode(dataModel.self, from: response.data!)
+                    let myData = try JSONDecoder().decode(DataModel.self, from: response.data!)
                     
                     print(myData.translations)
-                    
                 }catch let error {
                     print(error)
                 }case .failure(let error):
@@ -209,3 +204,4 @@ class APIService {
 }
 
 
+}

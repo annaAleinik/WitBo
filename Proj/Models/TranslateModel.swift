@@ -15,7 +15,7 @@ struct translationsArrayModel : Codable{
     let model : String
 }
 
-struct dataModel : Codable {
+struct DataModel : Codable {
     
     let translations : Array<translationsArrayModel>
 }
