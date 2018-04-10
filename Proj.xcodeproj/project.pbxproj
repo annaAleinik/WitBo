@@ -17,6 +17,7 @@
 		09542716206B992700B85487 /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09542715206B992700B85487 /* ApiUrl.swift */; };
 		09542719206BA03F00B85487 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09542718206BA03F00B85487 /* AuthorizationService.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
+		09D2FA9F207BC1E40027BFA6 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */; };
 		824F915B80F6875D7A45B015 /* Pods_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
 		843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D2C69206A58D70008D9A1 /* LoginStruct.swift */; };
@@ -54,6 +55,7 @@
 		09542718206BA03F00B85487 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
 		2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		843D2C69206A58D70008D9A1 /* LoginStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStruct.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				09542712206B97F600B85487 /* AuthRouter.swift */,
+				09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -343,12 +346,16 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Proj/Pods-Proj-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +417,7 @@
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
 				09027A33206BA44E004B296D /* DefaultsKeys+keys.swift in Sources */,
 				843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */,
+				09D2FA9F207BC1E40027BFA6 /* AuthorizationRouter.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,
 				09542713206B97F600B85487 /* AuthRouter.swift in Sources */,
 				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
