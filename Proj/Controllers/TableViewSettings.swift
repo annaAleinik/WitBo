@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 
 class TableViewSettings: UITableViewController {
     @IBOutlet weak var fullNameUsersLable: UILabel!

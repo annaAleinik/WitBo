@@ -12,7 +12,7 @@ import Alamofire
 
 class APIService {
     
-   static let sharedInstance = APIService()
+   static let sharedInstance = APIService() //sharedInstance
  
     var userName : String?
     var userLang :String?
