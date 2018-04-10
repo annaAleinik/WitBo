@@ -135,7 +135,7 @@ class APIService {
     }
     
     
-    func checkLastMessage(){
+    func checkLastMessage(completion : @escaping (LastMassageModel, Error?) -> Void){
        
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
         
@@ -144,22 +144,44 @@ class APIService {
         Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
             .responseJSON {responce in
                 print(responce)
+                
+                var massage : LastMassageModel? = nil
+                
+                switch responce.result {
+                case .success(let resp):
+                    
+                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: responce.data!)
+                        
+                        
+                        
                 }
-    }
+                
+                if massage != nil {
+                    translate(q: (massage?.body)!, completion: completion)
+                    
+                }else {
+                    print("Error - no translate")
+                }
+                    
+                    }
+                }
+                
     
+    }
     
    
     //MARK:--translate
     
-    func translate(q:String) {
+    func translate(q:String, completion : @escaping (Bool, Error?) -> Void) {
      
-        // let  detectedLangPhone = Locale.preferredLanguages[0] //detected lang iphone
+        let loc = NSLocale.autoupdatingCurrent
+        let code = loc.languageCode
         
-        let arrOfStr = userLang?.components(separatedBy: "-")
-        let resultStr = arrOfStr?.first
+//       let arrOfStr = userLang?.components(separatedBy: "-")
+//        let resultStr = arrOfStr?.first
         
         let params = ["q"       : q,
-                      "target"  : resultStr ,
+                      "target"  : code ,
                       "format"  :"text" ,
                       "model"   :"nmt",
                       "key"     :"AIzaSyDsyGqbTyUwc_ZqUNkKL4wDkce2Pn5dBjo"]
@@ -186,4 +208,4 @@ class APIService {
         
 }
 
-}
+

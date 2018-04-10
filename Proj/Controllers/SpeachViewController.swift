@@ -13,7 +13,7 @@ import Starscream
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate {
     
-    @IBOutlet weak var inComingMessage: UILabel!
+    //@IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -161,6 +161,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.STRMassage = result?.bestTranscription.formattedString
                 
                 APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
+                
                 isFinal = (result?.isFinal)!
             }
             
@@ -191,6 +192,15 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
 
     }
+    
+    
+    //MARK : Action
+    
+    @IBAction func updateMassage(_ sender: Any) {
+        APIService.sharedInstance.
+    }
+    
+    
     //MARK--AVSpeechSynthesizer
 
     @IBAction func ReadButton(_ sender: AnyObject) {
@@ -209,6 +219,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
         print("-------" + json)
+        
        SocketManagerClass.sharedInstanse.socket.write(string: json)
        SocketManagerClass.sharedInstanse.socket.write(string: "{\"action\":\"intro\",\"data\":{\"client_id\":\"888\"}}")
     }
