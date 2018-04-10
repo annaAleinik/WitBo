@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct translationsArrayModel : Codable{
+struct TranslationsArrayModel : Codable{
     
     let translatedText : String
     let detectedSourceLanguage : String
@@ -17,5 +17,5 @@ struct translationsArrayModel : Codable{
 
 struct DataModel : Codable {
     
-    let translations : Array<translationsArrayModel>
+    let translations : Array<TranslationsArrayModel>
 }

@@ -10,6 +10,12 @@ DEPENDENCIES:
   - Starscream (~> 3.0.2)
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Google-Mobile-Ads-SDK
+    - Starscream
+
 EXTERNAL SOURCES:
   SwiftValidator:
     :branch: master
@@ -26,6 +32,6 @@ SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
-PODFILE CHECKSUM: 7b9befc7005de291d05a1292035b0fadacfe864a
+PODFILE CHECKSUM: b330bb8a039ebd66f4135bdabcd4acb58702a4b8
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

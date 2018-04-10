@@ -76,7 +76,7 @@ class APIService {
             switch response.result {
             case .success(let resp):
                 do {
-                    let authData = try JSONDecoder().decode(authStruct.self, from: response.data!)
+                    let authData = try JSONDecoder().decode(AuthStruct.self, from: response.data!)
                     print(authData.token)
 
                     UserDefaults.standard.set(authData.token, forKey: "TOKEN")
@@ -105,7 +105,7 @@ class APIService {
             switch response.result {
             case .success(let resp):
                 do {
-                    let userData = try JSONDecoder().decode(userModel.self, from: response.data!)
+                    let userData = try JSONDecoder().decode(UserModel.self, from: response.data!)
                     self.userName = userData.name
                     self.userLang = userData.language
                     
@@ -144,11 +144,11 @@ class APIService {
         Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
 			.responseJSON { responce in
 				
-				let massage : LastMassageModel?
+				var massage : LastMassageModel?
 				
 				switch responce.result {
 				case .success(let resp):
-					do { massage = try JSONDecoder().decode(LastMassageModel.self, from: resp.data!)
+                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: (resp as AnyObject).data!)
 					}
 					catch {
 						print ("---> Error Decoder")
@@ -156,8 +156,8 @@ class APIService {
 				case .failure(let error):
 					print("---> Request failure")
 				}
-				if message != nil {
-					self.translate(q:message.body, completion:completion)
+                if massage != nil {
+                    self.translate(q:(massage?.body)!, completion:completion)
 				} else {
 					print("---> have no messages")
 				}

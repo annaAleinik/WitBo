@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct authStruct : Codable{
+struct AuthStruct : Codable{
     let token : String
     let email : String
 }
