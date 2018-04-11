@@ -17,5 +17,7 @@ struct TranslationsArrayModel : Codable{
 
 struct DataModel : Codable {
     
-    let translations : Array<TranslationsArrayModel>
+    //let translations : Array<TranslationsArrayModel>
+    let data : Array<TranslationsArrayModel>
 }
+

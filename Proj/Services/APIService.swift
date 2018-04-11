@@ -9,10 +9,9 @@
 import Foundation
 import Alamofire
 
-
 class APIService {
     
-   static let sharedInstance = APIService() //sharedInstance
+   static let sharedInstance = APIService()
  
     var userName : String?
     var userLang :String?
@@ -172,9 +171,6 @@ class APIService {
     
     func translate(q:String, completion : @escaping (DataModel?, Error?) -> Void) {
      
-       // let loc = NSLocale.autoupdatingCurrent
-       // let code = loc.languageCode
-//
         let prefferedLanguage = Locale.preferredLanguages[0] as String
         print (prefferedLanguage) //en-US
         
@@ -194,14 +190,19 @@ class APIService {
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response)
         
+            let respData : Dictionary<String, Any>
+
             switch response.result{
             case .success(let resp):
                 do {
-                    let myData = try JSONDecoder().decode(DataModel.self, from: response.data!)
+                    if let data = resp as? Dictionary<String, Any>{
+                        respData = data["data"] as! Dictionary<String, Any>
+                        let myData = try JSONDecoder().decode(DataModel.self, from: respData)
+                        completion(myData, nil)
+                        print(myData.data)
+
+                    }
                     
-                    completion(myData, nil)
-                    
-                    print(myData.translations)
                 }catch let error {
                     print(error)
                 }case .failure(let error):
