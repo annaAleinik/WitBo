@@ -10,14 +10,27 @@ import UIKit
 //import Alamofire
 
 class TableViewSettings: UITableViewController {
+    @IBOutlet weak var emailLable: UILabel!
+    
+    @IBOutlet weak var settingsLable: UILabel!
     @IBOutlet weak var fullNameUsersLable: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "background.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+
+        self.settingsLable.text = "Settings"
+        
         self.fullNameUsersLable.text = APIService.sharedInstance.userName
             }
-
+    //MARK: -- Action
+    
+    @IBAction func signOutButton(_ sender: Any) {
+    }
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

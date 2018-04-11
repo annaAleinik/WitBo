@@ -197,7 +197,7 @@ class APIService {
                 do {
                     if let data = resp as? Dictionary<String, Any>{
                         respData = data["data"] as! Dictionary<String, Any>
-                        let myData = try JSONDecoder().decode(DataModel.self, from: respData)
+                        let myData = try JSONDecoder().decode(DataModel.self, from: response.data!)
                         completion(myData, nil)
                         print(myData.data)
 
