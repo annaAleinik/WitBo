@@ -199,7 +199,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBAction func updateMassage(_ sender: Any) {
         
         APIService.sharedInstance.checkLastMessage { (translatedData, error) in
-            self.lableMassage.text = translatedData.translations.first?.translatedText
+            self.lableMassage.text = translatedData?.translations.first?.translatedText
         }
     }
     

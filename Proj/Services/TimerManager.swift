@@ -21,7 +21,7 @@ class TimerManager {
     
     var delegate : TimerManagerDelegate? = nil
     
-    var seconds = 5
+    var seconds = 12000
     var timer = Timer()
     var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
     

@@ -135,7 +135,7 @@ class APIService {
     }
     
     
-    func checkLastMessage(completion : @escaping (DataModel, Error?) -> Void){
+    func checkLastMessage(completion : @escaping (DataModel?, Error?) -> Void){
        
         let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
         
@@ -148,13 +148,15 @@ class APIService {
 				
 				switch responce.result {
 				case .success(let resp):
-                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: (resp as AnyObject).data!)
+                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: responce.data!)
+                        //(resp as AnyObject).data!)
 					}
 					catch {
 						print ("---> Error Decoder")
 					}
 				case .failure(let error):
 					print("---> Request failure")
+                    completion(nil , error)
 				}
                 if massage != nil {
                     self.translate(q:(massage?.body)!, completion:completion)
@@ -168,16 +170,21 @@ class APIService {
    
     //MARK:--translate
     
-    func translate(q:String, completion : @escaping (DataModel, Error?) -> Void) {
+    func translate(q:String, completion : @escaping (DataModel?, Error?) -> Void) {
      
-        let loc = NSLocale.autoupdatingCurrent
-        let code = loc.languageCode
+       // let loc = NSLocale.autoupdatingCurrent
+       // let code = loc.languageCode
+//
+        let prefferedLanguage = Locale.preferredLanguages[0] as String
+        print (prefferedLanguage) //en-US
         
-//       let arrOfStr = userLang?.components(separatedBy: "-")
-//        let resultStr = arrOfStr?.first
+        let arr = prefferedLanguage.components(separatedBy: "-")
+        let deviceLanguage = arr.first
+        print (deviceLanguage) //en
+
         
         let params = ["q"       : q,
-                      "target"  : code ,
+                      "target"  : deviceLanguage!,
                       "format"  :"text" ,
                       "model"   :"nmt",
                       "key"     :"AIzaSyDsyGqbTyUwc_ZqUNkKL4wDkce2Pn5dBjo"]
@@ -192,16 +199,21 @@ class APIService {
                 do {
                     let myData = try JSONDecoder().decode(DataModel.self, from: response.data!)
                     
+                    completion(myData, nil)
+                    
                     print(myData.translations)
                 }catch let error {
                     print(error)
                 }case .failure(let error):
                     print(error)
-                }
+                    completion(nil, error)
+
+            
             
         }
         
 }
 
 
+}
 }

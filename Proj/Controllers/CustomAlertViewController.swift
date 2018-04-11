@@ -42,6 +42,7 @@ class CustomAlertViewController: UIViewController, GADRewardBasedVideoAdDelegate
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
             self.didComletePlaying = true
+        
         print("rewardBasedVideoAd")
     }
     
