@@ -11,9 +11,14 @@ import UIKit
 class ChatsTVC: UITableViewController {
     var myIndex : Int?
     
+    @IBOutlet weak var titleChatLable: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CellContacts", bundle: nil), forCellReuseIdentifier: "CustomCellContcts")
+        
+        titleChatLable.text = "CHATS"
 
     }
 
@@ -54,7 +59,7 @@ class ChatsTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
-        tabBarController?.selectedIndex = 0
+        tabBarController?.selectedIndex = 1
     }
     
     
