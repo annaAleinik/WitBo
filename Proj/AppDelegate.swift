@@ -18,11 +18,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        //MARK: -- Ads
+        
         let request = GADRequest()
         // Requests test ads on test devices.
         request.testDevices = ["2077ef9a63d2b398840261c8221a0c9b"]
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         
+        
+        //MARK: -- SignOut
+        //let userLoginStatus = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+//        if(userLoginStatus)
+//        {
+//            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
+//            window!.rootViewController = centerVC
+//            window!.makeKeyAndVisible()
+//
+//            //Disconect sockets when signOut
+//            //SocketManagerClass.sharedInstanse.socket.disconnect()
+//
+//        }
+
         return true
     }
 

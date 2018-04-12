@@ -27,10 +27,25 @@ class TableViewSettings: UITableViewController {
         
         self.fullNameUsersLable.text = APIService.sharedInstance.userName
             }
+    
     //MARK: -- Action
     
     @IBAction func signOutButton(_ sender: Any) {
+        
+        UserDefaults.standard.removeObject(forKey: "SEKRET")
+        UserDefaults.standard.removeObject(forKey: "TOKRN")
+        UserDefaults.standard.synchronize()
+
+        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
+        
+        let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDel.window?.rootViewController = loginVC
+
     }
+    
+    
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

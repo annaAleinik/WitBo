@@ -12,7 +12,7 @@ struct UserModel : Codable{
     let name : String
     let email : String
     let language : String
-    let tariff : String
+    let tariff : String?
     let tariff_activation_date : String
     let tariff_exparation_date : String
     let registration_date : String

@@ -18,7 +18,6 @@
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
 		843815D5206E0A750086BC5B /* AddsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843815D4206E0A750086BC5B /* AddsManager.swift */; };
 		84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA7207CA5A400E3E953 /* LastMassageModel.swift */; };
-		84413CAA207CB27300E3E953 /* langUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA9207CB27200E3E953 /* langUser.swift */; };
 		849732ED206B790700B14175 /* authStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EC206B790700B14175 /* authStruct.swift */; };
 		849732EF206B835E00B14175 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EE206B835E00B14175 /* UserModel.swift */; };
 		849945E62063CA8800E631A9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E52063CA8800E631A9 /* APIService.swift */; };
@@ -62,7 +61,6 @@
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		843815D4206E0A750086BC5B /* AddsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddsManager.swift; sourceTree = "<group>"; };
 		84413CA7207CA5A400E3E953 /* LastMassageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMassageModel.swift; sourceTree = "<group>"; };
-		84413CA9207CB27200E3E953 /* langUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = langUser.swift; path = ../../../.Trash/langUser.swift; sourceTree = "<group>"; };
 		8466854B207CF64C00291174 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		849732EC206B790700B14175 /* authStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authStruct.swift; sourceTree = "<group>"; };
 		849732EE206B835E00B14175 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				841FA1CF207214C700D0064A /* TranslateModel.swift */,
 				84413CA7207CA5A400E3E953 /* LastMassageModel.swift */,
-				84413CA9207CB27200E3E953 /* langUser.swift */,
 				849732EE206B835E00B14175 /* UserModel.swift */,
 				849732EC206B790700B14175 /* authStruct.swift */,
 				084A20CB206930AD0009E4B2 /* parseJSON.swift */,
@@ -389,7 +386,6 @@
 				84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManagerClass.swift in Sources */,
-				84413CAA207CB27300E3E953 /* langUser.swift in Sources */,
 				84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */,
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,

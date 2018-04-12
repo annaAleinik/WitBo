@@ -85,6 +85,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             self.timerManager.seconds = self.extraTime
             self.timerManager.delegate = self
             self.timerManager.runTimer()
+            self.recordButton.isEnabled = true
         }else {
             self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
         }
