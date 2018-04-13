@@ -39,7 +39,7 @@ class APIService : Object{
         
         let params = ["login":login, "password":password]
         
-        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/login")
+        let url = URL(string: "https://prmir.com/wp-json/withbo/v1/user/login")
         
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response.description)
@@ -81,7 +81,7 @@ class APIService : Object{
         
         let  params = ["secret" :  secretParamsFromUserDef]
         
-        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/user/auth")
+        let url = URL(string: "https://prmir.com/wp-json/withbo/v1/user/auth")
 
         Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
             print(response.description)

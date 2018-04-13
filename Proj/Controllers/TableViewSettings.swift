@@ -33,10 +33,10 @@ class TableViewSettings: UITableViewController {
     
     @IBAction func signOutButton(_ sender: Any) {
 
-//        try! APIService.realm.write {
-//            APIService.realm.deleteAll()
-//
-//        }
+        try! APIService.realm.write {
+            APIService.realm.deleteAll()
+
+        }
 
         UserDefaults.standard.removeObject(forKey: "SEKRET")
         UserDefaults.standard.removeObject(forKey: "TOKRN")
@@ -47,6 +47,7 @@ class TableViewSettings: UITableViewController {
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDel.window?.rootViewController = loginVC
+        SocketManagerClass.sharedInstanse.socket.disconnect()
 
     }
     

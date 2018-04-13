@@ -35,7 +35,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         // Do any additional setup after loading the view, typically from a nib.
         recordButton.isEnabled = false
         
-        SocketManagerClass.sharedInstanse.socketsConnecting()
         
         speechRecognizer?.delegate = self
         

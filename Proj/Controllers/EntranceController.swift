@@ -60,7 +60,9 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                 }
             }
         }
-}
+        SocketManagerClass.sharedInstanse.socketsConnecting()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
