@@ -8,11 +8,14 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
-class APIService {
+class APIService : Object{
     
    static let sharedInstance = APIService()
  
+   static let realm = try! Realm()
+    
     var userName : String?
     var userLang :String?
     
@@ -46,8 +49,19 @@ class APIService {
                     let loginData = try JSONDecoder().decode(LoginStruct.self, from: response.data!)
                     print(loginData.secret)
                     
+                    
+                    let secret  = DataUserInBase()
+                    secret.secret = loginData.secret
+                    
+                    try! APIService.realm.write {
+                        APIService.realm.add(secret)
+                        
+                    }
+
+                    
                     UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
                     completion(true, nil)
+                    
                     
                 }catch let error{
                     print(error)
@@ -78,6 +92,14 @@ class APIService {
                     let authData = try JSONDecoder().decode(AuthStruct.self, from: response.data!)
                     print(authData.token)
 
+                    let token  = DataUserInBase()
+                    token.token = authData.token
+                    
+                    try! APIService.realm.write {
+                        APIService.realm.add(token)
+                        
+                    }
+
                     UserDefaults.standard.set(authData.token, forKey: "TOKEN")
                     completion(true, nil)
                 }catch let error{
@@ -107,6 +129,21 @@ class APIService {
                     let userData = try JSONDecoder().decode(UserModel.self, from: response.data!)
                     self.userName = userData.name
                     self.userLang = userData.language
+                    
+                    let name  = DataUserInBase()
+                    let email = DataUserInBase()
+                    let lang = DataUserInBase()
+                    
+                    name.name = userData.name
+                    email.email = userData.email
+                    lang.lang = userData.language
+                    
+                    try! APIService.realm.write {
+                        APIService.realm.add(name)
+                        APIService.realm.add(email)
+                        APIService.realm.add(lang)
+                    }
+
                     
                     completion(true, nil)
                 }catch let error{

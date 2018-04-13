@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import Alamofire
+import Alamofire
+import RealmSwift
 
 class TableViewSettings: UITableViewController {
     @IBOutlet weak var emailLable: UILabel!
@@ -31,7 +32,12 @@ class TableViewSettings: UITableViewController {
     //MARK: -- Action
     
     @IBAction func signOutButton(_ sender: Any) {
-        
+
+//        try! APIService.realm.write {
+//            APIService.realm.deleteAll()
+//
+//        }
+
         UserDefaults.standard.removeObject(forKey: "SEKRET")
         UserDefaults.standard.removeObject(forKey: "TOKRN")
         UserDefaults.standard.synchronize()
