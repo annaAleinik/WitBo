@@ -50,13 +50,10 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         validator.validate(self)
         
         APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
-            print("HI")
             
             APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
-                print("Working")
                 
                 APIService.sharedInstance.userData(token: "") { (succses, error) in
-                    print("HELLO")
                 }
             }
         }

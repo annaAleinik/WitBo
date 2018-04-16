@@ -11,6 +11,7 @@ import GoogleMobileAds
 import Starscream
 import RealmSwift
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //print file url for rilm
-        //print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
 
         
         //MARK: -- Ads

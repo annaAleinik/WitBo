@@ -1,6 +1,7 @@
 PODS:
-  - Alamofire (4.7.1)
+  - Alamofire (4.7.2)
   - Google-Mobile-Ads-SDK (7.30.0)
+  - NoChat (0.3.2)
   - Realm (3.3.2):
     - Realm/Headers (= 3.3.2)
   - Realm/Headers (3.3.2)
@@ -12,6 +13,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Google-Mobile-Ads-SDK
+  - NoChat (~> 0.3)
   - RealmSwift
   - Starscream (~> 3.0.2)
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
@@ -20,6 +22,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Google-Mobile-Ads-SDK
+    - NoChat
     - Realm
     - RealmSwift
     - Starscream
@@ -35,13 +38,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
+  NoChat: aaa980b8b29c0db8c8bd8ecde22e718cc8ad1bf7
   Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
-PODFILE CHECKSUM: 4a291f2bc819ab6e93406a79e7ddee186949c1fe
+PODFILE CHECKSUM: 8cdfb11b696b3dd311b51e7be7b9b27c18cfb169
 
 COCOAPODS: 1.5.0

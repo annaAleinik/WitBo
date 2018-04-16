@@ -166,10 +166,10 @@ class APIService : Object{
 	}
 	
 	
-	func checkLastMessage(completion : @escaping (TranslationModel?, Error?) -> Void){
+    func checkLastMessage(completion : @escaping (TranslationModel?, Error?) -> Void){
 		
 		let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
-		
+        
 		let params = ["partnerId": "1" , "token" : "3"]
 		
 		Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
