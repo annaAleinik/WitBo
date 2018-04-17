@@ -18,6 +18,8 @@ class APIService : Object{
 	
 	var userName : String?
 	var userLang :String?
+    
+    var token : String?
 	
 	var dict = ["ru-RU":"ru" , "en-En" : "en"]
 	
@@ -98,6 +100,8 @@ class APIService : Object{
 						}
 						
 						UserDefaults.standard.set(authData.token, forKey: "TOKEN")
+                        self.token = authData.token
+                        
 						completion(true, nil)
 					}catch let error{
 						print(error)

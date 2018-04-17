@@ -223,8 +223,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
         print("-------" + json)
         
-       SocketManagerClass.sharedInstanse.socket.write(string: json)
-       SocketManagerClass.sharedInstanse.socket.write(string: "{\"action\":\"intro\",\"data\":{\"client_id\":\"888\"}}")
+      // SocketManagerClass.sharedInstanse.socket.write(string: json)
+        SocketManagerClass.sharedInstanse.socket.write(string: "{\"action\":\"intro\",\"data\":{\"token\":\"" + APIService.sharedInstance.token! + "\"}}")
     }
     
 }
