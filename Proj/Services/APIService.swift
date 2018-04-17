@@ -151,7 +151,6 @@ class APIService : Object{
 	}
 	
 	
-	
 	//MARK : -- Massage requests
 	
 	func pushMassageUser(mySTR : String)  {
@@ -170,7 +169,8 @@ class APIService : Object{
 		
 		let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
         
-		let params = ["partnerId": "1" , "token" : "3"]
+		let params = ["partnerId": "1" , 
+                      "token" : "3"]
 		
 		Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
 			.responseJSON { responce in
