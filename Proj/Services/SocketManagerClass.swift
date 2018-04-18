@@ -31,6 +31,9 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("websocketDidConnect")
+        
+        socket.write(string: "{\"action\":\"intro\",\"data\":{\"token\":\"" + APIService.sharedInstance.token! + "\"}}")
+
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {

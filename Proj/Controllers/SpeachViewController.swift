@@ -16,6 +16,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     //@IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
+    
+    @IBOutlet weak var ansverMassageLable: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     
 	let timerManager = TimerManager()
@@ -160,8 +162,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
-                APIService.sharedInstance.pushMassageUser(mySTR: (result?.bestTranscription.formattedString)!)
-                
+//                let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
+//                //        print("-------" + json)
+//                
+//                SocketManagerClass.sharedInstanse.socket.write(string: json)
+
                 isFinal = (result?.isFinal)!
             }
             
@@ -198,9 +203,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     @IBAction func updateMassage(_ sender: Any) {
         
-        APIService.sharedInstance.checkLastMessage() { (translatedData, error) in
-            self.lableMassage.text = translatedData?.translatedText
-        }
+//        APIService.sharedInstance.checkLastMessage() { (translatedData, error) in
+//            self.ansverMassageLable.text = translatedData?.translatedText
+//        }
     }
     
     
@@ -220,11 +225,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         readSound.delegate = self
         readSound.speak(utterance)
         
-        let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
-        print("-------" + json)
-        
-      // SocketManagerClass.sharedInstanse.socket.write(string: json)
-        SocketManagerClass.sharedInstanse.socket.write(string: "{\"action\":\"intro\",\"data\":{\"token\":\"" + APIService.sharedInstance.token! + "\"}}")
     }
     
 }

@@ -58,7 +58,6 @@ class APIService : Object{
 						
 					}
 					
-					
 					UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
 					completion(true, nil)
 					
@@ -155,52 +154,80 @@ class APIService : Object{
 	}
 	
 	
-	//MARK : -- Massage requests
-	
-	func pushMassageUser(mySTR : String)  {
-		
-		let params = ["receiverId" : "2", "token" : "1", "text" : mySTR, "lang" : "lang"]
-		
-		let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/push/2/1")
-		
-		Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
-			print(response.description)
-		}
-	}
-	
-	
-    func checkLastMessage(completion : @escaping (TranslationModel?, Error?) -> Void){
-		
-		let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
+    //MARK ; -- CONTACTS
+    
+    func gettingContactsList(token : String, completion : @escaping (UserContact?, Error?) -> Void) {
         
-		let params = ["partnerId": "1" , 
-                      "token" : "3"]
-		
-		Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
-			.responseJSON { responce in
-				
-				var massage : LastMassageModel?
-				
-				switch responce.result {
-				case .success(let resp):
-					do { massage = try JSONDecoder().decode(LastMassageModel.self, from: responce.data!)
-						//(resp as AnyObject).data!)
-					}
-					catch {
-						print ("---> Error Decoder")
-					}
-				case .failure(let error):
-					print("---> Request failure")
-					completion(nil , error)
-				}
-				if massage != nil {
-					self.translate(q:(massage?.body)!, completion:completion)
-				} else {
-					print("---> have no messages")
-				}
-		}
-		
-	}
+        let params = ["token": token]
+        let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/list")
+
+                Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
+                    .responseJSON { response in
+                        print(response)
+
+                        switch response.result{
+                        case .success(_ ):
+                            do {
+                                let data = try JSONDecoder().decode(List.self, from: response.data!)
+                                completion(data.list.first, nil)
+                                
+                            }catch let error {
+                                print(error)
+                            }case .failure(let error):
+                                print(error)
+                                completion(nil, error)
+                        }
+        }
+
+    }
+}
+    
+//    //MARK : -- Massage requests
+//    
+//    func pushMassageUser(mySTR : String)  {
+//        
+//        let params = ["receiverId" : "2", "token" : "1", "text" : mySTR, "lang" : "lang"]
+//        
+//        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/push/2/1")
+//        
+//        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
+//            print(response.description)
+//        }
+//    }
+//    
+//    
+//    func checkLastMessage(completion : @escaping (TranslationModel?, Error?) -> Void){
+//        
+//        let url = URL(string: "http://prmir.com/wp-json/withbo/v1/dialog/lastmessage/1/2")
+//        
+//        let params = ["partnerId": "1" , 
+//                      "token" : "3"]
+//        
+//        Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
+//            .responseJSON { responce in
+//                
+//                var massage : LastMassageModel?
+//                
+//                switch responce.result {
+//                case .success(let resp):
+//                    do { massage = try JSONDecoder().decode(LastMassageModel.self, from: responce.data!)
+//                        //(resp as AnyObject).data!)
+//                    }
+//                    catch {
+//                        print ("---> Error Decoder")
+//                    }
+//                case .failure(let error):
+//                    print("---> Request failure")
+//                    completion(nil , error)
+//                }
+//                if massage != nil {
+//                    self.translate(q:(massage?.body)!, completion:completion)
+//                } else {
+//                    print("---> have no messages")
+//                }
+//        }
+//        
+//    }
 	
 	
 	//MARK:--translate
@@ -241,4 +268,4 @@ class APIService : Object{
 			}
 		}
 	}
-}
+

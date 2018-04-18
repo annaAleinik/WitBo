@@ -38,7 +38,7 @@ class TimerManager {
 
     @objc func updateTimer() {
         seconds -= 1     //This will decrement(count down)the seconds.
-        print(seconds)
+       // print(seconds)
         if seconds == 0 {
             delegate?.handleOutOfTime()
 			timer.invalidate()
