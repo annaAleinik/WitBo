@@ -19,13 +19,6 @@ struct UserContact : Codable {
     let client_id : String
 }
 
-
-
-
-
-
-
-
 //struct List: Codable {
 //    let message: String
 //    let code: Int

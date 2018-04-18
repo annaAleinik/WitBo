@@ -161,7 +161,7 @@ class APIService : Object{
         let params = ["token": token]
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/list")
 
-                Alamofire.request(url!, method: HTTPMethod.get, parameters:params)
+                Alamofire.request(url!, method: HTTPMethod.post, parameters:params)
                     .responseJSON { response in
                         print(response)
 
@@ -231,7 +231,9 @@ class APIService : Object{
 	
 	
 	//MARK:--translate
-	
+
+
+
 	func translate(q:String, completion : @escaping (TranslationModel?, Error?) -> Void) {
 		
 		let prefferedLanguage = Locale.preferredLanguages[0] as String
@@ -239,7 +241,6 @@ class APIService : Object{
 		
 		let arr = prefferedLanguage.components(separatedBy: "-")
 		let deviceLanguage = arr.first
-		//        print (deviceLanguage) //en
 		
 		
 		let params = ["q"       : q,

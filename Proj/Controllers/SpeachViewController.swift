@@ -162,10 +162,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
-//                let json = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"some text\",\"token\":\"token\",\"language\":\"ru-RU\"}}"
-//                //        print("-------" + json)
-//                
-//                SocketManagerClass.sharedInstanse.socket.write(string: json)
+                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"666\",\"message\":\"\(result)\",\"token\":\"\(APIService.sharedInstance.token)\",\"language\":\"ru-RU\"}}"
+                //        print("-------" + json)
+                
+                SocketManagerClass.sharedInstanse.socket.write(string: jsonPushMassage)
 
                 isFinal = (result?.isFinal)!
             }
