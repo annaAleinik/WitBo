@@ -17,5 +17,6 @@ struct UserContact : Codable {
     let email : String
     let name : String
     let client_id : String
+    //let online : Int
 }
 

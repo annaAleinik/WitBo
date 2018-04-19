@@ -12,10 +12,8 @@ class ChatsTVC: UITableViewController {
     
     var myIndex : Int?
     var arrayContacts = Array<UserContact>()
-
     
     @IBOutlet weak var titleChatLable: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +31,22 @@ class ChatsTVC: UITableViewController {
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         
-        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (sucsses, error) in
+        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
+            
+            guard error == nil else {
+                print(error)
+                return
+            }
+            if let array = contacts {
+                self.arrayContacts = array
+                self.tableView.reloadData()
+
+            }
+
+        }
         }
 
-    }
+    
     
     
     
@@ -54,12 +64,14 @@ class ChatsTVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellContcts", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellContcts", for: indexPath) as! CellContacts
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        
+        cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
 
         // Configure the cell...
 
-        return cell
+        return (cell)
     }
     
     

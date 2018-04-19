@@ -160,7 +160,7 @@ class APIService : Object{
 	
     //MARK ; -- CONTACTS
     
-    func gettingContactsList(token : String, completion : @escaping (UserContact?, Error?) -> Void) {
+    func gettingContactsList(token : String, completion : @escaping (Array<UserContact>?, Error?) -> Void) {
         
         let params = ["token": token]
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/list")
@@ -173,9 +173,8 @@ class APIService : Object{
                         case .success(_ ):
                             do {
                                 let data = try JSONDecoder().decode(List.self, from: response.data!)
-                                completion(data.list.first, nil)
+                                completion(data.list, nil)
                                 self.clietID = data.list.first?.client_id
-                                
                                 
                             }catch let error {
                                 print(error)
@@ -239,11 +238,11 @@ class APIService : Object{
 	//MARK:--translate
 
 
-let prefferedLanguage = Locale.preferredLanguages[0] as String
-let arr = prefferedLanguage.components(separatedBy: "-")
-let deviceLanguage = arr.first
+    let prefferedLanguage = Locale.preferredLanguages[0] as String
+    let arr = prefferedLanguage.components(separatedBy: "-")
+    let deviceLanguage = arr.first
 
-	func translate(q:String, completion : @escaping (TranslationModel?, Error?) -> Void) {
+	    func translate(q:String, completion : @escaping (TranslationModel?, Error?) -> Void) {
 		
         let prefferedLanguage = Locale.preferredLanguages[0] as String
         print (prefferedLanguage) //en-US

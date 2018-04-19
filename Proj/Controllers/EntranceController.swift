@@ -50,6 +50,7 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         
         
         APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, error) in
+            
             if APIService.sharedInstance.secret != nil{
                 APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
                 
