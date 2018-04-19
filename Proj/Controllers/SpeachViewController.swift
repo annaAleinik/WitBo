@@ -24,6 +24,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     var STRMassage : String?
     let extraTime = 600
     
+    var receiverFromContacts = ChatsTVC()
     
 	//MARK: Life cycle
     
@@ -162,7 +163,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
-                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"receiver\":\"\(String(describing: APIService.sharedInstance.clietID))\",\"message\":\"\(String(describing: result))\",\"token\":\"\(String(describing: APIService.sharedInstance.token))\",\"language\":\"\(String(describing: APIService.sharedInstance.userLang))\"}}"
+//                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"\(String(describing: APIService.sharedInstance.token))\",\"receiver\":\"\(String(describing: self.receiverFromContacts.receiver ))\",\"message\":\"\(String(describing: result))\",\"language\":\"\(String(describing: APIService.sharedInstance.userLang))\"}}"
+                
+                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: APIService.sharedInstance.token) + "\",\"receiver\":\"" + String(describing: self.receiverFromContacts.receiver) + "\",\"message\":\"" + String(describing: result) + "\",\"language\":\"ru-RU\"}}"
+                
+                
 
                 SocketManagerClass.sharedInstanse.socket.write(string: jsonPushMassage)
 

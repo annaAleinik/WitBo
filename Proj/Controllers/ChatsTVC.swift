@@ -12,6 +12,8 @@ class ChatsTVC: UITableViewController {
     
     var myIndex : Int?
     var arrayContacts = Array<UserContact>()
+    var receiver : String?
+    
     
     @IBOutlet weak var titleChatLable: UILabel!
     
@@ -68,6 +70,7 @@ class ChatsTVC: UITableViewController {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
         cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
+        self.receiver = self.arrayContacts[indexPath.row].client_id
 
         // Configure the cell...
 
