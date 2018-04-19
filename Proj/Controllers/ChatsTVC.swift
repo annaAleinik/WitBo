@@ -9,7 +9,10 @@
 import UIKit
 
 class ChatsTVC: UITableViewController {
+    
     var myIndex : Int?
+    var arrayContacts = Array<UserContact>()
+
     
     @IBOutlet weak var titleChatLable: UILabel!
     
@@ -19,8 +22,6 @@ class ChatsTVC: UITableViewController {
         tableView.register(UINib(nibName: "CellContacts", bundle: nil), forCellReuseIdentifier: "CustomCellContcts")
         
         titleChatLable.text = "CHATS"
-        
-
     }
 
 
@@ -31,6 +32,10 @@ class ChatsTVC: UITableViewController {
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
+        
+        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (sucsses, error) in
+        }
+
     }
     
     
@@ -44,7 +49,7 @@ class ChatsTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return arrayContacts.count
     }
 
     
@@ -61,11 +66,6 @@ class ChatsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
         tabBarController?.selectedIndex = 1
-        
-        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (sucsses, error) in
-            
-        }
-
     }
     
     

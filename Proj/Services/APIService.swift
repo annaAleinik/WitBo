@@ -20,7 +20,9 @@ class APIService : Object{
 	var userLang :String?
     
     var token : String?
-	
+    var secret : String?
+    var clietID : String?
+    
 	var dict = ["ru-RU":"ru" , "en-En" : "en"]
 	
 	
@@ -59,6 +61,8 @@ class APIService : Object{
 					}
 					
 					UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
+                    self.secret = loginData.secret
+                    
 					completion(true, nil)
 					
 					
@@ -170,6 +174,8 @@ class APIService : Object{
                             do {
                                 let data = try JSONDecoder().decode(List.self, from: response.data!)
                                 completion(data.list.first, nil)
+                                self.clietID = data.list.first?.client_id
+                                
                                 
                             }catch let error {
                                 print(error)
@@ -233,14 +239,17 @@ class APIService : Object{
 	//MARK:--translate
 
 
+let prefferedLanguage = Locale.preferredLanguages[0] as String
+let arr = prefferedLanguage.components(separatedBy: "-")
+let deviceLanguage = arr.first
 
 	func translate(q:String, completion : @escaping (TranslationModel?, Error?) -> Void) {
 		
-		let prefferedLanguage = Locale.preferredLanguages[0] as String
-		print (prefferedLanguage) //en-US
-		
-		let arr = prefferedLanguage.components(separatedBy: "-")
-		let deviceLanguage = arr.first
+        let prefferedLanguage = Locale.preferredLanguages[0] as String
+        print (prefferedLanguage) //en-US
+
+        let arr = prefferedLanguage.components(separatedBy: "-")
+        let deviceLanguage = arr.first
 		
 		
 		let params = ["q"       : q,

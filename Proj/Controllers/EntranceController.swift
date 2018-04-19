@@ -24,12 +24,8 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    func validationSuccessful() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
-        self.present(vc, animated: true, completion: nil)
-        
-
+    func validationSuccessful()  {
+        print("Validation succsessfil")
     }
     
     
@@ -52,20 +48,27 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
 
         validator.validate(self)
         
-        APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, erroe) in
-        }
-            APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
-                if succses{
-                    
+        
+        APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, error) in
+            if APIService.sharedInstance.secret != nil{
+                APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
+                
+                if APIService.sharedInstance.token != nil {
                     SocketManagerClass.sharedInstanse.socketsConnecting()
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
+                    self.present(vc, animated: true, completion: nil)
+
+                    
                     APIService.sharedInstance.userData(token: "") { (succses, error) in
+                        }
                     }
-                } else{
-                    print("No secret and token")
+
                 }
             }
         }
-    
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailField.delegate = self
