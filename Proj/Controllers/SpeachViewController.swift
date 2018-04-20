@@ -125,8 +125,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngene = AVAudioEngine()
     
-
-    
     func startRecording() {
         
         if recognitionTask != nil {  // 1
@@ -205,7 +203,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
     }
     
-    
     //MARK : Action
     
     @IBAction func updateMassage(_ sender: Any) {
@@ -250,7 +247,6 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
         vc.presentedVC = self
         self.present(vc, animated: false, completion: nil)
     }
-    
     
 
 }

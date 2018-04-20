@@ -279,13 +279,12 @@ class APIService : Object{
             
             
             
-            //MARK:--Pars Massage
+    //        MARK:--Pars Massage
             
-//            func parsMassage(text : AnyObject) {
+//            func parsMassage(json : AnyObject) {
 //
-//                let data = string.text(using: .utf8)
-//
-//                let dataTranslatorModel = try JSONDecoder().decode(Massage.self, from: data)
+//                let data = try JSONDecoder().decode(Massage.self, from: json)
+//                
 //
 //
 //            }
