@@ -24,7 +24,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     var STRMassage : String?
     let extraTime = 600
     
-    var receiverFromContacts = ChatsTVC()
+    var receiverFromContacts : String?
+    
     
 	//MARK: Life cycle
     
@@ -37,7 +38,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         recordButton.isEnabled = false
-        
         
         speechRecognizer?.delegate = self
         
@@ -163,15 +163,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
-//                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"\(String(describing: APIService.sharedInstance.token))\",\"receiver\":\"\(String(describing: self.receiverFromContacts.receiver ))\",\"message\":\"\(String(describing: result))\",\"language\":\"\(String(describing: APIService.sharedInstance.userLang))\"}}"
-                
-                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: APIService.sharedInstance.token) + "\",\"receiver\":\"" + String(describing: self.receiverFromContacts.receiver) + "\",\"message\":\"" + String(describing: result) + "\",\"language\":\"ru-RU\"}}"
-                
-                
-
-                SocketManagerClass.sharedInstanse.socket.write(string: jsonPushMassage)
-
                 isFinal = (result?.isFinal)!
+
             }
             
             if error != nil || isFinal { // 11
@@ -182,6 +175,16 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.recognitionTask = nil
                 
                 self.recordButton.isEnabled = true
+                
+                let res = result?.bestTranscription.formattedString
+                
+                guard let token = APIService.sharedInstance.token else { return }
+                guard let receiver = self.receiverFromContacts else {return}
+                guard let resultStr = res else {return}
+                
+                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiver) + "\",\"message\":\"" +  "\(String(describing: resultStr))" + "\",\"language\":\"ru-RU\"}}"
+                
+                SocketManagerClass.sharedInstanse.socket.write(string: jsonPushMassage)
             }
         }
         

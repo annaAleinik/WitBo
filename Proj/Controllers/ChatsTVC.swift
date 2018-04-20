@@ -13,7 +13,7 @@ class ChatsTVC: UITableViewController {
     var myIndex : Int?
     var arrayContacts = Array<UserContact>()
     var receiver : String?
-    
+    var speachVC: SpeachViewController?
     
     @IBOutlet weak var titleChatLable: UILabel!
     
@@ -70,7 +70,6 @@ class ChatsTVC: UITableViewController {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
         cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
-        self.receiver = self.arrayContacts[indexPath.row].client_id
 
         // Configure the cell...
 
@@ -80,6 +79,11 @@ class ChatsTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
+        self.receiver = self.arrayContacts[indexPath.row].client_id
+        
+        speachVC = self.tabBarController?.viewControllers![1] as? SpeachViewController
+        speachVC?.receiverFromContacts = receiver
+        
         tabBarController?.selectedIndex = 1
     }
     

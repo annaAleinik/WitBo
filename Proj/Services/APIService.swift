@@ -276,5 +276,21 @@ class APIService : Object{
 					completion(nil, error)
 			}
 		}
+            
+            
+            
+            //MARK:--Pars Massage
+            
+//            func parsMassage(text : AnyObject) {
+//
+//                let data = string.text(using: .utf8)
+//
+//                let dataTranslatorModel = try JSONDecoder().decode(Massage.self, from: data)
+//
+//
+//            }
+
+            
+            
 	}
 

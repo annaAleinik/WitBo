@@ -41,10 +41,11 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("websocketDidReceiveMessage" + text)
-       // printText.text = text
+        print("got some text: \(text)")
+        
+        // this catc massage
     }
-    
+
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("websocketDidReceiveData")
     }

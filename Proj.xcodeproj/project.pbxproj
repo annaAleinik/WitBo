@@ -14,6 +14,7 @@
 		084A20CC206930AD0009E4B2 /* parseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20CB206930AD0009E4B2 /* parseJSON.swift */; };
 		09ADC8F72083A57600867EAF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ADC8F62083A57600867EAF /* APIConstants.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
+		840E4D702089FC6600993677 /* GetMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* GetMassage.swift */; };
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
@@ -60,6 +61,7 @@
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27ED07577535721B51ED6A5B /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840E4D6F2089FC6600993677 /* GetMassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMassage.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				841FA1CF207214C700D0064A /* TranslateModel.swift */,
+				840E4D6F2089FC6600993677 /* GetMassage.swift */,
 				847261A72087460800CBF9D8 /* UserContact.swift */,
 				84413CA7207CA5A400E3E953 /* LastMassageModel.swift */,
 				84CB95342080C7C000E306F5 /* DataUserInBase.swift */,
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840E4D702089FC6600993677 /* GetMassage.swift in Sources */,
 				84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManagerClass.swift in Sources */,
