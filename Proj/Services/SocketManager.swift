@@ -9,11 +9,16 @@
 import Foundation
 import Starscream
 
+protocol MessageMangerDelegate {
+    func didReciveMessages(messages:[String], clientId:String)
+}
+
 class SocketManagerClass: UIViewController, WebSocketDelegate {
    
     static let sharedInstanse = SocketManagerClass()
     
     var socket: WebSocket!
+    var delegate: MessageMangerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
