@@ -11,7 +11,7 @@ import Speech
 import AVFoundation
 import Starscream
 
-class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate {
+class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate {
     
     //@IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -19,6 +19,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     @IBOutlet weak var ansverMassageLable: UILabel!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
 	let timerManager = TimerManager()
     var STRMassage : String?
@@ -73,6 +74,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         if self.timerManager.seconds == 0 {
             self.presentAlertController()
         }
+        addChatViewController()
    }
 	
 	override  func viewWillDisappear(_ animated: Bool) {
@@ -158,7 +160,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             var isFinal = false // 9
             
             if result != nil { // 10
-                self.lableMassage.text = result?.bestTranscription.formattedString
+               // self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
                 isFinal = (result?.isFinal)!
@@ -176,13 +178,16 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 
                 let res = result?.bestTranscription.formattedString
                 
-                guard let token = APIService.sharedInstance.token else { return }
                 guard let receiver = self.receiverFromContacts else {return}
-                guard let resultStr = res else {return}
+                guard let resultStr = res  else {return}
                 
-                let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiver) + "\",\"message\":\"" +  "\(String(describing: resultStr))" + "\",\"language\":\"ru-RU\"}}"
+                let message = Message()
+                message.text = resultStr
+                message.receiverId = receiver
                 
-                SocketManagerClass.sharedInstanse.socket.write(string: jsonPushMassage)
+                
+                SocketManager.sharedInstanse.sendMessage(message: message)
+                
             }
         }
         
@@ -205,6 +210,17 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     //MARK : Action
     
+    // TODO : Delete this test method
+    @IBAction func send(_ sender: Any) {
+        let message = Message()
+        message.text = "TEST MESSAGEg gfd gsdf gsdfhfdg hbhvbgbhghgfhshgfghsbbvbfdbfdbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        message.receiverId = "1ty287iughriufhjk"
+        
+        
+        SocketManager.sharedInstanse.sendMessage(message: message)
+    }
+    
+    
     @IBAction func updateMassage(_ sender: Any) {
         
 //        APIService.sharedInstance.checkLastMessage() { (translatedData, error) in
@@ -216,7 +232,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     //MARK--AVSpeechSynthesizer
 
     @IBAction func ReadButton(_ sender: AnyObject) {
-        STRMassage = lableMassage.text
+//        STRMassage = lableMassage.text
         let utterance = AVSpeechUtterance(string: STRMassage!)
         utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
         utterance.postUtteranceDelay = 3.0
@@ -229,6 +245,24 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         readSound.delegate = self
         readSound.speak(utterance)
         
+    }
+    
+    //MARK: WBChatViewControllerDelegate
+    func sendMessage(msg: Message) {
+        
+    }
+    
+    func addChatViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let chatVC = storyboard.instantiateViewController(withIdentifier: String(describing:WBChatViewController.self))
+        
+        self.addChildViewController(chatVC)
+        self.containerView.addSubview(chatVC.view)
+        chatVC.didMove(toParentViewController: self)
+        
+        chatVC.view.frame = self.containerView.bounds
+        chatVC.view.backgroundColor = UIColor.clear
+        self.containerView.backgroundColor = UIColor.clear
     }
     
 }

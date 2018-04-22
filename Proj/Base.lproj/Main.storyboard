@@ -189,55 +189,44 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Последние сообщеия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oH-zE-F6v">
-                                <rect key="frame" x="16" y="297" width="175" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Последние сообщеия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oH-zE-F6v">
+                                <rect key="frame" x="15" y="304" width="175" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Text massage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-VC-Dt2">
-                                <rect key="frame" x="30" y="316" width="290" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text massage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSb-VC-Dt2">
+                                <rect key="frame" x="15" y="335" width="290" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78t-Ya-oPL">
-                                <rect key="frame" x="109" y="480" width="102" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="READ TEXT">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-P1-a6m">
+                                <rect key="frame" x="0.0" y="356" width="320" height="163"/>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O5-CC-WQP">
+                                <rect key="frame" x="0.0" y="82" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="ReadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s95-yY-AkL"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ansver message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EV0-Qo-RsF">
-                                <rect key="frame" x="139" y="381" width="165" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwk-Bp-YgQ">
-                                <rect key="frame" x="95" y="450" width="116" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Update Massage">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="updateMassage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eyx-it-Nk5"/>
+                                    <action selector="send:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quX-Kb-o28"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3aA-P1-a6m" firstAttribute="top" secondItem="mSb-VC-Dt2" secondAttribute="bottom" id="16d-fC-DHa"/>
                             <constraint firstItem="lrU-Z9-EJI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Yt-UZ-2mC"/>
                             <constraint firstItem="mSb-VC-Dt2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="3IB-At-a70"/>
+                            <constraint firstItem="1O5-CC-WQP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Y6-EE-QRa"/>
+                            <constraint firstItem="3aA-P1-a6m" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Cei-DX-vbc"/>
+                            <constraint firstItem="3aA-P1-a6m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IKs-65-9qo"/>
                             <constraint firstItem="9oH-zE-F6v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="Ify-ZW-eZO"/>
-                            <constraint firstItem="9oH-zE-F6v" firstAttribute="top" secondItem="Lda-WK-IoM" secondAttribute="bottom" constant="25" id="KWa-EA-4ML"/>
-                            <constraint firstItem="mSb-VC-Dt2" firstAttribute="top" secondItem="9oH-zE-F6v" secondAttribute="bottom" constant="15" id="MLz-pv-9Ah"/>
+                            <constraint firstItem="3aA-P1-a6m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="In8-Ir-LEB"/>
+                            <constraint firstItem="9oH-zE-F6v" firstAttribute="top" secondItem="Lda-WK-IoM" secondAttribute="bottom" constant="15" id="KWa-EA-4ML"/>
+                            <constraint firstItem="mSb-VC-Dt2" firstAttribute="top" secondItem="9oH-zE-F6v" secondAttribute="bottom" constant="10" id="MLz-pv-9Ah"/>
                             <constraint firstItem="OWD-7N-Vqf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YaL-V1-KdI"/>
                             <constraint firstItem="WSU-5G-oUP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aXd-9o-1GX"/>
+                            <constraint firstItem="1O5-CC-WQP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="62" id="e9w-5Q-6jt"/>
                             <constraint firstItem="lrU-Z9-EJI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="eNG-y6-Rgr"/>
                             <constraint firstAttribute="trailing" secondItem="OWD-7N-Vqf" secondAttribute="trailing" id="fmk-fI-VEq"/>
                             <constraint firstItem="WSU-5G-oUP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="kgR-1V-x6F"/>
@@ -254,7 +243,7 @@
                     <tabBarItem key="tabBarItem" title="Item" image="icon_message" id="i9h-Uu-3oQ"/>
                     <navigationItem key="navigationItem" id="lM6-Vn-yJx"/>
                     <connections>
-                        <outlet property="ansverMassageLable" destination="EV0-Qo-RsF" id="uC8-W0-ilA"/>
+                        <outlet property="containerView" destination="3aA-P1-a6m" id="YZi-xd-y6M"/>
                         <outlet property="lableMassage" destination="mSb-VC-Dt2" id="Nqd-iH-rds"/>
                         <outlet property="recordButton" destination="WSU-5G-oUP" id="HQB-Sn-zac"/>
                         <outlet property="timeLabel" destination="lrU-Z9-EJI" id="Xgv-LZ-WhH"/>
@@ -262,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435" y="-754.22535211267609"/>
+            <point key="canvasLocation" x="-525" y="-760"/>
         </scene>
         <!--RegistrationVC-->
         <scene sceneID="oII-OI-BQk">
@@ -538,6 +527,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlX-BQ-nop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1644.375" y="648.5915492957746"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="8GN-mF-kUO">
+            <objects>
+                <viewController storyboardIdentifier="WBChatViewController" modalPresentationStyle="overCurrentContext" id="jyL-Un-iyr" customClass="WBChatViewController" customModule="Proj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F27-da-5hG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qzr-1X-2Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="-761"/>
         </scene>
     </scenes>
     <resources>

@@ -47,7 +47,7 @@ class TableViewSettings: UITableViewController {
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDel.window?.rootViewController = loginVC
-        SocketManagerClass.sharedInstanse.socket.disconnect()
+        SocketManager.sharedInstanse.socket.disconnect()
 
     }
     

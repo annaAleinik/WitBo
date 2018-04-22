@@ -20,6 +20,6 @@ struct Params : Codable {
     let language: String
 }
 
-struct Massage : Codable{
+struct MessageModel: Codable{
     let params : Params
 }

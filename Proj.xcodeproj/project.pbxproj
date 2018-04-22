@@ -12,6 +12,13 @@
 		08307294207A4A790012C556 /* WBTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08307293207A4A790012C556 /* WBTabBarViewController.swift */; };
 		084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20C920691E620009E4B2 /* ChatsTVC.swift */; };
 		084A20CC206930AD0009E4B2 /* parseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20CB206930AD0009E4B2 /* parseJSON.swift */; };
+		08C75415208C9D430026A0C3 /* WBChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C75414208C9D430026A0C3 /* WBChatViewController.swift */; };
+		08C75419208CAE440026A0C3 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C75418208CAE440026A0C3 /* IncomingMessageCell.xib */; };
+		08C7541B208CAE7F0026A0C3 /* OutgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7541A208CAE7F0026A0C3 /* OutgoingMessageCell.xib */; };
+		08C7541D208CAEE20026A0C3 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7541C208CAEE20026A0C3 /* MessageCell.swift */; };
+		08C7541F208CAF5E0026A0C3 /* MessageCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C7541E208CAF5E0026A0C3 /* MessageCellLayout.swift */; };
+		08C75422208CB3A70026A0C3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C75421208CB3A70026A0C3 /* Message.swift */; };
+		08C75425208CC59D0026A0C3 /* СhatInputTextPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C75424208CC59D0026A0C3 /* СhatInputTextPanel.swift */; };
 		09ADC8F72083A57600867EAF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ADC8F62083A57600867EAF /* APIConstants.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
 		840E4D702089FC6600993677 /* GetMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* GetMassage.swift */; };
@@ -36,7 +43,7 @@
 		84FC5137205FB6E400A8F6DD /* ProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5136205FB6E400A8F6DD /* ProjUITests.swift */; };
 		8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB75BBB2074AC490067CCB2 /* CellContacts.swift */; };
 		8BB75BBE2074AC490067CCB2 /* CellContacts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB75BBC2074AC490067CCB2 /* CellContacts.xib */; };
-		8BB75BC02074D18E0067CCB2 /* SocketManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB75BBF2074D18E0067CCB2 /* SocketManagerClass.swift */; };
+		8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB75BBF2074D18E0067CCB2 /* SocketManager.swift */; };
 		EF77E133784EC773B64FAA55 /* Pods_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ED07577535721B51ED6A5B /* Pods_Proj.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +64,13 @@
 		08307293207A4A790012C556 /* WBTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTabBarViewController.swift; sourceTree = "<group>"; };
 		084A20C920691E620009E4B2 /* ChatsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTVC.swift; sourceTree = "<group>"; };
 		084A20CB206930AD0009E4B2 /* parseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parseJSON.swift; sourceTree = "<group>"; };
+		08C75414208C9D430026A0C3 /* WBChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBChatViewController.swift; sourceTree = "<group>"; };
+		08C75418208CAE440026A0C3 /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
+		08C7541A208CAE7F0026A0C3 /* OutgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutgoingMessageCell.xib; sourceTree = "<group>"; };
+		08C7541C208CAEE20026A0C3 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		08C7541E208CAF5E0026A0C3 /* MessageCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellLayout.swift; sourceTree = "<group>"; };
+		08C75421208CB3A70026A0C3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		08C75424208CC59D0026A0C3 /* СhatInputTextPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СhatInputTextPanel.swift"; sourceTree = "<group>"; };
 		09ADC8F62083A57600867EAF /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -96,7 +110,7 @@
 		84FC514C205FEEC700A8F6DD /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8BB75BBB2074AC490067CCB2 /* CellContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellContacts.swift; sourceTree = "<group>"; };
 		8BB75BBC2074AC490067CCB2 /* CellContacts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellContacts.xib; sourceTree = "<group>"; };
-		8BB75BBF2074D18E0067CCB2 /* SocketManagerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManagerClass.swift; sourceTree = "<group>"; };
+		8BB75BBF2074D18E0067CCB2 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		EF28AB5B588E0EDCC7F304EA /* Pods-Proj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proj/Pods-Proj.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,10 +140,48 @@
 				09ADC8F62083A57600867EAF /* APIConstants.swift */,
 				849945E52063CA8800E631A9 /* APIService.swift */,
 				843815D4206E0A750086BC5B /* AddsManager.swift */,
-				8BB75BBF2074D18E0067CCB2 /* SocketManagerClass.swift */,
+				8BB75BBF2074D18E0067CCB2 /* SocketManager.swift */,
 				842724E920626ADD006B936E /* TimerManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		08C75416208CAE130026A0C3 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				08C75414208C9D430026A0C3 /* WBChatViewController.swift */,
+				08C75423208CC57D0026A0C3 /* InputPanel */,
+				08C75420208CB3920026A0C3 /* MessageModel */,
+				08C75417208CAE240026A0C3 /* Cells */,
+			);
+			path = Conversations;
+			sourceTree = "<group>";
+		};
+		08C75417208CAE240026A0C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				08C7541C208CAEE20026A0C3 /* MessageCell.swift */,
+				08C7541E208CAF5E0026A0C3 /* MessageCellLayout.swift */,
+				08C75418208CAE440026A0C3 /* IncomingMessageCell.xib */,
+				08C7541A208CAE7F0026A0C3 /* OutgoingMessageCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		08C75420208CB3920026A0C3 /* MessageModel */ = {
+			isa = PBXGroup;
+			children = (
+				08C75421208CB3A70026A0C3 /* Message.swift */,
+			);
+			path = MessageModel;
+			sourceTree = "<group>";
+		};
+		08C75423208CC57D0026A0C3 /* InputPanel */ = {
+			isa = PBXGroup;
+			children = (
+				08C75424208CC59D0026A0C3 /* СhatInputTextPanel.swift */,
+			);
+			path = InputPanel;
 			sourceTree = "<group>";
 		};
 		677DD7BBBD0CE9C44507A503 /* Pods */ = {
@@ -145,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				08307293207A4A790012C556 /* WBTabBarViewController.swift */,
+				08C75416208CAE130026A0C3 /* Conversations */,
 				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
 				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
 				84A19C272062B35F0043751A /* TableViewSettings.swift */,
@@ -256,6 +309,7 @@
 				84FC511B205FB6E400A8F6DD /* Frameworks */,
 				84FC511C205FB6E400A8F6DD /* Resources */,
 				AF609156FE34D6E768F41A33 /* [CP] Embed Pods Frameworks */,
+				F2D7F65209C95CF8A6540BE8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,6 +391,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FC512C205FB6E400A8F6DD /* LaunchScreen.storyboard in Resources */,
+				08C7541B208CAE7F0026A0C3 /* OutgoingMessageCell.xib in Resources */,
+				08C75419208CAE440026A0C3 /* IncomingMessageCell.xib in Resources */,
 				8BB75BBE2074AC490067CCB2 /* CellContacts.xib in Resources */,
 				09AFA1FC20614C600064B22F /* Localizable.strings in Resources */,
 				84FC5129205FB6E400A8F6DD /* Assets.xcassets in Resources */,
@@ -401,6 +457,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F2D7F65209C95CF8A6540BE8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Proj/Pods-Proj-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -409,12 +480,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				840E4D702089FC6600993677 /* GetMassage.swift in Sources */,
+				08C75425208CC59D0026A0C3 /* СhatInputTextPanel.swift in Sources */,
 				84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */,
-				8BB75BC02074D18E0067CCB2 /* SocketManagerClass.swift in Sources */,
+				08C7541F208CAF5E0026A0C3 /* MessageCellLayout.swift in Sources */,
+				8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */,
 				84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */,
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,
 				847261A82087460800CBF9D8 /* UserContact.swift in Sources */,
+				08C75415208C9D430026A0C3 /* WBChatViewController.swift in Sources */,
+				08C75422208CB3A70026A0C3 /* Message.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
 				084A20CC206930AD0009E4B2 /* parseJSON.swift in Sources */,
 				842724EA20626ADD006B936E /* TimerManager.swift in Sources */,
@@ -424,6 +499,7 @@
 				843815D5206E0A750086BC5B /* AddsManager.swift in Sources */,
 				8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */,
 				84CB95352080C7C000E306F5 /* DataUserInBase.swift in Sources */,
+				08C7541D208CAEE20026A0C3 /* MessageCell.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,
 				849732ED206B790700B14175 /* authStruct.swift in Sources */,
 				09ADC8F72083A57600867EAF /* APIConstants.swift in Sources */,

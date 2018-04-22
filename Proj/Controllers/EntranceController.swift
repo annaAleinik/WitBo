@@ -55,7 +55,7 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                 APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
                 
                 if APIService.sharedInstance.token != nil {
-                    SocketManagerClass.sharedInstanse.socketsConnecting()
+                    SocketManager.sharedInstanse.socketsConnecting()
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
                     self.present(vc, animated: true, completion: nil)

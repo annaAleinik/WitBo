@@ -9,16 +9,16 @@
 import Foundation
 import Starscream
 
-protocol MessageMangerDelegate {
-    func didReciveMessages(messages:[String], clientId:String)
+protocol SocketManagerDelegate {
+    func didReciveMessages(messages:Message, clientId:String)
 }
 
-class SocketManagerClass: UIViewController, WebSocketDelegate {
+class SocketManager: UIViewController, WebSocketDelegate {
    
-    static let sharedInstanse = SocketManagerClass()
+    static let sharedInstanse = SocketManager()
     
     var socket: WebSocket!
-    var delegate: MessageMangerDelegate?
+    var delegate: SocketManagerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,23 @@ class SocketManagerClass: UIViewController, WebSocketDelegate {
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("websocketDidReceiveData")
     }
+
+    // MARK: Messages
+    
+    func sendMessage(message:Message) {
+        
+        guard let token = APIService.sharedInstance.token else { return }
+        
+        let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: message.receiverId) + "\",\"message\":\"" +  "\( message.text)" + "\",\"language\":\"ru-RU\"}}"
+        
+        self.socket.write(string: jsonPushMassage)
+        delegate?.didReciveMessages(messages: message, clientId: message.receiverId)
+        
+        
+        
+    }
+    
+    
     
     
 }
