@@ -226,6 +226,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 //        APIService.sharedInstance.checkLastMessage() { (translatedData, error) in
 //            self.ansverMassageLable.text = translatedData?.translatedText
 //        }
+    
     }
     
     

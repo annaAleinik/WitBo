@@ -156,6 +156,8 @@ class APIService : Object{
 			}
 		}
 	}
+    
+
 	
 	
     //MARK ; -- CONTACTS
@@ -279,17 +281,25 @@ class APIService : Object{
             
             
             
-    //        MARK:--Pars Massage
             
-//            func parsMassage(json : AnyObject) {
-//
-//                let data = try JSONDecoder().decode(Massage.self, from: json)
+            // MARK:--Pars Massage
+// convert String to NSData
+            
+            
+//            func parsMassage(text : String, completion : @escaping (ParamsForMassage?, Error?) -> Void){
 //                
-//
-//
+//                // convert String to NSData
+//                let data: NSData = text.data(using: String.Encoding.utf8)! as NSData
+//                
+//                do {
+//                let dataMessage = try! JSONDecoder().decode(MessageModel.self, from: data as Data)
+//                    completion(dataMessage.params.text, nil)
+//                    print(dataMessage.params.text)
+//                }catch let error{
+//                    print(error)
+//                }
+//                
 //            }
-
+                
             
-            
-	}
-
+}

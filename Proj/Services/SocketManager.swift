@@ -22,6 +22,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 }
     
     func socketsConnecting(){
@@ -47,8 +48,10 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("got some text: \(text)")
-        
+
         // this catc massage
+    
+        
     }
 
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -70,7 +73,16 @@ class SocketManager: UIViewController, WebSocketDelegate {
         
     }
     
-    
+    //перенести в этот метод с чат твк
+//    func startDialog(data :Message) {
+//        guard let token = APIService.sharedInstance.token else { return }
+//
+//        let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: data.receiverId) + "\"}}"
+//
+//        self.socket.write(string: jsonStartDialog)
+//
+//
+//    }
     
     
 }

@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct Params : Codable {
+struct ParamsForMassage : Codable {
     
     let message : String
     let params : String
     let sender: String
     let email: String
-    let text: String
+    let text: String?
     let time : Int
     let time_pretty : String
     let language: String
 }
 
 struct MessageModel: Codable{
-    let params : Params
+    let params : ParamsForMassage
 }
