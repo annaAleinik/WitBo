@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatsTVC: UITableViewController {
-    
+        
     var myIndex : Int?
     var arrayContacts = Array<UserContact>()
     var receiver : String?
@@ -20,6 +20,9 @@ class ChatsTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CellContacts", bundle: nil), forCellReuseIdentifier: "CustomCellContcts")
+        
+        tableView.register(UINib(nibName: "HeaderContacts", bundle: nil), forCellReuseIdentifier: "HeaderContacts")
+
         
         titleChatLable.text = "CHATS"
     }
@@ -66,6 +69,11 @@ class ChatsTVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderContacts") as! HeaderContacts
+        return headerCell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellContcts", for: indexPath) as! CellContacts
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         

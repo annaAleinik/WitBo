@@ -20,6 +20,9 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var socket: WebSocket!
     var delegate: SocketManagerDelegate?
     
+    var receiver : String? = nil
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,11 +76,12 @@ class SocketManager: UIViewController, WebSocketDelegate {
         
     }
     
-    //перенести в этот метод с чат твк
-//    func startDialog(data :Message) {
+//    //перенести в этот метод с чат твк
+//    func startDialog() {
+//        
 //        guard let token = APIService.sharedInstance.token else { return }
-//
-//        let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: data.receiverId) + "\"}}"
+//    
+//    let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing:receiver ) + "\"}}"
 //
 //        self.socket.write(string: jsonStartDialog)
 //

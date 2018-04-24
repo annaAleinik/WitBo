@@ -27,6 +27,8 @@
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
 		843815D5206E0A750086BC5B /* AddsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843815D4206E0A750086BC5B /* AddsManager.swift */; };
 		84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA7207CA5A400E3E953 /* LastMassageModel.swift */; };
+		8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BB82208F5E8700485A20 /* HeaderContacts.swift */; };
+		8444BB85208F5E8700485A20 /* HeaderContacts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB83208F5E8700485A20 /* HeaderContacts.xib */; };
 		847261A82087460800CBF9D8 /* UserContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847261A72087460800CBF9D8 /* UserContact.swift */; };
 		849732ED206B790700B14175 /* authStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EC206B790700B14175 /* authStruct.swift */; };
 		849732EF206B835E00B14175 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EE206B835E00B14175 /* UserModel.swift */; };
@@ -81,6 +83,8 @@
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		843815D4206E0A750086BC5B /* AddsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddsManager.swift; sourceTree = "<group>"; };
 		84413CA7207CA5A400E3E953 /* LastMassageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMassageModel.swift; sourceTree = "<group>"; };
+		8444BB82208F5E8700485A20 /* HeaderContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContacts.swift; sourceTree = "<group>"; };
+		8444BB83208F5E8700485A20 /* HeaderContacts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderContacts.xib; sourceTree = "<group>"; };
 		8466854B207CF64C00291174 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847261A72087460800CBF9D8 /* UserContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContact.swift; sourceTree = "<group>"; };
 		849732EC206B790700B14175 /* authStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authStruct.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				849945E72063E74200E631A9 /* RegistrationVC.swift */,
 				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
 				080915032068ED6400814642 /* CustomAlertViewController.swift */,
+				8444BB82208F5E8700485A20 /* HeaderContacts.swift */,
+				8444BB83208F5E8700485A20 /* HeaderContacts.xib */,
 				8BB75BBC2074AC490067CCB2 /* CellContacts.xib */,
 			);
 			path = Controllers;
@@ -394,6 +400,7 @@
 				08C7541B208CAE7F0026A0C3 /* OutgoingMessageCell.xib in Resources */,
 				08C75419208CAE440026A0C3 /* IncomingMessageCell.xib in Resources */,
 				8BB75BBE2074AC490067CCB2 /* CellContacts.xib in Resources */,
+				8444BB85208F5E8700485A20 /* HeaderContacts.xib in Resources */,
 				09AFA1FC20614C600064B22F /* Localizable.strings in Resources */,
 				84FC5129205FB6E400A8F6DD /* Assets.xcassets in Resources */,
 				84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */,
@@ -498,6 +505,7 @@
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
 				843815D5206E0A750086BC5B /* AddsManager.swift in Sources */,
 				8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */,
+				8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */,
 				84CB95352080C7C000E306F5 /* DataUserInBase.swift in Sources */,
 				08C7541D208CAEE20026A0C3 /* MessageCell.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,

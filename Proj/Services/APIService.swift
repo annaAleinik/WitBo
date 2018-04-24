@@ -187,7 +187,53 @@ class APIService : Object{
         }
 
     }
-}
+ 
+    func addContact(token : String, email : String, completion : @escaping (Bool, Error?) -> Void){
+        
+        let params = [token     : token,
+                      "email"   :email]
+        
+        let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/add")
+        
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
+            print(response)
+            switch response.result {
+                case .success(_ ):
+                    completion(true, nil)
+            case .failure(let error):
+                print(error)
+                completion(false, error)
+            }
+            
+            
+        }
+    }
+    
+    func delateContact(token : String, email : String, completion : @escaping (Bool, Error?) -> Void) {
+        let params = [token     : token,
+                      "email"   :email]
+        
+        let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/delete")
+        
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
+            print(response)
+            switch response.result {
+            case .success(_ ):
+                completion(true, nil)
+            case .failure(let error):
+                print(error)
+                completion(false, error)
+            }
+            
+            
+        }
+            
+            
+            
+        }
+    }
+    
+
     
 //    //MARK : -- Massage requests
 //    
@@ -301,5 +347,8 @@ class APIService : Object{
 //                
 //            }
                 
+   
+            
+          
             
 }
