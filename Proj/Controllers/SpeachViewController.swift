@@ -213,7 +213,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     // TODO : Delete this test method
     @IBAction func send(_ sender: Any) {
         let message = Message()
-        message.text = "TEST MESSAGEg gfd gsdf gsdfhfdg hbhvbgbhghgfhshgfghsbbvbfdbfdbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        message.text = "TEST MESSAGE"
         message.receiverId = "1ty287iughriufhjk"
         
         

@@ -25,8 +25,10 @@ class Message: NSObject, NOCChatItem {
     var isOutgoing: Bool = true
     
     
-    init(messgae: MessageModel) {
-        
+    init(message: MessageModel) {
+        senderId = message.senderId!
+        text = message.messageText!
+        isOutgoing = message.isOutgoing
     }
     
     override init() {

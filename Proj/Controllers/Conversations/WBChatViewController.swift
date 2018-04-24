@@ -78,7 +78,7 @@ class WBChatViewController: NOCChatViewController, SocketManagerDelegate {
     
     
     //MARK: SocketManagerDelegate
-    func didReciveMessages(messages: Message, clientId: String) {
+    func didReciveMessages(messages: Message) {
         print(messages)
         addMessages([messages], scrollToBottom: true, animated: true)
     }

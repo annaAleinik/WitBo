@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LoginStruct : Codable {
+struct LoginModel : Codable {
     var secret : String
    // var tariff : String
     

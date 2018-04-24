@@ -9,11 +9,11 @@
 import Foundation
 
 struct List : Codable {
-    let list : Array<UserContact>
+    let list : Array<Contact>
 }
 
 
-struct UserContact : Codable {
+struct Contact : Codable {
     let email : String
     let name : String
     let client_id : String

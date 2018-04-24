@@ -10,7 +10,7 @@ import Foundation
 import Starscream
 
 protocol SocketManagerDelegate {
-    func didReciveMessages(messages:Message, clientId:String)
+    func didReciveMessages(messages:Message)
 }
 
 class SocketManager: UIViewController, WebSocketDelegate {
@@ -50,11 +50,28 @@ class SocketManager: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("got some text: \(text)")
 
-        // this catc massage
-    
-        
+        guard let data = text.data(using: .utf16) else {return}
+        do{
+            let decoder = JSONDecoder()
+            let messageData = try? decoder.decode(MessageData.self, from: data)
+            
+            if let dataMessage = messageData?.message {
+                let message = Message(message: dataMessage )
+                
+                APIService.sharedInstance.translate(q: message.text, completion: { [weak self] (translationData, err)  in
+                    guard let `self` = self else { return }
+                    message.text = (translationData?.translatedText)!
+                    self.delegate?.didReciveMessages(messages: message)
+                })
+
+                
+                
+            }
+            
+        } catch let err {
+            print(err.localizedDescription)
+        }
     }
 
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -68,13 +85,12 @@ class SocketManager: UIViewController, WebSocketDelegate {
         guard let token = APIService.sharedInstance.token else { return }
         
         let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: message.receiverId) + "\",\"message\":\"" +  "\( message.text)" + "\",\"language\":\"ru-RU\"}}"
-        
         self.socket.write(string: jsonPushMassage)
-        delegate?.didReciveMessages(messages: message, clientId: message.receiverId)
-        
-        
-        
+        delegate?.didReciveMessages(messages: message)
+
     }
+    
+    
     
 //    //перенести в этот метод с чат твк
 //    func startDialog() {

@@ -10,7 +10,7 @@
 import Foundation
 import RealmSwift
 
-class DataUserInBase: Object {
+class BaseUserModel: Object {
     
     @objc dynamic var secret = ""
     @objc dynamic var token = ""

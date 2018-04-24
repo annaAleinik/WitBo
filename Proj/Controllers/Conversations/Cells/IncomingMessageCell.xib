@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +23,7 @@
                         <rect key="frame" x="0.0" y="2" width="1007" height="1479"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You sent to New IBOs" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeD-vh-ewh">
-                                <rect key="frame" x="48" y="1425" width="113.5" height="13.5"/>
+                                <rect key="frame" x="14" y="1425" width="113.5" height="13.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13.5" id="Ne7-cy-3os"/>
                                 </constraints>
@@ -32,39 +31,19 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCm-OF-Lh4">
-                                <rect key="frame" x="4" y="1445" width="32" height="32"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="n2s-yF-Un2"/>
-                                    <constraint firstAttribute="width" secondItem="hCm-OF-Lh4" secondAttribute="height" multiplier="1:1" id="vLo-o5-Ypi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hCm-OF-Lh4" secondAttribute="bottom" constant="2" id="0rd-kM-DH2"/>
-                            <constraint firstItem="hCm-OF-Lh4" firstAttribute="leading" secondItem="0Ha-LB-35H" secondAttribute="leading" constant="4" id="SUG-T1-ZMZ"/>
-                        </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="TGBubbleIncomingFull" translatesAutoresizingMaskIntoConstraints="NO" id="VUf-2S-dun">
-                        <rect key="frame" x="38" y="1442.5" width="32" height="36.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="incomong" translatesAutoresizingMaskIntoConstraints="NO" id="VUf-2S-dun">
+                        <rect key="frame" x="4" y="1442.5" width="32" height="36.5"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-Dg-jSg">
-                        <rect key="frame" x="42" y="1450.5" width="28" height="20.5"/>
+                        <rect key="frame" x="8" y="1450.5" width="28" height="20.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="ff" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-E9-uP7">
                                 <rect key="frame" x="8" y="0.0" width="12" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -81,7 +60,7 @@
             <constraints>
                 <constraint firstItem="0Ha-LB-35H" firstAttribute="top" secondItem="sVF-JV-PGd" secondAttribute="top" constant="2" id="6mY-l4-mYV"/>
                 <constraint firstItem="VUf-2S-dun" firstAttribute="top" secondItem="eeD-vh-ewh" secondAttribute="bottom" constant="2" id="FMk-bn-EOg"/>
-                <constraint firstItem="VUf-2S-dun" firstAttribute="leading" secondItem="sVF-JV-PGd" secondAttribute="leading" constant="38" id="LNX-bw-UA0"/>
+                <constraint firstItem="VUf-2S-dun" firstAttribute="leading" secondItem="sVF-JV-PGd" secondAttribute="leading" constant="4" id="LNX-bw-UA0"/>
                 <constraint firstAttribute="trailing" secondItem="0Ha-LB-35H" secondAttribute="trailing" id="NB4-tC-56h"/>
                 <constraint firstItem="uxj-Dg-jSg" firstAttribute="leading" secondItem="VUf-2S-dun" secondAttribute="leading" constant="4" id="NcY-kj-cOJ"/>
                 <constraint firstItem="eeD-vh-ewh" firstAttribute="leading" secondItem="uxj-Dg-jSg" secondAttribute="leading" constant="6" id="RGN-EP-hYf"/>
@@ -97,13 +76,12 @@
             <connections>
                 <outlet property="authorLabel" destination="eeD-vh-ewh" id="De9-qe-4VY"/>
                 <outlet property="bubleImageView" destination="VUf-2S-dun" id="cF0-8W-j7R"/>
-                <outlet property="initialsLabel" destination="hCm-OF-Lh4" id="Xyg-wW-Df0"/>
                 <outlet property="textLabel" destination="gfj-E9-uP7" id="BMj-Kc-Isu"/>
             </connections>
             <point key="canvasLocation" x="-142.5" y="-196.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="TGBubbleIncomingFull" width="40" height="25"/>
+        <image name="incomong" width="10" height="17"/>
     </resources>
 </document>

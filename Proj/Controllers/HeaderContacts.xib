@@ -19,22 +19,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-aZ-Kr5">
-                        <rect key="frame" x="222" y="6" width="70" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
-                        <connections>
-                            <action selector="addContactAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KQe-is-nJj"/>
-                        </connections>
-                    </button>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zly-VF-IY9">
-                        <rect key="frame" x="16" y="6" width="144" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zly-VF-IY9">
+                        <rect key="frame" x="15" y="6" width="253" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-aZ-Kr5">
+                        <rect key="frame" x="283" y="11" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="2w1-Mn-izs"/>
+                            <constraint firstAttribute="width" constant="22" id="aVs-Vp-Hus"/>
+                        </constraints>
+                        <connections>
+                            <action selector="addContactAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KQe-is-nJj"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Jvp-aZ-Kr5" firstAttribute="leading" secondItem="zly-VF-IY9" secondAttribute="trailing" constant="15" id="NEq-qH-Wsg"/>
+                    <constraint firstItem="Jvp-aZ-Kr5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NZa-im-g5N"/>
+                    <constraint firstItem="zly-VF-IY9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="U9S-eT-MFi"/>
+                    <constraint firstItem="zly-VF-IY9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f6Y-fC-Hq8"/>
+                    <constraint firstAttribute="trailing" secondItem="Jvp-aZ-Kr5" secondAttribute="trailing" constant="15" id="i5I-Jg-h33"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

@@ -6,53 +6,55 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="KGk-i7-Jjw" customClass="CellContacts" customModule="Proj" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="CellContacts" customModule="Proj" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="337" height="103"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="337" height="102.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-m2-rRm">
-                        <rect key="frame" x="128" y="41" width="153" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-m2-rRm">
+                        <rect key="frame" x="90" y="41" width="42" height="21"/>
                         <accessibility key="accessibilityConfiguration" identifier="CustomCellContcts"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="DLN-lE-B70">
-                        <rect key="frame" x="16" y="19" width="87" height="64"/>
+                        <rect key="frame" x="15" y="19" width="65" height="65"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="87" id="5Ek-Su-DJP"/>
-                            <constraint firstAttribute="height" constant="64" id="aw0-PQ-L6U"/>
+                            <constraint firstAttribute="width" constant="65" id="atM-dW-Zad"/>
+                            <constraint firstAttribute="height" constant="65" id="yzV-9P-hOa"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="35"/>
+                                <real key="value" value="32.5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="DLN-lE-B70" secondAttribute="bottom" constant="9" id="1dj-Ra-xqU"/>
-                    <constraint firstItem="DLN-lE-B70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WqV-ms-247"/>
-                    <constraint firstItem="DLN-lE-B70" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="ttv-rs-TEx"/>
+                    <constraint firstItem="DLN-lE-B70" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="7Hk-9i-Zqx"/>
+                    <constraint firstItem="DLN-lE-B70" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JAj-NW-UYe"/>
+                    <constraint firstItem="7aK-m2-rRm" firstAttribute="leading" secondItem="DLN-lE-B70" secondAttribute="trailing" constant="10" id="P6c-S0-bgy"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7aK-m2-rRm" secondAttribute="trailing" constant="15" id="QsL-RE-KL0"/>
+                    <constraint firstItem="DLN-lE-B70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="UMf-FR-Lrc"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DLN-lE-B70" secondAttribute="bottom" constant="15" id="eX7-Dk-mRv"/>
+                    <constraint firstItem="7aK-m2-rRm" firstAttribute="centerY" secondItem="DLN-lE-B70" secondAttribute="centerY" id="qGP-Qz-E9W"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameContactsLablel" destination="7aK-m2-rRm" id="JCg-LW-Do7"/>
             </connections>
-            <point key="canvasLocation" x="27" y="100"/>
+            <point key="canvasLocation" x="26.5" y="99.5"/>
         </tableViewCell>
     </objects>
     <resources>
