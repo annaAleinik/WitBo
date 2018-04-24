@@ -10,24 +10,21 @@
 		080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080915032068ED6400814642 /* CustomAlertViewController.swift */; };
 		084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20C920691E620009E4B2 /* ChatsTVC.swift */; };
 		084A20CC206930AD0009E4B2 /* parseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20CB206930AD0009E4B2 /* parseJSON.swift */; };
-		09027A33206BA44E004B296D /* DefaultsKeys+keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09027A32206BA44E004B296D /* DefaultsKeys+keys.swift */; };
-		09027A35206BA7AA004B296D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09027A34206BA7AA004B296D /* Result.swift */; };
-		09473632206D3D7C0038D23B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09473631206D3D7C0038D23B /* NetworkError.swift */; };
-		09542713206B97F600B85487 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09542712206B97F600B85487 /* AuthRouter.swift */; };
-		09542716206B992700B85487 /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09542715206B992700B85487 /* ApiUrl.swift */; };
-		09542719206BA03F00B85487 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09542718206BA03F00B85487 /* AuthorizationService.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
-		09D2FA9F207BC1E40027BFA6 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */; };
+		09F8C3002088E63300AD2A03 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8C2FF2088E63300AD2A03 /* Router.swift */; };
+		09F8C3022088E70B00AD2A03 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8C3012088E70B00AD2A03 /* HomeViewController.swift */; };
+		09F8C3052088E7B200AD2A03 /* UIViewContollerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8C3042088E7B200AD2A03 /* UIViewContollerExtensions.swift */; };
+		09F8C3072088EA4300AD2A03 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09F8C3062088EA4200AD2A03 /* LoginViewController.storyboard */; };
 		824F915B80F6875D7A45B015 /* Pods_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
 		843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D2C69206A58D70008D9A1 /* LoginStruct.swift */; };
 		849945E62063CA8800E631A9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E52063CA8800E631A9 /* APIService.swift */; };
 		849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E72063E74200E631A9 /* RegistrationVC.swift */; };
 		84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C272062B35F0043751A /* TableViewSettings.swift */; };
-		84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* EntranceController.swift */; };
+		84A8B9E72060F8A3005A7200 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* LoginViewController.swift */; };
 		84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5121205FB6E400A8F6DD /* AppDelegate.swift */; };
 		84FC5124205FB6E400A8F6DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5123205FB6E400A8F6DD /* ViewController.swift */; };
-		84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FC5125205FB6E400A8F6DD /* Main.storyboard */; };
+		84FC5127205FB6E400A8F6DD /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FC5125205FB6E400A8F6DD /* HomeViewController.storyboard */; };
 		84FC5129205FB6E400A8F6DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84FC5128205FB6E400A8F6DD /* Assets.xcassets */; };
 		84FC512C205FB6E400A8F6DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FC512A205FB6E400A8F6DD /* LaunchScreen.storyboard */; };
 		84FC5137205FB6E400A8F6DD /* ProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5136205FB6E400A8F6DD /* ProjUITests.swift */; };
@@ -47,26 +44,23 @@
 		080915032068ED6400814642 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		084A20C920691E620009E4B2 /* ChatsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTVC.swift; sourceTree = "<group>"; };
 		084A20CB206930AD0009E4B2 /* parseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parseJSON.swift; sourceTree = "<group>"; };
-		09027A32206BA44E004B296D /* DefaultsKeys+keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DefaultsKeys+keys.swift"; sourceTree = "<group>"; };
-		09027A34206BA7AA004B296D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		09473631206D3D7C0038D23B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		09542712206B97F600B85487 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
-		09542715206B992700B85487 /* ApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
-		09542718206BA03F00B85487 /* AuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		09F8C2FF2088E63300AD2A03 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		09F8C3012088E70B00AD2A03 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		09F8C3042088E7B200AD2A03 /* UIViewContollerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewContollerExtensions.swift; sourceTree = "<group>"; };
+		09F8C3062088EA4200AD2A03 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		2FBCC42F1214948E440A4B3F /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		843D2C69206A58D70008D9A1 /* LoginStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStruct.swift; sourceTree = "<group>"; };
 		849945E52063CA8800E631A9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		849945E72063E74200E631A9 /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		84A19C272062B35F0043751A /* TableViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSettings.swift; sourceTree = "<group>"; };
-		84A8B9E62060F8A3005A7200 /* EntranceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceController.swift; sourceTree = "<group>"; };
+		84A8B9E62060F8A3005A7200 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84FC511E205FB6E400A8F6DD /* Proj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FC5121205FB6E400A8F6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FC5123205FB6E400A8F6DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84FC5126205FB6E400A8F6DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84FC5126205FB6E400A8F6DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeViewController.storyboard; sourceTree = "<group>"; };
 		84FC5128205FB6E400A8F6DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84FC512B205FB6E400A8F6DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84FC512D205FB6E400A8F6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,51 +103,60 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		09542711206B97CF00B85487 /* NetworkLayer */ = {
+		09F8C2F72088DBFE00AD2A03 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				09473631206D3D7C0038D23B /* NetworkError.swift */,
-				09542715206B992700B85487 /* ApiUrl.swift */,
-				09542714206B990500B85487 /* Routing */,
+				84A8B9E62060F8A3005A7200 /* LoginViewController.swift */,
+				09F8C3062088EA4200AD2A03 /* LoginViewController.storyboard */,
 			);
-			path = NetworkLayer;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		09542714206B990500B85487 /* Routing */ = {
+		09F8C2F82088DC4200AD2A03 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				09542712206B97F600B85487 /* AuthRouter.swift */,
-				09D2FA9E207BC1E40027BFA6 /* AuthorizationRouter.swift */,
+				84FC5121205FB6E400A8F6DD /* AppDelegate.swift */,
+				09F8C3032088E79F00AD2A03 /* Extensions */,
+				09F8C2FC2088E35A00AD2A03 /* Navigation */,
 			);
-			path = Routing;
+			path = Base;
 			sourceTree = "<group>";
 		};
-		09542717206BA00F00B85487 /* ServicesLayer */ = {
+		09F8C2FC2088E35A00AD2A03 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				09027A34206BA7AA004B296D /* Result.swift */,
-				09542718206BA03F00B85487 /* AuthorizationService.swift */,
+				09F8C2FF2088E63300AD2A03 /* Router.swift */,
 			);
-			path = ServicesLayer;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
-		0954271A206BA2BC00B85487 /* Extensions */ = {
+		09F8C3032088E79F00AD2A03 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				09027A32206BA44E004B296D /* DefaultsKeys+keys.swift */,
+				09F8C3042088E7B200AD2A03 /* UIViewContollerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		09F8C3082088EAE400AD2A03 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				09F8C3012088E70B00AD2A03 /* HomeViewController.swift */,
+				84FC5125205FB6E400A8F6DD /* HomeViewController.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		84A19C242062A5EB0043751A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				080915022068CA8D00814642 /* Service */,
+				09F8C3082088EAE400AD2A03 /* Home */,
 				84FC5123205FB6E400A8F6DD /* ViewController.swift */,
 				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
 				84A19C272062B35F0043751A /* TableViewSettings.swift */,
 				849945E72063E74200E631A9 /* RegistrationVC.swift */,
-				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
+				09F8C2F72088DBFE00AD2A03 /* Login */,
 				080915032068ED6400814642 /* CustomAlertViewController.swift */,
 			);
 			path = Controllers;
@@ -182,12 +185,8 @@
 		84FC5120205FB6E400A8F6DD /* Proj */ = {
 			isa = PBXGroup;
 			children = (
-				84FC5121205FB6E400A8F6DD /* AppDelegate.swift */,
-				0954271A206BA2BC00B85487 /* Extensions */,
-				09542711206B97CF00B85487 /* NetworkLayer */,
-				09542717206BA00F00B85487 /* ServicesLayer */,
+				09F8C2F82088DC4200AD2A03 /* Base */,
 				84A19C242062A5EB0043751A /* Controllers */,
-				84FC5125205FB6E400A8F6DD /* Main.storyboard */,
 				84FC5128205FB6E400A8F6DD /* Assets.xcassets */,
 				09AFA1FE20614C600064B22F /* Localizable.strings */,
 				84FC512A205FB6E400A8F6DD /* LaunchScreen.storyboard */,
@@ -244,7 +243,6 @@
 				84FC511B205FB6E400A8F6DD /* Frameworks */,
 				84FC511C205FB6E400A8F6DD /* Resources */,
 				7979DBB11E27349DEFBC722B /* [CP] Embed Pods Frameworks */,
-				E84DB2E893B86A050B11A4EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,8 +320,9 @@
 			files = (
 				84FC512C205FB6E400A8F6DD /* LaunchScreen.storyboard in Resources */,
 				09AFA1FC20614C600064B22F /* Localizable.strings in Resources */,
+				09F8C3072088EA4300AD2A03 /* LoginViewController.storyboard in Resources */,
 				84FC5129205FB6E400A8F6DD /* Assets.xcassets in Resources */,
-				84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */,
+				84FC5127205FB6E400A8F6DD /* HomeViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,18 +344,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Proj/Pods-Proj-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -381,21 +376,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E84DB2E893B86A050B11A4EB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Proj/Pods-Proj-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -403,24 +383,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09473632206D3D7C0038D23B /* NetworkError.swift in Sources */,
 				84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */,
-				09542719206BA03F00B85487 /* AuthorizationService.swift in Sources */,
+				09F8C3002088E63300AD2A03 /* Router.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* ViewController.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
-				09542716206B992700B85487 /* ApiUrl.swift in Sources */,
+				09F8C3022088E70B00AD2A03 /* HomeViewController.swift in Sources */,
 				084A20CC206930AD0009E4B2 /* parseJSON.swift in Sources */,
-				09027A35206BA7AA004B296D /* Result.swift in Sources */,
 				842724EA20626ADD006B936E /* TimerManager.swift in Sources */,
 				080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */,
 				084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
-				09027A33206BA44E004B296D /* DefaultsKeys+keys.swift in Sources */,
 				843D2C6A206A58D70008D9A1 /* LoginStruct.swift in Sources */,
-				09D2FA9F207BC1E40027BFA6 /* AuthorizationRouter.swift in Sources */,
 				849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */,
-				09542713206B97F600B85487 /* AuthRouter.swift in Sources */,
-				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
+				09F8C3052088E7B200AD2A03 /* UIViewContollerExtensions.swift in Sources */,
+				84A8B9E72060F8A3005A7200 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,12 +428,12 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		84FC5125205FB6E400A8F6DD /* Main.storyboard */ = {
+		84FC5125205FB6E400A8F6DD /* HomeViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84FC5126205FB6E400A8F6DD /* Base */,
 			);
-			name = Main.storyboard;
+			name = HomeViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		84FC512A205FB6E400A8F6DD /* LaunchScreen.storyboard */ = {

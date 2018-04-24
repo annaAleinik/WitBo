@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntranceController: UIViewController {
+class LoginViewController: UIViewController {
     @IBOutlet weak var welcomeLable: UILabel!
     
     @IBOutlet weak var emailField: UITextField!
@@ -18,16 +18,9 @@ class EntranceController: UIViewController {
     
     @IBAction func entranceAction(_ sender: UIButton) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "HomeViewController", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
-        self.present(vc, animated: true, completion: nil)
-
-		AuthorizationService.service.login(username: "example@mail.com", password: "123456") { (result) in
-			
-		}
-		
-        
-        
+        self.present(vc, animated: true, completion: nil)        
     }
     
     override func viewDidLoad() {

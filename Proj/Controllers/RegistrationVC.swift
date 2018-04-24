@@ -24,7 +24,7 @@ class RegistrationVC: UIViewController {
     @IBAction func tapRegistratiomButton(_ sender: UIButton) {
         APIService.sharedInstance.postRegistration()
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "HomeViewController", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
         self.present(vc, animated: true, completion: nil)
         

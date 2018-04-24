@@ -3,7 +3,5 @@ use_frameworks!
 
 target ‘Proj’ do
  pod 'Alamofire', '~> 4.7'
- pod 'SwiftyUserDefaults'
- pod 'CodableAlamofire'
  pod 'Moya', '~> 11.0'
 end
