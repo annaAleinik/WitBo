@@ -14,8 +14,8 @@ import Starscream
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate {
    
     
-    @objc func readMessage(messages: Message) {
-        let utterance = AVSpeechUtterance(string: messages.text)
+    @objc func readMessage(messages: String) {
+        let utterance = AVSpeechUtterance(string: messages)
         utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
         utterance.postUtteranceDelay = 3.0
         
@@ -55,7 +55,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(readMessage),
                                                name: Notification.Name("ReadTextNotification"),
-                                               object: String())
+                                               object: nil)
         
         speechRecognizer?.delegate = self
         
