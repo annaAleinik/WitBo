@@ -59,6 +59,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			switch messageData?.type {
 			case .incomingMessage?:
 				self.recievedMessage(message: messageData)
+
 			case .conversationRequest?:
 				break
 			case .userOffline?:
@@ -75,7 +76,9 @@ class SocketManager: UIViewController, WebSocketDelegate {
         } catch let err {
             print(err.localizedDescription)
         }
+
     }
+        
 
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("websocketDidReceiveData")
@@ -117,8 +120,14 @@ class SocketManager: UIViewController, WebSocketDelegate {
 				guard let `self` = self else { return }
 				message.text = (translationData?.translatedText)!
 				self.delegate?.didReciveMessages(messages: message)
+               
+                
+                let strDict = ["str": message.text]
+               
+                NotificationCenter.default.post(name: Notification.Name("ReadTextNotification"), object: nil, userInfo: strDict)
 			})
 		}
+
 	}
 	
     

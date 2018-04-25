@@ -12,6 +12,18 @@ import AVFoundation
 import Starscream
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate {
+   
+    
+    @objc func readMessage(messages: Message) {
+        let utterance = AVSpeechUtterance(string: messages.text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
+        utterance.postUtteranceDelay = 3.0
+        
+        let readSound = AVSpeechSynthesizer()
+        readSound.delegate = self
+        readSound.speak(utterance)
+    }
+    
     
     //@IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -39,6 +51,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         recordButton.isEnabled = false
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(readMessage),
+                                               name: Notification.Name("ReadTextNotification"),
+                                               object: String())
         
         speechRecognizer?.delegate = self
         
@@ -232,21 +249,21 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     //MARK--AVSpeechSynthesizer
 
-    @IBAction func ReadButton(_ sender: AnyObject) {
-//        STRMassage = lableMassage.text
-        let utterance = AVSpeechUtterance(string: STRMassage!)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
-        utterance.postUtteranceDelay = 3.0
-        
-        if (STRMassage? .isEmpty)! {
-            print("ISEMPTY LABLE")
-        }
-        
-        let readSound = AVSpeechSynthesizer()
-        readSound.delegate = self
-        readSound.speak(utterance)
-        
-    }
+//    @IBAction func ReadButton(_ sender: AnyObject) {
+////        STRMassage = lableMassage.text
+//        let utterance = AVSpeechUtterance(string: STRMassage!)
+//        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
+//        utterance.postUtteranceDelay = 3.0
+//
+//        if (STRMassage? .isEmpty)! {
+//            print("ISEMPTY LABLE")
+//        }
+//
+//        let readSound = AVSpeechSynthesizer()
+//        readSound.delegate = self
+//        readSound.speak(utterance)
+//
+//    }
     
     //MARK: WBChatViewControllerDelegate
     func sendMessage(msg: Message) {

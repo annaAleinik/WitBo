@@ -65,10 +65,6 @@ class APIService {
                     let secret  = BaseUserModel()
                     secret.secret = loginData.secret
                     
-                    try! APIService.realm.write {
-                        APIService.realm.add(secret)
-                        
-                    }
                     
                     UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
                     self.secret = loginData.secret
@@ -107,10 +103,6 @@ class APIService {
                         let token  = BaseUserModel()
                         token.token = authData.token
                         
-                        try! APIService.realm.write {
-                            APIService.realm.add(token)
-                            
-                        }
                         
                         UserDefaults.standard.set(authData.token, forKey: "TOKEN")
                         self.token = authData.token
@@ -147,6 +139,8 @@ class APIService {
                         baseUserModel.name = userData.name
                         baseUserModel.email = userData.email
                         baseUserModel.lang = userData.language
+                        baseUserModel.secret = self.secret!
+                        baseUserModel.token = token
                         
                         try! APIService.realm.write {
                             APIService.realm.add(baseUserModel)
