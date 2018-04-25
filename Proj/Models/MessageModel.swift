@@ -8,11 +8,21 @@
 
 import Foundation
 
+public enum SocketMessageType: String, Codable {
+	case incomingMessage = "Incoming message"
+	case conversationRequest = "Conversation request"
+	case userOffline = "User went offline"
+	case messagePushed = "Message pushed"
+	case userOnline = "User is online"
+	case empty = "empty"
+}
+
 struct MessageData : Codable {
     
     public var code: Int = -1
-    public var type: String? = nil
+    public var type: SocketMessageType = .empty
     public var message: MessageModel
+	
     enum CodingKeys: String, CodingKey {
         case code
         case type = "message"

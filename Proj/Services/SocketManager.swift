@@ -55,20 +55,23 @@ class SocketManager: UIViewController, WebSocketDelegate {
         do{
             let decoder = JSONDecoder()
             let messageData = try? decoder.decode(MessageData.self, from: data)
-            
-            if let dataMessage = messageData?.message {
-                let message = Message(message: dataMessage )
-                
-                APIService.sharedInstance.translate(q: message.text, completion: { [weak self] (translationData, err)  in
-                    guard let `self` = self else { return }
-                    message.text = (translationData?.translatedText)!
-                    self.delegate?.didReciveMessages(messages: message)
-                })
-
-                
-                
-            }
-            
+			
+			switch messageData?.type {
+			case .incomingMessage?:
+				self.recievedMessage(message: messageData)
+			case .conversationRequest?:
+				break
+			case .userOffline?:
+				break
+			case .messagePushed?:
+				break
+			case .userOnline?:
+				break
+	
+			default:
+				break
+			}
+			
         } catch let err {
             print(err.localizedDescription)
         }
@@ -103,6 +106,20 @@ class SocketManager: UIViewController, WebSocketDelegate {
 //
 //
 //    }
-    
+	
+	//	MARK: private
+	
+	private func recievedMessage(message: MessageData?) {
+		if let dataMessage = message?.message {
+			let message = Message(message: dataMessage )
+			
+			APIService.sharedInstance.translate(q: message.text, completion: { [weak self] (translationData, err)  in
+				guard let `self` = self else { return }
+				message.text = (translationData?.translatedText)!
+				self.delegate?.didReciveMessages(messages: message)
+			})
+		}
+	}
+	
     
 }
