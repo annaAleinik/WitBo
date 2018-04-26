@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatsTVC: UITableViewController {
+class ChatsTVC: UITableViewController, UITextFieldDelegate {
         
     var myIndex : Int?
     var arrayContacts = Array<Contact>()
@@ -95,23 +95,49 @@ class ChatsTVC: UITableViewController {
         speachVC = self.tabBarController?.viewControllers![1] as? SpeachViewController
         speachVC?.receiverFromContacts = receiver
         
-        
-// перенести в сокет менеджер метод начало диалога
+        // перенести в сокет менеджер метод начало диалога
         
         guard let token = APIService.sharedInstance.token else { return }
         guard let receiverJSON = receiver else { return }
-
+        
         
         let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiverJSON) + "\"}}"
         
         SocketManager.sharedInstanse.socket.write(string: jsonStartDialog)
-
+        
         tabBarController?.selectedIndex = 1
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+            if (editingStyle == UITableViewCellEditingStyle.delete) {
+                
+                let email = self.arrayContacts[indexPath.row].email
+                
+                APIService.sharedInstance.delateContact(token: APIService.sharedInstance.token!, email: email , completion: { (success, error) in
+                   if success{
+                    APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!, completion: { (contacts, error) in
+                        tableView.reloadData()
+                        print("contact delated")
+                    })
+                    }
+                })
+            }
+        }
+
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    // MARK: - KeyBoard hide
+    
+//        func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+
     
 }

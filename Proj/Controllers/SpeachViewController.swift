@@ -14,9 +14,15 @@ import Starscream
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate {
    
     
+    @objc func reproductionOfSpeech(notification: NSNotification){
+        self.readMessage(messages: SocketManager.sharedInstanse.textMessage!)
+    }
+
     @objc func readMessage(messages: String) {
+        let prefferedLanguage = Locale.preferredLanguages[0] as String
+
         let utterance = AVSpeechUtterance(string: messages)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
+        utterance.voice = AVSpeechSynthesisVoice(language: prefferedLanguage)
         utterance.postUtteranceDelay = 3.0
         
         let readSound = AVSpeechSynthesizer()
@@ -53,10 +59,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         recordButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(readMessage),
+                                        selector:#selector(reproductionOfSpeech(notification:)),
                                                name: Notification.Name("ReadTextNotification"),
                                                object: nil)
         
+
+
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -112,9 +120,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
     }
     
+    
     //MARK: --TimerManagerDelegate
     func handleOutOfTime() {
-        print("minuts and sec == 0")
         self.presentAlertController()
         self.recordButton.isEnabled = false // block button after 10 sec
     }
@@ -154,7 +162,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let audioSession = AVAudioSession.sharedInstance() // 2
         do { // 3
            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-
+            
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -177,7 +185,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             var isFinal = false // 9
             
             if result != nil { // 10
-               // self.lableMassage.text = result?.bestTranscription.formattedString
                 self.STRMassage = result?.bestTranscription.formattedString
                 
                 isFinal = (result?.isFinal)!

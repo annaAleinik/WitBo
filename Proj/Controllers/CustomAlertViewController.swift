@@ -64,5 +64,15 @@ class CustomAlertViewController: UIViewController, GADRewardBasedVideoAdDelegate
     @IBAction func clouseAlertAction(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    
+    @IBAction func addFriendsAction(_ sender: Any) {
+        if let link = NSURL(string: "https://www.prmir.com/"){
+            let objectsToShare = ["Communication without borders", link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 }
 

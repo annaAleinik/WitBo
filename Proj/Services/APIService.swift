@@ -190,7 +190,7 @@ class APIService {
     
     func addContact(token : String, email : String, completion : @escaping (Bool, Error?) -> Void){
         
-        let params = [token     : token,
+        let params = ["token"     : token,
                       "email"   :email]
         
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/add")
@@ -210,7 +210,7 @@ class APIService {
     }
     
     func delateContact(token : String, email : String, completion : @escaping (Bool, Error?) -> Void) {
-        let params = [token     : token,
+        let params = ["token"     : token,
                       "email"   :email]
         
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/delete")

@@ -112,6 +112,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
 	
 	//	MARK: private
 	
+    var textMessage : String? = nil
+    
 	private func recievedMessage(message: MessageData?) {
 		if let dataMessage = message?.message {
 			let message = Message(message: dataMessage )
@@ -123,7 +125,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                
                 
                 let strDict = ["str": message.text]
-               
+               self.textMessage = message.text
+                
                 NotificationCenter.default.post(name: Notification.Name("ReadTextNotification"), object: nil, userInfo: strDict)
 			})
 		}
