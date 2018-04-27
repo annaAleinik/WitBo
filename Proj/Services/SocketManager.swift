@@ -54,12 +54,12 @@ class SocketManager: UIViewController, WebSocketDelegate {
         guard let data = text.data(using: .utf16) else {return}
         do{
             let decoder = JSONDecoder()
-            let messageData = try? decoder.decode(MessageData.self, from: data)
-			
-			switch messageData?.type {
+           // let messageData = try? decoder.decode(MessageData.self, from: data)
+			let data = try? decoder.decode(CommonResponseModel.self, from: data)
+            
+			switch data?.type {
 			case .incomingMessage?:
-				self.recievedMessage(message: messageData)
-
+				self.recievedMessage(message: data)
 			case .conversationRequest?:
 				break
 			case .userOffline?:

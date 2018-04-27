@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ChatsTVC: UITableViewController, UITextFieldDelegate {
-        
+class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
+    
     var myIndex : Int?
     var arrayContacts = Array<Contact>()
     var receiver : String?
@@ -49,7 +49,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate {
                 self.tableView.reloadData()
 
             }
-
         }
         }
 
@@ -72,8 +71,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         if indexPath.row == 0{
             let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderContacts") as! HeaderContacts
+            headerCell.delegate = self
         return headerCell
         }
         
@@ -117,16 +119,23 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate {
                 
                 let email = self.arrayContacts[indexPath.row].email
                 
-                APIService.sharedInstance.delateContact(token: APIService.sharedInstance.token!, email: email , completion: { (success, error) in
+                APIService.sharedInstance.delateContact(token: APIService.sharedInstance.token!, email: email) { (success, error) in
                    if success{
-                    APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!, completion: { (contacts, error) in
-                        tableView.reloadData()
-                        print("contact delated")
-                    })
+                    APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
+                        
+                        guard error == nil else {
+                            print(error?.localizedDescription)
+                            return
+                        }
+                        if let array = contacts {
+                            self.arrayContacts = array
+                            self.tableView.reloadData()
+                        }
                     }
-                })
+                }
             }
         }
+    }
 
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -140,4 +149,31 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate {
 //    }
 
     
+//    MARK: -- HeaderCellDelegate
+    func addContact(email: String) {
+        
+        APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (success, error) in
+            if success {
+                APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
+                    guard error == nil else {
+                        print(error?.localizedDescription)
+                        return
+                    }
+                    if let array = contacts {
+                        self.arrayContacts = array
+                        self.tableView.reloadData()
+                    }
+                }
+
+                
+                
+                let alert = UIAlertController(title: "Alert", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+    }
+
+
 }

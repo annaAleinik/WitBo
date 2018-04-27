@@ -8,9 +8,18 @@
 
 import UIKit
 
+protocol HeaderCellDelegate {
+    func addContact(email : String)
+}
+
+
 class HeaderContacts: UITableViewCell {
 
     @IBOutlet weak var addContactField: UITextField!
+    
+    var delegate : HeaderCellDelegate? = nil
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
@@ -25,17 +34,9 @@ class HeaderContacts: UITableViewCell {
     
     
     @IBAction func addContactAction(_ sender: Any) {
-        
-        let email = addContactField.text
-        APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email!) { (success, error) in
-            if success {
-                let alert = UIAlertController(title: "Alert", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-               // self.present(alert, animated: true, completion: nil)
 
-            }
-            
-        }
+        let email = self.addContactField.text
+        delegate?.addContact(email: email!)
     }
     
 

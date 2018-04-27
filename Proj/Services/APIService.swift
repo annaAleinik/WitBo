@@ -18,7 +18,6 @@ class APIService {
     
     var userName : String?
     var userLang :String?
-    
     var token : String?
     var secret : String?
     var clietID : String?

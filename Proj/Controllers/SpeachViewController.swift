@@ -31,7 +31,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     }
     
     
-    //@IBOutlet weak var inComingMessage: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     
@@ -209,7 +208,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 message.text = resultStr
                 message.receiverId = receiver
                 
-                
                 SocketManager.sharedInstanse.sendMessage(message: message)
                 
             }
@@ -256,21 +254,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     //MARK--AVSpeechSynthesizer
 
-//    @IBAction func ReadButton(_ sender: AnyObject) {
-////        STRMassage = lableMassage.text
-//        let utterance = AVSpeechUtterance(string: STRMassage!)
-//        utterance.voice = AVSpeechSynthesisVoice(language: "ru-RU")
-//        utterance.postUtteranceDelay = 3.0
-//
-//        if (STRMassage? .isEmpty)! {
-//            print("ISEMPTY LABLE")
-//        }
-//
-//        let readSound = AVSpeechSynthesizer()
-//        readSound.delegate = self
-//        readSound.speak(utterance)
-//
-//    }
     
     //MARK: WBChatViewControllerDelegate
     func sendMessage(msg: Message) {
