@@ -21,7 +21,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var delegate: SocketManagerDelegate?
     
     var receiver : String? = nil
-
+    var answer : String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,21 +54,30 @@ class SocketManager: UIViewController, WebSocketDelegate {
         guard let data = text.data(using: .utf16) else {return}
         do{
             let decoder = JSONDecoder()
-           // let messageData = try? decoder.decode(MessageData.self, from: data)
-			let data = try? decoder.decode(CommonResponseModel.self, from: data)
+			let dataRespose = try? decoder.decode(CommonResponseModel.self, from: data)
             
-			switch data?.type {
+			switch dataRespose?.type {
 			case .incomingMessage?:
-				self.recievedMessage(message: data)
+                let parsMessage = try? decoder.decode(MessageData.self, from: data)
+                self.recievedMessage(message: parsMessage)
 			case .conversationRequest?:
-				break
-			case .userOffline?:
+                break
+            case .userOffline?:
 				break
 			case .messagePushed?:
 				break
 			case .userOnline?:
 				break
-	
+            case .conversationRequestResponse?:
+                let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
+                self.answer = parsDialogResponce?.message.answer
+                
+                guard let myAnswer = answer else {return}
+                
+                let answerDict = ["answer": myAnswer]
+                
+                NotificationCenter.default.post(name: Notification.Name("answerStartDialog"), object: nil, userInfo: answerDict)
+
 			default:
 				break
 			}

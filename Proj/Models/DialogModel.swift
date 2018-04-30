@@ -9,6 +9,20 @@
 
 import Foundation
 
+struct DialogData : Codable {
+    
+    public var code: Int = -1
+    public var type: SocketMessageType = .empty
+    public var message: DialogModelRequest
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case type = "message"
+        case message = "params"
+    }
+}
+
+
 struct CommonResponseModel : Codable {
     
     public var code: Int = -1
@@ -30,6 +44,20 @@ struct DialogModel: Codable {
         case clientId = "client_Id"
         case answer = "answer"
         case time = "time"
+    }
+    
+}
+
+struct DialogModelRequest: Codable {
+    
+    public var token: String? = nil
+    public var receiver: String? = nil
+    public var answer: String? = nil
+    
+    enum CodingKeys: String, CodingKey {
+        case token = "token"
+        case receiver = "receiver"
+        case answer = "answer"
     }
     
 }

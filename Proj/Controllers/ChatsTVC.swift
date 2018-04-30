@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
+class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
+    
     
     var myIndex : Int?
     var arrayContacts = Array<Contact>()
@@ -16,6 +17,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
     var speachVC: SpeachViewController?
     
     @IBOutlet weak var titleChatLable: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,13 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
         super.viewWillAppear(animated)
         
         // Add a background view to the table view
+        
+        if SocketManager.sharedInstanse.socket.isConnected {
+            print("Socket is connected")
+        }else {
+            SocketManager.sharedInstanse.socketsConnecting()
+        }
+        
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
@@ -53,7 +62,19 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
         }
 
     
-    
+    @objc func checkAnswerDialog(answer: String) {
+        
+        let answerNo = "0"
+        let answerYes = "1"
+        
+        if answer == answerNo {
+            self.dismiss(animated: false, completion: nil)
+        } else if answer == answerYes {
+            
+            
+        }
+    }
+
     
     
     // MARK: - Table view data source
@@ -107,7 +128,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
         
         SocketManager.sharedInstanse.socket.write(string: jsonStartDialog)
         
-        tabBarController?.selectedIndex = 1
+        self.presentAlertController()
+        
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -168,12 +190,18 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate {
                 
                 
                 let alert = UIAlertController(title: "Alert", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             
         }
     }
 
+    private func presentAlertController () {
+        let vc = AlertDialogWait.viewController()
+        self.present(vc, animated: false, completion: nil)
+    }
+
+    
 
 }
