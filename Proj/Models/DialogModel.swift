@@ -62,3 +62,15 @@ struct DialogModelRequest: Codable {
     
 }
 
+struct QuitConversation: Codable{
+    
+    public var initiator: String? = nil
+    public var time: Int? = nil
+
+    
+    enum CodingKeys: String, CodingKey {
+        case initiator = "initiator"
+        case time = "time"
+    }
+}
+

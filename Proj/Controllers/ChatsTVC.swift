@@ -27,7 +27,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
 
-        
+        NotificationCenter.default.addObserver(self,
+                                            selector:#selector(answerStartDialog(notification:)),
+                                               name: Notification.Name("AnswerStartDialog"),
+                                               object: nil)
+
         titleChatLable.text = "CHATS"
     }
 
@@ -61,6 +65,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         }
         }
 
+    //MARK: -- AlertWaitDelegate
     
     @objc func checkAnswerDialog(answer: String) {
         
@@ -70,9 +75,14 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         if answer == answerNo {
             self.dismiss(animated: false, completion: nil)
         } else if answer == answerYes {
-            
+            self.dismiss(animated: false, completion: nil)
+            self.tabBarController?.selectedIndex = 1
             
         }
+    }
+
+    @objc func answerStartDialog(notification: NSNotification) {
+        self.checkAnswerDialog(answer: SocketManager.sharedInstanse.answer!)
     }
 
     

@@ -12,6 +12,7 @@ class CellContacts: UITableViewCell {
     
     @IBOutlet weak var nameContactsLablel: UILabel!
     
+    @IBOutlet weak var userStatusOnLine: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

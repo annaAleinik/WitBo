@@ -9,9 +9,15 @@
 import Foundation
 import Starscream
 
-protocol SocketManagerDelegate {
+  protocol SocketManagerDelegate {
     func didReciveMessages(messages:Message)
 }
+
+    protocol SocketManagerСonversationDelegate {
+        func conversationStopped()
+}
+
+
 
 class SocketManager: UIViewController, WebSocketDelegate {
    
@@ -19,6 +25,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     var socket: WebSocket!
     var delegate: SocketManagerDelegate?
+    var delegateConversation: SocketManagerСonversationDelegate?
     
     var receiver : String? = nil
     var answer : String? = nil
@@ -66,7 +73,10 @@ class SocketManager: UIViewController, WebSocketDelegate {
 				break
 			case .messagePushed?:
 				break
-			case .userOnline?:
+            case .quitConversation?:
+                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
+                self.delegateConversation?.conversationStopped()
+            case .userOnline?:
 				break
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
@@ -76,7 +86,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
                 let answerDict = ["answer": myAnswer]
                 
-                NotificationCenter.default.post(name: Notification.Name("answerStartDialog"), object: nil, userInfo: answerDict)
+                NotificationCenter.default.post(name: Notification.Name("AnswerStartDialog"), object: nil, userInfo: answerDict)
 
 			default:
 				break

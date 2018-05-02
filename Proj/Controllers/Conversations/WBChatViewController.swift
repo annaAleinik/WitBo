@@ -83,6 +83,11 @@ class WBChatViewController: NOCChatViewController, SocketManagerDelegate {
         addMessages([messages], scrollToBottom: true, animated: true)
     }
     
+    func conversationStopped() {
+        
+    }
+    
+    
     
     private func addMessages(_ messages: [Message], scrollToBottom: Bool, animated: Bool) {
         layoutQueue.async { [weak self] in

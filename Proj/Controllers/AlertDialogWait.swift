@@ -17,22 +17,6 @@ class AlertDialogWait: UIViewController {
 
     var presentedVC: UIViewController?
     
-    @objc func answerStartDialog(notification: NSNotification) {
-        self.checkAnswerDialog(answer: SocketManager.sharedInstanse.answer!)
-    }
-    
-//    @objc func checkAnswerDialog(answer: String) {
-//
-//        let answerNo = "0"
-//        let answerYes = "1"
-//
-//        if answer == answerNo {
-//            self.dismiss(animated: false, completion: nil)
-//        } else if answer == answerYes {
-//
-//
-//        }
-//    }
     
     class func viewController() -> AlertDialogWait {
         let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
@@ -43,10 +27,6 @@ class AlertDialogWait: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self,
-                                        selector:#selector(answerStartDialog(notification:)),
-                                               name: Notification.Name("answerStartDialog"),
-                                               object: nil)
     }
 
     override func didReceiveMemoryWarning() {

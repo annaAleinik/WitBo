@@ -11,8 +11,8 @@ import Speech
 import AVFoundation
 import Starscream
 
-class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate {
-   
+class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate {
+    
     
     @objc func reproductionOfSpeech(notification: NSNotification){
         self.readMessage(messages: SocketManager.sharedInstanse.textMessage!)
@@ -44,7 +44,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     var receiverFromContacts : String?
     
-    
 	//MARK: Life cycle
     
     class func viewController() -> SpeachViewController {
@@ -55,6 +54,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        SocketManager.sharedInstanse.delegateConversation = self
         recordButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self,
@@ -273,6 +274,25 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         self.containerView.backgroundColor = UIColor.clear
     }
     
+    //MARK: --SocketManagerСonversationDelegate
+    
+    func conversationStopped() {
+
+        // Register Nib
+        let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "QuitConversationAlert") as? QuitConversationAlert
+        controller?.delegateQC = self
+        self.present(controller!, animated: true, completion: nil)
+
+        
+    }
+    
+    func quitConversation() {
+        self.tabBarController?.selectedIndex = 0
+        
+    }
+
+
 }
         
 extension SpeachViewController: SFSpeechRecognizerDelegate {

@@ -39,6 +39,11 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DrW-b0-b2n">
+                        <rect key="frame" x="257" y="26" width="64" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DLN-lE-B70" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="7Hk-9i-Zqx"/>
@@ -53,6 +58,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameContactsLablel" destination="7aK-m2-rRm" id="JCg-LW-Do7"/>
+                <outlet property="userStatusOnLine" destination="DrW-b0-b2n" id="WsF-K6-EWV"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="99.5"/>
         </tableViewCell>
