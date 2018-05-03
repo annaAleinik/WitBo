@@ -117,17 +117,15 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     
     
-//    //перенести в этот метод с чат твк
-//    func startDialog() {
-//        
-//        guard let token = APIService.sharedInstance.token else { return }
-//    
-//    let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing:receiver ) + "\"}}"
-//
-//        self.socket.write(string: jsonStartDialog)
-//
-//
-//    }
+    func startDialog(receiver: String) {
+        
+        guard let token = APIService.sharedInstance.token else { return }
+
+        let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiver) + "\"}}"
+        
+        SocketManager.sharedInstanse.socket.write(string: jsonStartDialog)
+
+    }
 	
 	//	MARK: private
 	
@@ -151,6 +149,17 @@ class SocketManager: UIViewController, WebSocketDelegate {
 		}
 
 	}
+    
+    
+    func logOutOfTheConversation(receiver : String){
+        
+        guard let token = APIService.sharedInstance.token else { return }
+
+            let jsonLogOutOfTheConversation = "{\"action\":\"quit_conversation\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing:receiver ) + "\"}}"
+        
+                self.socket.write(string: jsonLogOutOfTheConversation)
+
+    }
 	
     
 }

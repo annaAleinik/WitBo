@@ -63,8 +63,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                                                name: Notification.Name("ReadTextNotification"),
                                                object: nil)
         
-
-
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -106,6 +104,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 		super.viewWillDisappear(animated)
 		timerManager.pauseTimer()
         
+        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:self.receiverFromContacts!)
 	}
     
     // handler closed ads
@@ -220,7 +219,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             buffer, _ in
             self.recognitionRequest?.append(buffer)
         }
-        
         audioEngene.prepare() //14
         
         do {  // 15
@@ -228,7 +226,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         } catch {
             print("Не удается стартонуть движок")
         }
-
     }
     
     //MARK : Action
@@ -239,23 +236,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         message.text = "TEST MESSAGE"
         message.receiverId = "1ty287iughriufhjk"
         
-        
         SocketManager.sharedInstanse.sendMessage(message: message)
-    }
-    
-    
-    @IBAction func updateMassage(_ sender: Any) {
-        
-//        APIService.sharedInstance.checkLastMessage() { (translatedData, error) in
-//            self.ansverMassageLable.text = translatedData?.translatedText
-//        }
-    
     }
     
     
     //MARK--AVSpeechSynthesizer
 
-    
     //MARK: WBChatViewControllerDelegate
     func sendMessage(msg: Message) {
         
@@ -283,15 +269,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let controller = storyboard.instantiateViewController(withIdentifier: "QuitConversationAlert") as? QuitConversationAlert
         controller?.delegateQC = self
         self.present(controller!, animated: true, completion: nil)
-
-        
     }
     
     func quitConversation() {
         self.tabBarController?.selectedIndex = 0
         
     }
-
 
 }
         

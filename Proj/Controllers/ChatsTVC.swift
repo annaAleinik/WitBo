@@ -86,7 +86,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     }
 
     
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,8 +114,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         
         cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
 
-        // Configure the cell...
-
         return (cell)
     }
     
@@ -128,15 +125,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         speachVC = self.tabBarController?.viewControllers![1] as? SpeachViewController
         speachVC?.receiverFromContacts = receiver
         
-        // перенести в сокет менеджер метод начало диалога
-        
-        guard let token = APIService.sharedInstance.token else { return }
         guard let receiverJSON = receiver else { return }
-        
-        
-        let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiverJSON) + "\"}}"
-        
-        SocketManager.sharedInstanse.socket.write(string: jsonStartDialog)
+        SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
         
         self.presentAlertController()
         
