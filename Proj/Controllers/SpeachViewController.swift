@@ -31,6 +31,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     }
     
     
+    @IBOutlet weak var nameUserChatLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
     
@@ -98,6 +99,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             self.presentAlertController()
         }
         addChatViewController()
+        
+        self.nameUserChatLabel.text = receiverFromContacts
+
    }
 	
 	override  func viewWillDisappear(_ animated: Bool) {
@@ -105,6 +109,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 		timerManager.pauseTimer()
         
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:self.receiverFromContacts!)
+        self.nameUserChatLabel.text = nil
 	}
     
     // handler closed ads
@@ -268,12 +273,13 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "QuitConversationAlert") as? QuitConversationAlert
         controller?.delegateQC = self
-        self.present(controller!, animated: true, completion: nil)
+        if self.nameUserChatLabel.text != nil {
+            self.present(controller!, animated: true, completion: nil)
+        }
     }
     
     func quitConversation() {
-        self.tabBarController?.selectedIndex = 0
-        
+        self.tabBarController?.selectedIndex = 0        
     }
 
 }

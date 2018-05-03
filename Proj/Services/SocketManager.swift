@@ -17,8 +17,6 @@ import Starscream
         func conversationStopped()
 }
 
-
-
 class SocketManager: UIViewController, WebSocketDelegate {
    
     static let sharedInstanse = SocketManager()
@@ -29,6 +27,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     var receiver : String? = nil
     var answer : String? = nil
+    var clientId: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +69,19 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .conversationRequest?:
                 break
             case .userOffline?:
-				break
+                let userOffLnline = try? decoder.decode(UserStatus.self, from: data)
+                self.clientId = userOffLnline?.clientId
+
 			case .messagePushed?:
 				break
             case .quitConversation?:
                 let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
                 self.delegateConversation?.conversationStopped()
             case .userOnline?:
-				break
+                let userOnline = try? decoder.decode(UserStatus.self, from: data)
+                self.clientId = userOnline?.clientId
+            case .cancelConversationRequest?:
+                let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
                 self.answer = parsDialogResponce?.message.answer
@@ -161,5 +165,15 @@ class SocketManager: UIViewController, WebSocketDelegate {
 
     }
 	
+    
+    func cancelConversationRequest(receiver : String){
+        guard let token = APIService.sharedInstance.token else { return }
+        
+        let cancelConversationRequest = "{\"action\":\"cancel_conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing:receiver ) + "\"}}"
+        
+        self.socket.write(string: cancelConversationRequest)
+    }
+    
+
     
 }

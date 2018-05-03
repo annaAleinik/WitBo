@@ -10,7 +10,6 @@ import UIKit
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
     
-    
     var myIndex : Int?
     var arrayContacts = Array<Contact>()
     var receiver : String?
@@ -84,6 +83,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     @objc func answerStartDialog(notification: NSNotification) {
         self.checkAnswerDialog(answer: SocketManager.sharedInstanse.answer!)
     }
+    
+    func cancelAction() {
+        SocketManager.sharedInstanse.cancelConversationRequest(receiver: self.receiver! )
+    }
+
 
     
     // MARK: - Table view data source
@@ -199,6 +203,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
     private func presentAlertController () {
         let vc = AlertDialogWait.viewController()
+        vc.delegate = self
         self.present(vc, animated: false, completion: nil)
     }
 

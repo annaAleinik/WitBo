@@ -13,6 +13,7 @@ import RealmSwift
 class TableViewSettings: UITableViewController {
     @IBOutlet weak var emailLable: UILabel!
     
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var settingsLable: UILabel!
     @IBOutlet weak var fullNameUsersLable: UILabel!
     
@@ -27,6 +28,7 @@ class TableViewSettings: UITableViewController {
         self.settingsLable.text = "Settings"
         
         self.fullNameUsersLable.text = APIService.sharedInstance.userName
+        self.emailLabel.text = APIService.sharedInstance.userEmail
             }
     
     //MARK: -- Action

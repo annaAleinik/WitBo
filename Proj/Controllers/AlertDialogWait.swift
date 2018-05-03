@@ -10,13 +10,14 @@ import UIKit
 
 protocol AlertWaitDelegate  {
     func checkAnswerDialog(answer: String)
+    func cancelAction()
 }
 
 
 class AlertDialogWait: UIViewController {
 
     var presentedVC: UIViewController?
-    
+    var delegate: AlertWaitDelegate?
     
     class func viewController() -> AlertDialogWait {
         let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
@@ -29,16 +30,10 @@ class AlertDialogWait: UIViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
    
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
-
+        delegate?.cancelAction()
     }
     
 }

@@ -211,6 +211,13 @@
                                     <action selector="send:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quX-Kb-o28"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDi-Fh-i2v">
+                                <rect key="frame" x="7" y="58" width="304" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -245,13 +252,14 @@
                     <connections>
                         <outlet property="containerView" destination="3aA-P1-a6m" id="YZi-xd-y6M"/>
                         <outlet property="lableMassage" destination="mSb-VC-Dt2" id="Nqd-iH-rds"/>
+                        <outlet property="nameUserChatLabel" destination="JDi-Fh-i2v" id="xgL-Js-73a"/>
                         <outlet property="recordButton" destination="WSU-5G-oUP" id="HQB-Sn-zac"/>
                         <outlet property="timeLabel" destination="lrU-Z9-EJI" id="Xgv-LZ-WhH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-525" y="-760"/>
+            <point key="canvasLocation" x="-525" y="-760.56338028169012"/>
         </scene>
         <!--RegistrationVC-->
         <scene sceneID="oII-OI-BQk">
@@ -465,7 +473,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-5e-ZjA">
-                                                    <rect key="frame" x="98" y="12" width="124" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="124" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -484,6 +492,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sC2-e7-Xum" id="P7X-YO-Qvg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-rZ-U7z">
+                                                    <rect key="frame" x="25" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wGu-dE-KQt">
@@ -514,6 +531,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="icon_settings" id="xyc-ld-CdZ"/>
                     <connections>
+                        <outlet property="emailLabel" destination="Sbf-5e-ZjA" id="TF5-Dw-Njg"/>
                         <outlet property="emailLable" destination="Sbf-5e-ZjA" id="sQL-e8-j7a"/>
                         <outlet property="fullNameUsersLable" destination="dTJ-6Q-qDl" id="V8Z-3g-MRG"/>
                         <outlet property="settingsLable" destination="4Tb-Wz-lwC" id="KMN-NN-vrt"/>

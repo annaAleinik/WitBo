@@ -40,7 +40,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DrW-b0-b2n">
-                        <rect key="frame" x="257" y="26" width="64" height="50"/>
+                        <rect key="frame" x="288" y="41" width="33" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>

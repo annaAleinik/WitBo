@@ -16,6 +16,7 @@ public enum SocketMessageType: String, Codable {
 	case userOnline = "User is online"
     case conversationRequestResponse = "Conversation request response"
     case quitConversation = "The client left the dialog"
+    case cancelConversationRequest = "Conversation request canceled by initiator"
 	case empty = "empty"
 }
 

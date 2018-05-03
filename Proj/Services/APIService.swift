@@ -21,7 +21,8 @@ class APIService {
     var token : String?
     var secret : String?
     var clietID : String?
-    
+    var userEmail : String?
+
     var dict = ["ru-RU":"ru" , "en-En" : "en"]
     
     // property for translation
@@ -132,6 +133,7 @@ class APIService {
                         let userData = try JSONDecoder().decode(UserModel.self, from: response.data!)
                         self.userName = userData.name
                         self.userLang = userData.language
+                        self.userEmail = userData.email
                         
                         let baseUserModel  = BaseUserModel()
                         
