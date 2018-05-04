@@ -32,6 +32,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                                                object: nil)
 
         titleChatLable.text = "CHATS"
+        
     }
 
 
@@ -63,7 +64,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             }
         }
         }
-
+    
     //MARK: -- AlertWaitDelegate
     
     @objc func checkAnswerDialog(answer: String) {

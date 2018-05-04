@@ -70,8 +70,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 break
             case .userOffline?:
                 let userOffLnline = try? decoder.decode(UserStatus.self, from: data)
-                self.clientId = userOffLnline?.clientId
-
+                self.clientId = userOffLnline?.clientid
 			case .messagePushed?:
 				break
             case .quitConversation?:
@@ -79,7 +78,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 self.delegateConversation?.conversationStopped()
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
-                self.clientId = userOnline?.clientId
+                self.clientId = userOnline?.clientid
+
             case .cancelConversationRequest?:
                 let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
             case .conversationRequestResponse?:

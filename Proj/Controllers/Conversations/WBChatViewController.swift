@@ -38,6 +38,9 @@ class WBChatViewController: NOCChatViewController, SocketManagerDelegate {
         self.view.backgroundColor = UIColor.clear
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+    }
+    
     override func registerChatItemCells() {
         var nibName = UINib(nibName: "IncomingMessageCell", bundle:nil)
         collectionView?.register(nibName, forCellWithReuseIdentifier: "IncomingTextCell")

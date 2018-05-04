@@ -78,12 +78,12 @@ struct UserStatus : Codable {
     
     public var code: Int = -1
     public var type: SocketMessageType = .empty
-    public var clientId: String? = nil
+    public var clientid: String? = nil
 
     
     enum CodingKeys: String, CodingKey {
-        case code
+        case clientid = "client_id"
         case type = "message"
-        case clientId = "client_Id"
+
     }
 }

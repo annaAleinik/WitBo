@@ -11,8 +11,9 @@ import UIKit
 class CellContacts: UITableViewCell {
     
     @IBOutlet weak var nameContactsLablel: UILabel!
-    
     @IBOutlet weak var userStatusOnLine: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,5 @@ class CellContacts: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
+        
 }
