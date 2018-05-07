@@ -21,6 +21,16 @@ class CellContacts: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    
+    public func changeIndcatotStatus(isOnline: Bool){
+        
+        if isOnline == true {
+            self.userStatusOnLine.backgroundColor = .green
+        } else {
+            self.userStatusOnLine.backgroundColor = .gray
+        }
         
     }
         

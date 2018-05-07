@@ -27,7 +27,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     var receiver : String? = nil
     var answer : String? = nil
-    var clientId: String? = nil
+    var answerStatusUser: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +69,14 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .conversationRequest?:
                 break
             case .userOffline?:
-                let userOffLnline = try? decoder.decode(UserStatus.self, from: data)
-                self.clientId = userOffLnline?.clientid
+                let userOffLinline = try? decoder.decode(UserStatus.self, from: data)
+                
+                guard let idClient = userOffLinline?.clientid else {return}
+                
+                let userInfo :  [String:Any] = ["clientId": idClient, "isOnline" : false]
+
+                NotificationCenter.default.post(name: Notification.Name("ChangeStatusOnLine"), object: nil, userInfo: userInfo)
+
 			case .messagePushed?:
 				break
             case .quitConversation?:
@@ -78,8 +84,13 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 self.delegateConversation?.conversationStopped()
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
-                self.clientId = userOnline?.clientid
-
+                
+                guard let id = userOnline?.clientid else {return}
+                
+                let userInfo : [String:Any] = ["clientId": id, "isOnline" : true]
+                
+                NotificationCenter.default.post(name: Notification.Name("ChangeStatusOnLine"), object: nil, userInfo: userInfo)
+                
             case .cancelConversationRequest?:
                 let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
             case .conversationRequestResponse?:
@@ -173,6 +184,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
         
         self.socket.write(string: cancelConversationRequest)
     }
+    
+    
     
 
     

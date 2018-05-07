@@ -32,6 +32,11 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         self.fullNameUsersLable.text = APIService.sharedInstance.userName
         self.emailLabel.text = APIService.sharedInstance.userEmail
         
+        guard let image = UIImage(named: "background") else { return } // BAIL
+        let data = UIImageJPEGRepresentation(image, 1.0)
+        let arrByte = data?.base64EncodedString() // Attay bytes for server
+
+        
     }
     
     //MARK: -- Action
@@ -123,25 +128,4 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         return UIImage(data: imageData!)!
     }
 
-    func getArrayOfBytesFromImage(imageData:NSData) -> NSMutableArray{
-        
-        // the number of elements:
-        let count = imageData.length / MemoryLayout<UInt8>.size
-        
-        // create array of appropriate length:
-        var bytes = [UInt8](repeating: 0, count: count)
-        
-        // copy bytes into array
-        imageData.getBytes(&bytes, length:count * MemoryLayout<UInt8>.size)
-        
-        var byteArray:NSMutableArray = NSMutableArray()
-        
-        for (var i = 0; i < count; i++) {
-            byteArray.add(NSNumber(value: bytes[i]))
-        }
-        
-        return byteArray
-        
-        
-    }
 }

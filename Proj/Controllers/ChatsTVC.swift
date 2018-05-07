@@ -33,6 +33,12 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
         titleChatLable.text = "CHATS"
         
+        NotificationCenter.default.addObserver(self,
+                                            selector:#selector(changeStatusOnLine(notification:)),
+                                               name: Notification.Name("ChangeStatusOnLine"),
+                                               object: nil)
+
+        
     }
 
 
@@ -64,6 +70,37 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             }
         }
         }
+    
+    //MARK: -- ChangeStatusUserOnLne
+    
+    @objc func changeStatusOnLine(notification: NSNotification) {
+        
+        self.changeStatus(clientId: notification.userInfo(value(forKey: "clientId")), isOnline: notification.userInfo(value(forKey: "isOnline")))
+        
+        self.changeStatus(clientId: notification.userInfo![value(forKey: "clientId")], isOnline: notification.userInfo[value(forKey: "isOnline")])
+        
+    }
+
+    @objc func changeStatus(clientId: String, isOnline: Bool){
+        
+        for contactId in arrayContacts{
+            
+            let contactIdInt = Int(contactId.client_id)
+            let clientIdInt = Int(clientId)
+
+            if contactIdInt == clientIdInt{
+                if let index = arrayContacts.index(of: contactId){
+                    
+                    let indexPath = IndexPath(row: index, section: 0)
+                    
+                    let cell = self.tableView.cellForRow(at: indexPath) as? CellContacts
+                    cell?.changeIndcatotStatus(isOnline: isOnline)
+                }
+            
+            }
+            
+        }
+    }
     
     //MARK: -- AlertWaitDelegate
     
@@ -106,8 +143,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         if indexPath.row == 0{
             let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderContacts") as! HeaderContacts
             headerCell.delegate = self
@@ -118,7 +153,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
         cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
-
+        
         return (cell)
     }
     
