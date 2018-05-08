@@ -137,7 +137,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arrayContacts.count
+        return arrayContacts.count + 1
     }
 
     
@@ -152,7 +152,15 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellContcts", for: indexPath) as! CellContacts
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
-        cell.nameContactsLablel.text = self.arrayContacts[indexPath.row].name
+        let contact = self.arrayContacts[(indexPath.row-1)]
+
+        cell.nameContactsLablel.text = contact.name
+        
+        if contact.online == 1{
+            cell.changeIndcatotStatus(isOnline: true)
+        } else if contact.online == 0{
+            cell.changeIndcatotStatus(isOnline: false)
+        }
         
         return (cell)
     }
@@ -160,7 +168,9 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
-        self.receiver = self.arrayContacts[indexPath.row].client_id
+        
+        let contactId = self.arrayContacts[indexPath.row-1]
+        self.receiver = contactId.client_id
         
         speachVC = self.tabBarController?.viewControllers![1] as? SpeachViewController
         speachVC?.receiverFromContacts = receiver
