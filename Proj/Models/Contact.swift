@@ -21,6 +21,6 @@ struct Contact : Codable , Equatable {
     let email : String
     let name : String
     let client_id : String
-    //let online : Int
+    let online : Int
 }
 

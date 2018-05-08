@@ -87,7 +87,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
                 guard let id = userOnline?.clientid else {return}
                 
-                let userInfo : [String:Any] = ["clientId": id, "isOnline" : true]
+                let userInfo : [String : Any] = ["clientId": id, "isOnline" : true]
                 
                 NotificationCenter.default.post(name: Notification.Name("ChangeStatusOnLine"), object: nil, userInfo: userInfo)
                 

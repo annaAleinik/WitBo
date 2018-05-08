@@ -28,7 +28,7 @@ class CellContacts: UITableViewCell {
         
         if isOnline == true {
             self.userStatusOnLine.backgroundColor = .green
-        } else {
+        } else if isOnline == false{
             self.userStatusOnLine.backgroundColor = .gray
         }
         

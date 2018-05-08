@@ -75,21 +75,21 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     @objc func changeStatusOnLine(notification: NSNotification) {
         
-        self.changeStatus(clientId: notification.userInfo(value(forKey: "clientId")), isOnline: notification.userInfo(value(forKey: "isOnline")))
+        let clientId = notification.userInfo?["clientId"] as? String
+        guard let id = clientId else {return}
         
-        self.changeStatus(clientId: notification.userInfo![value(forKey: "clientId")], isOnline: notification.userInfo[value(forKey: "isOnline")])
-        
+        let isOnline = notification.userInfo!["isOnline"] as? Bool
+        guard let status = isOnline else {return}
+
+        self.changeStatus(clientId: id, isOnline: status)
     }
 
     @objc func changeStatus(clientId: String, isOnline: Bool){
-        
-        for contactId in arrayContacts{
+    
+        for contact in arrayContacts{
             
-            let contactIdInt = Int(contactId.client_id)
-            let clientIdInt = Int(clientId)
-
-            if contactIdInt == clientIdInt{
-                if let index = arrayContacts.index(of: contactId){
+            if contact.client_id == clientId{
+                if let index = arrayContacts.index(of: contact){
                     
                     let indexPath = IndexPath(row: index, section: 0)
                     
