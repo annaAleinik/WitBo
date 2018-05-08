@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 //MARK: -- TimerManagerDelegate
 
@@ -38,7 +39,7 @@ class TimerManager {
 
     @objc func updateTimer() {
         seconds -= 1     //This will decrement(count down)the seconds.
-       // print(seconds)
+        
         if seconds == 0 {
             delegate?.handleOutOfTime()
 			timer.invalidate()
@@ -51,11 +52,20 @@ class TimerManager {
     }
 	
 	func pauseTimer() {
+        
+        let baseUserModel  = BaseUserModel()
+        
+        let timeFromStr:Int? = Int(seconds)
+        guard let timeLeft = timeFromStr else {return}
+        
+        baseUserModel.timeLeft = timeLeft
+
+        try! APIService.realm.write {
+            APIService.realm.add(baseUserModel)
+        }
+
 		timer.invalidate()
 	}
-    
-  
-    
 }
 
 extension TimerManager {
