@@ -25,18 +25,16 @@ class CellContacts: UITableViewCell {
     
     
     public func changeIndcatotStatus(isOnline: Bool){
-        if isOnline == true {
-            self.userStatusOnLine.backgroundColor = .green
-        } else if isOnline == false{
-            self.userStatusOnLine.backgroundColor = .gray
-        }
-        
+		
         UIView.animate(withDuration: 0.5, delay: 0.3, options: [.repeat, .curveEaseOut, .autoreverse], animations: {
 
-            self.layoutSubviews()
+			if isOnline == true {
+				self.userStatusOnLine.backgroundColor = .green
+			} else if isOnline == false{
+				self.userStatusOnLine.backgroundColor = .gray
+			}
 
         }, completion: nil)
-
 }
     
     
