@@ -93,7 +93,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         self.changeStatus(clientId: id, isOnline: status)
     }
 
-    @objc func changeStatus(clientId: String, isOnline: Bool){
+    func changeStatus(clientId: String, isOnline: Bool){
     
         for contact in arrayContacts{
             
