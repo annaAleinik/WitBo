@@ -61,7 +61,7 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                     self.present(vc, animated: true, completion: nil)
 
                     
-                    APIService.sharedInstance.userData(token: "") { (succses, error) in
+                    APIService.sharedInstance.userData(token: APIService.sharedInstance.token!) { (succses, error) in
                         }
                     }
 

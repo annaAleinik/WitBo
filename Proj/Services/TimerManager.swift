@@ -58,10 +58,8 @@ class TimerManager {
         let timeFromStr:Int? = Int(seconds)
         guard let timeLeft = timeFromStr else {return}
         
-        baseUserModel.timeLeft = timeLeft
-
         try! APIService.realm.write {
-            APIService.realm.add(baseUserModel)
+            baseUserModel.timeLeft = timeLeft
         }
 
 		timer.invalidate()

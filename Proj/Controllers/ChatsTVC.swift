@@ -71,6 +71,15 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         }
         }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
+
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "AnswerStartDialog"), object: nil)
+
+    }
+    
     //MARK: -- ChangeStatusUserOnLne
     
     @objc func changeStatusOnLine(notification: NSNotification) {
@@ -189,7 +198,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
             if (editingStyle == UITableViewCellEditingStyle.delete) {
                 
-                let email = self.arrayContacts[indexPath.row].email
+                let email = self.arrayContacts[indexPath.row-1].email
                 
                 APIService.sharedInstance.delateContact(token: APIService.sharedInstance.token!, email: email) { (success, error) in
                    if success{
