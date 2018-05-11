@@ -12,8 +12,8 @@ STR_PASSWORD = "Password";
 STR_SIGNUP = "Sign Up";
 STR_REGISTRATION = "Registration";
 STR_RECORDTOUCH = "Click and speak";
-STR_RECORDTOUCH = "Click and speak";
 STR_LASTMASSAGE = "Last massage";
-
-
+STR_SIGNOUT = "Sign Out";
+STR_CONTACTS = "Contacts"
+STR_SETTINGS = "Settings"
 

@@ -28,7 +28,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
         NotificationCenter.default.addObserver(self,
                                             selector:#selector(answerStartDialog(notification:)),
-                                               name: Notification.Name("AnswerStartDialog"),
+                                               name: Notification.Name("StartDialog"),
                                                object: nil)
 
         titleChatLable.text = "CHATS"
@@ -76,7 +76,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
 
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "AnswerStartDialog"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
 
     }
     

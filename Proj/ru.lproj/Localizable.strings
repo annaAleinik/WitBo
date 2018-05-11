@@ -13,3 +13,6 @@ STR_SIGNUP = "Вход";
 STR_REGISTRATION = "Регистрация";
 STR_RECORDTOUCH = "Нажмите и говорите";
 STR_LASTMASSAGE = "Последние сообщения";
+STR_SIGNOUT = "Выход"
+STR_CONTACTS = "Контакты"
+STR_SETTINGS = "Настройки"

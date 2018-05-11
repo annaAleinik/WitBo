@@ -17,5 +17,5 @@ class BaseUserModel: Object {
     @objc dynamic var name = ""
     @objc dynamic var email = ""
     @objc dynamic var lang = ""
-    @objc dynamic var timeLeft = 0
+    @objc dynamic var timeLeft : Int = Int(0)
 }

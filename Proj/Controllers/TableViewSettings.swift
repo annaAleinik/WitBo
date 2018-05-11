@@ -33,6 +33,8 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         self.emailLabel.text = APIService.sharedInstance.userEmail
         
         guard let image = UIImage(named: "background") else { return } // BAIL
+        
+        // byte array for server
         let data = UIImageJPEGRepresentation(image, 1.0)
         let arrByte = data?.base64EncodedString() // Attay bytes for server
 

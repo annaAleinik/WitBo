@@ -101,7 +101,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
                 let answerDict = ["answer": myAnswer]
                 
-                NotificationCenter.default.post(name: Notification.Name("AnswerStartDialog"), object: nil, userInfo: answerDict)
+                NotificationCenter.default.post(name: Notification.Name("StartDialog"), object: nil, userInfo: answerDict)
 
 			default:
 				break

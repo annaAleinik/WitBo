@@ -108,7 +108,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 		super.viewWillDisappear(animated)
 		timerManager.pauseTimer()
         
-        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:self.receiverFromContacts!)
+        guard let rec = self.receiverFromContacts else {return}
+        
+        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
+        
         self.nameUserChatLabel.text = nil
 	}
     
