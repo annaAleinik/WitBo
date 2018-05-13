@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AlertWaitDelegate  {
-    func checkAnswerDialog(answer: String)
+    func checkAnswerDialog(answer: String, receiverID: String)
     func cancelAction()
 }
 

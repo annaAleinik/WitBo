@@ -14,8 +14,6 @@ class APIService {
     
     static let sharedInstance = APIService()
     
-    static let realm = try! Realm()
-    
     var userName : String?
     var userLang :String?
     var token : String?
@@ -143,9 +141,7 @@ class APIService {
                         baseUserModel.secret = self.secret!
                         baseUserModel.token = token
                         
-                        try! APIService.realm.write {
-                            APIService.realm.add(baseUserModel)
-                        }
+                        WBRealmManager.shared.addData(object: baseUserModel)
                         
                         completion(true, nil)
                     }catch let error{

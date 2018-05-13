@@ -13,24 +13,6 @@ import Starscream
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate {
     
-    
-    @objc func reproductionOfSpeech(notification: NSNotification){
-        self.readMessage(messages: SocketManager.sharedInstanse.textMessage!)
-    }
-
-    @objc func readMessage(messages: String) {
-        let prefferedLanguage = Locale.preferredLanguages[0] as String
-
-        let utterance = AVSpeechUtterance(string: messages)
-        utterance.voice = AVSpeechSynthesisVoice(language: prefferedLanguage)
-        utterance.postUtteranceDelay = 3.0
-        
-        let readSound = AVSpeechSynthesizer()
-        readSound.delegate = self
-        readSound.speak(utterance)
-    }
-    
-    
     @IBOutlet weak var nameUserChatLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
@@ -47,10 +29,13 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
 	//MARK: Life cycle
     
-    class func viewController() -> SpeachViewController {
+    class func viewController(receiverID: String) -> SpeachViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        return  storyboard.instantiateViewController(withIdentifier: String(describing: SpeachViewController.self)) as! SpeachViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: SpeachViewController.self)) as! SpeachViewController
+        viewController.receiverFromContacts = receiverID
+        return viewController
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -240,11 +225,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     // TODO : Delete this test method
     @IBAction func send(_ sender: Any) {
-        let message = Message()
-        message.text = "TEST MESSAGE"
-        message.receiverId = "1ty287iughriufhjk"
-        
-        SocketManager.sharedInstanse.sendMessage(message: message)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -301,6 +282,27 @@ extension SpeachViewController: SFSpeechRecognizerDelegate {
         vc.presentedVC = self
         self.present(vc, animated: false, completion: nil)
     }
-    
+}
 
+
+//MARK: Notifications methods
+extension SpeachViewController {
+    
+    @objc func reproductionOfSpeech(notification: NSNotification){
+        guard let message = notification.userInfo!["message"] as? String else {return}
+        self.readMessage(messages: message )
+    }
+    
+    @objc func readMessage(messages: String) {
+        let prefferedLanguage = Locale.preferredLanguages[0] as String
+        
+        let utterance = AVSpeechUtterance(string: messages)
+        utterance.voice = AVSpeechSynthesisVoice(language: prefferedLanguage)
+        utterance.postUtteranceDelay = 3.0
+        
+        let readSound = AVSpeechSynthesizer()
+        readSound.delegate = self
+        readSound.speak(utterance)
+    }
+    
 }

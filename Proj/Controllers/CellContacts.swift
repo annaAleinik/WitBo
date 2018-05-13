@@ -26,13 +26,13 @@ class CellContacts: UITableViewCell {
     
 	public func changeIndcatotStatus(isOnline: Bool){
 		
-		DispatchQueue.main.async {
 			if isOnline == true {
 				self.userStatusOnLine.backgroundColor = .green
 			} else if isOnline == false{
 				self.userStatusOnLine.backgroundColor = .gray
 			}
-		}
+        
+        self.layoutSubviews()
 	}
     
 }

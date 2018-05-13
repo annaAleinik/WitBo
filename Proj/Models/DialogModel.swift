@@ -50,13 +50,11 @@ struct DialogModel: Codable {
 
 struct DialogModelRequest: Codable {
     
-    public var token: String? = nil
     public var receiver: String? = nil
     public var answer: String? = nil
     
     enum CodingKeys: String, CodingKey {
-        case token = "token"
-        case receiver = "receiver"
+        case receiver = "client_id"
         case answer = "answer"
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
-    
+
     var myIndex : Int?
     var arrayContacts = Array<Contact>()
     var receiver : String?
@@ -26,19 +26,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
 
-        NotificationCenter.default.addObserver(self,
-                                            selector:#selector(answerStartDialog(notification:)),
-                                               name: Notification.Name("StartDialog"),
-                                               object: nil)
-
         titleChatLable.text = "CHATS"
-        
-        NotificationCenter.default.addObserver(self,
-                                            selector:#selector(changeStatusOnLine(notification:)),
-                                               name: Notification.Name("ChangeStatusOnLine"),
-                                               object: nil)
-
-        
+  
     }
 
 
@@ -69,15 +58,12 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
             }
         }
+        
+        self.addObservers()
         }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
-
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
-
+        self.removeObservers()
     }
     
     //MARK: -- ChangeStatusUserOnLne
@@ -100,7 +86,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             if contact.client_id == clientId{
                 if let index = arrayContacts.index(of: contact){
                     
-                    let indexPath = IndexPath(row: index, section: 0)
+                    let indexPath = IndexPath(row: (index + 1), section: 0)
                     
                     let cell = self.tableView.cellForRow(at: indexPath) as? CellContacts
                     cell?.changeIndcatotStatus(isOnline: isOnline)
@@ -113,7 +99,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     //MARK: -- AlertWaitDelegate
     
-    @objc func checkAnswerDialog(answer: String) {
+    @objc func checkAnswerDialog(answer: String, receiverID: String) {
         
         let answerNo = "0"
         let answerYes = "1"
@@ -122,13 +108,15 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             self.dismiss(animated: false, completion: nil)
         } else if answer == answerYes {
             self.dismiss(animated: false, completion: nil)
-            self.tabBarController?.selectedIndex = 1
+            let speachViewController = SpeachViewController.viewController(receiverID: receiverID)
+            self.present(speachViewController, animated: true, completion: nil)
             
         }
     }
 
     @objc func answerStartDialog(notification: NSNotification) {
-        self.checkAnswerDialog(answer: SocketManager.sharedInstanse.answer!)
+        guard let answer = notification.userInfo!["answer"] as? String, let receiverID = notification.userInfo!["receiverID"] as? String else {return}
+        self.checkAnswerDialog(answer: answer, receiverID: receiverID)
     }
     
     func cancelAction() {
@@ -180,9 +168,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         
         let contactId = self.arrayContacts[indexPath.row-1]
         self.receiver = contactId.client_id
-        
-        speachVC = self.tabBarController?.viewControllers![1] as? SpeachViewController
-        speachVC?.receiverFromContacts = receiver
         
         guard let receiverJSON = receiver else { return }
         SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
@@ -245,8 +230,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                         self.tableView.reloadData()
                     }
                 }
-
-                
                 
                 let alert = UIAlertController(title: "Alert", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -264,4 +247,25 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 
     
 
+}
+
+extension ChatsTVC {
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(answerStartDialog(notification:)),
+                                               name: Notification.Name("StartDialog"),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(self.changeStatusOnLine(notification:)),
+                                               name: Notification.Name("ChangeStatusOnLine"),
+                                               object: nil)
+    }
+    
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
+    }
+    
 }

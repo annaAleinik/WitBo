@@ -39,6 +39,8 @@ class WBChatViewController: NOCChatViewController, SocketManagerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
+        
     }
     
     override func registerChatItemCells() {

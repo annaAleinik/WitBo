@@ -58,9 +58,11 @@ class TimerManager {
         let timeFromStr:Int? = Int(seconds)
         guard let timeLeft = timeFromStr else {return}
         
-        try! APIService.realm.write {
-            baseUserModel.timeLeft = timeLeft
-        }
+        WBRealmManager.shared.addData(object: baseUserModel)
+        
+//        try! APIService.realm.write {
+//            baseUserModel.timeLeft = timeLeft
+//        }
 
 		timer.invalidate()
 	}

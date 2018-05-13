@@ -26,7 +26,6 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var delegateConversation: SocketManagerСonversationDelegate?
     
     var receiver : String? = nil
-    var answer : String? = nil
     var answerStatusUser: String? = nil
     
     override func viewDidLoad() {
@@ -80,7 +79,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .messagePushed?:
 				break
             case .quitConversation?:
-                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
+//                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
                 self.delegateConversation?.conversationStopped()
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
@@ -95,14 +94,12 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
-                self.answer = parsDialogResponce?.message.answer
                 
-                guard let myAnswer = answer else {return}
+                guard let myAnswer = parsDialogResponce?.message.answer, let receiver = parsDialogResponce?.message.receiver else {return}
                 
-                let answerDict = ["answer": myAnswer]
+                let answerDict = ["answer": myAnswer, "receiverID":receiver]
                 
                 NotificationCenter.default.post(name: Notification.Name("StartDialog"), object: nil, userInfo: answerDict)
-
 			default:
 				break
 			}
@@ -143,8 +140,6 @@ class SocketManager: UIViewController, WebSocketDelegate {
     }
 	
 	//	MARK: private
-	
-    var textMessage : String? = nil
     
 	private func recievedMessage(message: MessageData?) {
 		if let dataMessage = message?.message {
@@ -155,9 +150,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
 				message.text = (translationData?.translatedText)!
 				self.delegate?.didReciveMessages(messages: message)
                
-                
-                let strDict = ["str": message.text]
-               self.textMessage = message.text
+                let strDict = ["message": message.text]
                 
                 NotificationCenter.default.post(name: Notification.Name("ReadTextNotification"), object: nil, userInfo: strDict)
 			})

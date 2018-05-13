@@ -9,9 +9,8 @@
 import UIKit
 
 enum TabBarControllers: Int {
-    case TabBarControllersSpeach = 0
-    case TabBarControllersSettings = 1
-    case TabBarControllersDialogs = 2
+    case TabBarControllersDialogs = 0
+    case TabBarControllersSettings = 1   
 }
 
 class WBTabBarViewController: UITabBarController {

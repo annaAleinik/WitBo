@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		080915042068ED6400814642 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080915032068ED6400814642 /* CustomAlertViewController.swift */; };
+		08125C8D20A88D8A00805353 /* WBRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08125C8C20A88D8A00805353 /* WBRealmManager.swift */; };
 		08307292207A30BC0012C556 /* CustomControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08307291207A30BC0012C556 /* CustomControllers.storyboard */; };
 		08307294207A4A790012C556 /* WBTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08307293207A4A790012C556 /* WBTabBarViewController.swift */; };
 		084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20C920691E620009E4B2 /* ChatsTVC.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		04CD1171E23D29322A838B8C /* Pods-Proj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proj.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proj/Pods-Proj.release.xcconfig"; sourceTree = "<group>"; };
 		080915032068ED6400814642 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		08125C8C20A88D8A00805353 /* WBRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBRealmManager.swift; sourceTree = "<group>"; };
 		08307291207A30BC0012C556 /* CustomControllers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomControllers.storyboard; sourceTree = "<group>"; };
 		08307293207A4A790012C556 /* WBTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTabBarViewController.swift; sourceTree = "<group>"; };
 		084A20C920691E620009E4B2 /* ChatsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTVC.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				843815D4206E0A750086BC5B /* AddsManager.swift */,
 				8BB75BBF2074D18E0067CCB2 /* SocketManager.swift */,
 				842724E920626ADD006B936E /* TimerManager.swift */,
+				08125C8C20A88D8A00805353 /* WBRealmManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
 				843815D5206E0A750086BC5B /* AddsManager.swift in Sources */,
+				08125C8D20A88D8A00805353 /* WBRealmManager.swift in Sources */,
 				84FE794220971B06008CC933 /* AlertDialogWait.swift in Sources */,
 				8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */,
 				8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */,
