@@ -11,7 +11,7 @@ import Speech
 import AVFoundation
 import Starscream
 
-class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate {
+class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate, TimeIntervalDelegate {
     
     @IBOutlet weak var nameUserChatLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -22,6 +22,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBOutlet weak var containerView: UIView!
     
 	let timerManager = TimerManager()
+    var timer: Timer!
+
     var STRMassage : String?
     let extraTime = 600
     
@@ -74,12 +76,15 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.recordButton.isEnabled = buttonState // 7
             }
         }
+        
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
 		timerManager.runTimer()
+        timerManager.delegateTimeInterval = self
         if self.timerManager.seconds == 0 {
             self.presentAlertController()
         }
@@ -98,6 +103,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         
         self.nameUserChatLabel.text = nil
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
+
+        
 	}
     
     // handler closed ads
@@ -124,6 +133,13 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         self.timeLabel.text = sec
     }
 	
+    //MARK: -- TimeIntervalDelegate
+    
+    @objc func runTimedCode() {
+        // send to server time from lable
+    }
+
+    
     //MARK:-- Speach
     
     @IBAction func recordButtonTapped(_ sender: UIButton) {
@@ -223,8 +239,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     //MARK : Action
     
-    // TODO : Delete this test method
-    @IBAction func send(_ sender: Any) {
+    @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -294,10 +309,11 @@ extension SpeachViewController {
     }
     
     @objc func readMessage(messages: String) {
-        let prefferedLanguage = Locale.preferredLanguages[0] as String
+       // let prefferedLanguage = Locale.preferredLanguages[0] as String
+        let lang = APIService.sharedInstance.userLang
         
         let utterance = AVSpeechUtterance(string: messages)
-        utterance.voice = AVSpeechSynthesisVoice(language: prefferedLanguage)
+        utterance.voice = AVSpeechSynthesisVoice(language: lang)
         utterance.postUtteranceDelay = 3.0
         
         let readSound = AVSpeechSynthesizer()

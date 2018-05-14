@@ -16,12 +16,17 @@ protocol TimerManagerDelegate {
     func updateUI(sec: String) 
 }
 
+protocol TimeIntervalDelegate {
+    func runTimedCode()
+}
+
 class TimerManager {
     
     static let timerManager = TimerManager()
     
     var delegate : TimerManagerDelegate? = nil
-    
+    var delegateTimeInterval : TimeIntervalDelegate? = nil
+
     var seconds = 1800
     var timer = Timer()
     var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
@@ -53,17 +58,13 @@ class TimerManager {
 	
 	func pauseTimer() {
         
-        let baseUserModel  = BaseUserModel()
+       // let baseUserModel  = BaseUserModel()
         
         let timeFromStr:Int? = Int(seconds)
         guard let timeLeft = timeFromStr else {return}
         
-        WBRealmManager.shared.addData(object: baseUserModel)
+        WBRealmManager.shared.updateTime(time: timeLeft)
         
-//        try! APIService.realm.write {
-//            baseUserModel.timeLeft = timeLeft
-//        }
-
 		timer.invalidate()
 	}
 }

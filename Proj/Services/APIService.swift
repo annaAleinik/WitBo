@@ -233,11 +233,11 @@ class APIService {
     
     func translate(q:String, completion : @escaping (TranslationModel?, Error?) -> Void) {
         
-        let prefferedLanguage = Locale.preferredLanguages[0] as String
-        print (prefferedLanguage) //en-US
+//        let prefferedLanguage = Locale.preferredLanguages[0] as String
+//        print (prefferedLanguage) //en-US
         
-        let arr = prefferedLanguage.components(separatedBy: "-")
-        let deviceLanguage = arr.first
+        let arr = userLang?.components(separatedBy: "-")
+        let deviceLanguage = arr?.first
         
         
         let params = ["q"       : q,

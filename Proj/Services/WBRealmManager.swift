@@ -11,8 +11,10 @@ import RealmSwift
 class WBRealmManager {
     
     private var database: Realm
+    private let userModel = BaseUserModel()
+
     static let shared = WBRealmManager()
-    
+
     private init () {
         database = try! Realm()
     }
@@ -35,6 +37,15 @@ class WBRealmManager {
     func deleteFromDb(object: BaseUserModel)   {
         try!   database.write {
             database.delete(object)
+        }
+    }
+    
+    func updateTime(time: Int) {
+
+//        let userObj = database.object(ofType: BaseUserModel.self, forPrimaryKey: String.self)
+        try! database.write {
+            userModel.timeLeft = time
+            try! database.commitWrite()
         }
     }
     
