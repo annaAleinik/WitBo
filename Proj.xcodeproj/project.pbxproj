@@ -26,7 +26,7 @@
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
-		842A393C20A9C6220020C323 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A393B20A9C6220020C323 /* File.swift */; };
+		842A393C20A9C6220020C323 /* LanguageSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A393B20A9C6220020C323 /* LanguageSourse.swift */; };
 		843815D5206E0A750086BC5B /* AddsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843815D4206E0A750086BC5B /* AddsManager.swift */; };
 		84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA7207CA5A400E3E953 /* LastMassageModel.swift */; };
 		8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BB82208F5E8700485A20 /* HeaderContacts.swift */; };
@@ -87,7 +87,7 @@
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
-		842A393B20A9C6220020C323 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		842A393B20A9C6220020C323 /* LanguageSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSourse.swift; sourceTree = "<group>"; };
 		843815D4206E0A750086BC5B /* AddsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddsManager.swift; sourceTree = "<group>"; };
 		84413CA7207CA5A400E3E953 /* LastMassageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMassageModel.swift; sourceTree = "<group>"; };
 		8444BB82208F5E8700485A20 /* HeaderContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContacts.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				841FA1CF207214C700D0064A /* TranslateModel.swift */,
-				842A393B20A9C6220020C323 /* File.swift */,
+				842A393B20A9C6220020C323 /* LanguageSourse.swift */,
 				840E4D6F2089FC6600993677 /* MessageModel.swift */,
 				847261A72087460800CBF9D8 /* Contact.swift */,
 				84535B332093535600E71F5D /* DialogModel.swift */,
@@ -516,7 +516,7 @@
 				09ADC8F72083A57600867EAF /* APIConstants.swift in Sources */,
 				08307294207A4A790012C556 /* WBTabBarViewController.swift in Sources */,
 				849732EF206B835E00B14175 /* UserModel.swift in Sources */,
-				842A393C20A9C6220020C323 /* File.swift in Sources */,
+				842A393C20A9C6220020C323 /* LanguageSourse.swift in Sources */,
 				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -279,7 +279,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-PA-UQB">
-                                <rect key="frame" x="132.5" y="335.5" width="55" height="30"/>
+                                <rect key="frame" x="132.5" y="295.5" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -289,44 +289,41 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KAm-IF-Sam">
-                                <rect key="frame" x="50" y="100.5" width="220" height="190"/>
+                                <rect key="frame" x="50" y="100.5" width="220" height="150"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bsf-pM-nSC">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gge-DD-g8O">
                                         <rect key="frame" x="0.0" y="40" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bVi-rz-mDb">
                                         <rect key="frame" x="0.0" y="80" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gvv-KP-PKI">
                                         <rect key="frame" x="0.0" y="120" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Xs-dVm">
-                                        <rect key="frame" x="0.0" y="160" width="220" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OiB-od-ogu">
-                                <rect key="frame" x="0.0" y="344" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OiB-od-ogu">
+                                <rect key="frame" x="0.0" y="406" width="320" height="162"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="hGf-AF-ZDK"/>
+                                    <constraint firstAttribute="height" constant="162" id="nwp-sy-TqW"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -341,6 +338,7 @@
                             <constraint firstItem="kYG-aX-oH0" firstAttribute="centerX" secondItem="R4j-6h-9ti" secondAttribute="centerX" id="efH-yy-FIo"/>
                             <constraint firstItem="KAm-IF-Sam" firstAttribute="leading" secondItem="lKW-sd-Yyd" secondAttribute="leading" constant="50" id="ftD-Bj-wsg"/>
                             <constraint firstItem="kYG-aX-oH0" firstAttribute="top" secondItem="lKW-sd-Yyd" secondAttribute="top" constant="20" id="mzd-td-whU"/>
+                            <constraint firstItem="OiB-od-ogu" firstAttribute="bottom" secondItem="lKW-sd-Yyd" secondAttribute="bottom" id="xiu-PJ-5Xv"/>
                             <constraint firstItem="xac-iE-mfG" firstAttribute="top" secondItem="R4j-6h-9ti" secondAttribute="top" id="yWP-r6-GCZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lKW-sd-Yyd"/>
@@ -348,9 +346,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailField" destination="gge-DD-g8O" id="Fxv-QV-b9C"/>
-                        <outlet property="langField" destination="nFg-Xs-dVm" id="K9v-rE-BVt"/>
                         <outlet property="nameField" destination="bsf-pM-nSC" id="t9p-b5-Pf7"/>
                         <outlet property="passwordField" destination="bVi-rz-mDb" id="FHU-fS-VGN"/>
+                        <outlet property="pickerView" destination="OiB-od-ogu" id="v5H-8F-eJE"/>
                         <outlet property="repiatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
                     </connections>
                 </viewController>
