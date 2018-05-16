@@ -103,14 +103,24 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 
-        let flagImage = UIImageView()
-        flagImage.image = flagArr[row].img
+//        let flagImage = UIImageView()
+//        flagImage.image = flagArr[row].img
+
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 60))
+
+        let flagImage = UIImageView(frame: CGRect(x: 0, y: 0, width:30, height: 30))
         
-//
-//        let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        var myImageView = UIImageView()
-//        let myView = CGRect(x: 0.0, y: 0.0, width: pickerView.bounds.width - 30, height: 60.0)
+         flagImage.image = flagArr[row].img
         
-                return flagImage
+         let rowString = self.langSourse[row].name
+        
+        let myLabel = UILabel(frame: CGRect(x: 60, y: 0, width: pickerView.bounds.width - 90, height: 60))
+        
+        myLabel.text = rowString
+
+        myView.addSubview(myLabel)
+        myView.addSubview(flagImage)
+
+        return myView
     }
 }
