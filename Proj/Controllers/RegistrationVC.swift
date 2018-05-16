@@ -9,7 +9,6 @@
 import UIKit
 
 class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-   
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var nameField: UITextField!
@@ -64,6 +63,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     //Preesser return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -97,14 +97,12 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.langSourse[row].name
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.language = self.langSourse[row].code
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
-//        let flagImage = UIImageView()
-//        flagImage.image = flagArr[row].img
 
         let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 60))
 

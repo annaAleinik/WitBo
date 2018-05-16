@@ -18,10 +18,11 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var settingsLable: UILabel!
     @IBOutlet weak var fullNameUsersLable: UILabel!
+    @IBOutlet weak var voiceOverSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Add a background view to the table view
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
@@ -126,5 +127,21 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         UIGraphicsEndImageContext()
         return UIImage(data: imageData!)!
     }
+    
+    let defaults = UserDefaults.standard
+    var switchON : Bool = false
+    
+    @IBAction func checkState(_ sender: AnyObject) {
+        
+        if voiceOverSwitch.isOn{
+            switchON = true
+            defaults.set(switchON, forKey: "switchON")
+        }
+        if voiceOverSwitch.isOn == false{
+            switchON = false
+            defaults.set(switchON, forKey: "switchON")
+        }
+    }
+
 
 }

@@ -38,7 +38,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         return viewController
     }
 
-    
+    let defaults = UserDefaults.standard
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -310,7 +311,12 @@ extension SpeachViewController {
     
     @objc func readMessage(messages: String) {
        // let prefferedLanguage = Locale.preferredLanguages[0] as String
+        
         let lang = APIService.sharedInstance.userLang
+        
+        if defaults.value(forKey: "switchON") != nil{
+            let switchON: Bool = defaults.value(forKey: "switchON")  as! Bool
+            if switchON == true{
         
         let utterance = AVSpeechUtterance(string: messages)
         utterance.voice = AVSpeechSynthesisVoice(language: lang)
@@ -319,6 +325,8 @@ extension SpeachViewController {
         let readSound = AVSpeechSynthesizer()
         readSound.delegate = self
         readSound.speak(utterance)
+            }
+        }
     }
     
 }

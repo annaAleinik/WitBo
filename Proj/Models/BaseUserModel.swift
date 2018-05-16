@@ -17,7 +17,7 @@ class BaseUserModel: Object {
     @objc dynamic var name = ""
     @objc dynamic var email = ""
     @objc dynamic var lang = ""
-    @objc dynamic var timeLeft = 1800
+    @objc dynamic var timeLeft = 0
     
     override static func primaryKey() -> String? {
         return "token"
