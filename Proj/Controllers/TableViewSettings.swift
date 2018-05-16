@@ -20,6 +20,12 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var fullNameUsersLable: UILabel!
     @IBOutlet weak var voiceOverSwitch: UISwitch!
     
+    override func viewWillAppear(_ animated: Bool) {
+        let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
+        voiceOverSwitch.isOn = statusSwitch
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,13 +44,10 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         // byte array for server
         let data = UIImageJPEGRepresentation(image, 1.0)
         let arrByte = data?.base64EncodedString() // Attay bytes for server
-
-        
     }
     
     //MARK: -- Action
 
-    
     @IBAction func openCameraButton(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
@@ -128,18 +131,20 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         return UIImage(data: imageData!)!
     }
     
-    let defaults = UserDefaults.standard
+    //let defaults = UserDefaults.standard
     var switchON : Bool = false
     
     @IBAction func checkState(_ sender: AnyObject) {
         
         if voiceOverSwitch.isOn{
             switchON = true
-            defaults.set(switchON, forKey: "switchON")
+            UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
+            //defaults.set(switchON, forKey: "switchON")
         }
         if voiceOverSwitch.isOn == false{
             switchON = false
-            defaults.set(switchON, forKey: "switchON")
+            UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
+            //defaults.set(switchON, forKey: "switchON")
         }
     }
 

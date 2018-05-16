@@ -27,6 +27,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     
     var receiver : String? = nil
     var answerStatusUser: String? = nil
+    var dialogResponse: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +97,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
                 
                 guard let myAnswer = parsDialogResponce?.message.answer, let receiver = parsDialogResponce?.message.receiver else {return}
+                
+                self.dialogResponse = myAnswer
                 
                 let answerDict = ["answer": myAnswer, "receiverID":receiver]
                 

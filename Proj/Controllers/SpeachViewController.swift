@@ -84,7 +84,13 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
-		timerManager.runTimer()
+        
+        let respDialog = SocketManager.sharedInstanse.dialogResponse
+        
+        if respDialog == "1"{
+            timerManager.runTimer()
+        }
+        
         timerManager.delegateTimeInterval = self
         if self.timerManager.seconds == 0 {
             self.presentAlertController()

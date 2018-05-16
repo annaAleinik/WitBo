@@ -17,7 +17,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     @IBOutlet weak var titleChatLable: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CellContacts", bundle: nil), forCellReuseIdentifier: "CustomCellContcts")
@@ -110,7 +109,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             self.dismiss(animated: false, completion: nil)
             let speachViewController = SpeachViewController.viewController(receiverID: receiverID)
             self.present(speachViewController, animated: true, completion: nil)
-            
+
         }
     }
 
