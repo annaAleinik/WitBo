@@ -89,6 +89,15 @@
 		8400FA5D20AD557F00A36EE7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		8400FA5F20AD618300A36EE7 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		8400FA6020AD618300A36EE7 /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		8400FA6720ADA65C00A36EE7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		8400FA6820ADA65D00A36EE7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8400FA6920ADA65D00A36EE7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8400FA6A20ADA80800A36EE7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		8400FA6B20ADA80800A36EE7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8400FA6C20ADA80900A36EE7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8400FA6D20ADA81900A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		8400FA6E20ADA81900A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8400FA6F20ADA81A00A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		840E4D6F2089FC6600993677 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -418,6 +427,9 @@
 				en,
 				Base,
 				ru,
+				fr,
+				de,
+				es,
 			);
 			mainGroup = 84FC5115205FB6E400A8F6DD;
 			productRefGroup = 84FC511F205FB6E400A8F6DD /* Products */;
@@ -573,6 +585,9 @@
 			children = (
 				09AFA1FD20614C600064B22F /* en */,
 				09AFA1FF20614CAE0064B22F /* ru */,
+				8400FA6920ADA65D00A36EE7 /* fr */,
+				8400FA6C20ADA80900A36EE7 /* de */,
+				8400FA6F20ADA81A00A36EE7 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -581,6 +596,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				84FC5126205FB6E400A8F6DD /* Base */,
+				8400FA6720ADA65C00A36EE7 /* fr */,
+				8400FA6A20ADA80800A36EE7 /* de */,
+				8400FA6D20ADA81900A36EE7 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -589,6 +607,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				84FC512B205FB6E400A8F6DD /* Base */,
+				8400FA6820ADA65D00A36EE7 /* fr */,
+				8400FA6B20ADA80800A36EE7 /* de */,
+				8400FA6E20ADA81900A36EE7 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

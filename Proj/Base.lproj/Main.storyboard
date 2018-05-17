@@ -146,6 +146,7 @@
                         <outlet property="passwordErrorLabel" destination="XUe-fC-M15" id="uZA-Gd-Df3"/>
                         <outlet property="passwordField" destination="PNG-4E-i2d" id="PKa-rz-lVN"/>
                         <outlet property="registrationButton" destination="LBo-x9-y8Z" id="q9T-Bf-NXM"/>
+                        <outlet property="signUpButton" destination="LLJ-aE-IS3" id="lpo-ed-iOH"/>
                         <outlet property="welcomeLable" destination="AQj-W0-5ts" id="pMw-T2-NAe"/>
                     </connections>
                 </viewController>
@@ -252,8 +253,11 @@
                     <tabBarItem key="tabBarItem" title="Item" image="icon_message" id="i9h-Uu-3oQ"/>
                     <navigationItem key="navigationItem" id="lM6-Vn-yJx"/>
                     <connections>
+                        <outlet property="backButton" destination="1O5-CC-WQP" id="HBg-AC-pOc"/>
+                        <outlet property="clickAndSpeacLabel" destination="Lda-WK-IoM" id="S8t-fn-Q2o"/>
                         <outlet property="containerView" destination="3aA-P1-a6m" id="YZi-xd-y6M"/>
                         <outlet property="lableMassage" destination="mSb-VC-Dt2" id="Nqd-iH-rds"/>
+                        <outlet property="lastMessageLabel" destination="9oH-zE-F6v" id="0ZJ-RK-LLq"/>
                         <outlet property="nameUserChatLabel" destination="JDi-Fh-i2v" id="xgL-Js-73a"/>
                         <outlet property="recordButton" destination="WSU-5G-oUP" id="HQB-Sn-zac"/>
                         <outlet property="timeLabel" destination="lrU-Z9-EJI" id="Xgv-LZ-WhH"/>
@@ -351,6 +355,7 @@
                         <outlet property="nameField" destination="bsf-pM-nSC" id="t9p-b5-Pf7"/>
                         <outlet property="passwordField" destination="bVi-rz-mDb" id="FHU-fS-VGN"/>
                         <outlet property="pickerView" destination="OiB-od-ogu" id="v5H-8F-eJE"/>
+                        <outlet property="registrationButton" destination="oe0-PA-UQB" id="PR6-Nt-s95"/>
                         <outlet property="repiatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
                     </connections>
                 </viewController>
@@ -440,7 +445,7 @@
                             <outlet property="delegate" destination="dkb-Vi-SbL" id="XsI-WD-JjP"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="XUT-CU-XMU"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_notice-29" id="XUT-CU-XMU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIw-cr-EHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,10 +458,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="28" id="1ba-lG-VpO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Tb-Wz-lwC">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -491,6 +498,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="7qE-sz-E2T" firstAttribute="centerY" secondItem="BsT-q9-AXK" secondAttribute="centerY" id="3eW-jr-zHw"/>
                                                 <constraint firstItem="dTJ-6Q-qDl" firstAttribute="centerY" secondItem="7qE-sz-E2T" secondAttribute="centerY" id="4nW-WI-Ug1"/>
@@ -498,6 +506,7 @@
                                                 <constraint firstItem="dTJ-6Q-qDl" firstAttribute="leading" secondItem="7qE-sz-E2T" secondAttribute="trailing" constant="10" id="V43-Q0-Pri"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RK4-L5-Ubu">
                                         <rect key="frame" x="0.0" y="115" width="320" height="44"/>
@@ -514,7 +523,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -542,7 +553,9 @@
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nRL-kn-0HR">
                                         <rect key="frame" x="0.0" y="253" width="320" height="44"/>
@@ -575,7 +588,9 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -597,7 +612,9 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wGu-dE-KQt">
                                         <rect key="frame" x="0.0" y="341" width="320" height="44"/>
@@ -606,6 +623,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -650,6 +668,7 @@
         <image name="icon_contacts" width="32" height="32"/>
         <image name="icon_logo" width="512" height="512"/>
         <image name="icon_message" width="32" height="32"/>
+        <image name="icon_notice-29" width="29" height="29"/>
         <image name="icon_settings" width="32" height="32"/>
     </resources>
 </document>

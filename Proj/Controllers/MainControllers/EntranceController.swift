@@ -86,6 +86,10 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         
         let strPassword = NSLocalizedString("STR_PASSWORD", comment: "")
         passwordField.placeholder = strPassword
+        
+        let strSignUp = NSLocalizedString("STR_SIGNUP", comment: "")
+        self.signUpButton.setTitle(strSignUp, for: .normal)
+
        
         //MARK: -- Validator
         

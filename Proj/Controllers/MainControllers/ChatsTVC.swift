@@ -24,8 +24,12 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         tableView.register(UINib(nibName: "HeaderContacts", bundle: nil), forCellReuseIdentifier: "HeaderContacts")
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
+        
+        //Localized
+        
+        let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
+        titleChatLable.text = strChat
 
-        titleChatLable.text = "CHATS"
   
     }
 

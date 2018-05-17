@@ -10,6 +10,7 @@ import UIKit
 
 class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -35,6 +36,23 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        //Localized
+        
+        let strName = NSLocalizedString("STR_NAME", comment: "")
+        emailField.placeholder = strName
+        
+        let strEmail = NSLocalizedString("STR_EMAIL", comment: "")
+        nameField.placeholder = strEmail
+
+        let strPass = NSLocalizedString("STR_PASSWORD", comment: "")
+        passwordField.placeholder = strPass
+
+        let strRepeatPass = NSLocalizedString("STR_REPEAT PASSWORD", comment: "")
+        repiatPassword.placeholder = strRepeatPass
+        
+        let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
+        registrationButton.setTitle(strRegistr, for: .normal)
 
     }
 

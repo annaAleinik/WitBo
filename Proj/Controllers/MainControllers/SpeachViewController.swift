@@ -12,11 +12,12 @@ import AVFoundation
 import Starscream
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate, TimeIntervalDelegate {
-    
+    @IBOutlet weak var clickAndSpeacLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var lastMessageLabel: UILabel!
     @IBOutlet weak var nameUserChatLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lableMassage: UILabel!
-    
     @IBOutlet weak var ansverMassageLable: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var containerView: UIView!
@@ -79,6 +80,19 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
         
         timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        
+        //Localized
+        
+        let strClickAndSpeac = NSLocalizedString("STR_RECORDTOUCH", comment: "")
+        clickAndSpeacLabel.text = strClickAndSpeac
+        
+        let strLastMessage = NSLocalizedString("STR_LASTMASSAGE", comment: "")
+        lastMessageLabel.text = strLastMessage
+        
+        let strBack = NSLocalizedString("STR_BACK", comment: "")
+        backButton.setTitle(strBack, for: .normal)
+
+
     }
     
 	override func viewWillAppear(_ animated: Bool) {

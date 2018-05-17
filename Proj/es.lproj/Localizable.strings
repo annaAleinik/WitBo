@@ -1,0 +1,30 @@
+/*
+  Localization.strings
+  Proj
+
+  Created by Roman Litoshko on 3/20/18.
+  Copyright © 2018 Admin. All rights reserved.
+*/
+
+STR_WELCOME = "Bienvenido";
+STR_EMAIL = "E-mail";
+STR_PASSWORD = "Contraseña";
+STR_SIGNUP = "Regístrate";
+STR_REGISTRATION = "Registro";
+STR_RECORDTOUCH = "Haga clic y hable";
+STR_LASTMASSAGE = "Último masaje";
+STR_SIGNOUT = "Desconectar";
+STR_CONTACTS = "Contactos";
+STR_SETTINGS = "Configuraciones";
+STR_VOISE = "Narración";
+STR_AVATAR = "Cambiar Fotografía";
+STR_CAMERA = "Cámara";
+STR_GALLERY = "Galería";
+STR_NOTIFICATION = "Notificación";
+STR_NAME = "Nombre";
+STR_REPEAT_PASSWORD = "Repite la contraseña";
+STR_BACK = "Espalda";
+
+
+
+

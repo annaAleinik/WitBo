@@ -1,4 +1,4 @@
-/* 
+/*
   Localization.strings
   Proj
 
@@ -9,11 +9,18 @@
 STR_WELCOME = "Welcome";
 STR_EMAIL = "E-mail";
 STR_PASSWORD = "Password";
-STR_SIGNUP = "Sign Up";
+STR_SIGNUP = "SignUp";
 STR_REGISTRATION = "Registration";
 STR_RECORDTOUCH = "Click and speak";
 STR_LASTMASSAGE = "Last massage";
-STR_SIGNOUT = "Sign Out";
+STR_SIGNOUT = "SignOut";
 STR_CONTACTS = "Contacts";
 STR_SETTINGS = "Settings";
-
+STR_VOISE = "Voice-over";
+STR_AVATAR = "Change photo";
+STR_CAMERA = "Camera";
+STR_GALLERY = "Gallery";
+STR_NOTIFICATION = "Notification";
+STR_NAME = "Name";
+STR_REPEAT_PASSWORD = "Repeat password";
+STR_BACK = "Back";

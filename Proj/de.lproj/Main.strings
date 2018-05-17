@@ -1,0 +1,81 @@
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "1O5-CC-WQP"; */
+"1O5-CC-WQP.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Change utteranse"; ObjectID = "3ap-ZB-uan"; */
+"3ap-ZB-uan.text" = "Change utteranse";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4Tb-Wz-lwC"; */
+"4Tb-Wz-lwC.text" = "Label";
+
+/* Class = "UITextField"; text = "example@mail.com"; ObjectID = "7Ki-55-v66"; */
+"7Ki-55-v66.text" = "example@mail.com";
+
+/* Class = "UILabel"; text = "Последние сообщеия"; ObjectID = "9oH-zE-F6v"; */
+"9oH-zE-F6v.text" = "Последние сообщеия";
+
+/* Class = "UILabel"; text = "Добро пожаловать"; ObjectID = "AQj-W0-5ts"; */
+"AQj-W0-5ts.text" = "Добро пожаловать";
+
+/* Class = "UIButton"; normalTitle = "Регистрация"; ObjectID = "LBo-x9-y8Z"; */
+"LBo-x9-y8Z.normalTitle" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Вход"; ObjectID = "LLJ-aE-IS3"; */
+"LLJ-aE-IS3.normalTitle" = "Вход";
+
+/* Class = "UILabel"; text = "Нажмите и говорите"; ObjectID = "Lda-WK-IoM"; */
+"Lda-WK-IoM.text" = "Нажмите и говорите";
+
+/* Class = "UILabel"; text = "Change photo"; ObjectID = "OXq-rZ-U7z"; */
+"OXq-rZ-U7z.text" = "Change photo";
+
+/* Class = "UITextField"; text = "123456"; ObjectID = "PNG-4E-i2d"; */
+"PNG-4E-i2d.text" = "123456";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Sbf-5e-ZjA"; */
+"Sbf-5e-ZjA.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "XUT-CU-XMU"; */
+"XUT-CU-XMU.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dTJ-6Q-qDl"; */
+"dTJ-6Q-qDl.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Camera"; ObjectID = "deq-Ok-vdZ"; */
+"deq-Ok-vdZ.normalTitle" = "Camera";
+
+/* Class = "UITableViewController"; title = "Notifications"; ObjectID = "dkb-Vi-SbL"; */
+"dkb-Vi-SbL.title" = "Notifications";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "i9h-Uu-3oQ"; */
+"i9h-Uu-3oQ.title" = "Item";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "kYG-aX-oH0"; */
+"kYG-aX-oH0.text" = "Sign Up";
+
+/* Class = "UIViewController"; title = "RegisterVC"; ObjectID = "kjR-Uw-vIj"; */
+"kjR-Uw-vIj.title" = "RegisterVC";
+
+/* Class = "UITableViewSection"; headerTitle = "User info"; ObjectID = "lCe-8Y-kiH"; */
+"lCe-8Y-kiH.headerTitle" = "User info";
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "lrU-Z9-EJI"; */
+"lrU-Z9-EJI.text" = "00:00";
+
+/* Class = "UILabel"; text = "Text massage"; ObjectID = "mSb-VC-Dt2"; */
+"mSb-VC-Dt2.text" = "Text massage";
+
+/* Class = "UIButton"; normalTitle = "SignOut"; ObjectID = "ocJ-oh-MEl"; */
+"ocJ-oh-MEl.normalTitle" = "SignOut";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "oe0-PA-UQB"; */
+"oe0-PA-UQB.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "WithB0"; ObjectID = "sCo-TD-sj9"; */
+"sCo-TD-sj9.text" = "WithB0";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "xyd-GU-oQ9"; */
+"xyd-GU-oQ9.headerTitle" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "Gallery"; ObjectID = "yPB-Eb-cBq"; */
+"yPB-Eb-cBq.normalTitle" = "Gallery";
