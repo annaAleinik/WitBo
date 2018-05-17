@@ -22,6 +22,9 @@
 		08C75425208CC59D0026A0C3 /* СhatInputTextPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C75424208CC59D0026A0C3 /* СhatInputTextPanel.swift */; };
 		09ADC8F72083A57600867EAF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ADC8F62083A57600867EAF /* APIConstants.swift */; };
 		09AFA1FC20614C600064B22F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09AFA1FE20614C600064B22F /* Localizable.strings */; };
+		8400FA5E20AD557F00A36EE7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400FA5D20AD557F00A36EE7 /* NotificationController.swift */; };
+		8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400FA5F20AD618300A36EE7 /* NotificationCell.swift */; };
+		8400FA6220AD618300A36EE7 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8400FA6020AD618300A36EE7 /* NotificationCell.xib */; };
 		840E4D702089FC6600993677 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* MessageModel.swift */; };
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
@@ -83,6 +86,9 @@
 		09AFA1FD20614C600064B22F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AFA1FF20614CAE0064B22F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27ED07577535721B51ED6A5B /* Pods_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8400FA5D20AD557F00A36EE7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		8400FA5F20AD618300A36EE7 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		8400FA6020AD618300A36EE7 /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		840E4D6F2089FC6600993677 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -208,22 +214,41 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8400FA6320AD72EC00A36EE7 /* MainControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
+				849945E72063E74200E631A9 /* RegistrationVC.swift */,
+				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
+				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
+				8400FA5D20AD557F00A36EE7 /* NotificationController.swift */,
+				84A19C272062B35F0043751A /* TableViewSettings.swift */,
+			);
+			path = MainControllers;
+			sourceTree = "<group>";
+		};
+		8400FA6420AD734600A36EE7 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				84FE794020971B06008CC933 /* AlertDialogWait.swift */,
+				848818072099D8110062A8B6 /* QuitConversationAlert.swift */,
+				080915032068ED6400814642 /* CustomAlertViewController.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		84A19C242062A5EB0043751A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				08307293207A4A790012C556 /* WBTabBarViewController.swift */,
 				08C75416208CAE130026A0C3 /* Conversations */,
-				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
-				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
-				848818072099D8110062A8B6 /* QuitConversationAlert.swift */,
-				84A19C272062B35F0043751A /* TableViewSettings.swift */,
+				8400FA6320AD72EC00A36EE7 /* MainControllers */,
+				8400FA6420AD734600A36EE7 /* Alerts */,
 				8BB75BBB2074AC490067CCB2 /* CellContacts.swift */,
-				849945E72063E74200E631A9 /* RegistrationVC.swift */,
-				84FE794020971B06008CC933 /* AlertDialogWait.swift */,
-				84A8B9E62060F8A3005A7200 /* EntranceController.swift */,
-				080915032068ED6400814642 /* CustomAlertViewController.swift */,
 				8444BB82208F5E8700485A20 /* HeaderContacts.swift */,
 				8444BB83208F5E8700485A20 /* HeaderContacts.xib */,
+				8400FA5F20AD618300A36EE7 /* NotificationCell.swift */,
+				8400FA6020AD618300A36EE7 /* NotificationCell.xib */,
 				8BB75BBC2074AC490067CCB2 /* CellContacts.xib */,
 			);
 			path = Controllers;
@@ -418,6 +443,7 @@
 				09AFA1FC20614C600064B22F /* Localizable.strings in Resources */,
 				84FC5129205FB6E400A8F6DD /* Assets.xcassets in Resources */,
 				84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */,
+				8400FA6220AD618300A36EE7 /* NotificationCell.xib in Resources */,
 				08307292207A30BC0012C556 /* CustomControllers.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +523,8 @@
 				847261A82087460800CBF9D8 /* Contact.swift in Sources */,
 				08C75415208C9D430026A0C3 /* WBChatViewController.swift in Sources */,
 				08C75422208CB3A70026A0C3 /* Message.swift in Sources */,
+				8400FA5E20AD557F00A36EE7 /* NotificationController.swift in Sources */,
+				8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
 				084A20CC206930AD0009E4B2 /* LoginModel.swift in Sources */,
 				848818082099D8110062A8B6 /* QuitConversationAlert.swift in Sources */,

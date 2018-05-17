@@ -23,17 +23,15 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOverSwitch.isOn = statusSwitch
+        
+        let backgroundImage = UIImage(named: "background.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Add a background view to the table view
-        let backgroundImage = UIImage(named: "background.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
-        
         self.settingsLable.text = "Settings"
         
         self.fullNameUsersLable.text = APIService.sharedInstance.userName
@@ -58,6 +56,7 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
            }
         
     }
+    
     
     @IBAction func openPhotoLibraryButton(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {

@@ -10,7 +10,8 @@ import UIKit
 
 enum TabBarControllers: Int {
     case TabBarControllersDialogs = 0
-    case TabBarControllersSettings = 1   
+    case TabBarControllersSettings = 1
+    case TabBarControllerNotifications = 2
 }
 
 class WBTabBarViewController: UITabBarController {
@@ -18,7 +19,15 @@ class WBTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Access the elements (NSArray of UITabBarItem) (tabs) of the tab Bar
+        let tabItems = self.tabBar.items as NSArray!
+        
+        // In this case we want to modify the badge number of the third tab:
+        let tabItem = tabItems![2] as! UITabBarItem
+        
+        // Now set the badge of the third tab
+        tabItem.badgeValue = "1"
+
     }
 
     override func didReceiveMemoryWarning() {

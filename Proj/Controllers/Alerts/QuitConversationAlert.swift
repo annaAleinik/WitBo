@@ -17,6 +17,7 @@ class QuitConversationAlert: UIViewController {
      var delegateQC : QuitConversationAlertDelegate?
 
     @IBAction func quitConversationButton(_ sender: Any) {
+        self.present(ChatsTVC(), animated: false, completion: nil)
         self.dismiss(animated: false, completion: nil)
         self.delegateQC?.quitConversation()
     }
