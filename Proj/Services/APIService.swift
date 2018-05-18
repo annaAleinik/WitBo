@@ -140,8 +140,8 @@ class APIService {
                         baseUserModel.lang = userData.language
                         baseUserModel.secret = self.secret!
                         baseUserModel.token = token
-                        
-                        WBRealmManager.shared.addData(object: baseUserModel)
+                        let manager = WBRealmManager()
+                        manager.addData(object: baseUserModel)
                         
                         completion(true, nil)
                     }catch let error{

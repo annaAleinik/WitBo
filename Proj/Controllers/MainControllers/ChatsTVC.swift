@@ -56,7 +56,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                 return
             }
             if let array = contacts {
-                self.arrayContacts = array
+                self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                 self.tableView.reloadData()
 
             }
@@ -153,7 +153,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
         let contact = self.arrayContacts[(indexPath.row-1)]
-
+        
         cell.nameContactsLablel.text = contact.name
         
         if contact.online == 1{
@@ -197,7 +197,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                             return
                         }
                         if let array = contacts {
-                            self.arrayContacts = array
+                            self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                             self.tableView.reloadData()
                         }
                     }
@@ -229,16 +229,15 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                         return
                     }
                     if let array = contacts {
-                        self.arrayContacts = array
+                        self.arrayContacts = array.sorted(by: { $0.name < $1.name })
                         self.tableView.reloadData()
                     }
                 }
                 
-                let alert = UIAlertController(title: "Alert", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
         }
     }
 
@@ -247,8 +246,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         vc.delegate = self
         self.present(vc, animated: false, completion: nil)
     }
-
-    
 
 }
 

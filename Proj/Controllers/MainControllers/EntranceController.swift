@@ -89,6 +89,9 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         
         let strSignUp = NSLocalizedString("STR_SIGNUP", comment: "")
         self.signUpButton.setTitle(strSignUp, for: .normal)
+        
+        let strRegistration = NSLocalizedString("STR_REGISTRATION", comment: "")
+        self.registrationButton.setTitle(strRegistration, for: .normal)
 
        
         //MARK: -- Validator

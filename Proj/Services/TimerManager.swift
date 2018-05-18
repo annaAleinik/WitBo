@@ -61,11 +61,19 @@ class TimerManager {
        // let baseUserModel  = BaseUserModel()
         
         let timeFromStr:Int? = Int(seconds)
-        guard let timeLeft = timeFromStr else {return}
         
-        WBRealmManager.shared.updateTime(time: timeLeft)
+        guard let timeLeft = timeFromStr else {return}
+        guard let token = APIService.sharedInstance.token else { return }
+        guard let secret = APIService.sharedInstance.secret else { return }
+        guard let name = APIService.sharedInstance.userName else { return }
+        guard let email = APIService.sharedInstance.userEmail else { return }
+        guard let lang = APIService.sharedInstance.userLang else { return }
         
 		timer.invalidate()
+        
+        let manager = WBRealmManager()
+        manager.updateTime(forToken: token, secet: secret, email: email, name: name, lang: lang, timeLeft: timeLeft)
+
 	}
 }
 

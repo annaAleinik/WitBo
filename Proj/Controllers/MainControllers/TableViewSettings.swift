@@ -77,7 +77,7 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
    
     @IBAction func signOutButton(_ sender: Any) {
 
-        WBRealmManager.shared.deleteAllFromDatabase()
+        WBRealmManager().deleteAllFromDatabase()
 
         UserDefaults.standard.removeObject(forKey: "SEKRET")
         UserDefaults.standard.removeObject(forKey: "TOKRN")

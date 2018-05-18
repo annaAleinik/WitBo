@@ -19,6 +19,7 @@
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ehN-6W-Z8k">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="kjR-Uw-vIj" kind="relationship" relationship="rootViewController" id="aGO-Rh-aik"/>
@@ -287,11 +288,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-PA-UQB">
                                 <rect key="frame" x="132.5" y="295.5" width="55" height="30"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="tapRegistratiomButton:" destination="upA-82-Ip8" eventType="touchUpInside" id="Pya-6r-Pzx"/>
                                     <action selector="tapRegistratiomButton:" destination="gYQ-Nr-kYb" eventType="touchUpInside" id="uou-rZ-TLc"/>
+                                    <segue destination="kjR-Uw-vIj" kind="show" id="Bf4-hC-MnS"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KAm-IF-Sam">
@@ -362,7 +364,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IpQ-Cr-7sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gYQ-Nr-kYb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="493" y="-1524"/>
+            <point key="canvasLocation" x="491.25" y="-1524.2957746478874"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="iFN-i5-rHs">
@@ -606,7 +608,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocJ-oh-MEl">
                                                     <rect key="frame" x="16" y="3" width="73" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="SignOut"/>
+                                                    <state key="normal" title="SignOut">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="signOutButton:" destination="uTW-78-Iz2" eventType="touchUpInside" id="4UQ-Vk-1Up"/>
                                                     </connections>
@@ -671,4 +675,7 @@
         <image name="icon_notice-29" width="29" height="29"/>
         <image name="icon_settings" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bf4-hC-MnS"/>
+    </inferredMetricsTieBreakers>
 </document>

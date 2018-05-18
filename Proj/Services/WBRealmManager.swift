@@ -10,19 +10,21 @@ import RealmSwift
 
 class WBRealmManager {
     
-    private var database: Realm
+    private var database = try! Realm()
     private let userModel = BaseUserModel()
 
-    static let shared = WBRealmManager()
-
-    private init () {
-        database = try! Realm()
+//    static let shared = WBRealmManager()
+//
+//    private init () {
+//        database = try! Realm()
+//    }
+    
+    
+    func getObjFromBase() -> BaseUserModel {
+        let user = database.objects(BaseUserModel.self)
+        return user.first!
     }
     
-//    func getDataFromDB() ->   Results<BaseUserModel> {
-//        let results: Results<Route> = database.objects(BaseUserModel.self)
-//        return results
-//    }
     func addData(object: BaseUserModel)   {
         try! database.write {
             database.add(object, update: true)
@@ -40,13 +42,19 @@ class WBRealmManager {
         }
     }
     
-    func updateTime(time: Int) {
-
-//        let userObj = database.object(ofType: BaseUserModel.self, forPrimaryKey: String.self)
+    func updateTime(forToken: String, secet: String, email: String,name: String, lang: String, timeLeft: Int) {
+        
         try! database.write {
-            userModel.timeLeft = time
-            try! database.commitWrite()
+            userModel.name = name
+            userModel.token = forToken
+            userModel.timeLeft = timeLeft
+            userModel.email = email
+            userModel.secret = secet
+            userModel.lang = lang
+
+            database.add(userModel, update: true)
         }
     }
+    
     
 }

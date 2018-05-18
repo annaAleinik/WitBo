@@ -20,6 +20,16 @@ class BaseUserModel: Object {
     @objc dynamic var timeLeft = 0
     
     override static func primaryKey() -> String? {
-        return "token"
+        return "name"
+    }
+    
+    convenience init(secret: String, token: String, name: String, email: String, lang: String, timeLeft: Int){
+        self.init()
+        self.secret = secret
+        self.token = token
+        self.email = email
+        self.name = name
+        self.lang = lang
+        self.timeLeft = timeLeft
     }
 }

@@ -17,6 +17,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repiatPassword: UITextField!
     
+    
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
@@ -56,6 +57,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
     }
 
+    //MARK:--Action
     
     @IBAction func tapRegistratiomButton(_ sender: UIButton) {
         
@@ -75,6 +77,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         self.present(vc, animated: true, completion: nil)
         
     }
+    
     
     // MARK: - KeyBoard hide
     
