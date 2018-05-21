@@ -10,6 +10,16 @@ import Foundation
 import Alamofire
 import RealmSwift
 
+struct WBCustomResponce {
+    let success : Bool
+    let message : String
+    
+    public init(success: Bool, messages: String?){
+        self.success = success
+        self.message = messages!
+    }
+}
+
 class APIService {
     
     static let sharedInstance = APIService()
@@ -185,23 +195,34 @@ class APIService {
         
     }
     
-    func addContact(token : String, email : String, completion : @escaping (Bool, Error?) -> Void){
+    func addContact(token : String, email : String, completion : @escaping (WBCustomResponce, Error?) -> Void){
         
         let params = ["token"     : token,
-                      "email"   :email]
+                      "email"     :email]
         
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/contact/add")
         
-        Alamofire.request(url!, method: HTTPMethod.post , parameters: params ).responseJSON { (response) in
-            print(response)
+        Alamofire.request(url!, method: HTTPMethod.post, parameters:params)
+            .responseJSON { response in
+                print(response)
+
             switch response.result {
             case .success(_ ):
-                completion(true, nil)
-            case .failure(let error):
+                do{
+                    let dataContact = try JSONDecoder().decode(ContactsModel.self, from: response.data!)
+                    
+                    let resp = WBCustomResponce.init(success: true, messages: dataContact.message)
+
+                    completion(resp, nil)
+
+                }catch let error{
+                    print(error)
+                }case .failure(let error):
                 print(error)
-                completion(false, error)
+                
+                let resp = WBCustomResponce.init(success: false, messages: nil)
+                completion(resp, error)
             }
-            
             
         }
     }

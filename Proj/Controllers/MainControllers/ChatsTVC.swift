@@ -197,7 +197,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                             return
                         }
                         if let array = contacts {
-                            self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
+                           self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                             self.tableView.reloadData()
                         }
                     }
@@ -221,8 +221,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 //    MARK: -- HeaderCellDelegate
     func addContact(email: String) {
         
-        APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (success, error) in
-            if success {
+        APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (resp, error) in
+            if resp.success {
                 APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
                     guard error == nil else {
                         print(error?.localizedDescription)
@@ -231,12 +231,13 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                     if let array = contacts {
                         self.arrayContacts = array.sorted(by: { $0.name < $1.name })
                         self.tableView.reloadData()
-                    }
-                }
+                        
+                        let alert = UIAlertController(title: "", message: resp.message, preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }                 }
                 
-                let alert = UIAlertController(title: "", message: "Contact add", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
             }
         }
     }

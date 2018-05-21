@@ -24,3 +24,7 @@ struct Contact : Codable , Equatable {
     let online : Int
 }
 
+
+struct ContactsModel : Codable{
+    public let message : String
+}

@@ -22,6 +22,10 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
     
+    weak var actionToEnable : UIAlertAction?
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,6 +59,10 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
 
+        //Privacy policy
+        actionToEnable = action
+        action.isEnabled = false
+
     }
 
     //MARK:--Action
@@ -72,10 +80,12 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         
         APIService.sharedInstance.postRegistration(name: userName, email: userEmail, password: userPass, lang: userLang)
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
-        self.present(vc, animated: true, completion: nil)
-        
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
+//        self.present(vc, animated: true, completion: nil)
+
+        self.present(alert, animated: true, completion: nil)
+
     }
     
     
@@ -142,4 +152,20 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
         return myView
     }
+    
+    //MARK: Privacy policy
+    
+    func callbackWhenScrollToBottom(sender:UIScrollView) {
+        self.actionToEnable?.isEnabled = true
+    }
+    
+    let alert = UIAlertController(title: "Title", message: APIConstants.privacyPolicy , preferredStyle: UIAlertControllerStyle.alert)
+    let cancel = UIAlertAction(title: "Accept", style: UIAlertActionStyle.cancel, handler: { (_) -> Void in
+        
+    })
+    
+    let action = UIAlertAction(title: "Decline", style: UIAlertActionStyle.default, handler: { (_) -> Void in
+        
+    })
+    
 }
