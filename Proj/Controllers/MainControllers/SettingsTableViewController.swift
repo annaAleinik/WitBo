@@ -1,8 +1,8 @@
 //
-//  TableViewSettings.swift
+//  SettingsTableViewController.swift
 //  Proj
 //
-//  Created by Admin on 21.03.2018.
+//  Created by Admin on 5/22/18.
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
@@ -11,16 +11,8 @@ import Alamofire
 import RealmSwift
 import MessageUI
 
-class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate{
-    
-//    @IBOutlet weak var emailLable: UILabel!
-//    @IBOutlet weak var imagePicked: UIImageView!
-//    @IBOutlet weak var settingsLable: UILabel!
-//    @IBOutlet weak var fullNameUsersLable: UILabel!
-//    @IBOutlet weak var voiceOverSwitch: UISwitch!
-    
-    
-    
+class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate {
+
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOverSwitch.isOn = statusSwitch
@@ -28,7 +20,7 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
-
+        
     }
     
     override func viewDidLoad() {
@@ -46,7 +38,7 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
     }
     
     //MARK: -- Action
-
+    
     @IBAction func openCameraButton(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
@@ -54,7 +46,7 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
             imagePicker.sourceType = .camera;
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-           }
+        }
         
     }
     
@@ -68,29 +60,29 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
-        
+    
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.resizeImage(image: image)
         imagePicked.image = image
         dismiss(animated:true, completion: nil)
     }
-   
+    
     @IBAction func signOutButton(_ sender: Any) {
-
+        
         WBRealmManager().deleteAllFromDatabase()
-
+        
         UserDefaults.standard.removeObject(forKey: "SEKRET")
         UserDefaults.standard.removeObject(forKey: "TOKRN")
         UserDefaults.standard.synchronize()
-
+        
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
         
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         appDel.window?.rootViewController = loginVC
         SocketManager.sharedInstanse.socket.disconnect()
-
+        
     }
     
     @IBAction func feedback(_ sender: Any) {
@@ -124,8 +116,8 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
         controller.dismiss(animated: true, completion: nil)
         
     }
-
-
+    
+    
     
     //MARK: -- image compression
     func resizeImage(image: UIImage) -> UIImage {
@@ -181,6 +173,5 @@ class TableViewSettings: UITableViewController, UIImagePickerControllerDelegate,
             //defaults.set(switchON, forKey: "switchON")
         }
     }
-
 
 }

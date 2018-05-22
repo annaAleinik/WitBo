@@ -17,14 +17,13 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repiatPassword: UITextField!
     
-    
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
+    var actionToEnable : UIAlertAction?
     
-    weak var actionToEnable : UIAlertAction?
+    let alert = UIAlertController(title: "Политика безопасности", message: APIConstants.privacyPolicy, preferredStyle: UIAlertControllerStyle.alert)
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,39 +52,27 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let strPass = NSLocalizedString("STR_PASSWORD", comment: "")
         passwordField.placeholder = strPass
 
-        let strRepeatPass = NSLocalizedString("STR_REPEAT PASSWORD", comment: "")
+        let strRepeatPass = NSLocalizedString("STR_REPEAT_PASSWORD", comment: "")
         repiatPassword.placeholder = strRepeatPass
         
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
-
-        //Privacy policy
-        actionToEnable = action
-        action.isEnabled = false
 
     }
 
     //MARK:--Action
     
     @IBAction func tapRegistratiomButton(_ sender: UIButton) {
+        let name = self.nameField.text
+        let email = self.emailField.text
+        let password = self.passwordField.text
         
-        let name = nameField.text
-        let email = emailField.text
-        let password = passwordField.text
-        
-       guard let userEmail = email else {return}
+        guard let userEmail = email else {return}
         guard let userName = name else {return}
         guard let userPass = password else {return}
         guard let userLang = self.language else {return}
-        
-        APIService.sharedInstance.postRegistration(name: userName, email: userEmail, password: userPass, lang: userLang)
-        
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
-//        self.present(vc, animated: true, completion: nil)
 
-        self.present(alert, animated: true, completion: nil)
-
+        self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
     }
     
     
@@ -153,19 +140,33 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         return myView
     }
     
+    
+    
     //MARK: Privacy policy
     
     func callbackWhenScrollToBottom(sender:UIScrollView) {
         self.actionToEnable?.isEnabled = true
     }
     
-    let alert = UIAlertController(title: "Title", message: APIConstants.privacyPolicy , preferredStyle: UIAlertControllerStyle.alert)
-    let cancel = UIAlertAction(title: "Accept", style: UIAlertActionStyle.cancel, handler: { (_) -> Void in
+    func privacyPolicy(email: String, name: String, pass: String, lang: String){
+        let accept = UIAlertAction(title: "Accept", style: .default, handler: { (_) -> Void in
+            APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang)
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
+            self.present(vc, animated: true, completion: nil)
+            
+        })
         
-    })
-    
-    let action = UIAlertAction(title: "Decline", style: UIAlertActionStyle.default, handler: { (_) -> Void in
+        let cancel = UIAlertAction(title: "Cencel", style: .cancel, handler: nil)
         
-    })
-    
-}
+            alert.addAction(accept)
+            alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
+
+        
+        }
+
+    }
+

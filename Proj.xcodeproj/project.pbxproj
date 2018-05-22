@@ -26,6 +26,7 @@
 		8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400FA5F20AD618300A36EE7 /* NotificationCell.swift */; };
 		8400FA6220AD618300A36EE7 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8400FA6020AD618300A36EE7 /* NotificationCell.xib */; };
 		840E4D702089FC6600993677 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* MessageModel.swift */; };
+		841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */; };
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
@@ -41,7 +42,6 @@
 		849732EF206B835E00B14175 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EE206B835E00B14175 /* UserModel.swift */; };
 		849945E62063CA8800E631A9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E52063CA8800E631A9 /* APIService.swift */; };
 		849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E72063E74200E631A9 /* RegistrationVC.swift */; };
-		84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19C272062B35F0043751A /* TableViewSettings.swift */; };
 		84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* EntranceController.swift */; };
 		84CB95352080C7C000E306F5 /* BaseUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB95342080C7C000E306F5 /* BaseUserModel.swift */; };
 		84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5121205FB6E400A8F6DD /* AppDelegate.swift */; };
@@ -99,6 +99,7 @@
 		8400FA6E20ADA81900A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8400FA6F20ADA81A00A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		840E4D6F2089FC6600993677 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
 				8400FA5D20AD557F00A36EE7 /* NotificationController.swift */,
 				84A19C272062B35F0043751A /* TableViewSettings.swift */,
+				841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */,
 			);
 			path = MainControllers;
 			sourceTree = "<group>";
@@ -525,11 +527,11 @@
 			files = (
 				840E4D702089FC6600993677 /* MessageModel.swift in Sources */,
 				08C75425208CC59D0026A0C3 /* СhatInputTextPanel.swift in Sources */,
-				84A19C282062B35F0043751A /* TableViewSettings.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */,
 				08C7541F208CAF5E0026A0C3 /* MessageCellLayout.swift in Sources */,
 				84535B342093535700E71F5D /* DialogModel.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */,
+				841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */,
 				84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */,
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,
 				847261A82087460800CBF9D8 /* Contact.swift in Sources */,
