@@ -25,6 +25,7 @@
 		8400FA5E20AD557F00A36EE7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400FA5D20AD557F00A36EE7 /* NotificationController.swift */; };
 		8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400FA5F20AD618300A36EE7 /* NotificationCell.swift */; };
 		8400FA6220AD618300A36EE7 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8400FA6020AD618300A36EE7 /* NotificationCell.xib */; };
+		8407ACBB20B5A792000F8373 /* CustomRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407ACBA20B5A792000F8373 /* CustomRule.swift */; };
 		840E4D702089FC6600993677 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* MessageModel.swift */; };
 		841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */; };
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
@@ -98,6 +99,7 @@
 		8400FA6D20ADA81900A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		8400FA6E20ADA81900A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8400FA6F20ADA81A00A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8407ACBA20B5A792000F8373 /* CustomRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRule.swift; sourceTree = "<group>"; };
 		840E4D6F2089FC6600993677 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				09ADC8F62083A57600867EAF /* APIConstants.swift */,
 				849945E52063CA8800E631A9 /* APIService.swift */,
+				8407ACBA20B5A792000F8373 /* CustomRule.swift */,
 				843815D4206E0A750086BC5B /* AddsManager.swift */,
 				8BB75BBF2074D18E0067CCB2 /* SocketManager.swift */,
 				842724E920626ADD006B936E /* TimerManager.swift */,
@@ -547,6 +550,7 @@
 				084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */,
 				84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */,
 				843815D5206E0A750086BC5B /* AddsManager.swift in Sources */,
+				8407ACBB20B5A792000F8373 /* CustomRule.swift in Sources */,
 				08125C8D20A88D8A00805353 /* WBRealmManager.swift in Sources */,
 				84FE794220971B06008CC933 /* AlertDialogWait.swift in Sources */,
 				8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */,

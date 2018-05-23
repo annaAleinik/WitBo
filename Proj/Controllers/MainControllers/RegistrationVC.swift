@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftValidator
 
-class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource,ValidationDelegate {
     
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -17,11 +18,17 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repiatPassword: UITextField!
     
+    @IBOutlet weak var nameErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
+    @IBOutlet weak var passErrorLabel: UILabel!
+    
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
     var actionToEnable : UIAlertAction?
-    
+    let validator = Validator()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +46,27 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        
+        //MARK: -- Validator
+        
+        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email required"), EmailRule(message: "Invalid email")])
+        
+        validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "name required")])
+
+        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "the password must be at least 6 characters long")])
+        
+        validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "the password must be at least 6 characters long")])
+
+
+        
         //Localized
         
         let strName = NSLocalizedString("STR_NAME", comment: "")
-        emailField.placeholder = strName
+        nameField.placeholder = strName
         
         let strEmail = NSLocalizedString("STR_EMAIL", comment: "")
-        nameField.placeholder = strEmail
-
+        emailField.placeholder = strEmail
+        
         let strPass = NSLocalizedString("STR_PASSWORD", comment: "")
         passwordField.placeholder = strPass
 
@@ -64,7 +84,8 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let name = self.nameField.text
         let email = self.emailField.text
         let password = self.passwordField.text
-        
+        validator.validate(self)
+
         guard let userEmail = email else {return}
         guard let userName = name else {return}
         guard let userPass = password else {return}
@@ -168,6 +189,25 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
         
         }
+    //MARK: -- ValidationDelegate
+    
+    func validationSuccessful()  {
+        print("Validation succsessfil")
+    }
+    
+    
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+            error.errorLabel?.textColor = UIColor.white
+        }
+    }
 
+    
     }
 
