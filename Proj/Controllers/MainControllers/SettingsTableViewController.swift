@@ -109,8 +109,8 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         mailComposerVC.mailComposeDelegate = self
         
         mailComposerVC.setToRecipients(["ved.ios@gmail.com"])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad in swift!", isHTML: false)
+        mailComposerVC.setSubject("")
+        mailComposerVC.setMessageBody("", isHTML: false)
         
         return mailComposerVC
     }
@@ -122,12 +122,15 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     // MARK: MFMailComposeViewControllerDelegate
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    private func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         controller.dismiss(animated: true, completion: nil)
         
     }
     
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     //MARK: -- image compression
     func resizeImage(image: UIImage) -> UIImage {
