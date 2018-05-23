@@ -11,11 +11,21 @@ import Alamofire
 import RealmSwift
 import MessageUI
 
-class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate {
+class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var userEmailLabel: UILabel!
+    
+    @IBOutlet weak var voiceOversSwitch: UISwitch!
+   
+    @IBOutlet weak var imagePicke: UIImageView!
+    
+    @IBOutlet weak var settingsLabel: UILabel!
+    
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
-        voiceOverSwitch.isOn = statusSwitch
+        voiceOversSwitch.isOn = statusSwitch
         
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
@@ -25,10 +35,10 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingsLable.text = "Settings"
+        self.settingsLabel.text = "Settings"
         
-        self.fullNameUsersLable.text = APIService.sharedInstance.userName
-        self.emailLabel.text = APIService.sharedInstance.userEmail
+        self.userName.text = APIService.sharedInstance.userName
+        self.userEmailLabel.text = APIService.sharedInstance.userEmail
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
@@ -64,7 +74,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.resizeImage(image: image)
-        imagePicked.image = image
+        imagePicke.image = image
         dismiss(animated:true, completion: nil)
     }
     
@@ -162,12 +172,12 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     @IBAction func checkState(_ sender: AnyObject) {
         
-        if voiceOverSwitch.isOn{
+        if voiceOversSwitch.isOn{
             switchON = true
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
             //defaults.set(switchON, forKey: "switchON")
         }
-        if voiceOverSwitch.isOn == false{
+        if voiceOversSwitch.isOn == false{
             switchON = false
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
             //defaults.set(switchON, forKey: "switchON")

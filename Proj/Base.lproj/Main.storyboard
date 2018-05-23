@@ -657,6 +657,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="icon_settings" id="xyc-ld-CdZ"/>
+                    <connections>
+                        <outlet property="imagePicke" destination="7qE-sz-E2T" id="EQI-eb-IWt"/>
+                        <outlet property="settingsLabel" destination="4Tb-Wz-lwC" id="b5H-xi-adX"/>
+                        <outlet property="userEmailLabel" destination="Sbf-5e-ZjA" id="pCd-qE-How"/>
+                        <outlet property="userName" destination="dTJ-6Q-qDl" id="875-cV-C3w"/>
+                        <outlet property="voiceOversSwitch" destination="joT-Z3-fMv" id="pns-6j-Fuu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlX-BQ-nop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
