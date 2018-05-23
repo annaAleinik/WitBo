@@ -22,8 +22,6 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     var language: String? = nil
     var actionToEnable : UIAlertAction?
     
-    let alert = UIAlertController(title: "Политика безопасности", message: APIConstants.privacyPolicy, preferredStyle: UIAlertControllerStyle.alert)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +147,9 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     }
     
     func privacyPolicy(email: String, name: String, pass: String, lang: String){
+        
+        let alert = UIAlertController(title: "Политика безопасности", message: APIConstants.privacyPolicy, preferredStyle: UIAlertControllerStyle.alert)
+
         let accept = UIAlertAction(title: "Accept", style: .default, handler: { (_) -> Void in
             APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang)
             
