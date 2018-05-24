@@ -12,7 +12,9 @@ import SwiftValidator
 class CustomRule: RegexRule {
 
     
-    static let regex = "^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6}$"
+//    static let regex = "^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6}$"
+
+   static let regex = "^/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/$"
     
     convenience init(message : String = "the password must be at least 6 characters long "){
         self.init(regex: CustomRule.regex, message : message)

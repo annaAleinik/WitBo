@@ -29,7 +29,6 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     var actionToEnable : UIAlertAction?
     let validator = Validator()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,13 +48,13 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         
         //MARK: -- Validator
         
-        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email required"), EmailRule(message: "Invalid email")])
+        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "Email required"), EmailRule(message: "Invalid email")])
         
-        validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "name required")])
+        validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "Name required")])
 
-        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "the password must be at least 6 characters long")])
+        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
         
-        validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "the password must be at least 6 characters long")])
+        validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
 
 
         
@@ -72,7 +71,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
         let strRepeatPass = NSLocalizedString("STR_REPEAT_PASSWORD", comment: "")
         repiatPassword.placeholder = strRepeatPass
-        
+
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
 
@@ -91,9 +90,27 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         guard let userPass = password else {return}
         guard let userLang = self.language else {return}
 
-        self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
-    }
-    
+        if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repiatPassword.text == "") || (self.language == ""){
+            
+            let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }else {
+            if self.passwordField.text == repiatPassword.text{
+                self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
+            } else {
+                let alert = UIAlertController(title: "", message: "Пароли не совпадают", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+
+            }
+        }
+        
+}
     
     // MARK: - KeyBoard hide
     

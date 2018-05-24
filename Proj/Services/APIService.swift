@@ -30,6 +30,7 @@ class APIService {
     var secret : String?
     var clietID : String?
     var userEmail : String?
+    var userDataRegistration : String?
 
     var dict = ["ru-RU":"ru" , "en-En" : "en"]
     
@@ -142,6 +143,7 @@ class APIService {
                         self.userName = userData.name
                         self.userLang = userData.language
                         self.userEmail = userData.email
+                        self.userDataRegistration = userData.registration_date
                         
                         let baseUserModel  = BaseUserModel()
                         

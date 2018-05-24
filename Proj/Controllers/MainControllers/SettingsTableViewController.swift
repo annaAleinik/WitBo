@@ -11,17 +11,21 @@ import Alamofire
 import RealmSwift
 import MessageUI
 
-class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var userName: UILabel!
-    
     @IBOutlet weak var userEmailLabel: UILabel!
-    
     @IBOutlet weak var voiceOversSwitch: UISwitch!
-   
     @IBOutlet weak var imagePicke: UIImageView!
-    
     @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var dataRegistrationLabel: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
+    
+    let langSourse = LanguageSourse.shared.dictLang
+    var flagArr = LanguageSourse.shared.dictFlag
+    var language: String? = nil
+
     
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
@@ -39,12 +43,18 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
+        self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
+        self.languageLabel.text = APIService.sharedInstance.userLang
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
         // byte array for server
         let data = UIImageJPEGRepresentation(image, 1.0)
         let arrByte = data?.base64EncodedString() // Attay bytes for server
+        
+        picker.delegate = self
+        picker.dataSource = self
+
     }
     
     //MARK: -- Action
@@ -185,6 +195,44 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
             //defaults.set(switchON, forKey: "switchON")
         }
+    }
+
+    //MARK: -- UIPickerViewDelegate
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.langSourse.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.langSourse[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.language = self.langSourse[row].code
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 60))
+        
+        let flagImage = UIImageView(frame: CGRect(x: 0, y: 0, width:30, height: 30))
+        
+        flagImage.image = flagArr[row].img
+        
+        let rowString = self.langSourse[row].name
+        
+        let myLabel = UILabel(frame: CGRect(x: 60, y: 0, width: pickerView.bounds.width - 90, height: 60))
+        
+        myLabel.text = rowString
+        
+        myView.addSubview(myLabel)
+        myView.addSubview(flagImage)
+        
+        return myView
     }
 
 }
