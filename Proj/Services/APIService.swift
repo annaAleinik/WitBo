@@ -183,7 +183,7 @@ class APIService {
                 switch response.result{
                 case .success(_ ):
                     do {
-                        let data = try JSONDecoder().decode(List.self, from: response.data!)
+                        let data = try JSONDecoder().decode(ListArr.self, from: response.data!)
                         completion(data.list, nil)
                         self.clietID = data.list.first?.client_id
                         

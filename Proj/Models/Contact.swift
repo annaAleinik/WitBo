@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct List : Codable {
+struct ListArr : Codable {
     let list : Array<Contact>
 }
 
@@ -28,3 +28,5 @@ struct Contact : Codable , Equatable {
 struct ContactsModel : Codable{
     public let message : String
 }
+
+

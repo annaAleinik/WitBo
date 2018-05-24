@@ -14,6 +14,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     var arrayContacts = Array<Contact>()
     var receiver : String?
     var speachVC: SpeachViewController?
+    let realmManager = WBRealmManager()
     
     @IBOutlet weak var titleChatLable: UILabel!
     
@@ -49,8 +50,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         
+        if Reachability.isConnectedToNetwork(){
         APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
-            
             guard error == nil else {
                 print(error?.localizedDescription)
                 return
@@ -58,12 +59,17 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             if let array = contacts {
                 self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                 self.tableView.reloadData()
-
+                
+                let realmManager = WBRealmManager()
+                let contactsBase = BaseContactModel()
+                
             }
         }
-        
-        self.addObservers()
+        }else{
+            //если интернета нет присваивать массиву контактов массив контактов с bd
         }
+        self.addObservers()
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.removeObservers()

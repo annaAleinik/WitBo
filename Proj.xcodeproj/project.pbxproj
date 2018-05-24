@@ -45,6 +45,8 @@
 		849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E72063E74200E631A9 /* RegistrationVC.swift */; };
 		84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* EntranceController.swift */; };
 		84CB95352080C7C000E306F5 /* BaseUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB95342080C7C000E306F5 /* BaseUserModel.swift */; };
+		84DD039820B6DDBE00F4A7AF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD039720B6DDBE00F4A7AF /* Reachability.swift */; };
+		84DD039A20B6DF7200F4A7AF /* BaseContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD039920B6DF7200F4A7AF /* BaseContactsModel.swift */; };
 		84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5121205FB6E400A8F6DD /* AppDelegate.swift */; };
 		84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */; };
 		84FC5127205FB6E400A8F6DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FC5125205FB6E400A8F6DD /* Main.storyboard */; };
@@ -127,6 +129,8 @@
 		84D95BAF207D04FE00C17C3C /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = Pods/Alamofire; sourceTree = "<group>"; };
 		84D95BB2207D056900C17C3C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D95BB6207D079E00C17C3C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DD039720B6DDBE00F4A7AF /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		84DD039920B6DF7200F4A7AF /* BaseContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContactsModel.swift; sourceTree = "<group>"; };
 		84FC511E205FB6E400A8F6DD /* Proj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FC5121205FB6E400A8F6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeachViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				09ADC8F62083A57600867EAF /* APIConstants.swift */,
+				84DD039720B6DDBE00F4A7AF /* Reachability.swift */,
 				849945E52063CA8800E631A9 /* APIService.swift */,
 				8407ACBA20B5A792000F8373 /* CustomRule.swift */,
 				843815D4206E0A750086BC5B /* AddsManager.swift */,
@@ -335,6 +340,7 @@
 				84535B332093535600E71F5D /* DialogModel.swift */,
 				84413CA7207CA5A400E3E953 /* LastMassageModel.swift */,
 				84CB95342080C7C000E306F5 /* BaseUserModel.swift */,
+				84DD039920B6DF7200F4A7AF /* BaseContactsModel.swift */,
 				849732EE206B835E00B14175 /* UserModel.swift */,
 				849732EC206B790700B14175 /* AuthModel.swift */,
 				084A20CB206930AD0009E4B2 /* LoginModel.swift */,
@@ -543,6 +549,7 @@
 				8400FA5E20AD557F00A36EE7 /* NotificationController.swift in Sources */,
 				8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
+				84DD039820B6DDBE00F4A7AF /* Reachability.swift in Sources */,
 				084A20CC206930AD0009E4B2 /* LoginModel.swift in Sources */,
 				848818082099D8110062A8B6 /* QuitConversationAlert.swift in Sources */,
 				842724EA20626ADD006B936E /* TimerManager.swift in Sources */,
@@ -564,6 +571,7 @@
 				849732EF206B835E00B14175 /* UserModel.swift in Sources */,
 				842A393C20A9C6220020C323 /* LanguageSourse.swift in Sources */,
 				84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */,
+				84DD039A20B6DF7200F4A7AF /* BaseContactsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
