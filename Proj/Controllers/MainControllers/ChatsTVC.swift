@@ -10,9 +10,9 @@ import UIKit
 import RealmSwift
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
-
+	
     var myIndex : Int?
-    var arrayContacts = [ContactModelProtocol]()
+	var arrayContacts = [ContactModelProtocol]()
     var receiver : String?
     var speachVC: SpeachViewController?
     let realmManager = WBRealmManager()
@@ -81,16 +81,15 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         for contact in arrayContacts{
             
             if contact.clientId == clientId{
-                if let index = arrayContacts.index(of: contact){
-                    
+				if let index =  arrayContacts.index(where: { (contact) -> Bool in
+					contact.clientId == clientId
+				}) {
+					
                     let indexPath = IndexPath(row: (index + 1), section: 0)
-                    
                     let cell = self.tableView.cellForRow(at: indexPath) as? CellContacts
                     cell?.changeIndcatotStatus(isOnline: isOnline)
                 }
-            
             }
-            
         }
     }
     
