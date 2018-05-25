@@ -38,6 +38,7 @@
 		8444BB85208F5E8700485A20 /* HeaderContacts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB83208F5E8700485A20 /* HeaderContacts.xib */; };
 		84535B342093535700E71F5D /* DialogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84535B332093535600E71F5D /* DialogModel.swift */; };
 		847261A82087460800CBF9D8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847261A72087460800CBF9D8 /* Contact.swift */; };
+		847BED9520B84CDE002F3303 /* ContactModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BED9420B84CDE002F3303 /* ContactModelProtocol.swift */; };
 		848818082099D8110062A8B6 /* QuitConversationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848818072099D8110062A8B6 /* QuitConversationAlert.swift */; };
 		849732ED206B790700B14175 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EC206B790700B14175 /* AuthModel.swift */; };
 		849732EF206B835E00B14175 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849732EE206B835E00B14175 /* UserModel.swift */; };
@@ -115,6 +116,7 @@
 		84535B332093535600E71F5D /* DialogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModel.swift; sourceTree = "<group>"; };
 		8466854B207CF64C00291174 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847261A72087460800CBF9D8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		847BED9420B84CDE002F3303 /* ContactModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModelProtocol.swift; sourceTree = "<group>"; };
 		848818072099D8110062A8B6 /* QuitConversationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitConversationAlert.swift; sourceTree = "<group>"; };
 		849732EC206B790700B14175 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		849732EE206B835E00B14175 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				841FA1CF207214C700D0064A /* TranslateModel.swift */,
+				847BED9420B84CDE002F3303 /* ContactModelProtocol.swift */,
 				842A393B20A9C6220020C323 /* LanguageSourse.swift */,
 				840E4D6F2089FC6600993677 /* MessageModel.swift */,
 				847261A72087460800CBF9D8 /* Contact.swift */,
@@ -540,6 +543,7 @@
 				08C7541F208CAF5E0026A0C3 /* MessageCellLayout.swift in Sources */,
 				84535B342093535700E71F5D /* DialogModel.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */,
+				847BED9520B84CDE002F3303 /* ContactModelProtocol.swift in Sources */,
 				841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */,
 				84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */,
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,

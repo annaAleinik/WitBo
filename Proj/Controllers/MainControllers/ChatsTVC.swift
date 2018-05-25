@@ -52,16 +52,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         self.tableView.backgroundView = imageView
         
         if Reachability.isConnectedToNetwork(){
-        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-            if let array = contacts {
-                self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
-                self.tableView.reloadData()
-            }
-        }
+            self.getContactsFromServer()
         }else{
             //если интернета нет присваивать массиву контактов массив контактов с bd
         }
@@ -171,12 +162,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
-        
-//        if indexPath.row == 0{
-//
-//        }
-        
-        
+       
         let contactId = self.arrayContacts[indexPath.row-1]
         self.receiver = contactId.client_id
         
@@ -279,6 +265,26 @@ extension ChatsTVC {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
+    }
+    
+    
+    //MARK: -- Get contacts
+    
+    func getContactsFromServer(){
+        APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            if let array = contacts {
+                self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func getContactsFromDB(){
+        
     }
     
 }

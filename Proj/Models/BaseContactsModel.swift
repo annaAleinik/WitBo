@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class BaseContactModel : Object {
+class BaseContactModel : Object , ContactModelProtocol {
     
     @objc dynamic var name = ""
     @objc dynamic var email = ""

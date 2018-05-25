@@ -103,6 +103,13 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         appDel.window?.rootViewController = loginVC
         SocketManager.sharedInstanse.socket.disconnect()
         
+        let alert = UIAlertController(title: "", message: "Вы вышли зи профиля", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+
+        
     }
     
     @IBAction func feedback(_ sender: Any) {

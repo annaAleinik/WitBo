@@ -13,7 +13,7 @@ class WBRealmManager {
     private var database = try! Realm()
     private let userModel = BaseUserModel()
     private let contactModel = BaseContactModel()
-
+    
 //    static let shared = WBRealmManager()
 //
 //    private init () {
@@ -66,6 +66,11 @@ class WBRealmManager {
             database.add(userModel, update: true)
         }
     }
+    
+//    func getAllContactsFromDB() -> Array<BaseContactModel>{
+//       var arrContfromDB = database.objects(BaseContactModel.self)
+//    return arrContfromDB
+//    }
     
 }
 
