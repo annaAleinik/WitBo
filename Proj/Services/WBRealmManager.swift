@@ -12,6 +12,7 @@ class WBRealmManager {
     
     private var database = try! Realm()
     private let userModel = BaseUserModel()
+    private let contactModel = BaseContactModel()
 
 //    static let shared = WBRealmManager()
 //
@@ -25,18 +26,28 @@ class WBRealmManager {
         return user.first!
     }
     
-    func addData(object: BaseUserModel)   {
+    func deleteContactById(id: String) {
+//        let predicate = NSPredicate(format: "clientId = \(id))")
+        let predicate = NSPredicate(format: "clientId = %@", id)
+        let contact = database.objects(BaseContactModel.self).filter(predicate)
         try! database.write {
-            database.add(object, update: true)
-            print("Added new object")
+            database.delete(contact.first!)
         }
     }
+    
+    func addData(object: Object)   {
+        try! database.write {
+            database.add(object, update: true)
+        }
+    }
+    
     func deleteAllFromDatabase()  {
         try!   database.write {
             database.deleteAll()
         }
     }
-    func deleteFromDb(object: BaseUserModel)   {
+    
+    func deleteFromDb(object: Object)   {
         try!   database.write {
             database.delete(object)
         }
@@ -56,5 +67,5 @@ class WBRealmManager {
         }
     }
     
-    
 }
+

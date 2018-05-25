@@ -32,6 +32,8 @@ class APIService {
     var userEmail : String?
     var userDataRegistration : String?
 
+    let realmManager = WBRealmManager()
+    
     var dict = ["ru-RU":"ru" , "en-En" : "en"]
     
     // property for translation
@@ -185,6 +187,16 @@ class APIService {
                     do {
                         let data = try JSONDecoder().decode(ListArr.self, from: response.data!)
                         completion(data.list, nil)
+                        
+                        for cont in data.list {
+                            let contBase = BaseContactModel()
+                            contBase.clientId = cont.client_id
+                            contBase.name = cont.name
+                            contBase.email = cont.email
+                            contBase.online = cont.online
+                            self.realmManager.addData(object: contBase)
+                        }
+                        
                         self.clietID = data.list.first?.client_id
                         
                     }catch let error {

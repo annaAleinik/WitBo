@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
 
     var myIndex : Int?
-    var arrayContacts = Array<Contact>()
+    var arrayContacts = [Contact]()
     var receiver : String?
     var speachVC: SpeachViewController?
     let realmManager = WBRealmManager()
@@ -59,10 +60,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             if let array = contacts {
                 self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                 self.tableView.reloadData()
-                
-                let realmManager = WBRealmManager()
-                let contactsBase = BaseContactModel()
-                
             }
         }
         }else{
@@ -175,6 +172,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
         
+//        if indexPath.row == 0{
+//
+//        }
+        
+        
         let contactId = self.arrayContacts[indexPath.row-1]
         self.receiver = contactId.client_id
         
@@ -193,11 +195,14 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             if (editingStyle == UITableViewCellEditingStyle.delete) {
                 
                 let email = self.arrayContacts[indexPath.row-1].email
+                let id = self.arrayContacts[indexPath.row-1].client_id
+                let basecontact = BaseContactModel()
+                basecontact.clientId = id
                 
                 APIService.sharedInstance.delateContact(token: APIService.sharedInstance.token!, email: email) { (success, error) in
                    if success{
+                    self.realmManager.deleteContactById(id: id)
                     APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
-                        
                         guard error == nil else {
                             print(error?.localizedDescription)
                             return
@@ -205,6 +210,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                         if let array = contacts {
                            self.arrayContacts = array.sorted(by:  { $0.name < $1.name })
                             self.tableView.reloadData()
+                            
                         }
                     }
                 }
