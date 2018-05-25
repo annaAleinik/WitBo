@@ -163,13 +163,19 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
        
-        let contactId = self.arrayContacts[indexPath.row-1]
-        self.receiver = contactId.client_id
-        
-        guard let receiverJSON = receiver else { return }
-        SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
-        
-        self.presentAlertController()
+        if indexPath.row == 0{
+            return
+        }else{
+            
+            let contactId = self.arrayContacts[indexPath.row-1]
+            self.receiver = contactId.client_id
+            
+            guard let receiverJSON = receiver else { return }
+            SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
+            
+            self.presentAlertController()
+
+        }
         
     }
     
