@@ -13,15 +13,23 @@ struct ListArr : Codable {
 }
 
 
-struct Contact : Codable , Equatable {
+class Contact : Codable , Equatable, ContactModelProtocol {
     static func ==(lhs: Contact, rhs: Contact) -> Bool {
-        return lhs.client_id == rhs.client_id
+		return lhs.clientId == rhs.clientId
     }
     
-    let email : String
-    let name : String
-    let client_id : String
-    let online : Int
+    var email : String = ""
+    var name : String = ""
+	var clientId : String = ""
+    var online : Int = -1
+	
+	enum CodingKeys: String, CodingKey {
+		case email
+		case name
+		case clientId = "client_id"
+		case online
+	}
+	
 }
 
 

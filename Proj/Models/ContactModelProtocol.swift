@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ContactModelProtocol {
+@objc protocol ContactModelProtocol {
     var clientId : String  { get set }
     var name : String  { get set }
     var email : String  { get set }

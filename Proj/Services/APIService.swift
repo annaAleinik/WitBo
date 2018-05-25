@@ -190,14 +190,14 @@ class APIService {
                         
                         for cont in data.list {
                             let contBase = BaseContactModel()
-                            contBase.clientId = cont.client_id
+                            contBase.clientId = cont.clientId
                             contBase.name = cont.name
                             contBase.email = cont.email
                             contBase.online = cont.online
                             self.realmManager.addData(object: contBase)
                         }
                         
-                        self.clietID = data.list.first?.client_id
+                        self.clietID = data.list.first?.clientId
                         
                     }catch let error {
                         print(error)

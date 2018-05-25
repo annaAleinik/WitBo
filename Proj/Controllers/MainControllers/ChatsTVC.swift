@@ -12,7 +12,7 @@ import RealmSwift
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
 
     var myIndex : Int?
-    var arrayContacts = [Contact]()
+    var arrayContacts = [ContactModelProtocol]()
     var receiver : String?
     var speachVC: SpeachViewController?
     let realmManager = WBRealmManager()
@@ -80,7 +80,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
         for contact in arrayContacts{
             
-            if contact.client_id == clientId{
+            if contact.clientId == clientId{
                 if let index = arrayContacts.index(of: contact){
                     
                     let indexPath = IndexPath(row: (index + 1), section: 0)
@@ -164,7 +164,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
        myIndex = indexPath.row
        
         let contactId = self.arrayContacts[indexPath.row-1]
-        self.receiver = contactId.client_id
+        self.receiver = contactId.clientId
         
         guard let receiverJSON = receiver else { return }
         SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
@@ -181,7 +181,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             if (editingStyle == UITableViewCellEditingStyle.delete) {
                 
                 let email = self.arrayContacts[indexPath.row-1].email
-                let id = self.arrayContacts[indexPath.row-1].client_id
+                let id = self.arrayContacts[indexPath.row-1].clientId
                 let basecontact = BaseContactModel()
                 basecontact.clientId = id
                 
