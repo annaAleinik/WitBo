@@ -162,6 +162,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        myIndex = indexPath.row
+       guard myIndex != 0 else {return}
        
         let contactId = self.arrayContacts[indexPath.row-1]
         self.receiver = contactId.clientId
