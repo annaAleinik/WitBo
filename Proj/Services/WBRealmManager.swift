@@ -67,10 +67,10 @@ class WBRealmManager {
         }
     }
     
-//    func getAllContactsFromDB() -> Array<BaseContactModel>{
-//       var arrContfromDB = database.objects(BaseContactModel.self)
-//    return arrContfromDB
-//    }
+    func getAllContactsFromDB() -> Array<BaseContactModel>{
+       let arrContfromDB = database.objects(BaseContactModel.self)
+    return Array(arrContfromDB)
+    }
     
 }
 

@@ -27,14 +27,20 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
         
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(quitConversation(notification:)),
+                                               name: Notification.Name("QuitConversation"),
+                                               object: nil)
+        
+        
+
         //Localized
         
-        let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
-        titleChatLable.text = strChat
-
-  
+// crash when user click cencel from alert quitDialog
+       // let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
+        //titleChatLable.text = strChat
     }
-
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,7 +60,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         if Reachability.isConnectedToNetwork(){
             self.getContactsFromServer()
         }else{
-            //если интернета нет присваивать массиву контактов массив контактов с bd
+            self.getContactsFromDB()
+            
         }
         self.addObservers()
     }
@@ -234,6 +241,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         
+                        
+                        
                     }                 }
                 
             }
@@ -265,6 +274,7 @@ extension ChatsTVC {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "QuitConversation"), object: nil)
     }
     
     
@@ -284,7 +294,37 @@ extension ChatsTVC {
     }
     
     func getContactsFromDB(){
+        realmManager.getAllContactsFromDB()
+    }
+    
+    
+    @objc func quitConversation(notification: NSNotification) {
+        self.quitConversationStart()
+    }
+    
+    func quitConversationStart() {
+        
+        let alert = UIAlertController(title: "Alert", message: "С вами хочет начать диалог (ВСТАВЬ ИМЯ ТОГО КТО ХОЧЕТ НАЧАТЬ)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+        SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "1")
+            alert.dismiss(animated: true, completion: nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "SpeachViewController")
+            self.present(vc, animated: true, completion: nil)
+
+
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+            SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "0")
+
+        }))
+
+        
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
+
     
 }

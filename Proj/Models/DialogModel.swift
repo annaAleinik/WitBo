@@ -85,3 +85,23 @@ struct UserStatus : Codable {
 
     }
 }
+
+struct CommonConversationRequest : Codable {
+    public var code: Int = -1
+    public var type: SocketMessageType = .empty
+    public var message: ConversationRequest
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case type = "message"
+        case message = "params"
+    }
+}
+
+struct ConversationRequest : Codable {
+        public var initiator: String? = nil
+        public var time: Int? = nil
+    }
+
+
+

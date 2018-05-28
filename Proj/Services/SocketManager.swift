@@ -28,6 +28,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var receiver : String? = nil
     var answerStatusUser: String? = nil
     var dialogResponse: String? = nil
+    var initiatorDialog: String? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +68,10 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .incomingMessage?:
                 let parsMessage = try? decoder.decode(MessageData.self, from: data)
                 self.recievedMessage(message: parsMessage)
-			case .conversationRequest?:
-                break
+            case .conversationRequest?:
+                let conversationRequest = try? decoder.decode(CommonConversationRequest.self, from: data)
+                self.initiatorDialog = conversationRequest?.message.initiator
+                NotificationCenter.default.post(name: Notification.Name("QuitConversation"), object: nil, userInfo: nil)
             case .userOffline?:
                 let userOffLinline = try? decoder.decode(UserStatus.self, from: data)
                 
@@ -80,8 +84,10 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .messagePushed?:
 				break
             case .quitConversation?:
+                
 //                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
                 self.delegateConversation?.conversationStopped()
+                
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
                 
@@ -182,7 +188,15 @@ class SocketManager: UIViewController, WebSocketDelegate {
     }
     
     
-    
+    func selfAnswerrForADialogStart( answer: String){
+        
+        guard let token = APIService.sharedInstance.token else { return }
+        guard let receiver = self.initiatorDialog else { return }
+
+        let selfAnswerrForADialogStart = "{\"action\":\"conversation_request_response\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing:receiver ) + "\" ,\"answer\":\"" + String(describing:answer ) + "\"}}"
+        
+        self.socket.write(string: selfAnswerrForADialogStart)
+    }
 
     
 }
