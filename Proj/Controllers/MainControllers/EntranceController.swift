@@ -120,6 +120,12 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
 
     
 
+    @IBAction func forgotPassword(_ sender: UIButton) {
+//        UIApplication.shared.openURL(NSURL(string: "http://google.com")! as URL)
+        UIApplication.shared.open(URL(string: "http://google.com")!)
+
+    }
+    
     // MARK: - KeyBoard hide
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

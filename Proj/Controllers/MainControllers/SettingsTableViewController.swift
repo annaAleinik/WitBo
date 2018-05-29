@@ -187,20 +187,17 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         return UIImage(data: imageData!)!
     }
     
-    //let defaults = UserDefaults.standard
-    var switchON : Bool = false
+    var switchON: Bool? = false
     
     @IBAction func checkState(_ sender: AnyObject) {
         
         if voiceOversSwitch.isOn{
             switchON = true
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
-            //defaults.set(switchON, forKey: "switchON")
         }
         if voiceOversSwitch.isOn == false{
             switchON = false
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
-            //defaults.set(switchON, forKey: "switchON")
         }
     }
 

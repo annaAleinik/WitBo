@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Proj
@@ -29,7 +30,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     let extraTime = 600
     
     var receiverFromContacts : String?
-    
+
 	//MARK: Life cycle
     
     class func viewController(receiverID: String) -> SpeachViewController {
@@ -38,8 +39,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         viewController.receiverFromContacts = receiverID
         return viewController
     }
-
-    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,9 +118,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 		super.viewWillDisappear(animated)
 		timerManager.pauseTimer()
         
-        guard let rec = self.receiverFromContacts else {return}
+        //guard let rec = self.receiverFromContacts else {return}
         
-        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
+        //SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         
         self.nameUserChatLabel.text = nil
         
@@ -141,7 +140,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
         }
     }
-    
     
     //MARK: --TimerManagerDelegate
     func handleOutOfTime() {
@@ -239,7 +237,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 message.receiverId = receiver
                 
                 SocketManager.sharedInstanse.sendMessage(message: message)
-                
+                //SocketManager.sharedInstanse.sendMessageInitiator(message: message)
             }
         }
         
@@ -262,6 +260,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+
+        guard let rec = SocketManager.sharedInstanse.initiatorDialog else {return}
+        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
+
     }
     
     
@@ -293,9 +295,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "QuitConversationAlert") as? QuitConversationAlert
         controller?.delegateQC = self
-        if self.nameUserChatLabel.text != nil {
-            self.present(controller!, animated: true, completion: nil)
-        }
+        self.present(controller!, animated: true, completion: nil)
+
+        //        if self.nameUserChatLabel.text != nil {
+//        }
     }
     
     func quitConversation() {
@@ -334,8 +337,8 @@ extension SpeachViewController {
         
         let lang = APIService.sharedInstance.userLang
         
-        if defaults.value(forKey: "switchON") != nil{
-            let switchON: Bool = defaults.value(forKey: "switchON")  as! Bool
+        if (UserDefaults.standard.value(forKey: "STATUSSWITCH") != nil){
+            let switchON: Bool = UserDefaults.standard.value(forKey: "STATUSSWITCH") as! Bool
             if switchON == true{
         
         let utterance = AVSpeechUtterance(string: messages)

@@ -84,9 +84,9 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .messagePushed?:
 				break
             case .quitConversation?:
-                
 //                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
                 self.delegateConversation?.conversationStopped()
+                
                 
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
@@ -135,7 +135,16 @@ class SocketManager: UIViewController, WebSocketDelegate {
         delegate?.didReciveMessages(messages: message)
 
     }
-    
+    func sendMessageInitiator(message:Message) {
+        
+        guard let token = APIService.sharedInstance.token else { return }
+        
+        let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: self.initiatorDialog) + "\",\"message\":\"" +  "\( message.text)" + "\",\"language\":\"ru-RU\"}}"
+        self.socket.write(string: jsonPushMassage)
+        delegate?.didReciveMessages(messages: message)
+        
+    }
+
     
     
     func startDialog(receiver: String) {

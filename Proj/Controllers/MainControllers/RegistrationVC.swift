@@ -90,26 +90,33 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         guard let userPass = password else {return}
         guard let userLang = self.language else {return}
 
-        if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repiatPassword.text == "") || (self.language == ""){
-            
-            let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-        }else {
-            if self.passwordField.text == repiatPassword.text{
-                self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
-            } else {
-                let alert = UIAlertController(title: "", message: "Пароли не совпадают", preferredStyle: UIAlertControllerStyle.alert)
+        if Reachability.isConnectedToNetwork(){
+            if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repiatPassword.text == "") || (self.language == ""){
+                
+                let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
                 
                 let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
-
+            }else {
+                if self.passwordField.text == repiatPassword.text{
+                    self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
+                } else {
+                    let alert = UIAlertController(title: "", message: "Пароли не совпадают", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
+        }else{
+            let alert = UIAlertController(title: "", message: "Отсутствует подключение к интернету", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
         }
-        
+  
 }
     
     // MARK: - KeyBoard hide

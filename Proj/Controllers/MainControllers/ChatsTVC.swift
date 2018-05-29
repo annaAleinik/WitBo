@@ -36,10 +36,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         
 
         //Localized
-        
-// crash when user click cencel from alert quitDialog
-       // let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
-        //titleChatLable.text = strChat
+        let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
+        titleChatLable.text = strChat
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -226,28 +224,32 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 //    MARK: -- HeaderCellDelegate
     func addContact(email: String) {
         
-        APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (resp, error) in
-            if resp.success {
-                APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
-                    guard error == nil else {
-                        print(error?.localizedDescription)
-                        return
-                    }
-                    if let array = contacts {
-                        self.arrayContacts = array.sorted(by: { $0.name < $1.name })
-                        self.tableView.reloadData()
-                        
-                        let alert = UIAlertController(title: "", message: resp.message, preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        
-                        
-                        
-                    }                 }
-                
+        if Reachability.isConnectedToNetwork(){
+            APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (resp, error) in
+                if resp.success {
+                    APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
+                        guard error == nil else {
+                            print(error?.localizedDescription)
+                            return
+                        }
+                        if let array = contacts {
+                            self.arrayContacts = array.sorted(by: { $0.name < $1.name })
+                            self.tableView.reloadData()
+                            
+                            let alert = UIAlertController(title: "", message: resp.message, preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
+                            
+                            
+                        }                 }
+                    
+                }
             }
+        }else{
+            return
         }
-    }
+}
 
     private func presentAlertController () {
         let vc = AlertDialogWait.viewController()
@@ -320,8 +322,6 @@ extension ChatsTVC {
 
         }))
 
-        
-        
         self.present(alert, animated: true, completion: nil)
         
     }
