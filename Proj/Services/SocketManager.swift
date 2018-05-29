@@ -99,6 +99,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
             case .cancelConversationRequest?:
                 let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
+                NotificationCenter.default.post(name: Notification.Name("CencelDialogRequest"), object: nil, userInfo: nil)
+
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
                 
@@ -135,17 +137,6 @@ class SocketManager: UIViewController, WebSocketDelegate {
         delegate?.didReciveMessages(messages: message)
 
     }
-    func sendMessageInitiator(message:Message) {
-        
-        guard let token = APIService.sharedInstance.token else { return }
-        
-        let jsonPushMassage = "{\"action\":\"push_message\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: self.initiatorDialog) + "\",\"message\":\"" +  "\( message.text)" + "\",\"language\":\"ru-RU\"}}"
-        self.socket.write(string: jsonPushMassage)
-        delegate?.didReciveMessages(messages: message)
-        
-    }
-
-    
     
     func startDialog(receiver: String) {
         

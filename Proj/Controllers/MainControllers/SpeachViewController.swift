@@ -237,7 +237,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 message.receiverId = receiver
                 
                 SocketManager.sharedInstanse.sendMessage(message: message)
-                //SocketManager.sharedInstanse.sendMessageInitiator(message: message)
             }
         }
         
