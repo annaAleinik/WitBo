@@ -301,6 +301,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     }
     
     func quitConversation() {
+		let rec = SocketManager.sharedInstanse.initiatorDialog
+		SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         self.dismiss(animated: true, completion: nil)
     }
 
