@@ -260,7 +260,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
 
-        guard let rec = SocketManager.sharedInstanse.initiatorDialog else {return}
+        let rec = SocketManager.sharedInstanse.initiatorDialog
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
 
     }

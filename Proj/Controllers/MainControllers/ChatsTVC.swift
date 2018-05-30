@@ -301,17 +301,20 @@ extension ChatsTVC {
     
     
     @objc func quitConversation(notification: NSNotification) {
-        self.quitConversationStart()
+		let dict = notification.userInfo ?? [:]
+		let initiatorID = dict["initiatorID"] as? String ?? ""
+        self.quitConversationStart(initiator: initiatorID)
     }
     
-    func quitConversationStart() {
+	func quitConversationStart(initiator: String) {
         
         let alert = UIAlertController(title: "Alert", message: "С вами хочет начать диалог (ВСТАВЬ ИМЯ ТОГО КТО ХОЧЕТ НАЧАТЬ)", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
         SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "1")
             alert.dismiss(animated: true, completion: nil)
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "SpeachViewController")
+//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//            let vc = storyBoard.instantiateViewController(withIdentifier: "SpeachViewController")
+			let vc = SpeachViewController.viewController(receiverID: initiator)
             self.present(vc, animated: true, completion: nil)
 
 
