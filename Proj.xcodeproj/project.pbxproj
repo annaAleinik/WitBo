@@ -32,6 +32,7 @@
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
 		842A393C20A9C6220020C323 /* LanguageSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A393B20A9C6220020C323 /* LanguageSourse.swift */; };
+		8435887C20BE9C9F0007EBEE /* AlertResponseConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435887B20BE9C9F0007EBEE /* AlertResponseConversation.swift */; };
 		843815D5206E0A750086BC5B /* AddsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843815D4206E0A750086BC5B /* AddsManager.swift */; };
 		84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA7207CA5A400E3E953 /* LastMassageModel.swift */; };
 		8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BB82208F5E8700485A20 /* HeaderContacts.swift */; };
@@ -109,6 +110,7 @@
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		842A393B20A9C6220020C323 /* LanguageSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSourse.swift; sourceTree = "<group>"; };
+		8435887B20BE9C9F0007EBEE /* AlertResponseConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertResponseConversation.swift; sourceTree = "<group>"; };
 		843815D4206E0A750086BC5B /* AddsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddsManager.swift; sourceTree = "<group>"; };
 		84413CA7207CA5A400E3E953 /* LastMassageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMassageModel.swift; sourceTree = "<group>"; };
 		8444BB82208F5E8700485A20 /* HeaderContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContacts.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				8400FA6320AD72EC00A36EE7 /* MainControllers */,
 				8400FA6420AD734600A36EE7 /* Alerts */,
 				8BB75BBB2074AC490067CCB2 /* CellContacts.swift */,
+				8435887B20BE9C9F0007EBEE /* AlertResponseConversation.swift */,
 				8444BB82208F5E8700485A20 /* HeaderContacts.swift */,
 				8444BB83208F5E8700485A20 /* HeaderContacts.xib */,
 				8400FA5F20AD618300A36EE7 /* NotificationCell.swift */,
@@ -547,6 +550,7 @@
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,
 				847261A82087460800CBF9D8 /* Contact.swift in Sources */,
 				08C75415208C9D430026A0C3 /* WBChatViewController.swift in Sources */,
+				8435887C20BE9C9F0007EBEE /* AlertResponseConversation.swift in Sources */,
 				08C75422208CB3A70026A0C3 /* Message.swift in Sources */,
 				8400FA5E20AD557F00A36EE7 /* NotificationController.swift in Sources */,
 				8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */,

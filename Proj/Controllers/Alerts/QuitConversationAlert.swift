@@ -19,10 +19,7 @@ class QuitConversationAlert: UIViewController {
     @IBAction func quitConversationButton(_ sender: Any) {
         self.delegateQC?.quitConversation()
         self.dismiss(animated: false, completion: nil)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "Massage")
-        present(controller, animated: true, completion: nil)
+
     }
     
     @IBOutlet weak var quitConversationLabel: UILabel!

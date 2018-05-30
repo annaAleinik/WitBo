@@ -301,7 +301,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     }
     
     func quitConversation() {
-        self.tabBarController?.selectedIndex = 0        
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
