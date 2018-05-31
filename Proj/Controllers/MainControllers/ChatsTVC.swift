@@ -26,14 +26,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         tableView.register(UINib(nibName: "HeaderContacts", bundle: nil), forCellReuseIdentifier: "HeaderContacts")
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
-        
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector:#selector(quitConversation(notification:)),
-                                               name: Notification.Name("QuitConversation"),
-                                               object: nil)
-        
-        
+		
 
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
@@ -270,6 +263,10 @@ extension ChatsTVC {
                                                selector:#selector(self.changeStatusOnLine(notification:)),
                                                name: Notification.Name("ChangeStatusOnLine"),
                                                object: nil)
+		NotificationCenter.default.addObserver(self,
+											   selector:#selector(quitConversation(notification:)),
+											   name: Notification.Name("QuitConversation"),
+											   object: nil)
     }
     
     func removeObservers() {
