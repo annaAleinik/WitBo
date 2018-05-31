@@ -19,14 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="102.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-m2-rRm">
-                        <rect key="frame" x="135" y="41" width="42" height="21"/>
-                        <accessibility key="accessibilityConfiguration" identifier="CustomCellContcts"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="DLN-lE-B70">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo" translatesAutoresizingMaskIntoConstraints="NO" id="DLN-lE-B70">
                         <rect key="frame" x="15" y="19" width="65" height="65"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="atM-dW-Zad"/>
@@ -39,10 +32,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DrW-b0-b2n">
-                        <rect key="frame" x="291" y="41" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DrW-b0-b2n">
+                        <rect key="frame" x="95" y="41" width="20" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="R5u-7W-jg0"/>
+                            <constraint firstAttribute="height" constant="20" id="cK6-YI-kcZ"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -50,15 +46,23 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-m2-rRm">
+                        <rect key="frame" x="130" y="40" width="42" height="21"/>
+                        <accessibility key="accessibilityConfiguration" identifier="CustomCellContcts"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="DLN-lE-B70" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="7Hk-9i-Zqx"/>
-                    <constraint firstItem="DLN-lE-B70" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JAj-NW-UYe"/>
-                    <constraint firstItem="7aK-m2-rRm" firstAttribute="leading" secondItem="DLN-lE-B70" secondAttribute="trailing" constant="10" id="P6c-S0-bgy"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7aK-m2-rRm" secondAttribute="trailing" constant="15" id="QsL-RE-KL0"/>
-                    <constraint firstItem="DLN-lE-B70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="UMf-FR-Lrc"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DLN-lE-B70" secondAttribute="bottom" constant="15" id="eX7-Dk-mRv"/>
-                    <constraint firstItem="7aK-m2-rRm" firstAttribute="centerY" secondItem="DLN-lE-B70" secondAttribute="centerY" id="qGP-Qz-E9W"/>
+                    <constraint firstItem="7aK-m2-rRm" firstAttribute="leading" secondItem="DrW-b0-b2n" secondAttribute="trailing" constant="15" id="8bj-Wh-36n"/>
+                    <constraint firstAttribute="bottom" secondItem="DLN-lE-B70" secondAttribute="bottom" constant="19" id="KCX-dg-2R2"/>
+                    <constraint firstItem="DLN-lE-B70" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="TUi-8m-X1m"/>
+                    <constraint firstItem="7aK-m2-rRm" firstAttribute="centerY" secondItem="DrW-b0-b2n" secondAttribute="centerY" id="ieq-Xx-eXG"/>
+                    <constraint firstItem="DrW-b0-b2n" firstAttribute="leading" secondItem="DLN-lE-B70" secondAttribute="trailing" constant="15" id="nb2-lq-aUZ"/>
+                    <constraint firstItem="DrW-b0-b2n" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="srP-Ac-f56"/>
+                    <constraint firstItem="DLN-lE-B70" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ymd-W5-OeM"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -70,6 +74,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="background" width="1138" height="640"/>
+        <image name="icon_logo" width="512" height="512"/>
     </resources>
 </document>

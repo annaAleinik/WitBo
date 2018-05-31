@@ -238,5 +238,6 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         return myView
     }
+    
 
 }

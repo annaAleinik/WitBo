@@ -141,7 +141,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellContcts", for: indexPath) as! CellContacts
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.backgroundColor = UIColor.clear
         
         let contact = self.arrayContacts[(indexPath.row-1)]
         
