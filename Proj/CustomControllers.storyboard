@@ -219,7 +219,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SHe-Ps-thv" firstAttribute="centerY" secondItem="qfD-tN-rNG" secondAttribute="centerY" id="aqi-ue-Hfc"/>
                             <constraint firstItem="SHe-Ps-thv" firstAttribute="centerX" secondItem="qfD-tN-rNG" secondAttribute="centerX" id="d1m-9E-TcX"/>

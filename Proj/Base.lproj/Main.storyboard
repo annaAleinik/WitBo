@@ -396,6 +396,7 @@
                         <outlet property="pickerView" destination="OiB-od-ogu" id="v5H-8F-eJE"/>
                         <outlet property="registrationButton" destination="oe0-PA-UQB" id="PR6-Nt-s95"/>
                         <outlet property="repiatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
+                        <segue destination="kjR-Uw-vIj" kind="show" id="IDD-Nc-7Et"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IpQ-Cr-7sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,4 +789,7 @@
         <image name="icon_notice-29" width="29" height="29"/>
         <image name="icon_settings" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="IDD-Nc-7Et"/>
+    </inferredMetricsTieBreakers>
 </document>
