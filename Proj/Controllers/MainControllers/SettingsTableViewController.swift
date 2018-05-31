@@ -22,6 +22,12 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @IBOutlet weak var dataRegistrationLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     
+    @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var supportButton: UIButton!
+    @IBOutlet weak var galleryButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var changePhoto: UILabel!
+    @IBOutlet weak var changeUtteranse: UILabel!
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
@@ -54,6 +60,17 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         picker.delegate = self
         picker.dataSource = self
+        
+        self.userName.textColor = UIColor.white
+        self.userEmailLabel.textColor = UIColor.white
+        self.languageLabel.textColor = UIColor.white
+        self.dataRegistrationLabel.textColor = UIColor.white
+        self.changeUtteranse.textColor = UIColor.white
+        self.changePhoto.textColor = UIColor.white
+        self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
 
     }
     
