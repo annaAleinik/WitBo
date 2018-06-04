@@ -23,7 +23,7 @@ extension Scene {
 			return UIActivityViewController(activityItems: items, applicationActivities: nil)
 			
 		case .login(let model):
-			let viewController = LoginViewController()
+			let viewController = WBLoginViewController()
 			viewController.setModel(model)
 			return viewController
 			//

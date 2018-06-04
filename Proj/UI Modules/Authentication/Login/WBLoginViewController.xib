@@ -10,7 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WBLoginViewController" customModule="Proj" customModuleProvider="target">
+            <connections>
+                <outlet property="gotoRegistrationButton" destination="d1F-cp-E4F" id="wZU-As-93e"/>
+                <outlet property="loginButton" destination="JNK-Rw-TuH" id="vzh-tU-dUY"/>
+                <outlet property="passwordField" destination="8J2-TY-uH5" id="znL-6T-yYw"/>
+                <outlet property="usernameField" destination="bnl-4o-LlG" id="8QA-UJ-ltq"/>
+                <outlet property="view" destination="kJa-wn-VcF" id="12l-HM-rqs"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="kJa-wn-VcF">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>

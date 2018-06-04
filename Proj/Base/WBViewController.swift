@@ -17,7 +17,7 @@ class WBViewController<T:WBViewModel>: UIViewController, WBViewControllerType {
 	
 	let disposeBag = DisposeBag()
 	
-	var backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Back"), style: .plain, target: nil, action: nil)
+	var backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "background"), style: .plain, target: nil, action: nil)
 	
 	var txtHeight : CGFloat = 0
 	

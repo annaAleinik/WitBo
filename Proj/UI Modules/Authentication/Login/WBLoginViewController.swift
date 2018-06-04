@@ -11,16 +11,13 @@ import RxSwift
 import RxCocoa
 import Action
 
-class LoginViewController: WBViewController<LoginViewModel> {
+class WBLoginViewController: WBViewController<LoginViewModel> {
 	
-	@IBOutlet weak var gotoRegisterButton   : UIButton!
-	@IBOutlet weak var loginButton          : UIButton!
-	
-	@IBOutlet weak var usernameField        : UITextField!
-	@IBOutlet weak var passwordField        : UITextField!
-	
-	
-	
+	@IBOutlet weak var usernameField: UITextField!
+	@IBOutlet weak var passwordField: UITextField!
+	@IBOutlet weak var loginButton: UIButton!
+	@IBOutlet weak var gotoRegistrationButton: UIButton!
+
 	//	MARK: - life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()

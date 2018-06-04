@@ -57,56 +57,38 @@ class SceneCoordinator: NSObject, SceneCoordinatorType {
 	func transition(to scene: Scene, type: SceneTransitionType, animated: Bool = true) -> Completable {
 		let subject = PublishSubject<Void>()
 		let viewController = scene.viewController()
-//		switch type {
-//		case .root:
-//			if let fromVC = window.rootViewController, animated {
-//				viewController.view.frame = fromVC.view.frame
-//				
-//				UIView.transition(from: fromVC.view, to: viewController.view, duration: 0.33, options: [.transitionCrossDissolve, .curveEaseOut], completion: { _ in
-//					self.window.rootViewController = viewController
-//					subject.onCompleted()
-//				})
-//				
-//			} else {
-//				window.rootViewController = viewController
-//				subject.onCompleted()
-//			}
-//			
-//		case .push:
-//			guard let navigationController = currentViewController.navigationController else {
-//				fatalError("Can't push a view controller without a current navigation controller")
-//			}
-//			// one-off subscription to be notified when push complete
-//			_ = navigationController.rx.delegate
-//				.sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
-//				.map { _ in }
-//				.bind(to: subject)
-//			navigationController.pushViewController(viewController, animated: animated)
-//			
-//		case .modal:
-//			currentViewController.present(viewController, animated: animated, completion: {
-//				subject.onCompleted()
-//			})
-//			
-//		case .popup(let sourceView, let sourceRect, let arrowDirection):
-//			viewController.modalPresentationStyle = .popover
-//			
-//			if let popoverController = viewController.popoverPresentationController {
-//				popoverController.delegate = self
-//				
-//				popoverController.permittedArrowDirections = arrowDirection ?? .up
-//				popoverController.backgroundColor = .white
-//				
-//				popoverController.sourceView = sourceView
-//				popoverController.sourceRect = sourceRect
-//			}
-//			
-//			currentViewController.present(viewController, animated: animated) {
-//				subject.onCompleted()
-//			}
-//			
-//			
-//		}
+		switch type {
+		case .root:
+			if let fromVC = window.rootViewController, animated {
+				viewController.view.frame = fromVC.view.frame
+				
+				UIView.transition(from: fromVC.view, to: viewController.view, duration: 0.33, options: [.transitionCrossDissolve, .curveEaseOut], completion: { _ in
+					self.window.rootViewController = viewController
+					subject.onCompleted()
+				})
+				
+			} else {
+				window.rootViewController = viewController
+				subject.onCompleted()
+			}
+			
+		case .push:
+			guard let navigationController = currentViewController.navigationController else {
+				fatalError("Can't push a view controller without a current navigation controller")
+			}
+			// one-off subscription to be notified when push complete
+			_ = navigationController.rx.delegate
+				.sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
+				.map { _ in }
+				.bind(to: subject)
+			navigationController.pushViewController(viewController, animated: animated)
+			
+		case .modal:
+			currentViewController.present(viewController, animated: animated, completion: {
+				subject.onCompleted()
+			})
+	
+		}
 		
 		return subject.asObservable()
 			.take(1)

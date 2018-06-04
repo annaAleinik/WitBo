@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let loginModel = LoginViewModel(services: services, sceneCoordinator: sceneCoordinator)
 		let loginScene = Scene.login(loginModel)
-		
+		sceneCoordinator.transition(to: loginScene, type: .root, animated: false)
 //		services.credentials.onLogout.take(1, scheduler: MainScheduler.instance).subscribe(onNext: { _ in
 //			sceneCoordinator.transition(to: loginScene, type: .root, animated: false)
 //		}).disposed(by: disposeBag)
