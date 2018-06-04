@@ -1,27 +1,57 @@
 PODS:
+  - Action (3.5.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - Alamofire (4.7.2)
-  - Moya (11.0.2):
-    - Moya/Core (= 11.0.2)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
+  - Moya/RxSwift (11.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - ReachabilitySwift (4.1.0)
   - Result (3.2.4)
+  - RxBlocking (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxGesture (1.2.1):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
-  - Moya (~> 11.0)
+  - Action
+  - Moya/RxSwift
+  - ReachabilitySwift
+  - RxBlocking
+  - RxCocoa
+  - RxGesture
+  - RxSwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Action
     - Alamofire
     - Moya
+    - ReachabilitySwift
     - Result
+    - RxBlocking
+    - RxCocoa
+    - RxGesture
+    - RxSwift
 
 SPEC CHECKSUMS:
+  Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Moya: a725035953bc1c0eb1be505ab903984501d82440
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxGesture: c278eb05b187abd47e11e65464ae4de53ab71d95
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: 9d00ddf8c48a10b95ebb1d9f64b741d4115561ad
+PODFILE CHECKSUM: 81144624c58e1fc7af5d47a1bd4b011a2b494467
 
 COCOAPODS: 1.5.0

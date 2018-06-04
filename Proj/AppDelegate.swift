@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +18,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-		let router = Router()
-		self.window = router.didFinishLaunchingWithOptions(launchOptions: launchOptions)
-        
+		window = UIWindow(frame: UIScreen.main.bounds)
+		window?.backgroundColor = UIColor.white
+		window?.rootViewController = UIViewController()
+		
+		setupRx()
+		window?.makeKeyAndVisible()
+		
         return true
     }
+	
+	func setupRx() {
+		let sceneCoordinator = SceneCoordinator(window: window!)
+		let services = try! WBServicesConfiguration()
+		
+		let loginModel = LoginViewModel(services: services, sceneCoordinator: sceneCoordinator)
+		let loginScene = Scene.login(loginModel)
+		
+//		services.credentials.onLogout.take(1, scheduler: MainScheduler.instance).subscribe(onNext: { _ in
+//			sceneCoordinator.transition(to: loginScene, type: .root, animated: false)
+//		}).disposed(by: disposeBag)
+		
+//		services.credentials.onLogin.take(1, scheduler: MainScheduler.instance).subscribe(onNext: { _ in
+//			let welcomeModel = WelcomeVideoModel(services: services, sceneCoordinator: sceneCoordinator, loadingType: .startup)
+//			let welcomeScene = Scene.welcome(welcomeModel)
+//			sceneCoordinator.transition(to: welcomeScene, type: .root)
+//		}).disposed(by: disposeBag)
+	}
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
