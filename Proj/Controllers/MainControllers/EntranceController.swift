@@ -13,8 +13,8 @@ import SwiftValidator
 class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
 
     let validator = Validator()
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
-    
     @IBOutlet weak var welcomeLable: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -47,34 +47,45 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         let password = passwordField.text
 
         validator.validate(self)
-        
-        
+        if (emailField.text == "") || (passwordField.text == ""){
+            let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+
         APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, error) in
-            
             if APIService.sharedInstance.secret != nil{
                 APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
-                
                 if APIService.sharedInstance.token != nil {
                     SocketManager.sharedInstanse.socketsConnecting()
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
                     self.present(vc, animated: true, completion: nil)
-
                     
                     APIService.sharedInstance.userData(token: APIService.sharedInstance.token!) { (succses, error) in
                         }
                     }
 
                 }
-            }
+            } 
         }
     }
+}
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailField.delegate = self
         self.passwordField.delegate = self
-        
+        self.activityIndicator.color = UIColor.red
+        self.activityIndicator.isHidden = true
+        activityIndicator.center = self.view.center
+        self.view.addSubview(self.activityIndicator)
+
         
         //Localized
         

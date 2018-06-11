@@ -19,10 +19,10 @@ class HeaderContacts: UITableViewCell {
     
     var delegate : HeaderCellDelegate? = nil
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
+        self.addContactField.placeholder = "Add email"
         // Initialization code
     }
 
@@ -39,7 +39,6 @@ class HeaderContacts: UITableViewCell {
         delegate?.addContact(email: email!)
     }
     
-
     
     
 }

@@ -101,6 +101,10 @@ struct CommonConversationRequest : Codable {
 struct ConversationRequest : Codable {
         public var initiator: String? = nil
         public var time: Int? = nil
+        public var email: String? = nil
+        public var name: String? = nil
+
+
     }
 
 

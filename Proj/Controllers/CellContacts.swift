@@ -13,6 +13,7 @@ class CellContacts: UITableViewCell {
     @IBOutlet weak var nameContactsLablel: UILabel!
     @IBOutlet weak var userStatusOnLine: UIView!
     
+    @IBOutlet weak var statusLable: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +31,11 @@ class CellContacts: UITableViewCell {
             
             if isOnline == true {
                 self.userStatusOnLine.backgroundColor = .green
+                self.statusLable.text = "Online"
             } else if isOnline == false{
                 self.userStatusOnLine.backgroundColor = .gray
+                self.statusLable.text = "OffLine"
+
             }
 
             self.layoutSubviews()

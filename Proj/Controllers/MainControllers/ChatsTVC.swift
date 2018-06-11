@@ -10,13 +10,14 @@ import UIKit
 import RealmSwift
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
-	
+
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var myIndex : Int?
 	var arrayContacts = [ContactModelProtocol]()
     var receiver : String?
     var speachVC: SpeachViewController?
     let realmManager = WBRealmManager()
-    
+
     @IBOutlet weak var titleChatLable: UILabel!
     
     override func viewDidLoad() {
@@ -26,8 +27,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         tableView.register(UINib(nibName: "HeaderContacts", bundle: nil), forCellReuseIdentifier: "HeaderContacts")
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 103.0;
-		
-
+		self.activityIndicator.isHidden = true
+        self.activityIndicator.color = UIColor .white
+        activityIndicator.center = self.view.center
+        self.view.addSubview(self.activityIndicator)
+        
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
@@ -151,7 +155,10 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             cell.changeIndcatotStatus(isOnline: true)
         } else if contact.online == 0{
             cell.changeIndcatotStatus(isOnline: false)
+            cell.isUserInteractionEnabled = false
+
         }
+        cell.selectionStyle = .none
         
         return (cell)
     }
@@ -216,10 +223,21 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
 //    MARK: -- HeaderCellDelegate
     func addContact(email: String) {
-        
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         if Reachability.isConnectedToNetwork(){
             APIService.sharedInstance.addContact(token: APIService.sharedInstance.token!, email: email) { (resp, error) in
                 if resp.success {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    if email .isEmpty{
+                        let alert = UIAlertController(title: "", message: " Заполните пожалуйста поле поиска", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        alert.addAction(ok)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
                     APIService.sharedInstance.gettingContactsList(token: APIService.sharedInstance.token!) { (contacts, error) in
                         guard error == nil else {
                             print(error?.localizedDescription)

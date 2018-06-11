@@ -45,6 +45,9 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        //default value in picler
+//        let preferredLanguage = NSLocale.preferredLanguages[0]
+//        pickerView.selectedRow(inComponent: <#T##Int#>)
         
         //MARK: -- Validator
         
@@ -198,10 +201,15 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let accept = UIAlertAction(title: "Accept", style: .default, handler: { (_) -> Void in
             APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang)
             
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
-            self.present(vc, animated: true, completion: nil)
-            
+            let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
+                self.present(vc, animated: true, completion: nil)
+
+            }))
+            self.present(alert, animated: true, completion: nil)
+
         })
         
         let cancel = UIAlertAction(title: "Cencel", style: .cancel, handler: nil)
