@@ -31,7 +31,7 @@ class WBViewController<T:WBViewModel>: UIViewController, WBViewControllerType {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		onViewDidLoad()
+		onViewDidLoad()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

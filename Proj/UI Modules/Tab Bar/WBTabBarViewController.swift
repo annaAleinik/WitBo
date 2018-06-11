@@ -7,3 +7,32 @@
 //
 
 import Foundation
+import UIKit
+import RxSwift
+
+class WBTabBarViewController: UITabBarController, WBViewControllerType {
+	
+	typealias Model = WBTabBarViewModel
+	var model: WBTabBarViewModel!
+	
+	var disposeBag = DisposeBag()
+	
+	var backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Back"), style: .plain, target: nil, action: nil)
+	
+	
+	func localize() {
+		
+	}
+	
+	func setupRx() {
+		
+	}
+	
+	func setModel(_ model: Model!) {
+		self.model = model
+	}
+	
+	
+	
+	
+}

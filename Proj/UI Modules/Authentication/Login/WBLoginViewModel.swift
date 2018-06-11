@@ -20,6 +20,14 @@ class LoginViewModel: WBViewModel {
 	
 	var loginAction : Action<Void,Void>
 	
+	lazy var gotoRegisteration = Action<Void, Void> { [weak self]_ in
+		guard let `self` = self else {return Observable.empty()}
+		
+		let model = RegisterViewModel(services: self.services , sceneCoordinator: self.sceneCoordinator)
+		let registerScene = Scene.register(model)
+		return self.sceneCoordinator.transition(to: registerScene, type: .root).asObservable().map{ _ in}
+	}
+	
 	override init(services: WBServicesConfiguration, sceneCoordinator: SceneCoordinator) {
 		let loginCredentialsValidation = Observable.combineLatest(username.asObservable().isValidLoginUsername(), password.asObservable().isValidPassword()).share(replay: 1, scope: .forever)
 		
@@ -30,23 +38,20 @@ class LoginViewModel: WBViewModel {
 		}
 		
 		loginAction = Action<Void,Void>(enabledIf: trigger) {
-//			return credentials.take(1)
-//				.flatMapLatest { (username, password) in
-//					return services.authentication.login(username: username, password: password)
-//				}
-//				.flatMapLatest{ _ in
-//					return services.authentication.sendDivieceToken(token: Messaging.messaging().fcmToken ?? "")
-//				}
-//				.flatMapLatest { _ -> Observable<Void> in
-//					let welcomeModel = WelcomeVideoModel.init(services: services, sceneCoordinator: sceneCoordinator, loadingType: .login)
-//					let welcomeScene = Scene.welcome(welcomeModel)
-//					return sceneCoordinator.transition(to: welcomeScene, type: .root).asObservable().map {_ in}
-//			}
-			return Observable.empty()
+			return credentials.take(1)
+				.flatMapLatest { (username, password) -> Observable<Void> in
+					return services.authentication.login(username: username, password: password)
+				}
+				.flatMapLatest { _ -> Observable<Void> in
+					let model = WBTabBarViewModel(services: services, sceneCoordinator: sceneCoordinator)
+					let tabbarScene = Scene.tabBar(model)
+					return sceneCoordinator.transition(to: tabbarScene, type: .root, animated: true).asObservable().map{ _ in }
+			}
 		}
-		
 		super.init(services: services, sceneCoordinator: sceneCoordinator)
 		loginAction.errors.bind(to: services.errorHandler.actionErrors).disposed(by: disposeBag)
 	}
+	
+
 	
 }

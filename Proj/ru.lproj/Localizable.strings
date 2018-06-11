@@ -13,3 +13,4 @@ STR_SIGNUP = "Вход";
 STR_REGISTRATION = "Регистрация";
 STR_RECORDTOUCH = "Нажмите и говорите";
 STR_LASTMASSAGE = "Последние сообщения";
+STR_SIGNUP_NOW = "Регистрация";

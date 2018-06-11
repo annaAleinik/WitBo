@@ -13,6 +13,8 @@ extension Scene {
 	func viewController() -> UIViewController {
 		switch self {
 			
+		case .navigation(let model):
+			return NavigationController(model: model)
 		case .empty:
 			return UIViewController()
 			//
@@ -26,11 +28,11 @@ extension Scene {
 			let viewController = WBLoginViewController()
 			viewController.setModel(model)
 			return viewController
-			//
-			//		case .register(let model):
-			//			let viewController = RegisterViewController()
-			//			viewController.setModel(model)
-			//			return viewController
+			
+		case .register(let model):
+			let viewController = WBRegisterViewController()
+			viewController.setModel(model)
+			return viewController
 			//
 			//		case .profile(let model):
 			//			let viewController = ProfileViewController()
@@ -47,10 +49,10 @@ extension Scene {
 			//			viewController.setModel(model)
 			//			return viewController
 			//
-			//		case .tabBar(let model):
-			//			let viewController  = UIStoryboard.init(name: "GBTabBarViewController", bundle: Bundle.main).instantiateInitialViewController() as! GBTabBarViewController
-			//			viewController.setModel(model)
-			//			return viewController
+					case .tabBar(let model):
+						let viewController  = UIStoryboard.init(name: "WBTabBarViewController", bundle: Bundle.main).instantiateInitialViewController() as! WBTabBarViewController
+						viewController.setModel(model)
+						return viewController
 			//
 			//		case .settings(let model):
 			//			let viewController = SettingsViewController()

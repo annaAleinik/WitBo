@@ -12,14 +12,14 @@ enum Scene {
 	
 	case share([Any])
 	
-//	case navigation(NavigationControllerModel)
+	case navigation(NavigationControllerModel)
 	
 	case empty
 	
 //	// MARK: - Authentication
 	case login(LoginViewModel)
-//	case register(RegisterViewModel)
-//	
+	case register(RegisterViewModel)
+
 //	// MARK: - Profile
 //	case profile(ProfileViewModel)
 //	
@@ -36,9 +36,9 @@ enum Scene {
 //	case friendsList(FriendsListViewModel)
 //	case addFriends(AddFriendsViewModel)
 //	
-//	//MARK: - TabBar
-//	case tabBar(GBTabBarViewModel)
-//	
+	//MARK: - TabBar
+	case tabBar(WBTabBarViewModel)
+//
 //	//MARK: - Settings
 //	
 //	case settings(SettingsViewModel)

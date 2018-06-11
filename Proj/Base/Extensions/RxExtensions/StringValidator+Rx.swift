@@ -28,7 +28,7 @@ extension Observable where Element == String {
     
     func isValidPassword() -> Observable<Bool> {
         
-        return self.map { $0.count >= 8 && $0.hasLetter() }
+		return self.map { $0.count >= 6 } //&& $0.hasLetter() }
     }
 
     func isValidEmail() -> Observable<Bool> {

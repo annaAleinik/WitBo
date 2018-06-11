@@ -14,7 +14,7 @@ open class ServicesConfiguration {
 	
 	// MARK: - Public services
 	
-//	public let authentication: AuthenticationService
+	public let authentication: AuthenticationService
 //	public let profile: ProfileService
 //	public let settings: SettingsService
 //	public let categories: CategoriesService
@@ -26,7 +26,7 @@ open class ServicesConfiguration {
 //	public let booxs: BooxService
 //	public let choices: ChoicesService
 //	public let users: UsersService
-//	public let credentials: CredentialsService
+	public let credentials: CredentialsService
 //	public let location: LocationService
 //	public let gidget: GidgetService
 //	public let groups: GroupsService
@@ -46,17 +46,17 @@ open class ServicesConfiguration {
 	
 	// MARK: - Private services
 //
-//	let networking: NetworkingService
-//	let keyValue: KeyValueStorage
+	let networking: NetworkingService
+	let keyValue: KeyValueStorage
 //	let localStorage: LocalStorageService
 //
 	// MARK: - Init
 	
-//	public init(sharedFolder: String? = "") throws {
-////		self.keyValue = UserDefaultsStorage()
-////		self.credentials = CredentialsServiceV1(backingStorage: keyValue)
-////		self.networking = NetworkingServiceV1(credentials: credentials)
-////		self.authentication = AuthenticationServiceV1(networking: networking, credentials: credentials)
+	public init(sharedFolder: String? = "") throws {
+		self.keyValue = UserDefaultsStorage()
+		self.credentials = CredentialsServiceV1(backingStorage: keyValue)
+		self.networking = NetworkingServiceV1(credentials: credentials)
+		self.authentication = AuthenticationServiceV1(networking: networking, credentials: credentials)
 ////		self.profile = ProfileServiceV1(credentials: credentials, networking: networking)
 ////		self.settings = SettingsServiceV1(credentials: credentials, networking: networking)
 ////		self.users = UsersServiceV1(networking: networking, profile: profile)
@@ -69,5 +69,5 @@ open class ServicesConfiguration {
 ////			.distinctUntilChanged()
 ////			.share(replay: 1, scope: .forever)
 //		
-//	}
+	}
 }

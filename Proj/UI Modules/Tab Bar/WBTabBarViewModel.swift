@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class WbTabBarViewModel: WBViewModel {
+class WBTabBarViewModel: WBViewModel {
 	
 var viewControllers : Observable<[UIViewController]?>
 	
