@@ -35,8 +35,10 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
-    }
+    
 
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -216,9 +218,9 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     // MARK: - KeyBoard hide
     
-//        func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     
 //    MARK: -- HeaderCellDelegate
