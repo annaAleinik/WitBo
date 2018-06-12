@@ -15,4 +15,6 @@ struct LoginModel : Codable {
     var code: Int?
 }
 
-
+struct RegistrationModel : Codable {
+    var code: String?
+}

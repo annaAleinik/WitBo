@@ -199,16 +199,42 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let alert = UIAlertController(title: "Политика безопасности", message: APIConstants.privacyPolicy, preferredStyle: UIAlertControllerStyle.alert)
 
         let accept = UIAlertAction(title: "Accept", style: .default, handler: { (_) -> Void in
-            APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang)
-            
-            let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
-                self.present(vc, animated: true, completion: nil)
+//            APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang)
+            APIService.sharedInstance.postRegistration(name: name, email: email, password: pass, lang: lang, completion: { (succsecc, error) in
+                
+                let existingUserLogin = "existing_user_login"
+                let existingUserEmail = "existing_user_email"
+                
+                if APIService.sharedInstance.existingUser == existingUserLogin{
+                    let alert = UIAlertController(title: "", message: "такое имя уже создан", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }else if APIService.sharedInstance.existingUser == existingUserEmail {
+                    let alert = UIAlertController(title: "", message: "такой емайл уже создано", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else{
+                    let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                        let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
+                        self.present(vc, animated: true, completion: nil)
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
 
-            }))
-            self.present(alert, animated: true, completion: nil)
+                }
+            })
+            
+//            let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
+//                self.present(vc, animated: true, completion: nil)
+//
+//            }))
+//            self.present(alert, animated: true, completion: nil)
 
         })
         

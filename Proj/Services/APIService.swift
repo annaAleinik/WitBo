@@ -33,6 +33,7 @@ class APIService {
     var userDataRegistration : String?
     var emailConfirmed : Int?
     var loginCode: Int?
+    var existingUser: String?
     
     let realmManager = WBRealmManager()
     
@@ -49,14 +50,28 @@ class APIService {
         self.deviceLanguage = arr.first as? String ?? ""
     }
     
-    func postRegistration(name: String,email: String, password: String, lang: String) {
+    func postRegistration(name: String,email: String, password: String, lang: String, completion : @escaping (Bool, Error?) -> Void) {
         
         let params = ["name":name,"email":email, "password" : password,"lang":lang]
         let url = URL(string: "\(APIConstants.baseURL)\(APIConstants.registrationURL)")
         
-        Alamofire.request(url!, method: HTTPMethod.post , parameters: params).response { (response) in
+        Alamofire.request(url!, method: HTTPMethod.post , parameters: params).responseJSON { (response) in
             print(response)
             
+            switch response.result {
+            case .success(_ ):
+                do {
+                    let registrData = try JSONDecoder().decode(RegistrationModel.self, from: response.data!)
+                    self.existingUser = registrData.code
+                    completion(true, nil)
+                }catch let error{
+                    print(error)
+                    completion(false, error)
+                }
+            case .failure(let error):
+                print(error)
+                completion(false, error)
+            }
         }
     }
     
