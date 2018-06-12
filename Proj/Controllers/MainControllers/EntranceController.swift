@@ -47,6 +47,7 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         let password = passwordField.text
 
         validator.validate(self)
+        
         if (emailField.text == "") || (passwordField.text == ""){
             let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -57,9 +58,21 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
-
         APIService.sharedInstance.loginWith(login: login!, password: password!) { (succcses, error) in
-            if APIService.sharedInstance.secret != nil{
+            DispatchQueue.main.async{
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+            }
+            if APIService.sharedInstance.loginCode == 222{
+                guard let emailConfirmed = APIService.sharedInstance.emailConfirmed else {return}
+                if emailConfirmed == 0{
+                    let alert = UIAlertController(title: "", message: "Сначала подтвердите ваш електронный адрес. Письмо отправлено Вам на почту", preferredStyle: UIAlertControllerStyle.alert)
+                    let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                return
+                }
+                if APIService.sharedInstance.secret != nil && APIService.sharedInstance.secret != "" {
                 APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
                 if APIService.sharedInstance.token != nil {
                     SocketManager.sharedInstanse.socketsConnecting()
@@ -77,10 +90,17 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                     }
 
                 }
+                }
+            }else {
+                let alert = UIAlertController(title: "", message: "Неверный логин или пароль", preferredStyle: UIAlertControllerStyle.alert)
+                let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
-}
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -35,7 +35,10 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
-    
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
 
     }
     
@@ -218,10 +221,10 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     
     // MARK: - KeyBoard hide
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
-
+    
     
 //    MARK: -- HeaderCellDelegate
     func addContact(email: String) {

@@ -31,7 +31,9 @@ class APIService {
     var clietID : String?
     var userEmail : String?
     var userDataRegistration : String?
-
+    var emailConfirmed : Int?
+    var loginCode: Int?
+    
     let realmManager = WBRealmManager()
     
     var dict = ["ru-RU":"ru" , "en-En" : "en"]
@@ -72,19 +74,21 @@ class APIService {
                     let loginData = try JSONDecoder().decode(LoginModel.self, from: response.data!)
                     print(loginData.secret)
                     
-                    
                     let secret  = BaseUserModel()
                     secret.secret = loginData.secret
-                    
+                    self.emailConfirmed = loginData.email_confirmed
+                    self.loginCode = loginData.code
                     
                     UserDefaults.standard.set(loginData.secret, forKey: "SECRET")
                     self.secret = loginData.secret
                     
                     completion(true, nil)
                     
-                    
                 }catch let error{
                     print(error)
+                    self.loginCode = nil
+                    completion(false, error)
+
                 }
                 
             case .failure(let error):

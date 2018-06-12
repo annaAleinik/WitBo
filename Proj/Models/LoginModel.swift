@@ -11,7 +11,8 @@ import Foundation
 struct LoginModel : Codable {
     var secret : String
    // var tariff : String
-    
+    var email_confirmed : Int
+    var code: Int?
 }
 
 

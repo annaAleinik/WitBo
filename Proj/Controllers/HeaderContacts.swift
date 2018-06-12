@@ -13,7 +13,7 @@ protocol HeaderCellDelegate {
 }
 
 
-class HeaderContacts: UITableViewCell {
+class HeaderContacts: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var addContactField: UITextField!
     
@@ -23,7 +23,7 @@ class HeaderContacts: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = .clear
         self.addContactField.placeholder = "Add email"
-        // Initialization code
+        addContactField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,5 +40,10 @@ class HeaderContacts: UITableViewCell {
     }
     
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     
 }
