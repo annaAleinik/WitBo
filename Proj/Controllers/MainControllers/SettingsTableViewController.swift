@@ -32,7 +32,6 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     var flagArr = LanguageSourse.shared.dictFlag
     var language: String? = nil
 
-    
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOversSwitch.isOn = statusSwitch
@@ -46,17 +45,19 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingsLabel.text = "Settings"
-        
+
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
+        tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
         // byte array for server
         let data = UIImageJPEGRepresentation(image, 1.0)
         let arrByte = data?.base64EncodedString() // Attay bytes for server
+        
         
         picker.delegate = self
         picker.dataSource = self
@@ -71,8 +72,17 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-
+        
     }
+
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+
+        
+    }
+
     
     //MARK: -- Action
     
@@ -240,7 +250,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 60))
         
-        let flagImage = UIImageView(frame: CGRect(x: 0, y: 0, width:30, height: 30))
+        let flagImage = UIImageView(frame: CGRect(x: 0, y: 0, width:30, height: 60))
         
         flagImage.image = flagArr[row].img
         
@@ -256,5 +266,17 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         return myView
     }
     
+    //MARK: -- NavBar
+    
+//    func setNavigationBar() {
+//        let screenSize: CGRect = UIScreen.main.bounds
+//        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+//        let navItem = UINavigationItem(title: "Settings")
+//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(done))
+//        navItem.leftBarButtonItem = doneItem
+//        navBar.setItems([navItem], animated: false)
+//        self.view.addSubview(navBar)
+//    }
+
 
 }

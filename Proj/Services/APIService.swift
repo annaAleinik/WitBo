@@ -321,4 +321,14 @@ class APIService {
         }
         
     }
+    
+    func changeUserLang(token: String, lang: String){
+        let params = [token: token, lang: lang]
+        let url = URL(string:"http://prmir.com/wp-json/withbo/v1/user/lang/update")
+        
+        Alamofire.request(url!, method: HTTPMethod.post, parameters: params).responseJSON{
+            (response) in
+         
+        }
+    }
 }

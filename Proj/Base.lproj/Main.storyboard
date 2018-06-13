@@ -378,7 +378,7 @@
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiB-od-ogu">
                                 <rect key="frame" x="0.0" y="406" width="320" height="162"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="0.17249036815068494" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="hGf-AF-ZDK"/>
                                     <constraint firstAttribute="height" constant="162" id="nwp-sy-TqW"/>
@@ -511,14 +511,15 @@
             </objects>
             <point key="canvasLocation" x="-748" y="667"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--Title-->
         <scene sceneID="4qB-2z-aWa">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsVC" id="uTW-78-Iz2" customClass="SettingsTableViewController" customModule="Proj" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="28" id="1ba-lG-VpO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="28" id="1ba-lG-VpO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Tb-Wz-lwC">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
@@ -777,6 +778,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="icon_settings" id="xyc-ld-CdZ"/>
+                    <navigationItem key="navigationItem" title="Title" id="BiJ-x4-wJY"/>
                     <connections>
                         <outlet property="cameraButton" destination="deq-Ok-vdZ" id="p9a-Oa-C3t"/>
                         <outlet property="changePhoto" destination="OXq-rZ-U7z" id="WDT-dl-6pa"/>
@@ -823,6 +825,6 @@
         <image name="icon_settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IDD-Nc-7Et"/>
+        <segue reference="aGO-Rh-aik"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -252,8 +252,25 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
                             self.arrayContacts = array.sorted(by: { $0.name < $1.name })
                             self.tableView.reloadData()
                             
+                            let messageNotFoundCont = "User not found"
                             let alert = UIAlertController(title: "", message: resp.message, preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            
+                            if resp.message == messageNotFoundCont{
+
+                                let shareAction = UIAlertAction(title: "Share", style: UIAlertActionStyle.default) {
+                                    UIAlertAction in
+                                    
+                                    if let link = NSURL(string: "https://www.prmir.com/"){
+                                        let objectsToShare = ["Communication without borders", link] as [Any]
+                                        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                                        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                                        self.present(activityVC, animated: true, completion: nil)
+                                    }
+                                }
+                                alert.addAction(shareAction)
+
+                            }
                             self.present(alert, animated: true, completion: nil)
                             
                             

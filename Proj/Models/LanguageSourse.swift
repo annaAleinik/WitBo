@@ -19,7 +19,6 @@ class LanguageSourse {
         ("አማርኛ","am-ET"),
         ("English","en-GB"),
         ("العربية","ar-AE"),
-        
         ("Հայերեն","hy-AM"),
         ("Afrikaans","af-ZA"),
         ("Euskal","eu-ES"),
@@ -200,13 +199,6 @@ class LanguageSourse {
          ("Eesti",UIImage(named: "flag_estonia_icon.png") ?? UIImage()),
          ("日本語",UIImage(named: "flag_japan_icon.png") ?? UIImage())
     ]
-
-    
-    let arrLangSupport = ["",
-                          "",
-                          "",
-                          "",]
-
     
     
 }
