@@ -152,13 +152,13 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         
         cell.nameContactsLablel.text = contact.name
         
-//        if contact.online == 1{
-//            cell.changeIndcatotStatus(isOnline: true)
-//        } else if contact.online == 0{
-//            cell.changeIndcatotStatus(isOnline: false)
-////            cell.isUserInteractionEnabled = false
-//
-//        }
+        if contact.online == 1{
+            cell.changeIndcatotStatus(isOnline: true)
+        } else if contact.online == 0{
+            cell.changeIndcatotStatus(isOnline: false)
+            //cell.isUserInteractionEnabled = false
+
+        }
         cell.selectionStyle = .none
         
         return (cell)
