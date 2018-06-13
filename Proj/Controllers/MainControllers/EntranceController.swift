@@ -111,7 +111,10 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         activityIndicator.center = self.view.center
         self.view.addSubview(self.activityIndicator)
 
-        
+		//HARDCODE
+		self.emailField.text = "topikt@topikt.com"
+		self.passwordField.text = "123456"
+		
         //Localized
         
 		let strWelcome = NSLocalizedString("STR_WELCOME", comment: "")

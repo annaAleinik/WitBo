@@ -15,7 +15,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
     var myIndex : Int?
 	var arrayContacts = [ContactModelProtocol]()
     var receiver : String?
-    var speachVC: SpeachViewController?
     let realmManager = WBRealmManager()
 
     @IBOutlet weak var titleChatLable: UILabel!
@@ -35,10 +34,6 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
 
     }
     
@@ -146,6 +141,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         if indexPath.row == 0{
             let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderContacts") as! HeaderContacts
             headerCell.delegate = self
+			headerCell.addContactField.inputAccessoryView = self.toolbarView()
         return headerCell
         }
         
@@ -156,32 +152,31 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         
         cell.nameContactsLablel.text = contact.name
         
-        if contact.online == 1{
-            cell.changeIndcatotStatus(isOnline: true)
-        } else if contact.online == 0{
-            cell.changeIndcatotStatus(isOnline: false)
-            cell.isUserInteractionEnabled = false
-
-        }
+//        if contact.online == 1{
+//            cell.changeIndcatotStatus(isOnline: true)
+//        } else if contact.online == 0{
+//            cell.changeIndcatotStatus(isOnline: false)
+////            cell.isUserInteractionEnabled = false
+//
+//        }
         cell.selectionStyle = .none
         
         return (cell)
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       myIndex = indexPath.row
-       guard myIndex != 0 else {return}
-       
-        let contactId = self.arrayContacts[indexPath.row-1]
-        self.receiver = contactId.clientId
-        
-        guard let receiverJSON = receiver else { return }
-        SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
-        
-        self.presentAlertController()
-        
-    }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		myIndex = indexPath.row
+		guard myIndex != 0 else {return}
+		
+		let contactId = self.arrayContacts[indexPath.row-1]
+		self.receiver = contactId.clientId
+		
+		guard let receiverJSON = receiver else { return }
+		SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
+		
+		self.presentAlertController()
+	}
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
@@ -365,6 +360,15 @@ extension ChatsTVC {
         self.present(alert, animated: true, completion: nil)
         
     }
+	
+	func toolbarView() -> UIView {
+		let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+		let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+		let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action:  #selector(dismissKeyboard))
+		toolbar.setItems([flexSpace, doneBtn], animated: false)
+		toolbar.sizeToFit()
+		return toolbar
+	}
 
     
 }

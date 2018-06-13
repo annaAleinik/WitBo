@@ -1,12 +1,12 @@
 PODS:
   - Alamofire (4.7.2)
-  - Google-Mobile-Ads-SDK (7.30.0)
+  - Google-Mobile-Ads-SDK (7.31.0)
   - NoChat (0.3.2)
-  - Realm (3.4.0):
-    - Realm/Headers (= 3.4.0)
-  - Realm/Headers (3.4.0)
-  - RealmSwift (3.4.0):
-    - Realm (= 3.4.0)
+  - Realm (3.7.1):
+    - Realm/Headers (= 3.7.1)
+  - Realm/Headers (3.7.1)
+  - RealmSwift (3.7.1):
+    - Realm (= 3.7.1)
   - Starscream (3.0.5)
   - SwiftValidator (4.0.0)
 
@@ -39,10 +39,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
+  Google-Mobile-Ads-SDK: 6e529e748b45507a2ca904e0b5a52669ba3920c4
   NoChat: aaa980b8b29c0db8c8bd8ecde22e718cc8ad1bf7
-  Realm: 9527c7baa2260f3a3aad6823d2d71cafff9b046b
-  RealmSwift: f40a747beaea1cadde7dcef41ee5a34b3001677b
+  Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
+  RealmSwift: 1c2b6bae3dc55bb87e080ffa96537d71442f6dce
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
