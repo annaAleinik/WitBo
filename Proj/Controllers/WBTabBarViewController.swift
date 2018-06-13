@@ -10,8 +10,8 @@ import UIKit
 
 enum TabBarControllers: Int {
     case TabBarControllersDialogs = 0
-    case TabBarControllersSettings = 1
-    case TabBarControllerNotifications = 2
+    case TabBarControllersSettings = 2
+    case TabBarControllerNotifications = 1
 }
 
 class WBTabBarViewController: UITabBarController {
@@ -23,7 +23,7 @@ class WBTabBarViewController: UITabBarController {
         let tabItems = self.tabBar.items as NSArray!
         
         // In this case we want to modify the badge number of the third tab:
-        let tabItem = tabItems![2] as! UITabBarItem
+        let tabItem = tabItems![1] as! UITabBarItem
         
         // Now set the badge of the third tab
         tabItem.badgeValue = "1"

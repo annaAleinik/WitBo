@@ -160,7 +160,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
             cell.changeIndcatotStatus(isOnline: true)
         } else if contact.online == 0{
             cell.changeIndcatotStatus(isOnline: false)
-            cell.isUserInteractionEnabled = false
+            //cell.isUserInteractionEnabled = false
 
         }
         cell.selectionStyle = .none
@@ -173,8 +173,9 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
        myIndex = indexPath.row
        guard myIndex != 0 else {return}
        
-        let contactId = self.arrayContacts[indexPath.row-1]
-        self.receiver = contactId.clientId
+        let contact = self.arrayContacts[indexPath.row-1]
+        self.receiver = contact.clientId
+        guard contact.online == 1 else {return}
         
         guard let receiverJSON = receiver else { return }
         SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)

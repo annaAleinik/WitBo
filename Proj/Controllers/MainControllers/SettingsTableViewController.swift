@@ -30,7 +30,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @IBOutlet weak var changeUtteranse: UILabel!
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
-    var language: String? = nil
+    var newlanguage: String? = nil
 
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
@@ -45,7 +45,9 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingsLabel.text = "Settings"
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
@@ -73,6 +75,11 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -243,7 +250,8 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.language = self.langSourse[row].code
+        self.newlanguage = self.langSourse[row].code
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -267,16 +275,15 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     }
     
     //MARK: -- NavBar
-    
-//    func setNavigationBar() {
-//        let screenSize: CGRect = UIScreen.main.bounds
-//        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
-//        let navItem = UINavigationItem(title: "Settings")
-//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(done))
-//        navItem.leftBarButtonItem = doneItem
-//        navBar.setItems([navItem], animated: false)
-//        self.view.addSubview(navBar)
-//    }
+    @objc func doneTapped(){
+        
+        guard let lang = self.newlanguage else {return}
+        guard let token = APIService.sharedInstance.token else {return}
+
+        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
+        
+        self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
+    }
 
 
 }
