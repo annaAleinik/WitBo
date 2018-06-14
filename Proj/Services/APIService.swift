@@ -166,6 +166,7 @@ class APIService {
                         self.userLang = userData.language
                         self.userEmail = userData.email
                         self.timeRemaining = userData.time_remaining
+                        
                         self.userDataRegistration = userData.registration_date
                         
                         let baseUserModel  = BaseUserModel()

@@ -57,7 +57,12 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
         self.titleLeftTimeLabel.text = "Left time"
-        self.leftTimeLabel.text = APIService.sharedInstance.timeRemaining
+
+        if let time = APIService.sharedInstance.timeRemaining{
+            if let intTime = Int(time){
+                self.leftTimeLabel.text = dateFormat(from: "\(intTime/60)", getFormat: "mm", returnFormat: "mm:ss")
+            }
+        }
         tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
@@ -89,6 +94,18 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
 											   object: nil)
 
         
+    }
+    
+    func dateFormat(from timeString: String, getFormat: String, returnFormat: String)->String?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = getFormat
+        
+        if let date = dateFormatter.date(from: timeString){
+            dateFormatter.dateFormat = returnFormat
+            return dateFormatter.string(from: date)
+        }else{
+            return nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
