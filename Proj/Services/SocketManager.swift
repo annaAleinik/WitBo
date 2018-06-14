@@ -29,7 +29,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var answerStatusUser: String? = nil
     var dialogResponse: String? = nil
     var initiatorDialog: String = ""
-    
+    var initiatorDialogName: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
             case .conversationRequest?:
                 let conversationRequest = try? decoder.decode(CommonConversationRequest.self, from: data)
                 self.initiatorDialog = conversationRequest?.message.initiator ?? ""
-				let userInfo :  [String:Any] = ["initiatorID": self.initiatorDialog]
+                self.initiatorDialogName = conversationRequest?.message.name ?? ""
+                let userInfo :  [String:Any] = ["initiatorID": self.initiatorDialog, "nameInitiator": self.initiatorDialogName]
 				
                 NotificationCenter.default.post(name: Notification.Name("QuitConversation"), object: nil, userInfo: userInfo)
             case .userOffline?:
