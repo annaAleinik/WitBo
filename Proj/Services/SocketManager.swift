@@ -146,7 +146,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
 
         let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiver) + "\"}}"
         
-        SocketManager.sharedInstanse.socket.write(string: jsonStartDialog)
+        self.socket.write(string: jsonStartDialog)
 
     }
 	
