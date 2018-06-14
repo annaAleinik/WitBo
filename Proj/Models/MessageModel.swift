@@ -17,7 +17,10 @@ public enum SocketMessageType: String, Codable {
     case conversationRequestResponse = "Conversation request response"
     case quitConversation = "The client left the dialog"
     case cancelConversationRequest = "Conversation request canceled by initiator"
-	case empty = "empty"
+	case introduceActionRequired = "Introduce action required! Try again"
+    case connectionTimeout = "Connection closed after timeout"
+    case empty = "empty"
+    
 }
 
 struct MessageData : Codable {

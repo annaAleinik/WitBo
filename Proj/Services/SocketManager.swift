@@ -53,6 +53,14 @@ class SocketManager: UIViewController, WebSocketDelegate {
 
     }
     
+    func intro(){
+        guard let token = APIService.sharedInstance.token else {return}
+        
+        let intro = "{\"action\":\"intro\",\"data\":{\"token\":\"" + String(describing: token) + "\"}}"
+        
+        self.socket.write(string: intro)
+    }
+    
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         print("websocketDidDisconnect")
     }
@@ -113,10 +121,15 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 let answerDict = ["answer": myAnswer, "receiverID":receiver]
                 
                 NotificationCenter.default.post(name: Notification.Name("StartDialog"), object: nil, userInfo: answerDict)
+                
+            case .introduceActionRequired?:
+                self.intro()
+                break
+            case .connectionTimeout?:
+                self.socketsConnecting()
 			default:
 				break
 			}
-			
         } catch let err {
             print(err.localizedDescription)
         }

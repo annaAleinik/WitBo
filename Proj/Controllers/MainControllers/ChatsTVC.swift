@@ -169,10 +169,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 		myIndex = indexPath.row
 		guard myIndex != 0 else {return}
 		
-		let contactId = self.arrayContacts[indexPath.row-1]
-		self.receiver = contactId.clientId
+		let conntact = self.arrayContacts[indexPath.row-1]
+        self.receiver = conntact.clientId
 		
 		guard let receiverJSON = receiver else { return }
+        guard conntact.online == 1 else {return}
 		SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
 		
 		self.presentAlertController()
