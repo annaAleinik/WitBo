@@ -75,7 +75,10 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(ChatsTVC.quitConversation(notification:)), name: Notification.Name("QuitConversation"), object: nil)
+		NotificationCenter.default.addObserver(self,
+											   selector:#selector(quitConversation(notification:)),
+											   name: Notification.Name("QuitConversation"),
+											   object: nil)
 
         
     }
