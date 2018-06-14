@@ -69,6 +69,8 @@ class TimerManager {
         guard let email = APIService.sharedInstance.userEmail else { return }
         guard let lang = APIService.sharedInstance.userLang else { return }
         
+        APIService.sharedInstance.spendedtime(token: token, time: timeLeft)
+        
 		timer.invalidate()
         
         let manager = WBRealmManager()
