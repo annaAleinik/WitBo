@@ -169,10 +169,11 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 		myIndex = indexPath.row
 		guard myIndex != 0 else {return}
 		
-		let contactId = self.arrayContacts[indexPath.row-1]
-		self.receiver = contactId.clientId
+		let conntact = self.arrayContacts[indexPath.row-1]
+        self.receiver = conntact.clientId
 		
 		guard let receiverJSON = receiver else { return }
+        guard conntact.online == 1 else {return}
 		SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
 		
 		self.presentAlertController()
@@ -335,12 +336,14 @@ extension ChatsTVC {
     @objc func quitConversation(notification: NSNotification) {
 		let dict = notification.userInfo ?? [:]
 		let initiatorID = dict["initiatorID"] as? String ?? ""
-        self.quitConversationStart(initiator: initiatorID)
+        let nameInitiator = dict["nameInitiator"] as? String ?? ""
+
+        self.quitConversationStart(initiator: initiatorID, nameInitiator: nameInitiator)
     }
     
-	func quitConversationStart(initiator: String) {
+    func quitConversationStart(initiator: String, nameInitiator: String) {
         
-        let alert = UIAlertController(title: "Alert", message: "С вами хочет начать диалог (ВСТАВЬ ИМЯ ТОГО КТО ХОЧЕТ НАЧАТЬ)", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: "С вами хочет начать диалог \(nameInitiator)", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
         SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "1")
             alert.dismiss(animated: true, completion: nil)

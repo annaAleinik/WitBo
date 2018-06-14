@@ -76,7 +76,8 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
                 APIService.sharedInstance.postAuthWith(secret: "") { (succses, error) in
                 if APIService.sharedInstance.token != nil {
                     SocketManager.sharedInstanse.socketsConnecting()
-                    
+                    SocketManager.sharedInstanse.intro()
+
                     DispatchQueue.main.async{
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
