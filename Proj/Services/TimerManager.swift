@@ -31,6 +31,9 @@ class TimerManager {
     var timer = Timer()
     var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
     
+    var runTimeSystem :Double? = nil
+    var stopTimeSystem : Double? = nil
+    
     func runTimer() {
 		guard seconds != 0 else {return}
 		
@@ -39,6 +42,10 @@ class TimerManager {
                                      selector: (#selector(updateTimer)),
                                      userInfo: nil,
                                      repeats: true)
+        
+        //catch system time
+        let date = Date()
+        self.runTimeSystem = date.timeIntervalSince1970
         
     }
 
@@ -69,7 +76,13 @@ class TimerManager {
         guard let email = APIService.sharedInstance.userEmail else { return }
         guard let lang = APIService.sharedInstance.userLang else { return }
         
-        APIService.sharedInstance.spendedtime(token: token, time: timeLeft)
+        //catch system time
+        let date = Date()
+        self.stopTimeSystem = date.timeIntervalSince1970
+        
+        let time = Int(self.stopTimeSystem! - self.runTimeSystem!)
+        
+        APIService.sharedInstance.spendedtime(token: token, time: time)
         
 		timer.invalidate()
         

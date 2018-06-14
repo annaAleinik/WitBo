@@ -161,7 +161,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         guard let token = APIService.sharedInstance.token else {return}
         
-        APIService.sharedInstance.spendedtime(token: token, time: timerManager.seconds )
+        APIService.sharedInstance.spendedtime(token: token, time: 15)
     }
 
     

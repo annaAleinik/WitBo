@@ -34,6 +34,7 @@ class APIService {
     var emailConfirmed : Int?
     var loginCode: Int?
     var existingUser: String?
+    var timeRemaining : String? = nil
     
     let realmManager = WBRealmManager()
     
@@ -164,6 +165,7 @@ class APIService {
                         self.userName = userData.name
                         self.userLang = userData.language
                         self.userEmail = userData.email
+                        self.timeRemaining = userData.time_remaining
                         self.userDataRegistration = userData.registration_date
                         
                         let baseUserModel  = BaseUserModel()

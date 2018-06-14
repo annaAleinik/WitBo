@@ -28,6 +28,10 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var changePhoto: UILabel!
     @IBOutlet weak var changeUtteranse: UILabel!
+    
+    @IBOutlet weak var titleLeftTimeLabel: UILabel!
+    
+    @IBOutlet weak var leftTimeLabel: UILabel!
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
@@ -52,6 +56,8 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
+        self.titleLeftTimeLabel.text = "Left time"
+        self.leftTimeLabel.text = APIService.sharedInstance.timeRemaining
         tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
@@ -70,6 +76,8 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.dataRegistrationLabel.textColor = UIColor.white
         self.changeUtteranse.textColor = UIColor.white
         self.changePhoto.textColor = UIColor.white
+        self.titleLeftTimeLabel.textColor = UIColor.white
+        self.leftTimeLabel.textColor = UIColor.white
         self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
