@@ -19,7 +19,7 @@ extension UIViewController {
 		self.quitConversationStart(initiator: initiatorID, nameInitiator: nameInitiator)
 	}
 	
-	func quitConversationStart(initiator: String, nameInitiator: String) {
+	private func quitConversationStart(initiator: String, nameInitiator: String) {
 		
 		let alert = UIAlertController(title: "", message: "С вами хочет начать диалог \(nameInitiator)", preferredStyle: UIAlertControllerStyle.alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
