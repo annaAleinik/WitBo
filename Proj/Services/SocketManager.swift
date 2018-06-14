@@ -119,7 +119,9 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
                 self.dialogResponse = myAnswer
                 
-                let answerDict = ["answer": myAnswer, "receiverID":receiver]
+                guard let nameInitiator = parsDialogResponce?.message.name else {return}
+                
+                let answerDict = ["answer": myAnswer, "receiverID":receiver, "nameInitiator": nameInitiator]
                 
                 NotificationCenter.default.post(name: Notification.Name("StartDialog"), object: nil, userInfo: answerDict)
                 

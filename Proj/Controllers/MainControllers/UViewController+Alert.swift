@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-	
+    
 	@objc func quitConversation(notification: NSNotification) {
 		let dict = notification.userInfo ?? [:]
 		let initiatorID = dict["initiatorID"] as? String ?? ""
@@ -27,7 +27,7 @@ extension UIViewController {
 			alert.dismiss(animated: true, completion: nil)
 			//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 			//            let vc = storyBoard.instantiateViewController(withIdentifier: "SpeachViewController")
-			let vc = SpeachViewController.viewController(receiverID: initiator)
+            let vc = SpeachViewController.viewController(receiverID: initiator, nameInitiator: nameInitiator)
 			self.present(vc, animated: true, completion: nil)
 			
 			

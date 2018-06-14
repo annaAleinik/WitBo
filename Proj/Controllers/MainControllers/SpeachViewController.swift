@@ -30,13 +30,15 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     let extraTime = 600
     
     var receiverFromContacts : String?
+    var nameInitiator : String?
 
 	//MARK: Life cycle
     
-    class func viewController(receiverID: String) -> SpeachViewController {
+    class func viewController(receiverID: String, nameInitiator: String) -> SpeachViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: SpeachViewController.self)) as! SpeachViewController
         viewController.receiverFromContacts = receiverID
+        viewController.nameInitiator = nameInitiator
         return viewController
     }
 
@@ -110,7 +112,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
         addChatViewController()
         
-        self.nameUserChatLabel.text = receiverFromContacts
+        self.nameUserChatLabel.text = nameInitiator
 
    }
 	

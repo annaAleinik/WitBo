@@ -52,10 +52,15 @@ struct DialogModelRequest: Codable {
     
     public var receiver: String? = nil
     public var answer: String? = nil
-    
+    public var name: String? = nil
+    public var email: String? = nil
+
     enum CodingKeys: String, CodingKey {
         case receiver = "client_id"
         case answer = "answer"
+        case name = "name"
+        case email = "email"
+
     }
     
 }

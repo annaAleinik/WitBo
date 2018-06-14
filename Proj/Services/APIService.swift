@@ -331,4 +331,16 @@ class APIService {
          
         }
     }
+    
+    //MARK: -- Send time
+    
+    func spendedtime(token: String, time: Int){
+        
+        let url = URL(string:"http://prmir.com/wp-json/withbo/v1/user/spendedtime")
+        let params = ["token": token, "time": time] as [String : Any]
+
+            Alamofire.request(url!, method: HTTPMethod.post, parameters: params).responseJSON{
+                (response) in
+        }
+    }
 }
