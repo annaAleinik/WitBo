@@ -80,7 +80,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             }
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sendTimeInServer), userInfo: nil, repeats: true)
         
         //Localized
         
@@ -156,8 +156,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 	
     //MARK: -- TimeIntervalDelegate
     
-    @objc func runTimedCode() {
-        // send to server time from lable
+    @objc func sendTimeInServer() {
+        // send to server time (every 15 sec)
+        
+        guard let token = APIService.sharedInstance.token else {return}
+        
+        APIService.sharedInstance.spendedtime(token: token, time: timerManager.seconds )
     }
 
     

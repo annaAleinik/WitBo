@@ -17,7 +17,7 @@ protocol TimerManagerDelegate {
 }
 
 protocol TimeIntervalDelegate {
-    func runTimedCode()
+    func sendTimeInServer()
 }
 
 class TimerManager {
