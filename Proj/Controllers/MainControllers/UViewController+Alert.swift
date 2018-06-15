@@ -25,12 +25,12 @@ extension UIViewController {
 		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
 			SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "1")
 			alert.dismiss(animated: true, completion: nil)
-			//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-			//            let vc = storyBoard.instantiateViewController(withIdentifier: "SpeachViewController")
             let vc = SpeachViewController.viewController(receiverID: initiator, nameInitiator: nameInitiator)
-			self.present(vc, animated: true, completion: nil)
-			
-			
+            if let presentingVC = self as? SpeachViewController {
+                presentingVC.dismiss(animated: false, completion: nil)
+            }
+
+            self.present(vc, animated: true, completion: nil)
 		}))
 		
 		alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in

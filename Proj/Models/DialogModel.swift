@@ -64,17 +64,25 @@ struct DialogModelRequest: Codable {
     }
     
 }
+struct QuitConversationModel: Codable{
+    public var code: Int = -1
+    public var type: SocketMessageType = .empty
+    public var message: QuitConversation
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case type = "message"
+        case message = "params"
+
+    }
+}
 
 struct QuitConversation: Codable{
     
     public var initiator: String? = nil
     public var time: Int? = nil
-
-    
-    enum CodingKeys: String, CodingKey {
-        case initiator = "initiator"
-        case time = "time"
-    }
+    public var name: String? = nil
+    public var email: String? = nil
 }
 
 struct UserStatus : Codable {

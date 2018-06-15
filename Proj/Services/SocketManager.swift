@@ -30,6 +30,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
     var dialogResponse: String? = nil
     var initiatorDialog: String = ""
     var initiatorDialogName: String? = nil
+    var quitConversationInitiator: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +96,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
 			case .messagePushed?:
 				break
             case .quitConversation?:
-//                let parsQuitConversation = try? decoder.decode(CommonResponseModel.self, from: data)
+                let parsQuitConversation = try? decoder.decode(QuitConversationModel.self, from: data)
+                self.quitConversationInitiator = parsQuitConversation?.message.initiator
                 self.delegateConversation?.conversationStopped()
                 
                 

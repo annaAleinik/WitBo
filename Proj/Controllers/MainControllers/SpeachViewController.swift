@@ -54,6 +54,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                                                name: Notification.Name("ReadTextNotification"),
                                                object: nil)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(quitConversation(notification:)),
+                                               name: Notification.Name("QuitConversation"),
+                                               object: nil)
+
+        
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -127,7 +133,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         self.nameUserChatLabel.text = nil
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
-
+        
+        guard let rec = self.receiverFromContacts else {return}
+        SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         
 	}
     
@@ -299,10 +307,19 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let storyboard = UIStoryboard(name: "CustomControllers", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "QuitConversationAlert") as? QuitConversationAlert
         controller?.delegateQC = self
-        self.present(controller!, animated: true, completion: nil)
 
-        //        if self.nameUserChatLabel.text != nil {
-//        }
+      let leftTheDialogueUserID = SocketManager.sharedInstanse.quitConversationInitiator 
+        if self.receiverFromContacts == leftTheDialogueUserID{
+            if controller?.presentationController is SpeachViewController{
+                self.dismiss(animated: true, completion: nil)
+            }
+            self.present(controller!, animated: true, completion: nil)
+
+        }
+        
+        
+
+
     }
     
     func quitConversation() {

@@ -80,7 +80,10 @@ class TimerManager {
         let date = Date()
         self.stopTimeSystem = date.timeIntervalSince1970
         
-        let time = Int(self.stopTimeSystem! - self.runTimeSystem!)
+        guard let stopTime = self.stopTimeSystem else {return}
+        guard let startTime = self.runTimeSystem else {return}
+
+        let time = Int(stopTime - startTime)
         
         APIService.sharedInstance.spendedtime(token: token, time: time)
         
