@@ -9,8 +9,22 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    
+protocol PresentingViewControllerProtocol where Self : NSObject {
+	var rootController: UIViewController {get set}
+}
+
+
+extension UIViewController: PresentingViewControllerProtocol {
+	var rootController: UIViewController {
+		get {
+			return self
+		}
+		set {
+			
+		}
+	}
+	
+	
 	@objc func quitConversation(notification: NSNotification) {
 		let dict = notification.userInfo ?? [:]
 		let initiatorID = dict["initiatorID"] as? String ?? ""
@@ -43,3 +57,4 @@ extension UIViewController {
 	}
 	
 }
+

@@ -11,7 +11,7 @@ import RealmSwift
 
 class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, AlertWaitDelegate {
 
-    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+	let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var myIndex : Int?
 	var arrayContacts = [ContactModelProtocol]()
     var receiver : String?
@@ -34,6 +34,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         //Localized
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
+		//controller for presenting
+		self.rootController = self.presentingViewController ?? UIViewController()
 
     }
     
