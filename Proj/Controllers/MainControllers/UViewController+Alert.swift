@@ -44,7 +44,7 @@ extension UIViewController: PresentingViewControllerProtocol {
                 presentingVC.dismiss(animated: false, completion: nil)
             }
 
-            self.present(vc, animated: true, completion: nil)
+			self.rootController.present(vc, animated: true, completion: nil)
 		}))
 		
 		alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
