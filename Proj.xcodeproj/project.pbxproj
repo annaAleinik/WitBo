@@ -38,6 +38,8 @@
 		84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84413CA7207CA5A400E3E953 /* LastMassageModel.swift */; };
 		8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BB82208F5E8700485A20 /* HeaderContacts.swift */; };
 		8444BB85208F5E8700485A20 /* HeaderContacts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB83208F5E8700485A20 /* HeaderContacts.xib */; };
+		8445DB2E20D7F22700FE9C8D /* FullSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445DB2D20D7F22700FE9C8D /* FullSettings.swift */; };
+		8445DB3020D7F24500FE9C8D /* TrialSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */; };
 		84535B342093535700E71F5D /* DialogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84535B332093535600E71F5D /* DialogModel.swift */; };
 		847261A82087460800CBF9D8 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847261A72087460800CBF9D8 /* Contact.swift */; };
 		847BED9520B84CDE002F3303 /* ContactModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BED9420B84CDE002F3303 /* ContactModelProtocol.swift */; };
@@ -117,6 +119,8 @@
 		84413CA7207CA5A400E3E953 /* LastMassageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMassageModel.swift; sourceTree = "<group>"; };
 		8444BB82208F5E8700485A20 /* HeaderContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContacts.swift; sourceTree = "<group>"; };
 		8444BB83208F5E8700485A20 /* HeaderContacts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderContacts.xib; sourceTree = "<group>"; };
+		8445DB2D20D7F22700FE9C8D /* FullSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSettings.swift; sourceTree = "<group>"; };
+		8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialSettings.swift; sourceTree = "<group>"; };
 		84535B332093535600E71F5D /* DialogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogModel.swift; sourceTree = "<group>"; };
 		8466854B207CF64C00291174 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847261A72087460800CBF9D8 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -245,7 +249,9 @@
 				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
 				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
 				8400FA5D20AD557F00A36EE7 /* NotificationController.swift */,
+				8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */,
 				841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */,
+				8445DB2D20D7F22700FE9C8D /* FullSettings.swift */,
 				09B1C0B620D2631B00E0CD30 /* UViewController+Alert.swift */,
 			);
 			path = MainControllers;
@@ -544,6 +550,8 @@
 				840E4D702089FC6600993677 /* MessageModel.swift in Sources */,
 				08C75425208CC59D0026A0C3 /* СhatInputTextPanel.swift in Sources */,
 				84FC5124205FB6E400A8F6DD /* SpeachViewController.swift in Sources */,
+				8445DB2E20D7F22700FE9C8D /* FullSettings.swift in Sources */,
+				8445DB3020D7F24500FE9C8D /* TrialSettings.swift in Sources */,
 				08C7541F208CAF5E0026A0C3 /* MessageCellLayout.swift in Sources */,
 				84535B342093535700E71F5D /* DialogModel.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */,
