@@ -35,6 +35,7 @@ class APIService {
     var loginCode: Int?
     var existingUser: String?
     var timeRemaining : String? = nil
+    var userTariff : String?
     
     let realmManager = WBRealmManager()
     
@@ -166,6 +167,7 @@ class APIService {
                         self.userLang = userData.language
                         self.userEmail = userData.email
                         self.timeRemaining = userData.time_remaining
+                        self.userTariff = userData.tariff
                         
                         self.userDataRegistration = userData.registration_date
                         
