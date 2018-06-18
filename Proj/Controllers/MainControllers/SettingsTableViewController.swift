@@ -17,7 +17,6 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var voiceOversSwitch: UISwitch!
     @IBOutlet weak var imagePicke: UIImageView!
-    @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var dataRegistrationLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
@@ -48,7 +47,6 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingsLabel.text = "Settings"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         
@@ -60,7 +58,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         if APIService.sharedInstance.userTariff == "full"{
             let indexPath = IndexPath(row: (4), section: 0)
            self.tableView.cellForRow(at:indexPath)?.contentView.isHidden = true
-        } else {
+        } else{
             self.titleLeftTimeLabel.text = "Left time"
 
         }
