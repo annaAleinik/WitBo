@@ -339,13 +339,21 @@ class APIService {
     
     //MARK: -- Send time
     
-    func spendedtime(token: String, time: Int){
+    func spendedtime(token: String, time: Int, completion : @escaping (Bool, Error?) -> Void){
         
         let url = URL(string:"http://prmir.com/wp-json/withbo/v1/user/spendedtime")
         let params = ["token": token, "time": time] as [String : Any]
 
             Alamofire.request(url!, method: HTTPMethod.post, parameters: params).responseJSON{
                 (response) in
+                switch response.result {
+                case .success(_ ):
+                    completion(true, nil)
+                case .failure(let error):
+                    print(error)
+                    completion(false, error)
+                }
+
         }
     }
 }

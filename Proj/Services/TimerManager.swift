@@ -84,8 +84,11 @@ class TimerManager {
         guard let startTime = self.runTimeSystem else {return}
 
         let time = Int(stopTime - startTime)
-        
-        APIService.sharedInstance.spendedtime(token: token, time: time)
+        APIService.sharedInstance.spendedtime(token: token, time: time) { (succsess, error) in
+            if succsess{
+                print(time)
+            }
+        }
         
 		timer.invalidate()
         

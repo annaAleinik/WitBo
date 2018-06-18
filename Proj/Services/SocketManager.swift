@@ -78,19 +78,22 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 let parsMessage = try? decoder.decode(MessageData.self, from: data)
                 self.recievedMessage(message: parsMessage)
             case .conversationRequest?:
-                let conversationRequest = try? decoder.decode(CommonConversationRequest.self, from: data)
-                self.initiatorDialog = conversationRequest?.message.initiator ?? ""
-                self.initiatorDialogName = conversationRequest?.message.name ?? ""
-                let userInfo :  [String:Any] = ["initiatorID": self.initiatorDialog, "nameInitiator": self.initiatorDialogName]
-				
-                NotificationCenter.default.post(name: Notification.Name("QuitConversation"), object: nil, userInfo: userInfo)
+                if socket.isConnected{
+                    let conversationRequest = try? decoder.decode(CommonConversationRequest.self, from: data)
+                    self.initiatorDialog = conversationRequest?.message.initiator ?? ""
+                    self.initiatorDialogName = conversationRequest?.message.name ?? ""
+                    let userInfo :  [String:Any] = ["initiatorID": self.initiatorDialog, "nameInitiator": self.initiatorDialogName]
+                    NotificationCenter.default.post(name: Notification.Name("QuitConversation"), object: nil, userInfo: userInfo)
+                }else{
+                    let alert = UIAlertController(title: "", message: "Обрыв соединения", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+//add present
+                }
+                
             case .userOffline?:
                 let userOffLinline = try? decoder.decode(UserStatus.self, from: data)
-                
                 guard let idClient = userOffLinline?.clientid else {return}
-                
                 let userInfo :  [String:Any] = ["clientId": idClient, "isOnline" : false]
-
                 NotificationCenter.default.post(name: Notification.Name("ChangeStatusOnLine"), object: nil, userInfo: userInfo)
 
 			case .messagePushed?:
@@ -103,11 +106,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
             case .userOnline?:
                 let userOnline = try? decoder.decode(UserStatus.self, from: data)
-                
                 guard let id = userOnline?.clientid else {return}
-                
                 let userInfo : [String : Any] = ["clientId": id, "isOnline" : true]
-                
                 NotificationCenter.default.post(name: Notification.Name("ChangeStatusOnLine"), object: nil, userInfo: userInfo)
                 
             case .cancelConversationRequest?:
@@ -116,15 +116,10 @@ class SocketManager: UIViewController, WebSocketDelegate {
 
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)
-                
                 guard let myAnswer = parsDialogResponce?.message.answer, let receiver = parsDialogResponce?.message.receiver else {return}
-                
                 self.dialogResponse = myAnswer
-                
                 guard let nameInitiator = parsDialogResponce?.message.name else {return}
-                
                 let answerDict = ["answer": myAnswer, "receiverID":receiver, "nameInitiator": nameInitiator]
-                
                 NotificationCenter.default.post(name: Notification.Name("StartDialog"), object: nil, userInfo: answerDict)
                 
             case .introduceActionRequired?:
@@ -165,7 +160,6 @@ class SocketManager: UIViewController, WebSocketDelegate {
         let jsonStartDialog = "{\"action\":\"conversation_request\",\"data\":{\"token\":\"" + String(describing: token) + "\",\"receiver\":\"" + String(describing: receiver) + "\"}}"
         
         self.socket.write(string: jsonStartDialog)
-
     }
 	
 	//	MARK: private

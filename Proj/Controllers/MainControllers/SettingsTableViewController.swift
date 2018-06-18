@@ -57,7 +57,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         if APIService.sharedInstance.userTariff == "full"{
             let indexPath = IndexPath(row: (4), section: 0)
-           self.tableView.cellForRow(at:indexPath)?.contentView.isHidden = true
+           self.tableView.cellForRow(at:indexPath)?.isHidden = true
         } else{
             self.titleLeftTimeLabel.text = "Left time"
 

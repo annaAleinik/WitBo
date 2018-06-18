@@ -137,6 +137,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         guard let rec = self.receiverFromContacts else {return}
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         
+        APIService.sharedInstance.userData(token:APIService.sharedInstance.token! ) { (succses, error) in
+            
+        }
 	}
     
     // handler closed ads
@@ -168,8 +171,14 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         // send to server time (every 15 sec)
         
         guard let token = APIService.sharedInstance.token else {return}
+        APIService.sharedInstance.spendedtime(token: token, time: 15) { (succses, error) in
+            if succses{
+                let date = Date()
+                self.timerManager.runTimeSystem = date.timeIntervalSince1970
+
+            }
+        }
         
-        APIService.sharedInstance.spendedtime(token: token, time: 15)
     }
 
     
