@@ -54,14 +54,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
-        
-        if APIService.sharedInstance.userTariff == "full"{
-            let indexPath = IndexPath(row: (4), section: 0)
-           self.tableView.cellForRow(at:indexPath)?.isHidden = true
-        } else{
-            self.titleLeftTimeLabel.text = "Left time"
-
-        }
+        self.titleLeftTimeLabel.text = "Left time"
         
         if let time = APIService.sharedInstance.timeRemaining{
             if let intTime = Int(time){
