@@ -9,17 +9,21 @@
 import Foundation
 import UIKit
 
-class SettingsContainerViewController: UIViewController {
+class SettingsContainerViewController: UIViewController , SettingsControllerDelegate{
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		self.navigationItem.title = "Settings"
-		
-		let vc: UIViewController
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(FullSettings.doneTapped))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+
+		let vc: UIViewController?
 		switch APIService.sharedInstance.userTariff {
 		case .full:
-			vc = FullSettings.viewController()
+			vc = FullSettings.viewController() as? FullSettings
+            vc.delegate = self
 		case .trial:
 			vc = TrialSettings.viewController()
 
@@ -29,5 +33,17 @@ class SettingsContainerViewController: UIViewController {
 		self.view.addSubview(vc.view)
 		
 	}
-	
+
+    @objc func doneTapped(token: String, lang: String){
+        
+        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
+        
+        self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
+    }
+
+    //SettingsContrillerDelegate
+    func languageDidSelect(token: String, lang: String) {
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+
 }

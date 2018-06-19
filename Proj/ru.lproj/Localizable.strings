@@ -16,7 +16,7 @@ STR_LASTMASSAGE = "Последние сообщения";
 STR_SIGNOUT = "Выход";
 STR_CONTACTS = "Контакты";
 STR_SETTINGS = "Настройки";
-STR_VOISE = "Озвучка";
+STR_VOISE = "Звуковое воспроизведение";
 STR_AVATAR = "Изменить фото";
 STR_CAMERA = "Камера";
 STR_GALLERY = "Галерея";
@@ -24,3 +24,36 @@ STR_NOTIFICATION = "Уведомления";
 STR_NAME = "Имя";
 STR_REPEAT_PASSWORD = "Повторите пароль";
 STR_BACK = "Назад";
+STR_FORGOT_PASS = "Забыли пароль";
+STR_SWITCH_LANGUAGE = "Изменить язык";
+STR_TARIFF = "Тариф";
+STR_REG_DATE = "Дата регистрации";
+STR_LANG = "Язык";
+STR_EXPECT_ANSWER = "Ожидайте ответа";
+STR_USER_LEFT_DIALOG = "Пользователь покинул диалог";
+STR_WANTS_START_DIALOGUE = "С вами хочет начать диалог";
+STR_SUPPORT = "Поддержка";
+STR_ADD_FRIENDS = "Пригласить друга";
+STR_TIME_OVER = "Время вышло";
+STR_TIME_LEFT = "Оставшееся время";
+STR_DISCONNECT_LINK = "Обрыв соеденения";
+STR_FILL_ALL = "Заполните пожалуйста все поля";
+STR_CONFIRM_EMAIL = "Сначала подтвердите ваш електронный адрес. Письмо отправлено Вам на почту";
+STR_WRONG_LOGORPASS = "Неверный логин или пароль";
+STR_PASS_NOT_MATCH = "Пароли не совпадают";
+STR_NOINTERNET_CONNECTION = "Отсутствует подключение к интернету";
+STR_SECURITY_POLICY = "Политика безопасности";
+STR_NAME_WRONG = "Имя уже занято";
+STR_EMAIL_WRONG = "Емайл уже занят";
+STR_REG_SUCCSES = "Регистрация прошла успешно";
+STR_ADD_ALL_FILD_FOUND = "Заполните пожалуйста поле поиска";
+STR_LOGOUT_ACC = "Вы вышли из профиля";
+STR_OK = "Ок"
+
+
+
+
+
+
+
+

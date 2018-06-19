@@ -51,6 +51,7 @@
 		849945E82063E74200E631A9 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849945E72063E74200E631A9 /* RegistrationVC.swift */; };
 		84A8B9E72060F8A3005A7200 /* EntranceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B9E62060F8A3005A7200 /* EntranceController.swift */; };
 		84CB95352080C7C000E306F5 /* BaseUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB95342080C7C000E306F5 /* BaseUserModel.swift */; };
+		84CEFF9C20D912D600BF930E /* SettingsContrillerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFF9B20D912D600BF930E /* SettingsContrillerDelegate.swift */; };
 		84DD039820B6DDBE00F4A7AF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD039720B6DDBE00F4A7AF /* Reachability.swift */; };
 		84DD039A20B6DF7200F4A7AF /* BaseContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD039920B6DF7200F4A7AF /* BaseContactsModel.swift */; };
 		84FC5122205FB6E400A8F6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC5121205FB6E400A8F6DD /* AppDelegate.swift */; };
@@ -135,6 +136,7 @@
 		84A217EC2085E69600DDF247 /* Proj.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Proj.entitlements; sourceTree = "<group>"; };
 		84A8B9E62060F8A3005A7200 /* EntranceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntranceController.swift; sourceTree = "<group>"; };
 		84CB95342080C7C000E306F5 /* BaseUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserModel.swift; sourceTree = "<group>"; };
+		84CEFF9B20D912D600BF930E /* SettingsContrillerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContrillerDelegate.swift; sourceTree = "<group>"; };
 		84D95BA6207D011F00C17C3C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D95BAC207D025D00C17C3C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D95BAF207D04FE00C17C3C /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = Pods/Alamofire; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				09ADC8F62083A57600867EAF /* APIConstants.swift */,
+				84CEFF9B20D912D600BF930E /* SettingsContrillerDelegate.swift */,
 				84DD039720B6DDBE00F4A7AF /* Reachability.swift */,
 				849945E52063CA8800E631A9 /* APIService.swift */,
 				8407ACBA20B5A792000F8373 /* CustomRule.swift */,
@@ -251,8 +254,8 @@
 				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
 				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
 				8400FA5D20AD557F00A36EE7 /* NotificationController.swift */,
-				8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */,
 				841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */,
+				8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */,
 				8445DB2D20D7F22700FE9C8D /* FullSettings.swift */,
 				09A2261320D8EC53001385FE /* SettingsContainerViewController.swift */,
 				09B1C0B620D2631B00E0CD30 /* UViewController+Alert.swift */,
@@ -570,6 +573,7 @@
 				8400FA6120AD618300A36EE7 /* NotificationCell.swift in Sources */,
 				849945E62063CA8800E631A9 /* APIService.swift in Sources */,
 				09B1C0B720D2631B00E0CD30 /* UViewController+Alert.swift in Sources */,
+				84CEFF9C20D912D600BF930E /* SettingsContrillerDelegate.swift in Sources */,
 				84DD039820B6DDBE00F4A7AF /* Reachability.swift in Sources */,
 				084A20CC206930AD0009E4B2 /* LoginModel.swift in Sources */,
 				848818082099D8110062A8B6 /* QuitConversationAlert.swift in Sources */,

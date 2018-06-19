@@ -36,7 +36,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     let langSourse = LanguageSourse.shared.dictLang.sorted(by:{ $0.name < $1.name })
     var flagArr = LanguageSourse.shared.dictFlag.sorted(by:{ $0.name < $1.name })
     var newlanguage: String? = nil
-	
+    var delegate: SettingsControllerDelegate? = nil
+
 	
 	class func viewController() -> FullSettings {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -56,8 +57,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
@@ -67,7 +66,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.regDateLable.text = "Registration Date"
         self.tariffTitleLable.text = "Tariff"
         self.tariffValueLable.text = APIService.sharedInstance.userTariff.rawValue
-
 
         tableView.separatorColor = UIColor.clear
         
@@ -273,7 +271,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.newlanguage = self.langSourse[row].code
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        
+
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -306,7 +305,5 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         
         self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
     }
-    
-    
 }
 

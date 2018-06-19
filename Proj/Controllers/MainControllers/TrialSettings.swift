@@ -52,9 +52,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-        
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
@@ -118,8 +115,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-        
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -273,18 +268,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
             switchON = false
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
         }
-    }
-    
-    
-    //MARK: -- NavBar
-    @objc func doneTapped(){
-        
-        guard let lang = self.newlanguage else {return}
-        guard let token = APIService.sharedInstance.token else {return}
-        
-        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
-        
-        self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
     }
     
     
