@@ -59,10 +59,10 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
 
 
-self.addLeftImg(textField: nameField, imgName: <#T##String#>)
-        self.addLeftImg(textField: emailField, imgName: <#T##String#>)
-        self.addLeftImg(textField: passwordField, imgName: <#T##String#>)
-        self.addLeftImg(textField: repiatPassword, imgName: <#T##String#>)
+//self.addLeftImg(textField: nameField, imgName: <#T##String#>)
+//        self.addLeftImg(textField: emailField, imgName: <#T##String#>)
+//        self.addLeftImg(textField: passwordField, imgName: <#T##String#>)
+//        self.addLeftImg(textField: repiatPassword, imgName: <#T##String#>)
 
         //Localized
         

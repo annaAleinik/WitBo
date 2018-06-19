@@ -30,11 +30,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     @IBOutlet weak var tariffNameLabel: UILabel!
     @IBOutlet weak var tarifValueLabel: UILabel!
     @IBOutlet weak var langTitleLabel: UILabel!
-    
     @IBOutlet weak var regDateLable: UILabel!
     
-    let langSourse = LanguageSourse.shared.dictLang
-    var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
 	
 	class func viewController() -> TrialSettings {

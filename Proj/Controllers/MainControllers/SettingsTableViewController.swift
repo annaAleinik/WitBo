@@ -27,7 +27,6 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var changePhoto: UILabel!
     @IBOutlet weak var changeUtteranse: UILabel!
-    
     @IBOutlet weak var titleLeftTimeLabel: UILabel!
     
     @IBOutlet weak var leftTimeLabel: UILabel!

@@ -33,8 +33,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     @IBOutlet weak var tariffTitleLable: UILabel!
     @IBOutlet weak var tariffValueLable: UILabel!
     
-    let langSourse = LanguageSourse.shared.dictLang
-    var flagArr = LanguageSourse.shared.dictFlag
+    let langSourse = LanguageSourse.shared.dictLang.sorted(by:{ $0.name < $1.name })
+    var flagArr = LanguageSourse.shared.dictFlag.sorted(by:{ $0.name < $1.name })
     var newlanguage: String? = nil
 	
 	
@@ -90,6 +90,7 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.langTitleLable.textColor = UIColor.white
         self.regDateLable.textColor = UIColor.white
         self.tariffTitleLable.textColor = UIColor.white
+        self.tariffValueLable.textColor = UIColor.white
         self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
