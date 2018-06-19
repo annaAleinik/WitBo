@@ -20,6 +20,11 @@ struct WBCustomResponce {
     }
 }
 
+enum TariffType: String {
+	case full = "full"
+	case trial = "trial"
+}
+
 class APIService {
     
     static let sharedInstance = APIService()
@@ -35,7 +40,7 @@ class APIService {
     var loginCode: Int?
     var existingUser: String?
     var timeRemaining : String? = nil
-    var userTariff : String?
+    var userTariff : TariffType
     
     let realmManager = WBRealmManager()
     
@@ -50,6 +55,7 @@ class APIService {
     init() {
         self.arr = prefferedLanguage.components(separatedBy: "-")
         self.deviceLanguage = arr.first as? String ?? ""
+		self.userTariff = .trial
     }
     
     func postRegistration(name: String,email: String, password: String, lang: String, completion : @escaping (Bool, Error?) -> Void) {
@@ -167,7 +173,16 @@ class APIService {
                         self.userLang = userData.language
                         self.userEmail = userData.email
                         self.timeRemaining = userData.time_remaining
-                        self.userTariff = userData.tariff
+						switch userData.tariff! {
+						case "full":
+							self.userTariff = .full
+						case "trial":
+							self.userTariff = .trial
+						default:
+							self.userTariff = .trial
+						}
+						
+						
                         
                         self.userDataRegistration = userData.registration_date
                         

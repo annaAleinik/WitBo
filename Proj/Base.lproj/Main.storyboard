@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9l-fp-WhF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L9l-fp-WhF">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -521,12 +521,28 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="uTW-78-Iz2" kind="relationship" relationship="rootViewController" id="Fdo-t4-RE3"/>
+                        <segue destination="T78-8K-a5T" kind="relationship" relationship="rootViewController" id="o9q-zL-DBO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlR-hH-3yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2430" y="649"/>
+        </scene>
+        <!--Settings Container View Controller-->
+        <scene sceneID="d6u-YL-aHy">
+            <objects>
+                <viewController storyboardIdentifier="SettingsContainerViewController" id="T78-8K-a5T" customClass="SettingsContainerViewController" customModule="Proj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="soM-3R-KJR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="X8a-Vw-Tpt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HAH-N4-XhU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MX1-Fy-tZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1631.25" y="648.5915492957746"/>
         </scene>
         <!--Settings-->
         <scene sceneID="4qB-2z-aWa">
@@ -855,7 +871,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlX-BQ-nop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1509.375" y="648.5915492957746"/>
+            <point key="canvasLocation" x="-1631" y="1435"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="8GN-mF-kUO">
@@ -1193,7 +1209,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCh-ax-Cn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1897.5" y="1329.9295774647887"/>
+            <point key="canvasLocation" x="-2430" y="1435"/>
         </scene>
     </scenes>
     <resources>
