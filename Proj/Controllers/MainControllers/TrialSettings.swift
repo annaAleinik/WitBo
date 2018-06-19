@@ -19,17 +19,20 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     @IBOutlet weak var imagePicke: UIImageView!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var dataRegistrationLabel: UILabel!
-    
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var supportButton: UIButton!
     @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var changePhoto: UILabel!
     @IBOutlet weak var changeUtteranse: UILabel!
-    
     @IBOutlet weak var titleLeftTimeLabel: UILabel!
-    
     @IBOutlet weak var leftTimeLabel: UILabel!
+    @IBOutlet weak var tariffNameLabel: UILabel!
+    @IBOutlet weak var tarifValueLabel: UILabel!
+    @IBOutlet weak var langTitleLabel: UILabel!
+    
+    @IBOutlet weak var regDateLable: UILabel!
+    
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
@@ -54,6 +57,10 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
         self.titleLeftTimeLabel.text = "Left time"
+        self.tariffNameLabel.text = "Tariff"
+        self.tarifValueLabel.text = APIService.sharedInstance.userTariff
+        self.langTitleLabel.text = "Language"
+        self.regDateLable.text = "Registration date"
         
         if let time = APIService.sharedInstance.timeRemaining{
             if let intTime = Int(time){
@@ -77,6 +84,11 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.changePhoto.textColor = UIColor.white
         self.titleLeftTimeLabel.textColor = UIColor.white
         self.leftTimeLabel.textColor = UIColor.white
+        self.tariffNameLabel.textColor = UIColor.white
+        self.tarifValueLabel.textColor = UIColor.white
+        self.langTitleLabel.textColor = UIColor.white
+        self.regDateLable.textColor = UIColor.white
+
         self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)

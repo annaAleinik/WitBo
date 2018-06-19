@@ -22,14 +22,16 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var dataRegistrationLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
-    
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var supportButton: UIButton!
     @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var changePhoto: UILabel!
     @IBOutlet weak var changeUtteranse: UILabel!
-    
+    @IBOutlet weak var langTitleLable: UILabel!
+    @IBOutlet weak var regDateLable: UILabel!
+    @IBOutlet weak var tariffTitleLable: UILabel!
+    @IBOutlet weak var tariffValueLable: UILabel!
     
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
@@ -54,7 +56,12 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
-        
+        self.langTitleLable.text = "Language"
+        self.regDateLable.text = "Registration Date"
+        self.tariffTitleLable.text = "Tariff"
+        self.tariffValueLable.text = APIService.sharedInstance.userTariff
+
+
         tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
@@ -73,6 +80,9 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.dataRegistrationLabel.textColor = UIColor.white
         self.changeUtteranse.textColor = UIColor.white
         self.changePhoto.textColor = UIColor.white
+        self.langTitleLable.textColor = UIColor.white
+        self.regDateLable.textColor = UIColor.white
+        self.tariffTitleLable.textColor = UIColor.white
         self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
