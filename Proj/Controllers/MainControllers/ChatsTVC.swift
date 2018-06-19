@@ -35,7 +35,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         let strChat = NSLocalizedString("STR_CONTACTS", comment: "")
         titleChatLable.text = strChat
 		//controller for presenting
-		self.rootController = self.presentingViewController ?? UIViewController()
+		self.rootController = self.tabBarController ?? UIViewController()
 
     }
     

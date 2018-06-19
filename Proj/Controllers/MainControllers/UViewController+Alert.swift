@@ -17,7 +17,7 @@ protocol PresentingViewControllerProtocol where Self : NSObject {
 extension UIViewController: PresentingViewControllerProtocol {
 	var rootController: UIViewController {
 		get {
-			return self
+			return self.tabBarController ?? UIViewController()
 		}
 		set {
 			

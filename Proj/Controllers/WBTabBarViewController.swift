@@ -21,7 +21,8 @@ class WBTabBarViewController: UITabBarController {
 
         // Access the elements (NSArray of UITabBarItem) (tabs) of the tab Bar
         let tabItems = self.tabBar.items as NSArray!
-        
+		
+		
         // In this case we want to modify the badge number of the third tab:
         let tabItem = tabItems![1] as! UITabBarItem
         
