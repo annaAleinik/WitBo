@@ -36,7 +36,13 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
-    
+	
+	class func viewController() -> TrialSettings {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: TrialSettings.self)) as! TrialSettings
+		return viewController
+	}
+	
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOversSwitch.isOn = statusSwitch
@@ -58,7 +64,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.languageLabel.text = APIService.sharedInstance.userLang
         self.titleLeftTimeLabel.text = "Left time"
         self.tariffNameLabel.text = "Tariff"
-        self.tarifValueLabel.text = APIService.sharedInstance.userTariff
+        self.tarifValueLabel.text = APIService.sharedInstance.userTariff.rawValue
         self.langTitleLabel.text = "Language"
         self.regDateLable.text = "Registration date"
         

@@ -36,7 +36,14 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     let langSourse = LanguageSourse.shared.dictLang
     var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
-    
+	
+	
+	class func viewController() -> FullSettings {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: FullSettings.self)) as! FullSettings
+		return viewController
+	}
+	
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOversSwitch.isOn = statusSwitch
@@ -59,7 +66,7 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.langTitleLable.text = "Language"
         self.regDateLable.text = "Registration Date"
         self.tariffTitleLable.text = "Tariff"
-        self.tariffValueLable.text = APIService.sharedInstance.userTariff
+        self.tariffValueLable.text = APIService.sharedInstance.userTariff.rawValue
 
 
         tableView.separatorColor = UIColor.clear

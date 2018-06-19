@@ -35,6 +35,13 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     var flagArr = LanguageSourse.shared.dictFlag
     var newlanguage: String? = nil
 
+	
+	class func viewController() -> SettingsTableViewController {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: SettingsTableViewController.self)) as! SettingsTableViewController
+		return viewController
+	}
+	
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOversSwitch.isOn = statusSwitch
