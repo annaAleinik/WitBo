@@ -10,4 +10,6 @@ import Foundation
 
 protocol SettingsControllerDelegate{
     func languageDidSelect(token: String, lang: String)
+    var language: String? { get set }
+
 }

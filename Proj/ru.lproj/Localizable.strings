@@ -48,7 +48,7 @@ STR_EMAIL_WRONG = "Емайл уже занят";
 STR_REG_SUCCSES = "Регистрация прошла успешно";
 STR_ADD_ALL_FILD_FOUND = "Заполните пожалуйста поле поиска";
 STR_LOGOUT_ACC = "Вы вышли из профиля";
-STR_OK = "Ок"
+STR_OK = "Ок";
 
 
 

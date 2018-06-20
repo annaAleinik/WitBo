@@ -271,7 +271,10 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.newlanguage = self.langSourse[row].code
-        
+        guard let token = APIService.sharedInstance.token else {return}
+        guard let lang = newlanguage else {return}
+        delegate?.languageDidSelect(token: token, lang: lang)
+        delegate?.language = lang
 
     }
     
@@ -293,17 +296,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         myView.addSubview(flagImage)
         
         return myView
-    }
-    
-    //MARK: -- NavBar
-    @objc func doneTapped(){
-        
-        guard let lang = self.newlanguage else {return}
-        guard let token = APIService.sharedInstance.token else {return}
-        
-        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
-        
-        self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
     }
 }
 

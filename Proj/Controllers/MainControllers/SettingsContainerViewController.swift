@@ -10,20 +10,24 @@ import Foundation
 import UIKit
 
 class SettingsContainerViewController: UIViewController , SettingsControllerDelegate{
+    var language: String? = nil
+    
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.navigationItem.title = "Settings"
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(FullSettings.doneTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
 
-		let vc: UIViewController?
+		let vc: UIViewController
+        
 		switch APIService.sharedInstance.userTariff {
 		case .full:
-			vc = FullSettings.viewController() as? FullSettings
-            vc.delegate = self
+            let fullSett = FullSettings.viewController()
+            fullSett.delegate = self
+            vc = fullSett
 		case .trial:
 			vc = TrialSettings.viewController()
 
@@ -34,9 +38,9 @@ class SettingsContainerViewController: UIViewController , SettingsControllerDele
 		
 	}
 
-    @objc func doneTapped(token: String, lang: String){
+    @objc func doneTapped(){
         
-        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
+        APIService.sharedInstance.changeUserLang(userToken: APIService.sharedInstance.token!, userLang:self.language!)
         
         self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
     }

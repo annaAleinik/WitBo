@@ -29,7 +29,6 @@
 		8400FA6220AD618300A36EE7 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8400FA6020AD618300A36EE7 /* NotificationCell.xib */; };
 		8407ACBB20B5A792000F8373 /* CustomRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407ACBA20B5A792000F8373 /* CustomRule.swift */; };
 		840E4D702089FC6600993677 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E4D6F2089FC6600993677 /* MessageModel.swift */; };
-		841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */; };
 		841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FA1CF207214C700D0064A /* TranslateModel.swift */; };
 		841FA1D220723C4200D0064A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841FA1D120723C4200D0064A /* AVFoundation.framework */; };
 		842724EA20626ADD006B936E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842724E920626ADD006B936E /* TimerManager.swift */; };
@@ -112,7 +111,6 @@
 		8400FA6F20ADA81A00A36EE7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8407ACBA20B5A792000F8373 /* CustomRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRule.swift; sourceTree = "<group>"; };
 		840E4D6F2089FC6600993677 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
-		841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		841FA1CF207214C700D0064A /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		841FA1D120723C4200D0064A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		842724E920626ADD006B936E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 				084A20C920691E620009E4B2 /* ChatsTVC.swift */,
 				84FC5123205FB6E400A8F6DD /* SpeachViewController.swift */,
 				8400FA5D20AD557F00A36EE7 /* NotificationController.swift */,
-				841E5CDE20B4664400D2C892 /* SettingsTableViewController.swift */,
 				8445DB2F20D7F24500FE9C8D /* TrialSettings.swift */,
 				8445DB2D20D7F22700FE9C8D /* FullSettings.swift */,
 				09A2261320D8EC53001385FE /* SettingsContainerViewController.swift */,
@@ -562,7 +559,6 @@
 				84535B342093535700E71F5D /* DialogModel.swift in Sources */,
 				8BB75BC02074D18E0067CCB2 /* SocketManager.swift in Sources */,
 				847BED9520B84CDE002F3303 /* ContactModelProtocol.swift in Sources */,
-				841E5CDF20B4664400D2C892 /* SettingsTableViewController.swift in Sources */,
 				84413CA8207CA5A400E3E953 /* LastMassageModel.swift in Sources */,
 				841FA1D0207214C700D0064A /* TranslateModel.swift in Sources */,
 				847261A82087460800CBF9D8 /* Contact.swift in Sources */,
