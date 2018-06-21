@@ -83,7 +83,8 @@ class SocketManager: UIViewController, WebSocketDelegate {
                     self.initiatorDialog = conversationRequest?.message.initiator ?? ""
                     self.initiatorDialogName = conversationRequest?.message.name ?? ""
                     let userInfo :  [String:Any] = ["initiatorID": self.initiatorDialog, "nameInitiator": self.initiatorDialogName]
-                    NotificationCenter.default.post(name: Notification.Name("QuitConversation"), object: nil, userInfo: userInfo)
+                    
+                    NotificationCenter.default.post(name: Notification.Name("ConversationRequest"), object: nil, userInfo: userInfo)
                 }else{
                     let alert = UIAlertController(title: "", message: "Обрыв соединения", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
@@ -153,7 +154,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
 
     }
     
-    func startDialog(receiver: String) {
+    func startDialogRequest(receiver: String) {
         
         guard let token = APIService.sharedInstance.token else { return }
 

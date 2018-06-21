@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-	@objc func quitConversation(notification: NSNotification) {
+	@objc func conversationRequest(notification: NSNotification) {
 		let dict = notification.userInfo ?? [:]
 		let initiatorID = dict["initiatorID"] as? String ?? ""
 		let nameInitiator = dict["nameInitiator"] as? String ?? ""

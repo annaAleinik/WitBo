@@ -60,8 +60,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector:#selector(quitConversation(notification:)),
-                                               name: Notification.Name("QuitConversation"),
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
                                                object: nil)
 
         

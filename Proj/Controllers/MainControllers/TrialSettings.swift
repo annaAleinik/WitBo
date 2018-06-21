@@ -93,8 +93,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         
         NotificationCenter.default.addObserver(self,
-                                               selector:#selector(quitConversation(notification:)),
-                                               name: Notification.Name("QuitConversation"),
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
                                                object: nil)
         
         
