@@ -16,10 +16,10 @@ extension UIViewController {
 		let initiatorID = dict["initiatorID"] as? String ?? ""
 		let nameInitiator = dict["nameInitiator"] as? String ?? ""
 		
-		self.quitConversationStart(initiator: initiatorID, nameInitiator: nameInitiator)
+		self.conversationRequest(initiator: initiatorID, nameInitiator: nameInitiator)
 	}
 	
-	private func quitConversationStart(initiator: String, nameInitiator: String) {
+	private func conversationRequest(initiator: String, nameInitiator: String) {
 		
 		let alert = UIAlertController(title: "", message: "С вами хочет начать диалог \(nameInitiator)", preferredStyle: UIAlertControllerStyle.alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in

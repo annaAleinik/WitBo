@@ -31,8 +31,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     @IBOutlet weak var tarifValueLabel: UILabel!
     @IBOutlet weak var langTitleLabel: UILabel!
     @IBOutlet weak var regDateLable: UILabel!
-    
-    var newlanguage: String? = nil
 	
 	class func viewController() -> TrialSettings {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)

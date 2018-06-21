@@ -10,9 +10,8 @@ import UIKit
 import SwiftValidator
 
 
-class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
+class EntranceController: UIViewController, UITextFieldDelegate{
 
-    let validator = Validator()
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBOutlet weak var welcomeLable: UILabel!
@@ -20,35 +19,13 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var emailErrorLabel: UILabel!
-    @IBOutlet weak var passwordErrorLabel: UILabel!
-    
-    func validationSuccessful()  {
-        print("Validation succsessfil")
-    }
-    
-    
-    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
-        for (field, error) in errors {
-            if let field = field as? UITextField {
-                field.layer.borderColor = UIColor.red.cgColor
-                field.layer.borderWidth = 1.0
-            }
-            error.errorLabel?.text = error.errorMessage // works if you added labels
-            error.errorLabel?.isHidden = false
-            error.errorLabel?.textColor = UIColor.white
-        }
-    }
-    
+    @IBOutlet weak var errorLabel: UILabel!    
     
     @IBAction func entranceAction(_ sender: UIButton) {
         let login = emailField.text
         let password = passwordField.text
-
-        validator.validate(self)
         
-        if (emailField.text == "") || (passwordField.text == ""){
+    if (emailField.text == "") || (passwordField.text == ""){
             let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(ok)
@@ -133,13 +110,6 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         let strRegistration = NSLocalizedString("STR_REGISTRATION", comment: "")
         self.registrationButton.setTitle(strRegistration, for: .normal)
 
-       
-        //MARK: -- Validator
-        
-        validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "email required"), EmailRule(message: "Invalid email")])
-
-        validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [RequiredRule(message: "password required")])
-        
         emailField.tag = 0 //Increment accordingly
 
     }

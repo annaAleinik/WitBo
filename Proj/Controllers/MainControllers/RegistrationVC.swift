@@ -51,19 +51,16 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         //MARK: -- Validator
         
         validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "Email required"), EmailRule(message: "Invalid email")])
-        
         validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "Name required")])
-
         validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
-        
         validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
 
 
-//self.addLeftImg(textField: nameField, imgName: <#T##String#>)
-//        self.addLeftImg(textField: emailField, imgName: <#T##String#>)
-//        self.addLeftImg(textField: passwordField, imgName: <#T##String#>)
-//        self.addLeftImg(textField: repiatPassword, imgName: <#T##String#>)
-
+        self.addLeftImg(textField: nameField, imgName: "nameIcon")
+        self.addLeftImg(textField: emailField, imgName: "emailIcon")
+        self.addLeftImg(textField: passwordField, imgName: "passIcon")
+        self.addLeftImg(textField: repiatPassword, imgName: "passIcon")
+        
         //Localized
         
         let strName = NSLocalizedString("STR_NAME", comment: "")
@@ -260,12 +257,9 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
             error.errorLabel?.textColor = UIColor.white
         }
     }
+}
 
-
-    
-    }
-
-extension UITextField{
+extension RegistrationVC{
     func addLeftImg(textField: UITextField,imgName: String){
         textField.leftViewMode = UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))

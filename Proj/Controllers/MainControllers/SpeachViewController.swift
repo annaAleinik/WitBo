@@ -23,6 +23,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
+    let tariff = APIService.sharedInstance.userTariff.rawValue
 	let timerManager = TimerManager()
     var timer: Timer!
 
@@ -45,7 +46,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+       
+        if self.tariff == "full"{
+            self.timeLabel.isHidden = true
+        }
+
         SocketManager.sharedInstanse.delegateConversation = self
         recordButton.isEnabled = false
         
@@ -85,8 +90,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.recordButton.isEnabled = buttonState // 7
             }
         }
-        
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sendTimeInServer), userInfo: nil, repeats: true)
+
+        if self.tariff == "trial"{
+            timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sendTimeInServer), userInfo: nil, repeats: true)
+        } else {
+            return
+        }
         
         //Localized
         
@@ -109,7 +118,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let respDialog = SocketManager.sharedInstanse.dialogResponse
         
         if respDialog == "1"{
-            timerManager.runTimer()
+            if self.tariff == "trial" {
+                timerManager.runTimer()
+            }
         }
         
         timerManager.delegateTimeInterval = self
@@ -124,11 +135,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 	
 	override  func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		timerManager.pauseTimer()
-        
-        //guard let rec = self.receiverFromContacts else {return}
-        
-        //SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
+        if self.tariff == "trial" {
+            timerManager.pauseTimer()
+        }
         
         self.nameUserChatLabel.text = nil
         
@@ -139,6 +148,10 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         APIService.sharedInstance.userData(token:APIService.sharedInstance.token! ) { (succses, error) in
             
+            if self.tariff == "trial"{
+                self.timer.invalidate()
+
+            }
         }
 	}
     
@@ -162,6 +175,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     func updateUI(sec: String) {
         guard (self.timeLabel != nil) else {return}
+        
         self.timeLabel.text = sec
     }
 	
