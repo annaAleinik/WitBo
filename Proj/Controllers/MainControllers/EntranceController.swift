@@ -9,6 +9,13 @@
 import UIKit
 import SwiftValidator
 
+//FIXME: HARDCODE!!!!!!!
+enum FakeUserAccount: String {
+	case top = "top"
+	case astaroth = "astaroth"
+	case sefiroth = "sefiroth"
+	case nechet = "nechet"
+}
 
 class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
 
@@ -23,6 +30,9 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
+	
+	//FIXME: HARDCODE!!!!!!!
+	let fakeUser:FakeUserAccount = .nechet
     
     func validationSuccessful()  {
         print("Validation succsessfil")
@@ -112,9 +122,25 @@ class EntranceController: UIViewController, UITextFieldDelegate, ValidationDeleg
         activityIndicator.center = self.view.center
         self.view.addSubview(self.activityIndicator)
 
-		//HARDCODE
-		self.emailField.text = "topikt@topikt.com"
-		self.passwordField.text = "123456"
+		//FIXME: HARDCODE!!!!!!!
+		
+		switch self.fakeUser {
+		case .astaroth:
+			self.emailField.text = "tykans@gmail.com"
+			self.passwordField.text = "pzkpfw"
+		case .sefiroth:
+			self.emailField.text = "sw@topikt.com"
+			self.passwordField.text = "qwerty"
+		case .top:
+			self.emailField.text = "topikt@topikt.com"
+			self.passwordField.text = "123456"
+		case .nechet:
+			self.emailField.text = "nechetmykhailo@gmail.com"
+			self.passwordField.text = "dojomo12"
+		
+		}
+		
+		
 		
         //Localized
         

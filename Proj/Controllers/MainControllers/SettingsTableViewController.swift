@@ -151,7 +151,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        self.resizeImage(image: image)
+        _ = self.resizeImage(image: image)
         imagePicke.image = image
         dismiss(animated:true, completion: nil)
     }
