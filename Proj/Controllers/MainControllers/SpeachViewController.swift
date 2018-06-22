@@ -112,7 +112,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     }
     
     func removeObservers() {
-        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
     }
 
@@ -146,8 +146,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
         
         self.nameUserChatLabel.text = nil
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
         
         guard let rec = self.receiverFromContacts else {return}
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)

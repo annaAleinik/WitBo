@@ -99,7 +99,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
                                                name: Notification.Name("ConversationRequest"),
                                                object: nil)
         
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

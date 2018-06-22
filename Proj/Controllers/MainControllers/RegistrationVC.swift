@@ -44,10 +44,6 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        //default value in picler
-//        let preferredLanguage = NSLocale.preferredLanguages[0]
-//        pickerView.selectedRow(inComponent: <#T##Int#>)
-        
         //MARK: -- Validator
         
         validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "Email required"), EmailRule(message: "Invalid email")])
@@ -77,8 +73,18 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
+        
+        
+    //default value in picler
+        let langStr = Locale.current.languageCode
+        guard let langIPhone = langStr else {return}
+        let index = langSourse.index{ (item) -> Bool in
+        return item.code.components(separatedBy: "-").first == langIPhone
+        }
+        pickerView.selectRow(index!, inComponent: 0, animated: true)
 
-    }
+
+}
     
     //MARK:--Action
     
