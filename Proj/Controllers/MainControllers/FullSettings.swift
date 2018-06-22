@@ -102,6 +102,11 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeObservers()
+    }
+    
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
         let header = view as! UITableViewHeaderFooterView
@@ -110,6 +115,11 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         
     }
     
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+    }
+
     
     //MARK: -- Action
     

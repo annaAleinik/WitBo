@@ -111,6 +111,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
     }
     
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+    }
+
+    
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
@@ -153,6 +159,8 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
             }
         }
+        
+        self.removeObservers()
 	}
     
     // handler closed ads

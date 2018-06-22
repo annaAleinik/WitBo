@@ -119,11 +119,15 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
-        
+        self.removeObservers()
         
     }
     
-    
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+    }
+
     //MARK: -- Action
     
     @IBAction func openCameraButton(_ sender: Any) {

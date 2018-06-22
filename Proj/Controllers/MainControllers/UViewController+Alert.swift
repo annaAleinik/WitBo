@@ -18,10 +18,10 @@ extension UIViewController {
 		
 		self.conversationRequest(initiator: initiatorID, nameInitiator: nameInitiator)
 	}
-	
+    
+
 	private func conversationRequest(initiator: String, nameInitiator: String) {
-		
-		let alert = UIAlertController(title: "", message: "С вами хочет начать диалог \(nameInitiator)", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: "С вами хочет начать диалог \(nameInitiator)", preferredStyle: UIAlertControllerStyle.alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
 			SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "1")
 			alert.dismiss(animated: true, completion: nil)
@@ -35,7 +35,8 @@ extension UIViewController {
 		
 		alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
 			SocketManager.sharedInstanse.selfAnswerrForADialogStart(answer: "0")
-			
+            alert.dismiss(animated: true, completion: nil)
+
 		}))
 		
 		self.present(alert, animated: true, completion: nil)
