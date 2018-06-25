@@ -10,8 +10,10 @@ import UIKit
 import Alamofire
 import RealmSwift
 import MessageUI
+import StoreKit
 
-class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
+class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate{
+   
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
@@ -65,7 +67,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
                 self.leftTimeLabel.text = dateFormat(from: "\(intTime/60)", getFormat: "mm", returnFormat: "mm:ss")
             }
         }
-        tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
@@ -116,9 +117,10 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.clear
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+        header.contentView.backgroundColor = UIColor.gray
         self.removeObservers()
         
     }
@@ -273,5 +275,17 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     }
     
     
+    
+    //MARK: -- SKPaymentTransactionObserver
+    // SKProductsRequestDelegate,
+    // SKPaymentTransactionObserver
+//    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//
+//    }
+//
+//    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+//
+//    }
+//
 }
 

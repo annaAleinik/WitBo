@@ -66,8 +66,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.regDateLable.text = "Registration Date"
         self.tariffTitleLable.text = "Tariff"
         self.tariffValueLable.text = APIService.sharedInstance.userTariff.rawValue
-
-        tableView.separatorColor = UIColor.clear
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
@@ -110,7 +108,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
-        
+        header.contentView.backgroundColor = UIColor.gray
+
         
     }
     

@@ -17,11 +17,10 @@ class SettingsContainerViewController: UIViewController , SettingsControllerDele
 		super.viewDidLoad()
 
 		self.navigationItem.title = "Settings"
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-
-		let vc: UIViewController
+		self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        let vc: UIViewController
         
 		switch APIService.sharedInstance.userTariff {
 		case .full:

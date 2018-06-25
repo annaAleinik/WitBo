@@ -62,6 +62,7 @@ class TimerManager {
             self.delegate?.updateUI(sec: res)
         }
     }
+    
 	
 	func pauseTimer() {
         
