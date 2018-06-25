@@ -17,7 +17,7 @@ enum FakeUserAccount: String {
 	case nechet = "nechet"
 }
 
-class EntranceController: UIViewController, UITextFieldDelegate{
+class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
 
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
@@ -31,7 +31,8 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var passwordErrorLabel: UILabel!
 	
 	//FIXME: HARDCODE!!!!!!!
-	let fakeUser:FakeUserAccount = .nechet
+	let fakeUser:FakeUserAccount = .astaroth
+	let validator = Validator()
     
     func validationSuccessful()  {
         print("Validation succsessfil")
@@ -55,7 +56,8 @@ class EntranceController: UIViewController, UITextFieldDelegate{
         let login = emailField.text
         let password = passwordField.text
 
-        validator.validate(self)
+		validator.validate(self)
+		
         
         if (emailField.text == "") || (passwordField.text == ""){
             let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)

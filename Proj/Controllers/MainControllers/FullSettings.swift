@@ -91,25 +91,15 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-<<<<<<< HEAD:Proj/Controllers/MainControllers/SettingsTableViewController.swift
 		
 		//controller for presenting 
 		self.rootController = self.presentingViewController ?? UIViewController()
-		
-		NotificationCenter.default.addObserver(self,
-											   selector:#selector(quitConversation(notification:)),
-											   name: Notification.Name("QuitConversation"),
-											   object: nil)
-
-//
-=======
         
         NotificationCenter.default.addObserver(self,
                                                selector:#selector(conversationRequest(notification:)),
                                                name: Notification.Name("ConversationRequest"),
                                                object: nil)
-        
->>>>>>> master:Proj/Controllers/MainControllers/FullSettings.swift
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
