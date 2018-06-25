@@ -23,6 +23,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
+    let tariff = APIService.sharedInstance.userTariff.rawValue
 	let timerManager = TimerManager()
     var timer: Timer!
 
@@ -45,7 +46,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+       
+        if self.tariff == "full"{
+            self.timeLabel.isHidden = true
+        }
+
         SocketManager.sharedInstanse.delegateConversation = self
         recordButton.isEnabled = false
         
@@ -55,8 +60,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-											   selector:#selector(quitConversation(notification:)),
-                                               name: Notification.Name("QuitConversation"),
+
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
                                                object: nil)
 
         
@@ -85,8 +91,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
                 self.recordButton.isEnabled = buttonState // 7
             }
         }
-        
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sendTimeInServer), userInfo: nil, repeats: true)
+
+        if self.tariff == "trial"{
+            timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(sendTimeInServer), userInfo: nil, repeats: true)
+        } else {
+            return
+        }
         
         //Localized
         
@@ -102,6 +112,12 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
     }
     
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+    }
+
+    
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		timerManager.delegate = self
@@ -109,7 +125,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         let respDialog = SocketManager.sharedInstanse.dialogResponse
         
         if respDialog == "1"{
-            timerManager.runTimer()
+            if self.tariff == "trial" {
+                timerManager.runTimer()
+            }
         }
         
         timerManager.delegateTimeInterval = self
@@ -124,19 +142,24 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 	
 	override  func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		timerManager.pauseTimer()
-        
-        //guard let rec = self.receiverFromContacts else {return}
-        
-        //SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
+        if self.tariff == "trial" {
+            timerManager.pauseTimer()
+        }
         
         self.nameUserChatLabel.text = nil
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
         
         guard let rec = self.receiverFromContacts else {return}
         SocketManager.sharedInstanse.logOutOfTheConversation(receiver:rec)
         
+        APIService.sharedInstance.userData(token:APIService.sharedInstance.token! ) { (succses, error) in
+            
+            if self.tariff == "trial"{
+                self.timer.invalidate()
+
+            }
+        }
+        
+        self.removeObservers()
 	}
     
     // handler closed ads
@@ -159,6 +182,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     func updateUI(sec: String) {
         guard (self.timeLabel != nil) else {return}
+        
         self.timeLabel.text = sec
     }
 	
@@ -168,8 +192,14 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         // send to server time (every 15 sec)
         
         guard let token = APIService.sharedInstance.token else {return}
+        APIService.sharedInstance.spendedtime(token: token, time: 15) { (succses, error) in
+            if succses{
+                let date = Date()
+                self.timerManager.runTimeSystem = date.timeIntervalSince1970
+
+            }
+        }
         
-        APIService.sharedInstance.spendedtime(token: token, time: 15)
     }
 
     

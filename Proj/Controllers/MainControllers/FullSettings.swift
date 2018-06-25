@@ -1,41 +1,50 @@
 //
-//  SettingsTableViewController.swift
+//  FullSettings.swift
 //  Proj
 //
-//  Created by Admin on 5/22/18.
+//  Created by Admin on 6/18/18.
 //  Copyright © 2018 Admin. All rights reserved.
 //
+
+import UIKit
 
 import UIKit
 import Alamofire
 import RealmSwift
 import MessageUI
 
-class SettingsTableViewController: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
+class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var voiceOversSwitch: UISwitch!
     @IBOutlet weak var imagePicke: UIImageView!
-    @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var dataRegistrationLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
-    
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var supportButton: UIButton!
     @IBOutlet weak var galleryButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var changePhoto: UILabel!
     @IBOutlet weak var changeUtteranse: UILabel!
+    @IBOutlet weak var langTitleLable: UILabel!
+    @IBOutlet weak var regDateLable: UILabel!
+    @IBOutlet weak var tariffTitleLable: UILabel!
+    @IBOutlet weak var tariffValueLable: UILabel!
     
-    @IBOutlet weak var titleLeftTimeLabel: UILabel!
-    
-    @IBOutlet weak var leftTimeLabel: UILabel!
-    let langSourse = LanguageSourse.shared.dictLang
-    var flagArr = LanguageSourse.shared.dictFlag
+    let langSourse = LanguageSourse.shared.dictLang.sorted(by:{ $0.name < $1.name })
+    var flagArr = LanguageSourse.shared.dictFlag.sorted(by:{ $0.name < $1.name })
     var newlanguage: String? = nil
+    var delegate: SettingsControllerDelegate? = nil
 
+	
+	class func viewController() -> FullSettings {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: FullSettings.self)) as! FullSettings
+		return viewController
+	}
+	
     override func viewWillAppear(_ animated: Bool) {
         let statusSwitch =  UserDefaults.standard.bool(forKey: "STATUSSWITCH")
         voiceOversSwitch.isOn = statusSwitch
@@ -48,22 +57,15 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingsLabel.text = "Settings"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
         
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
         self.languageLabel.text = APIService.sharedInstance.userLang
-        self.titleLeftTimeLabel.text = "Left time"
-
-        if let time = APIService.sharedInstance.timeRemaining{
-            if let intTime = Int(time){
-                self.leftTimeLabel.text = dateFormat(from: "\(intTime/60)", getFormat: "mm", returnFormat: "mm:ss")
-            }
-        }
-        tableView.separatorColor = UIColor.clear
+        self.langTitleLable.text = "Language"
+        self.regDateLable.text = "Registration Date"
+        self.tariffTitleLable.text = "Tariff"
+        self.tariffValueLable.text = APIService.sharedInstance.userTariff.rawValue
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         
@@ -81,12 +83,15 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         self.dataRegistrationLabel.textColor = UIColor.white
         self.changeUtteranse.textColor = UIColor.white
         self.changePhoto.textColor = UIColor.white
-        self.titleLeftTimeLabel.textColor = UIColor.white
-        self.leftTimeLabel.textColor = UIColor.white
+        self.langTitleLable.textColor = UIColor.white
+        self.regDateLable.textColor = UIColor.white
+        self.tariffTitleLable.textColor = UIColor.white
+        self.tariffValueLable.textColor = UIColor.white
         self.cameraButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.galleryButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+<<<<<<< HEAD:Proj/Controllers/MainControllers/SettingsTableViewController.swift
 		
 		//controller for presenting 
 		self.rootController = self.presentingViewController ?? UIViewController()
@@ -97,31 +102,33 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
 											   object: nil)
 
 //
-    }
-    
-    func dateFormat(from timeString: String, getFormat: String, returnFormat: String)->String?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = getFormat
+=======
         
-        if let date = dateFormatter.date(from: timeString){
-            dateFormatter.dateFormat = returnFormat
-            return dateFormatter.string(from: date)
-        }else{
-            return nil
-        }
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
+                                               object: nil)
+        
+>>>>>>> master:Proj/Controllers/MainControllers/FullSettings.swift
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-
+        self.removeObservers()
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+        header.contentView.backgroundColor = UIColor.gray
 
         
+    }
+    
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
     }
 
     
@@ -176,7 +183,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
-
+        
         
     }
     
@@ -215,7 +222,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     
     //MARK: -- image compression
     func resizeImage(image: UIImage) -> UIImage {
@@ -268,7 +275,7 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
             UserDefaults.standard.set(switchON, forKey: "STATUSSWITCH")
         }
     }
-
+    
     //MARK: -- UIPickerViewDelegate
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -285,7 +292,11 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.newlanguage = self.langSourse[row].code
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        guard let token = APIService.sharedInstance.token else {return}
+        guard let lang = newlanguage else {return}
+        delegate?.languageDidSelect(token: token, lang: lang)
+        delegate?.language = lang
+
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -307,17 +318,5 @@ class SettingsTableViewController: UITableViewController,UIImagePickerController
         
         return myView
     }
-    
-    //MARK: -- NavBar
-    @objc func doneTapped(){
-        
-        guard let lang = self.newlanguage else {return}
-        guard let token = APIService.sharedInstance.token else {return}
-
-        APIService.sharedInstance.changeUserLang(userToken: token, userLang: lang)
-        
-        self.tabBarController?.selectedIndex = TabBarControllers.TabBarControllersDialogs.rawValue
-    }
-
-
 }
+

@@ -15,7 +15,6 @@ class NotificationController: UITableViewController {
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         tabBarItem.badgeValue = nil
-
     }
 
     

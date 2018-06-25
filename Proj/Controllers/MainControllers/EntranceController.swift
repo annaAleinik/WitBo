@@ -17,9 +17,8 @@ enum FakeUserAccount: String {
 	case nechet = "nechet"
 }
 
-class EntranceController: UIViewController, UITextFieldDelegate, ValidationDelegate{
+class EntranceController: UIViewController, UITextFieldDelegate{
 
-    let validator = Validator()
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBOutlet weak var welcomeLable: UILabel!

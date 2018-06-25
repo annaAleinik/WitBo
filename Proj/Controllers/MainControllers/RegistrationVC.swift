@@ -17,14 +17,13 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repiatPassword: UITextField!
-    
     @IBOutlet weak var nameErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     @IBOutlet weak var passErrorLabel: UILabel!
     
-    let langSourse = LanguageSourse.shared.dictLang
-    var flagArr = LanguageSourse.shared.dictFlag
+    let langSourse = LanguageSourse.shared.dictLang.sorted(by:  { $0.name < $1.name })
+    var flagArr = LanguageSourse.shared.dictFlag.sorted(by:  { $0.name < $1.name })
     var language: String? = nil
     var actionToEnable : UIAlertAction?
     let validator = Validator()
@@ -45,21 +44,18 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        //default value in picler
-//        let preferredLanguage = NSLocale.preferredLanguages[0]
-//        pickerView.selectedRow(inComponent: <#T##Int#>)
-        
         //MARK: -- Validator
         
         validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "Email required"), EmailRule(message: "Invalid email")])
-        
         validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "Name required")])
-
         validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
-        
         validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
 
 
+        self.addLeftImg(textField: nameField, imgName: "nameIcon")
+        self.addLeftImg(textField: emailField, imgName: "emailIcon")
+        self.addLeftImg(textField: passwordField, imgName: "passIcon")
+        self.addLeftImg(textField: repiatPassword, imgName: "passIcon")
         
         //Localized
         
@@ -77,9 +73,19 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
+        
+        
+    //default value in picler
+        let langStr = Locale.current.languageCode
+        guard let langIPhone = langStr else {return}
+        let index = langSourse.index{ (item) -> Bool in
+        return item.code.components(separatedBy: "-").first == langIPhone
+        }
+        pickerView.selectRow(index!, inComponent: 0, animated: true)
 
-    }
 
+}
+    
     //MARK:--Action
     
     @IBAction func tapRegistratiomButton(_ sender: UIButton) {
@@ -228,16 +234,6 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 
                 }
             })
-            
-//            let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
-//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")
-//                self.present(vc, animated: true, completion: nil)
-//
-//            }))
-//            self.present(alert, animated: true, completion: nil)
-
         })
         
         let cancel = UIAlertAction(title: "Cencel", style: .cancel, handler: nil)
@@ -267,7 +263,16 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
             error.errorLabel?.textColor = UIColor.white
         }
     }
+}
 
-    
+extension RegistrationVC{
+    func addLeftImg(textField: UITextField,imgName: String){
+        textField.leftViewMode = UITextFieldViewMode.always
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: imgName)
+        imageView.image = image
+        textField.leftView = imageView
+        
     }
 
+}

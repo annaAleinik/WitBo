@@ -176,7 +176,7 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
 		
 		guard let receiverJSON = receiver else { return }
         guard conntact.online == 1 else {return}
-		SocketManager.sharedInstanse.startDialog(receiver: receiverJSON)
+		SocketManager.sharedInstanse.startDialogRequest(receiver: receiverJSON)
 		
 		self.presentAlertController()
 	}
@@ -302,8 +302,8 @@ extension ChatsTVC {
                                                name: Notification.Name("ChangeStatusOnLine"),
                                                object: nil)
 		NotificationCenter.default.addObserver(self,
-											   selector:#selector(quitConversation(notification:)),
-											   name: Notification.Name("QuitConversation"),
+											   selector:#selector(conversationRequest(notification:)),
+											   name: Notification.Name("ConversationRequest"),
 											   object: nil)
     }
     
@@ -311,7 +311,7 @@ extension ChatsTVC {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "QuitConversation"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
     }
     
     
