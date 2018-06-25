@@ -21,10 +21,10 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!    
     
+    
     @IBAction func entranceAction(_ sender: UIButton) {
         let login = emailField.text
         let password = passwordField.text
-        
     if (emailField.text == "") || (passwordField.text == ""){
             let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -62,7 +62,6 @@ class EntranceController: UIViewController, UITextFieldDelegate{
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
                     self.present(vc, animated: true, completion: nil)
-                    
                     APIService.sharedInstance.userData(token: APIService.sharedInstance.token!) { (succses, error) in
                         }
                     }

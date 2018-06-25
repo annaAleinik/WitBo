@@ -358,6 +358,16 @@
                                     <constraint firstAttribute="height" constant="162" id="nwp-sy-TqW"/>
                                 </constraints>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXR-2h-pBg">
+                                <rect key="frame" x="123" y="346" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.82244758230068682" green="0.83868359008654192" blue="0.96424888959390864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="upA-82-Ip8" eventType="touchUpInside" id="RVa-NW-hmh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -380,6 +390,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="TXR-2h-pBg" id="Yze-0x-Jp6"/>
                         <outlet property="emailErrorLabel" destination="qXf-Ia-iAN" id="7Da-Gw-vtS"/>
                         <outlet property="emailField" destination="gge-DD-g8O" id="Fxv-QV-b9C"/>
                         <outlet property="nameErrorLabel" destination="WRn-6m-IMp" id="VDi-O8-8UY"/>
