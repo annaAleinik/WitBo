@@ -21,6 +21,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
     @IBOutlet weak var passErrorLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     let langSourse = LanguageSourse.shared.dictLang.sorted(by:  { $0.name < $1.name })
     var flagArr = LanguageSourse.shared.dictFlag.sorted(by:  { $0.name < $1.name })
@@ -79,9 +80,11 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let langStr = Locale.current.languageCode
         guard let langIPhone = langStr else {return}
         let index = langSourse.index{ (item) -> Bool in
+            self.language = item.code
         return item.code.components(separatedBy: "-").first == langIPhone
         }
         pickerView.selectRow(index!, inComponent: 0, animated: true)
+        
 
 
 }
@@ -103,7 +106,6 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
             if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repiatPassword.text == "") || (self.language == ""){
                 
                 let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
-                
                 let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
@@ -128,6 +130,9 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
   
 }
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true )
+    }
     // MARK: - KeyBoard hide
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

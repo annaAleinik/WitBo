@@ -31,6 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.testDevices = ["2077ef9a63d2b398840261c8221a0c9b"]
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         
+        let secretFromUD = UserDefaults.standard.string(forKey: "SECRET")
+        
+        if secretFromUD != nil{
+            APIService.sharedInstance.postAuthWith(secret: secretFromUD!, completion: { (succes, error) in
+                if succes {
+                    SocketManager.sharedInstanse.intro()
+                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
+                    self.window!.rootViewController = centerVC
+
+                }else {
+                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
+                    self.window!.rootViewController = centerVC
+
+                }
+            })
+        }
+        
+        
         
         //MARK: -- SignOut
         let userLoginStatus = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
@@ -41,9 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
             window!.rootViewController = centerVC
             window!.makeKeyAndVisible()
-
-            //Disconect sockets when signOut
-            //SocketManagerClass.sharedInstanse.socket.disconnect()
 
         }
         
