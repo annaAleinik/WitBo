@@ -67,7 +67,7 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         self.langTitleLable.text = "Language"
         self.regDateLable.text = "Registration Date"
         self.tariffTitleLable.text = "Tariff"
-        self.tariffValueLable.text = APIService.sharedInstance.userTariff.rawValue
+        self.tariffValueLable.text = "полный тариф"
         
         guard let image = UIImage(named: "background") else { return } // BAIL
         

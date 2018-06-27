@@ -59,7 +59,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.languageLabel.text = APIService.sharedInstance.userLang
         self.titleLeftTimeLabel.text = "Left time"
         self.tariffNameLabel.text = "Tariff"
-        self.tarifValueLabel.text = APIService.sharedInstance.userTariff.rawValue
+        self.tarifValueLabel.text = "Триал"
         self.langTitleLabel.text = "Language"
         self.regDateLable.text = "Registration date"
         
