@@ -400,7 +400,7 @@
                         <outlet property="passwordField" destination="bVi-rz-mDb" id="FHU-fS-VGN"/>
                         <outlet property="pickerView" destination="OiB-od-ogu" id="v5H-8F-eJE"/>
                         <outlet property="registrationButton" destination="oe0-PA-UQB" id="PR6-Nt-s95"/>
-                        <outlet property="repiatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
+                        <outlet property="repeatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
                         <segue destination="kjR-Uw-vIj" kind="show" id="IDD-Nc-7Et"/>
                     </connections>
                 </viewController>
@@ -436,7 +436,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MBg-4i-t18">
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MBg-4i-t18">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -1242,6 +1242,6 @@
         <image name="icon_settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aGO-Rh-aik"/>
+        <segue reference="IDD-Nc-7Et"/>
     </inferredMetricsTieBreakers>
 </document>

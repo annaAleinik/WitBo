@@ -16,7 +16,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var repiatPassword: UITextField!
+    @IBOutlet weak var repeatPassword: UITextField!
     @IBOutlet weak var nameErrorLabel: UILabel!
     @IBOutlet weak var emailErrorLabel: UILabel!
     @IBOutlet weak var passwordErrorLabel: UILabel!
@@ -35,12 +35,12 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         nameField.placeholder = "Name"
         emailField.placeholder = "Email"
         passwordField.placeholder = "Password"
-        repiatPassword.placeholder = "Repiat password"
+        repeatPassword.placeholder = "Repeat Password"
         
        self.nameField.delegate = self
        self.emailField.delegate = self
       self.passwordField.delegate = self
-       self.repiatPassword.delegate = self
+       self.repeatPassword.delegate = self
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -50,13 +50,13 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         validator.registerField(emailField, errorLabel: emailErrorLabel, rules: [RequiredRule(message: "Email required"), EmailRule(message: "Invalid email")])
         validator.registerField(nameField, errorLabel: nameErrorLabel, rules: [RequiredRule(message: "Name required")])
         validator.registerField(passwordField, errorLabel: passwordErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
-        validator.registerField(repiatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
+        validator.registerField(repeatPassword, errorLabel: passErrorLabel, rules: [CustomRule(message: "The password must be at least 6 characters long")])
 
 
         self.addLeftImg(textField: nameField, imgName: "nameIcon")
         self.addLeftImg(textField: emailField, imgName: "emailIcon")
         self.addLeftImg(textField: passwordField, imgName: "passIcon")
-        self.addLeftImg(textField: repiatPassword, imgName: "passIcon")
+        self.addLeftImg(textField: repeatPassword, imgName: "passIcon")
         
         //Localized
         
@@ -70,7 +70,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         passwordField.placeholder = strPass
 
         let strRepeatPass = NSLocalizedString("STR_REPEAT_PASSWORD", comment: "")
-        repiatPassword.placeholder = strRepeatPass
+        repeatPassword.placeholder = strRepeatPass
 
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
@@ -103,14 +103,14 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         guard let userLang = self.language else {return}
 
         if Reachability.isConnectedToNetwork(){
-            if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repiatPassword.text == "") || (self.language == ""){
+            if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repeatPassword.text == "") || (self.language == ""){
                 
                 let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
             }else {
-                if self.passwordField.text == repiatPassword.text{
+                if self.passwordField.text == repeatPassword.text{
                     self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
                 } else {
                     let alert = UIAlertController(title: "", message: "Пароли не совпадают", preferredStyle: UIAlertControllerStyle.alert)
@@ -131,8 +131,9 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
 }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true )
+        self.dismiss(animated: true, completion: nil)
     }
+    
     // MARK: - KeyBoard hide
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -151,8 +152,8 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
             passwordField.becomeFirstResponder()
         }else if textField == passwordField {
             textField.resignFirstResponder()
-            repiatPassword.becomeFirstResponder()
-        }else if textField == repiatPassword{
+            repeatPassword.becomeFirstResponder()
+        }else if textField == repeatPassword{
             textField.resignFirstResponder()
         }
         return true
