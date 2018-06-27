@@ -13,6 +13,7 @@
 		08307294207A4A790012C556 /* WBTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08307293207A4A790012C556 /* WBTabBarViewController.swift */; };
 		084A20CA20691E620009E4B2 /* ChatsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20C920691E620009E4B2 /* ChatsTVC.swift */; };
 		084A20CC206930AD0009E4B2 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084A20CB206930AD0009E4B2 /* LoginModel.swift */; };
+		08834EA520E3A99C002E6658 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08834EA420E3A99C002E6658 /* UIColorExtension.swift */; };
 		08C75415208C9D430026A0C3 /* WBChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C75414208C9D430026A0C3 /* WBChatViewController.swift */; };
 		08C75419208CAE440026A0C3 /* IncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C75418208CAE440026A0C3 /* IncomingMessageCell.xib */; };
 		08C7541B208CAE7F0026A0C3 /* OutgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08C7541A208CAE7F0026A0C3 /* OutgoingMessageCell.xib */; };
@@ -84,6 +85,7 @@
 		08307293207A4A790012C556 /* WBTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTabBarViewController.swift; sourceTree = "<group>"; };
 		084A20C920691E620009E4B2 /* ChatsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTVC.swift; sourceTree = "<group>"; };
 		084A20CB206930AD0009E4B2 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		08834EA420E3A99C002E6658 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		08C75414208C9D430026A0C3 /* WBChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBChatViewController.swift; sourceTree = "<group>"; };
 		08C75418208CAE440026A0C3 /* IncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingMessageCell.xib; sourceTree = "<group>"; };
 		08C7541A208CAE7F0026A0C3 /* OutgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutgoingMessageCell.xib; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				09ADC8F62083A57600867EAF /* APIConstants.swift */,
 				84CEFF9B20D912D600BF930E /* SettingsContrillerDelegate.swift */,
+				08834EA420E3A99C002E6658 /* UIColorExtension.swift */,
 				84DD039720B6DDBE00F4A7AF /* Reachability.swift */,
 				849945E52063CA8800E631A9 /* APIService.swift */,
 				8407ACBA20B5A792000F8373 /* CustomRule.swift */,
@@ -582,6 +585,7 @@
 				08125C8D20A88D8A00805353 /* WBRealmManager.swift in Sources */,
 				84FE794220971B06008CC933 /* AlertDialogWait.swift in Sources */,
 				8BB75BBD2074AC490067CCB2 /* CellContacts.swift in Sources */,
+				08834EA520E3A99C002E6658 /* UIColorExtension.swift in Sources */,
 				8444BB84208F5E8700485A20 /* HeaderContacts.swift in Sources */,
 				84CB95352080C7C000E306F5 /* BaseUserModel.swift in Sources */,
 				08C7541D208CAEE20026A0C3 /* MessageCell.swift in Sources */,

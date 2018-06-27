@@ -139,6 +139,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     
     func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CancelDialogRequest"), object: nil)
+
     }
 
     //MARK: -- Action

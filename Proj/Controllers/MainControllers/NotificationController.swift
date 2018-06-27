@@ -52,33 +52,11 @@ class NotificationController: UITableViewController {
 //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellNotification", for: indexPath)
-
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
-
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     
-    func addObservers() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector:#selector(conversationRequest(notification:)),
-                                               name: Notification.Name("ConversationRequest"),
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
-                                               name: Notification.Name("CancelDialogRequest"),
-                                               object: nil)
-
     
-
-    }
-    
-    func removeObservers() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
-
-    }
-
 
     /*
     // Override to support conditional editing of the table view.
@@ -119,15 +97,39 @@ class NotificationController: UITableViewController {
         return 44
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 44))
-        let label = UILabel(frame: CGRect(x: header.center.x, y: header.center.y, width: 100, height: 50))
-        label.text = "Notification"
-        label.textColor = .white
-        header.addSubview(label)
-        return header
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Notifications"
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.WBred
+            header.textLabel?.textAlignment = NSTextAlignment.center
+        header.textLabel?.textColor = UIColor.white
     }
 
+
+    func addObservers() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
+        
+        
+        
+    }
+    
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CancelDialogRequest"), object: nil)
+
+    }
 
 
     /*

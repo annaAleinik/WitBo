@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Refresh app
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.purple
+        window?.backgroundColor = UIColor.WBred
         window?.rootViewController = UIViewController()
         window?.makeKeyAndVisible()
         isAuthorizedUser()

@@ -115,6 +115,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     func removeObservers() {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CancelDialogRequest"), object: nil)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
