@@ -192,7 +192,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
+        loginVC.present(alert, animated: true, completion: nil)
         
         
     }
