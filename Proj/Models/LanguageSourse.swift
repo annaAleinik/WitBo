@@ -194,7 +194,7 @@ class LanguageSourse {
          ("Hrvatski",UIImage(named: "flag_croatia_icon.png") ?? UIImage()),
          ("Česky",UIImage(named: "flag_czech_icon.png") ?? UIImage()),
          ("Svenska",UIImage(named: "flag_sweden_icon.png") ?? UIImage()),
-         ("Alba",UIImage(named: "flag_cotland_icon.png") ?? UIImage()),
+         ("Alba",UIImage(named: "flag_italy_icon.png") ?? UIImage()),
          ("Esperanto",UIImage(named: "icon_logo.png") ?? UIImage()),
          ("Eesti",UIImage(named: "flag_estonia_icon.png") ?? UIImage()),
          ("日本語",UIImage(named: "flag_japan_icon.png") ?? UIImage())
