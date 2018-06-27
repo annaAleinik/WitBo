@@ -47,7 +47,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         let backgroundImage = UIImage(named: "background.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
-        
+        addObservers()
+
     }
     
     override func viewDidLoad() {
@@ -93,12 +94,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector:#selector(conversationRequest(notification:)),
-                                               name: Notification.Name("ConversationRequest"),
-                                               object: nil)
-        
-        
     }
     
     func dateFormat(from timeString: String, getFormat: String, returnFormat: String)->String?{
@@ -114,6 +109,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.removeObservers()
+
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -121,12 +118,26 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
         header.contentView.backgroundColor = UIColor.gray
-        self.removeObservers()
         
     }
     
-    func removeObservers() {
+    func addObservers() {
         
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
+
+        
+
+    }
+    
+    func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
     }
 
@@ -165,8 +176,9 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         
         WBRealmManager().deleteAllFromDatabase()
         
-        UserDefaults.standard.removeObject(forKey: "SEKRET")
-        UserDefaults.standard.removeObject(forKey: "TOKRN")
+        UserDefaults.standard.set(nil, forKey: "SECRET")
+        UserDefaults.standard.set(nil, forKey: "TOKRN")
+        UserDefaults.standard.removeObject(forKey: "STATUSSWITCH")
         UserDefaults.standard.synchronize()
         
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController

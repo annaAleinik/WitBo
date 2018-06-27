@@ -287,6 +287,8 @@ class ChatsTVC: UITableViewController, UITextFieldDelegate, HeaderCellDelegate, 
         vc.delegate = self
         self.present(vc, animated: false, completion: nil)
     }
+    
+
 
 }
 
@@ -305,15 +307,25 @@ extension ChatsTVC {
 											   selector:#selector(conversationRequest(notification:)),
 											   name: Notification.Name("ConversationRequest"),
 											   object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
+        
     }
+
+
     
     func removeObservers() {
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ChangeStatusOnLine"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "StartDialog"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
-    }
-    
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "CancelDialogRequest"), object: nil)
+
+}
+
     
     //MARK: -- Get contacts
     

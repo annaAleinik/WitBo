@@ -113,7 +113,7 @@ class SocketManager: UIViewController, WebSocketDelegate {
                 
             case .cancelConversationRequest?:
                 let cencelConversationRec = try? decoder.decode(DialogData.self, from: data)
-                NotificationCenter.default.post(name: Notification.Name("CencelDialogRequest"), object: nil, userInfo: nil)
+                NotificationCenter.default.post(name: Notification.Name("CancelDialogRequest"), object: nil, userInfo: nil)
 
             case .conversationRequestResponse?:
                 let parsDialogResponce = try? decoder.decode(DialogData.self, from: data)

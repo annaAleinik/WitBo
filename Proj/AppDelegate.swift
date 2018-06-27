@@ -31,12 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.testDevices = ["2077ef9a63d2b398840261c8221a0c9b"]
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         
-        let secretFromUD = UserDefaults.standard.string(forKey: "SECRET")
+        // Refresh app
         
+        let secretFromUD = UserDefaults.standard.string(forKey: "SECRET")
+
         if secretFromUD != nil{
             APIService.sharedInstance.postAuthWith(secret: secretFromUD!, completion: { (succes, error) in
                 if succes {
+                    SocketManager.sharedInstanse.socketsConnecting()
                     SocketManager.sharedInstanse.intro()
+                    APIService.sharedInstance.userData(token: APIService.sharedInstance.token!) { (succses, error) in
+                    }
+
                     let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
                     self.window!.rootViewController = centerVC
@@ -52,17 +58,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        //MARK: -- SignOut
-        let userLoginStatus = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        
-        if(userLoginStatus)
-        {
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
-            window!.rootViewController = centerVC
-            window!.makeKeyAndVisible()
-
-        }
+//        //MARK: -- SignOut
+//        let userLoginStatus = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+//
+//        if(userLoginStatus)
+//        {
+//            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
+//            window!.rootViewController = centerVC
+//            window!.makeKeyAndVisible()
+//
+//        }
         
         // Notification
         

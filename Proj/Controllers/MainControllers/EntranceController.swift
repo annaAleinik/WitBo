@@ -28,7 +28,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var registrationButton: UIButton!
 	
 	//FIXME: HARDCODE!!!!!!!
-	let fakeUser:FakeUserAccount = .top
+	let fakeUser:FakeUserAccount = .sefiroth
     
     
     @IBAction func entranceAction(_ sender: UIButton) {

@@ -60,6 +60,12 @@ extension UIViewController: PresentingViewControllerProtocol {
 		self.present(alert, animated: true, completion: nil)
 		
 	}
+    
+    @objc func cancelDialogRequest(notification: NSNotification) {
+        let alert = presentedViewController
+        alert?.dismiss(animated: true, completion: nil)
+    }
+
 	
 }
 

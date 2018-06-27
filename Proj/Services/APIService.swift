@@ -188,10 +188,12 @@ class APIService {
                         
                         let baseUserModel  = BaseUserModel()
                         
+                        guard let secret = self.secret else {return}
+                        
                         baseUserModel.name = userData.name
                         baseUserModel.email = userData.email
                         baseUserModel.lang = userData.language
-                        baseUserModel.secret = self.secret!
+                        baseUserModel.secret = secret
                         baseUserModel.token = token
                         let manager = WBRealmManager()
                         manager.addData(object: baseUserModel)

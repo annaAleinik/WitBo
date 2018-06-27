@@ -30,7 +30,6 @@ class QuitConversationAlert: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.quitConversationLabel.text = "Пользователь покинул беседу"
-    }
-
+    }    
     
 }

@@ -15,6 +15,8 @@ class NotificationController: UITableViewController {
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         tabBarItem.badgeValue = nil
+        addObservers()
+
     }
 
     
@@ -31,11 +33,10 @@ class NotificationController: UITableViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(_ animated: Bool) {
+        removeObservers()
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,6 +58,27 @@ class NotificationController: UITableViewController {
         return cell
     }
     
+    func addObservers() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
+
+    
+
+    }
+    
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

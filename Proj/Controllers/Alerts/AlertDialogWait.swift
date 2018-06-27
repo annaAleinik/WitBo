@@ -24,6 +24,11 @@ class AlertDialogWait: UIViewController {
         return  storyboard.instantiateViewController(withIdentifier: String(describing: AlertDialogWait.self)) as! AlertDialogWait
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,5 +40,9 @@ class AlertDialogWait: UIViewController {
         self.dismiss(animated: false, completion: nil)
         delegate?.cancelAction()
     }
+    
+
+
+    
     
 }

@@ -54,18 +54,6 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         SocketManager.sharedInstanse.delegateConversation = self
         recordButton.isEnabled = false
         
-        NotificationCenter.default.addObserver(self,
-                                        selector:#selector(reproductionOfSpeech(notification:)),
-                                               name: Notification.Name("ReadTextNotification"),
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-
-                                               selector:#selector(conversationRequest(notification:)),
-                                               name: Notification.Name("ConversationRequest"),
-                                               object: nil)
-
-        
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -112,6 +100,25 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
     }
     
+    func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(reproductionOfSpeech(notification:)),
+                                               name: Notification.Name("ReadTextNotification"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               
+                                               selector:#selector(conversationRequest(notification:)),
+                                               name: Notification.Name("ConversationRequest"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
+
+        
+    }
     func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ReadTextNotification"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
@@ -137,7 +144,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         addChatViewController()
         
         self.nameUserChatLabel.text = nameInitiator
-
+        addObservers()
    }
 	
 	override  func viewWillDisappear(_ animated: Bool) {
@@ -159,7 +166,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
             }
         }
         
-        self.removeObservers()
+        removeObservers()
 	}
     
     // handler closed ads

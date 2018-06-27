@@ -53,6 +53,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
         
+        addObservers()
+
     }
     
     override func viewDidLoad() {
@@ -94,16 +96,29 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
 		
 		//controller for presenting 
 		self.rootController = self.presentingViewController ?? UIViewController()
-        
+        }
+    
+    func addObservers() {
+   
         NotificationCenter.default.addObserver(self,
                                                selector:#selector(conversationRequest(notification:)),
                                                name: Notification.Name("ConversationRequest"),
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector:#selector(ChatsTVC.cancelDialogRequest(notification:)),
+                                               name: Notification.Name("CancelDialogRequest"),
+                                               object: nil)
 
     }
     
+    func removeObservers() {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
-        self.removeObservers()
+        removeObservers()
     }
     
     
@@ -116,11 +131,6 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         
     }
     
-    func removeObservers() {
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ConversationRequest"), object: nil)
-    }
-
     
     //MARK: -- Action
     
@@ -157,8 +167,9 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         
         WBRealmManager().deleteAllFromDatabase()
         
-        UserDefaults.standard.removeObject(forKey: "SEKRET")
-        UserDefaults.standard.removeObject(forKey: "TOKRN")
+        UserDefaults.standard.set(nil, forKey: "SECRET")
+        UserDefaults.standard.set(nil, forKey: "TOKRN")
+        UserDefaults.standard.removeObject(forKey: "STATUSSWITCH")
         UserDefaults.standard.synchronize()
         
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "autentificattionControl") as! EntranceController
