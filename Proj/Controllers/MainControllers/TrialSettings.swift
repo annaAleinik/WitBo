@@ -117,7 +117,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.clear
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
-        header.contentView.backgroundColor = UIColor.gray
+        header.contentView.backgroundColor = UIColor.WBRedForSep
         
     }
     
@@ -191,7 +191,6 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         SocketManager.sharedInstanse.socket.disconnect()
         
         let alert = UIAlertController(title: "", message: "Вы вышли из профиля", preferredStyle: UIAlertControllerStyle.alert)
-        
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
         loginVC.present(alert, animated: true, completion: nil)

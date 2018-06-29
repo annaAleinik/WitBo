@@ -24,11 +24,14 @@ class WBTabBarViewController: UITabBarController {
 		
 		
         // In this case we want to modify the badge number of the third tab:
-        let tabItem = tabItems![1] as! UITabBarItem
+        let tabItemNotif = tabItems![1] as! UITabBarItem
+        let tabItemSettings = tabItems![2] as! UITabBarItem
+
         
         // Now set the badge of the third tab
-        tabItem.badgeValue = "1"
-
+        tabItemNotif.badgeValue = "1"
+        
+        tabItemSettings.title = "Settings"
     }
 
     override func didReceiveMemoryWarning() {

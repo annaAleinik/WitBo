@@ -6,7 +6,7 @@
   Copyright © 2018 Admin. All rights reserved.
 */
 
-STR_WELCOME = "Bienvenue";
+STR_WELCOME = "Bienvenue!";
 STR_EMAIL = "E-mail";
 STR_PASSWORD = "Passe";
 STR_SIGNUP = "S'inscrire";

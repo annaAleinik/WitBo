@@ -270,14 +270,4 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     }
 }
 
-extension RegistrationVC{
-    func addLeftImg(textField: UITextField,imgName: String){
-        textField.leftViewMode = UITextFieldViewMode.always
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let image = UIImage(named: imgName)
-        imageView.image = image
-        textField.leftView = imageView
-        
-    }
 
-}

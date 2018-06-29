@@ -24,6 +24,7 @@ class HeaderContacts: UITableViewCell, UITextFieldDelegate {
         self.backgroundColor = .clear
         self.addContactField.placeholder = "Add email"
         addContactField.delegate = self
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

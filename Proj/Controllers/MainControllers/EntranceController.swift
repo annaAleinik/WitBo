@@ -116,7 +116,9 @@ class EntranceController: UIViewController, UITextFieldDelegate{
 		
 		}
 		
-		
+        self.addLeftImg(textField: emailField, imgName: "emailIcon")
+        self.addLeftImg(textField: passwordField, imgName: "passIcon")
+
 		
         //Localized
         

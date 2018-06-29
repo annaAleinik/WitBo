@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "settings_50-1.png",
+      "filename" : "email_cont-20.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "settings_50.png",
+      "filename" : "email_cont-40.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "settings_75.png",
+      "filename" : "email_cont-60.png",
       "scale" : "3x"
     }
   ],

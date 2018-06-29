@@ -6,7 +6,7 @@
   Copyright © 2018 Admin. All rights reserved.
 */
 
-STR_WELCOME = "Добро пожаловать";
+STR_WELCOME = "Добро пожаловать!";
 STR_EMAIL = "Емайл";
 STR_PASSWORD = "Пароль";
 STR_SIGNUP = "Вход";
@@ -24,7 +24,7 @@ STR_NOTIFICATION = "Уведомления";
 STR_NAME = "Имя";
 STR_REPEAT_PASSWORD = "Повторите пароль";
 STR_BACK = "Назад";
-STR_FORGOT_PASS = "Забыли пароль";
+STR_FORGOT_PASS = "Забыли пароль?";
 STR_SWITCH_LANGUAGE = "Изменить язык";
 STR_TARIFF = "Тариф";
 STR_REG_DATE = "Дата регистрации";
@@ -36,9 +36,9 @@ STR_SUPPORT = "Поддержка";
 STR_ADD_FRIENDS = "Пригласить друга";
 STR_TIME_OVER = "Время вышло";
 STR_TIME_LEFT = "Оставшееся время";
-STR_DISCONNECT_LINK = "Обрыв соеденения";
+STR_DISCONNECT_LINK = "Обрыв соединения";
 STR_FILL_ALL = "Заполните пожалуйста все поля";
-STR_CONFIRM_EMAIL = "Сначала подтвердите ваш електронный адрес. Письмо отправлено Вам на почту";
+STR_CONFIRM_EMAIL = "Сначала подтвердите ваш электронный адрес. Письмо отправлено Вам на почту";
 STR_WRONG_LOGORPASS = "Неверный логин или пароль";
 STR_PASS_NOT_MATCH = "Пароли не совпадают";
 STR_NOINTERNET_CONNECTION = "Отсутствует подключение к интернету";
@@ -49,6 +49,8 @@ STR_REG_SUCCSES = "Регистрация прошла успешно";
 STR_ADD_ALL_FILD_FOUND = "Заполните пожалуйста поле поиска";
 STR_LOGOUT_ACC = "Вы вышли из профиля";
 STR_OK = "Ок";
+STR_HAVE_ACC = "Уже есть аккаунт?";
+STR_NOT_FOUND_USER = "Такой пользователь не найден";
 
 
 
