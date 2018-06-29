@@ -56,7 +56,8 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         addObservers()
 
     }
-    
+    var exitAlert = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,7 +97,11 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
 		
 		//controller for presenting 
 		self.rootController = self.presentingViewController ?? UIViewController()
-        }
+        
+        let exitTitle = NSLocalizedString("STR_LOGOUT_ACC", comment: "")
+        self.exitAlert = exitTitle
+
+    }
     
     func addObservers() {
    
@@ -181,7 +186,7 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
         appDel.window?.rootViewController = loginVC
         SocketManager.sharedInstanse.socket.disconnect()
         
-        let alert = UIAlertController(title: "", message: "Вы вышли из профиля", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: self.exitAlert, preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
         loginVC.present(alert, animated: true, completion: nil)

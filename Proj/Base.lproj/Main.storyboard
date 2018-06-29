@@ -119,6 +119,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailField" destination="7Ki-55-v66" id="5hf-GH-L5e"/>
+                        <outlet property="forgotPass" destination="KlN-JK-jwo" id="xfc-2f-OB9"/>
                         <outlet property="passwordField" destination="PNG-4E-i2d" id="PKa-rz-lVN"/>
                         <outlet property="registrationButton" destination="LBo-x9-y8Z" id="q9T-Bf-NXM"/>
                         <outlet property="signUpButton" destination="LLJ-aE-IS3" id="lpo-ed-iOH"/>
@@ -358,6 +359,7 @@
                         <outlet property="passwordField" destination="bVi-rz-mDb" id="FHU-fS-VGN"/>
                         <outlet property="pickerView" destination="OiB-od-ogu" id="v5H-8F-eJE"/>
                         <outlet property="registrationButton" destination="oe0-PA-UQB" id="PR6-Nt-s95"/>
+                        <outlet property="registrationLabel" destination="kYG-aX-oH0" id="zIZ-Pn-0CO"/>
                         <outlet property="repeatPassword" destination="gvv-KP-PKI" id="ami-dL-gO0"/>
                         <segue destination="kjR-Uw-vIj" kind="show" id="IDD-Nc-7Et"/>
                     </connections>

@@ -24,3 +24,7 @@ STR_NOTIFICATION = "Notification";
 STR_NAME = "Name";
 STR_REPEAT_PASSWORD = "Repeat password";
 STR_BACK = "Back";
+STR_FORGOT_PASS = "Forgot password?";
+STR_WRONG_LOGORPASS = "Wrong login or password";
+STR_HAVE_ACC = "Already have an account?";
+STR_LOGOUT_ACC = "You left the profile";

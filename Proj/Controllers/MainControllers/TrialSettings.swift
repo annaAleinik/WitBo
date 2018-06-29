@@ -51,6 +51,8 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
 
     }
     
+    var exitAlert = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userName.text = APIService.sharedInstance.userName
@@ -94,6 +96,10 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         self.signOutButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.supportButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         
+        
+        let exitTitle = NSLocalizedString("STR_LOGOUT_ACC", comment: "")
+        self.exitAlert = exitTitle
+
     }
     
     func dateFormat(from timeString: String, getFormat: String, returnFormat: String)->String?{
@@ -190,7 +196,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         appDel.window?.rootViewController = loginVC
         SocketManager.sharedInstanse.socket.disconnect()
         
-        let alert = UIAlertController(title: "", message: "Вы вышли из профиля", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: self.exitAlert, preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
         loginVC.present(alert, animated: true, completion: nil)

@@ -31,7 +31,9 @@ class WBTabBarViewController: UITabBarController {
         // Now set the badge of the third tab
         tabItemNotif.badgeValue = "1"
         
-        tabItemSettings.title = "Settings"
+        
+        let settings = NSLocalizedString("STR_SETTINGS", comment: "")
+        tabItemSettings.title = settings
     }
 
     override func didReceiveMemoryWarning() {

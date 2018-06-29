@@ -22,6 +22,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     @IBOutlet weak var passwordErrorLabel: UILabel!
     @IBOutlet weak var passErrorLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var registrationLabel: UILabel!
     
     let langSourse = LanguageSourse.shared.dictLang.sorted(by:  { $0.name < $1.name })
     var flagArr = LanguageSourse.shared.dictFlag.sorted(by:  { $0.name < $1.name })
@@ -29,6 +30,14 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
     var actionToEnable : UIAlertAction?
     let validator = Validator()
 
+    
+    var writeAllFields = ""
+    var passNotMatch = ""
+    var notConnectInternet = ""
+    var nameWrong = ""
+    var emailWrong = ""
+    var registerSuccessTitle = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,6 +84,31 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         let strRegistr = NSLocalizedString("STR_REGISTRATION", comment: "")
         registrationButton.setTitle(strRegistr, for: .normal)
         
+        let strRegistrTitle = NSLocalizedString("STR_REGISTRATION", comment: "")
+        self.registrationLabel.text = strRegistrTitle
+        
+        let haveAcc = NSLocalizedString("STR_HAVE_ACC", comment: "")
+        backButton.setTitle(haveAcc, for: .normal)
+
+        let writeAllFields = NSLocalizedString("STR_FILL_ALL", comment: "")
+        self.writeAllFields = writeAllFields
+        
+        let passNotMatchStr = NSLocalizedString("STR_PASS_NOT_MATCH", comment: "")
+        self.passNotMatch = passNotMatchStr
+
+        let noConnect = NSLocalizedString("STR_NOINTERNET_CONNECTION", comment: "")
+        self.notConnectInternet = noConnect
+
+        let wrongName = NSLocalizedString("STR_NAME_WRONG", comment: "")
+        self.nameWrong = wrongName
+        
+        let wrongemail = NSLocalizedString("STR_EMAIL_WRONG", comment: "")
+        self.emailWrong = wrongemail
+
+        let registerSuccessTitleStr = NSLocalizedString("STR_REG_SUCCESS", comment: "")
+        self.registerSuccessTitle = registerSuccessTitleStr
+
+
         
     //default value in picler
         let langStr = Locale.current.languageCode
@@ -105,7 +139,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
         if Reachability.isConnectedToNetwork(){
             if (self.emailField.text == "") || (self.nameField.text == "") || (self.passwordField.text == "") || (self.repeatPassword.text == "") || (self.language == ""){
                 
-                let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: self.writeAllFields, preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
@@ -113,7 +147,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
                 if self.passwordField.text == repeatPassword.text{
                     self.privacyPolicy(email: userEmail, name: userName, pass: userPass, lang: userLang)
                 } else {
-                    let alert = UIAlertController(title: "", message: "Пароли не совпадают", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: self.passNotMatch, preferredStyle: UIAlertControllerStyle.alert)
                     
                     let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                     alert.addAction(ok)
@@ -121,7 +155,7 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
                 }
             }
         }else{
-            let alert = UIAlertController(title: "", message: "Отсутствует подключение к интернету", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "", message: self.notConnectInternet, preferredStyle: UIAlertControllerStyle.alert)
             
             let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(ok)
@@ -219,16 +253,16 @@ class RegistrationVC: UIViewController , UITextFieldDelegate, UIPickerViewDelega
                 let existingUserEmail = "existing_user_email"
                 
                 if APIService.sharedInstance.existingUser == existingUserLogin{
-                    let alert = UIAlertController(title: "", message: "такое имя уже создан", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: self.nameWrong, preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     
                 }else if APIService.sharedInstance.existingUser == existingUserEmail {
-                    let alert = UIAlertController(title: "", message: "такой емайл уже создано", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: self.emailWrong, preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "ОК", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }else{
-                    let alert = UIAlertController(title: "", message: "Регистрация прошла успешно", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: self.registerSuccessTitle, preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
                         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                         let vc = storyBoard.instantiateViewController(withIdentifier: "autentificattionControl")

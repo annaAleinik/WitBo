@@ -26,17 +26,21 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
-	
+    @IBOutlet weak var forgotPass: UIButton!
+    
 	//FIXME: HARDCODE!!!!!!!
 	let fakeUser:FakeUserAccount = .sefiroth
     
+    var confirmEmail = ""
+    var wrongLogPass = ""
+    var addAllFilds = ""
     
     @IBAction func entranceAction(_ sender: UIButton) {
         let login = emailField.text
         let password = passwordField.text
 
     if (emailField.text == "") || (passwordField.text == ""){
-            let alert = UIAlertController(title: "", message: "Заполните пожалуйста все поля", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "", message: self.addAllFilds, preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
@@ -53,7 +57,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
             if APIService.sharedInstance.loginCode == 222{
                 guard let emailConfirmed = APIService.sharedInstance.emailConfirmed else {return}
                 if emailConfirmed == 0{
-                    let alert = UIAlertController(title: "", message: "Сначала подтвердите ваш електронный адрес. Письмо отправлено Вам на почту", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "", message: self.confirmEmail, preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                     alert.addAction(ok)
                     self.present(alert, animated: true, completion: nil)
@@ -79,7 +83,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
                 }
                 }
             }else {
-                let alert = UIAlertController(title: "", message: "Неверный логин или пароль", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "", message: self.wrongLogPass, preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
                 alert.addAction(ok)
                 self.present(alert, animated: true, completion: nil)
@@ -136,6 +140,19 @@ class EntranceController: UIViewController, UITextFieldDelegate{
         
         let strRegistration = NSLocalizedString("STR_REGISTRATION", comment: "")
         self.registrationButton.setTitle(strRegistration, for: .normal)
+        
+        let strForgotPass = NSLocalizedString("STR_FORGOT_PASS", comment: "")
+        self.forgotPass.setTitle(strForgotPass, for: .normal)
+
+        let strConfirmEmail = NSLocalizedString("STR_CONFIRM_EMAIL", comment: "")
+        self.confirmEmail = strConfirmEmail
+
+        let strWrongLogPass = NSLocalizedString("STR_WRONG_LOGORPASS", comment: "")
+        self.wrongLogPass = strWrongLogPass
+
+        let strAddAllFilds = NSLocalizedString("STR_ADD_ALL_FILD_FOUND", comment: "")
+        self.addAllFilds = strAddAllFilds
+
 
         emailField.tag = 0 //Increment accordingly
 
