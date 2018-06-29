@@ -190,7 +190,7 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
         appDel.window?.rootViewController = loginVC
         SocketManager.sharedInstanse.socket.disconnect()
         
-        let alert = UIAlertController(title: "", message: "Вы вышли зи профиля", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "", message: "Вы вышли из профиля", preferredStyle: UIAlertControllerStyle.alert)
         
         let ok = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(ok)
