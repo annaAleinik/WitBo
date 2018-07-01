@@ -213,6 +213,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     //MARK:-- Speach
     
     @IBAction func recordButtonTapped(_ sender: UIButton) {
+
         if audioEngene.isRunning {
             audioEngene.stop()
             recognitionRequest?.endAudio()

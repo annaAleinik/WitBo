@@ -308,16 +308,16 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 30))
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.frame.width - 30, height: 26))
 
-        let flagImage = UIImageView(frame: CGRect(x: 110, y: 0, width:30, height: 25))
+        let flagImage = UIImageView(frame: CGRect(x: ((self.picker.center.x/2) - 20), y: 0, width:40, height: 26))
         
         flagImage.image = flagArr[row].img
         
         let rowString = self.langSourse[row].name
         
-        let myLabel = UILabel(frame: CGRect(x: 145, y: 0, width: pickerView.bounds.width - 30, height: 25))
-
+        let myLabel = UILabel(frame: CGRect(x: (flagImage.frame.origin.x + 55), y: 0, width: pickerView.bounds.width - 30, height: 25))
+        myLabel.textColor = UIColor.white
         myLabel.text = rowString
         
         myView.addSubview(myLabel)

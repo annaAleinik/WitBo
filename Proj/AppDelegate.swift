@@ -36,18 +36,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
 
         var vc = UIViewController()
-//        let screenSize = UIScreen.main.bounds
-//        let screenWidth = screenSize.width
-//        let screenHeight = screenSize.height
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
 //        let frameVC = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
 //        vc = UIView.frame(frameVC)
         
         var imageView : UIImageView
-        let x = ((vc.view.frame.size.width / 2) - 50)
-        let y = ((vc.view.frame.size.height / 2) - 50)
-        let frame = CGRect(x: x, y: y, width: 100, height: 100)
+//        let x = ((screenWidth / 2) - 50)
+//        let y = ((screenHeight / 2) - 50)
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         imageView  = UIImageView(frame:frame)
         imageView.image = UIImage(named:"icon_logo.jpg")
+        imageView.center = vc.view.center
         vc.view.addSubview(imageView)
 
         window?.rootViewController = vc
