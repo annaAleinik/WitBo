@@ -53,7 +53,9 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
 
         SocketManager.sharedInstanse.delegateConversation = self
         recordButton.isEnabled = false
-        
+        recordButton.addTarget(self, action:#selector(hold(_:)) , for: .touchDown)
+        recordButton.addTarget(self, action: #selector(release(_:)), for: .touchUpInside)
+
         speechRecognizer?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
@@ -96,9 +98,19 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         let strBack = NSLocalizedString("STR_BACK", comment: "")
         backButton.setTitle(strBack, for: .normal)
-
-
     }
+    
+    @objc func hold(_ sender: UIButton){
+        startRecording()
+        sender.setTitle("Остановить запись", for: .normal)
+    }
+    
+    @objc func release(_ sender: UIButton){
+        audioEngene.stop()
+        recognitionRequest?.endAudio()
+        sender.setTitle("Начать запись", for: .normal)
+    }
+
     
     func addObservers() {
         NotificationCenter.default.addObserver(self,
@@ -225,7 +237,7 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         }
     }
     
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru"))
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru")) //FIX ME
     
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
@@ -401,10 +413,11 @@ extension SpeachViewController {
         if (UserDefaults.standard.value(forKey: "STATUSSWITCH") != nil){
             let switchON: Bool = UserDefaults.standard.value(forKey: "STATUSSWITCH") as! Bool
             if switchON == true{
-        
+
         let utterance = AVSpeechUtterance(string: messages)
         utterance.voice = AVSpeechSynthesisVoice(language: lang)
         utterance.postUtteranceDelay = 3.0
+        utterance.volume = 1
         
         let readSound = AVSpeechSynthesizer()
         readSound.delegate = self
