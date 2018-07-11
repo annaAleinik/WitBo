@@ -21,8 +21,8 @@ struct WBCustomResponce {
 }
 
 enum TariffType: String {
-	case full = "full"
 	case trial = "trial"
+    case full = "full"
 }
 
 class APIService {

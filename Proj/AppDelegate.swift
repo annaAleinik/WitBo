@@ -39,12 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
-//        let frameVC = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
-//        vc = UIView.frame(frameVC)
         
         var imageView : UIImageView
-//        let x = ((screenWidth / 2) - 50)
-//        let y = ((screenHeight / 2) - 50)
         let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         imageView  = UIImageView(frame:frame)
         imageView.image = UIImage(named:"icon_logo.jpg")
@@ -145,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "tabBarCentralControl")
+                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "SpeachViewController") //tabBarCentralControl SpeachViewController
                     self.window!.rootViewController = centerVC
 
                     

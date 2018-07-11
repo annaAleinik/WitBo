@@ -11,6 +11,7 @@ import UIKit
 import Speech
 import AVFoundation
 import Starscream
+import Pulsator
 
 class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynthesizerDelegate, WBChatViewControllerDelegate, SocketManagerСonversationDelegate, QuitConversationAlertDelegate, TimeIntervalDelegate {
     @IBOutlet weak var clickAndSpeacLabel: UILabel!
@@ -32,7 +33,13 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     var receiverFromContacts : String?
     var nameInitiator : String?
+    
+    let pulsator = Pulsator()
 
+    var speechRecognizer = SFSpeechRecognizer()
+    var lang: String?
+    var langParams: String?
+    
 	//MARK: Life cycle
     
     class func viewController(receiverID: String, nameInitiator: String) -> SpeachViewController {
@@ -98,17 +105,32 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         
         let strBack = NSLocalizedString("STR_BACK", comment: "")
         backButton.setTitle(strBack, for: .normal)
+        
+        recordButton.layer.addSublayer(pulsator)
+        pulsator.numPulse = 1
+        pulsator.radius = 240.0
+        pulsator.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
+        
+        self.lang = APIService.sharedInstance.userLang
+        let langArr = lang?.components(separatedBy: "-")
+        self.langParams = langArr?.first
+        guard let language = self.langParams else {return}
+        self.speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: language)) //check value mast be "ru"
+        
+
     }
     
     @objc func hold(_ sender: UIButton){
         startRecording()
         sender.setTitle("Остановить запись", for: .normal)
+        pulsator.start()
     }
     
     @objc func release(_ sender: UIButton){
         audioEngene.stop()
         recognitionRequest?.endAudio()
         sender.setTitle("Начать запись", for: .normal)
+        pulsator.stop()
     }
 
     
@@ -224,20 +246,21 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
     
     //MARK:-- Speach
     
-    @IBAction func recordButtonTapped(_ sender: UIButton) {
-
-        if audioEngene.isRunning {
-            audioEngene.stop()
-            recognitionRequest?.endAudio()
-            recordButton.isEnabled = false
-            recordButton.setTitle("Начать запись", for: .normal)
-        } else {
-            startRecording()
-            recordButton.setTitle("Остановить запись", for: .normal)
-        }
-    }
+//    @IBAction func recordButtonTapped(_ sender: UIButton) {
+//
+//        if audioEngene.isRunning {
+//            audioEngene.stop()
+//            recognitionRequest?.endAudio()
+//            recordButton.isEnabled = false
+//            recordButton.setTitle("Начать запись", for: .normal)
+//        } else {
+//            startRecording()
+//            recordButton.setTitle("Остановить запись", for: .normal)
+//        }
+//    }
     
-    let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru")) //FIX ME
+    
+   // let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ru")) //FIX ME
     
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?

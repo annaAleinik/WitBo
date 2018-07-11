@@ -29,7 +29,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var forgotPass: UIButton!
     
 	//FIXME: HARDCODE!!!!!!!
-	let fakeUser:FakeUserAccount = .sefiroth
+	let fakeUser:FakeUserAccount = .astaroth
     
     var confirmEmail = ""
     var wrongLogPass = ""
