@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "SpeachViewController") //tabBarCentralControl SpeachViewController
+                    let centerVC = mainStoryBoard.instantiateViewController(withIdentifier: "tabBarCentralControl") //tabBarCentralControl SpeachViewController
                     self.window!.rootViewController = centerVC
 
                     
