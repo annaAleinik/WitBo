@@ -71,11 +71,15 @@ extension UIViewController: PresentingViewControllerProtocol {
 extension UIViewController{
     func addLeftImg(textField: UITextField,imgName: String){
         textField.leftViewMode = UITextFieldViewMode.always
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         let image = UIImage(named: imgName)
         imageView.image = image
-        textField.leftView = imageView
+        textField.addSubview(imageView)
         
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
+
     }
     
 }

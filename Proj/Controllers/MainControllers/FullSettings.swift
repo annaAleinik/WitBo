@@ -61,10 +61,14 @@ class FullSettings: UITableViewController,UIImagePickerControllerDelegate, MFMai
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //language search by code
+        let giveLang = APIService.sharedInstance.userLang
+        let valueLanguage = langSourse.first { $0.code == giveLang}?.name ?? ""
+
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
-        self.languageLabel.text = APIService.sharedInstance.userLang
+        self.languageLabel.text = valueLanguage
         self.langTitleLable.text = "Language"
         self.regDateLable.text = "Registration Date"
         self.tariffTitleLable.text = "Tariff"

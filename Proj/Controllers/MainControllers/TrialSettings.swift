@@ -55,16 +55,21 @@ class TrialSettings: UITableViewController,UIImagePickerControllerDelegate, MFMa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        let langSourse = LanguageSourse.shared.dictLang
+        let giveLang = APIService.sharedInstance.userLang
+        let valueLanguage = langSourse.first { $0.code == giveLang}?.name ?? ""
+
         self.userName.text = APIService.sharedInstance.userName
         self.userEmailLabel.text = APIService.sharedInstance.userEmail
         self.dataRegistrationLabel.text = APIService.sharedInstance.userDataRegistration
-        self.languageLabel.text = APIService.sharedInstance.userLang
+        self.languageLabel.text = valueLanguage
         self.titleLeftTimeLabel.text = "Left time"
         self.tariffNameLabel.text = "Tariff"
         self.tarifValueLabel.text = "Триал"
         self.langTitleLabel.text = "Language"
         self.regDateLable.text = "Registration date"
-        
+                
         if let time = APIService.sharedInstance.timeRemaining{
             if let intTime = Int(time){
                 self.leftTimeLabel.text = dateFormat(from: "\(intTime/60)", getFormat: "mm", returnFormat: "mm:ss")
