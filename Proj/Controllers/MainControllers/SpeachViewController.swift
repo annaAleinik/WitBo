@@ -107,9 +107,11 @@ class SpeachViewController: UIViewController, TimerManagerDelegate, AVSpeechSynt
         backButton.setTitle(strBack, for: .normal)
         
         recordButton.layer.addSublayer(pulsator)
-        pulsator.numPulse = 1
-        pulsator.radius = 240.0
-        pulsator.backgroundColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
+        pulsator.frame =  CGRect(x:recordButton.frame.height/2, y:recordButton.frame.width/2, width:0.1, height:0.1)
+        pulsator.numPulse = 3
+        pulsator.radius = 180
+        pulsator.backgroundColor = UIColor(red: 167, green: 13, blue: 0, alpha: 1).cgColor
+        
         
         self.lang = APIService.sharedInstance.userLang
         let langArr = lang?.components(separatedBy: "-")

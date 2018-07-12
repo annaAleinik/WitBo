@@ -10,12 +10,12 @@ import UIKit
 import SwiftValidator
 
 //FIXME: HARDCODE!!!!!!!
-enum FakeUserAccount: String {
-	case top = "top"
-	case astaroth = "astaroth"
-	case sefiroth = "sefiroth"
-	case nechet = "nechet"
-}
+//enum FakeUserAccount: String {
+//    case top = "top"
+//    case astaroth = "astaroth"
+//    case sefiroth = "sefiroth"
+//    case nechet = "nechet"
+//}
 
 class EntranceController: UIViewController, UITextFieldDelegate{
 
@@ -29,7 +29,7 @@ class EntranceController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var forgotPass: UIButton!
     
 	//FIXME: HARDCODE!!!!!!!
-	let fakeUser:FakeUserAccount = .top
+	//let fakeUser:FakeUserAccount = .top
     
     var confirmEmail = ""
     var wrongLogPass = ""
@@ -104,21 +104,21 @@ class EntranceController: UIViewController, UITextFieldDelegate{
 
 		//FIXME: HARDCODE!!!!!!!
 		
-		switch self.fakeUser {
-		case .astaroth:
-			self.emailField.text = "tykans@gmail.com"
-			self.passwordField.text = "pzkpfw"
-		case .sefiroth:
-			self.emailField.text = "sw@topikt.com"
-			self.passwordField.text = "qwerty"
-		case .top:
-			self.emailField.text = "topikt@topikt.com"
-			self.passwordField.text = "123456"
-		case .nechet:
-			self.emailField.text = "nechetmykhailo@gmail.com"
-			self.passwordField.text = "dojomo12"
-		
-		}
+//        switch self.fakeUser {
+//        case .astaroth:
+//            self.emailField.text = "tykans@gmail.com"
+//            self.passwordField.text = "pzkpfw"
+//        case .sefiroth:
+//            self.emailField.text = "sw@topikt.com"
+//            self.passwordField.text = "qwerty"
+//        case .top:
+//            self.emailField.text = "topikt@topikt.com"
+//            self.passwordField.text = "123456"
+//        case .nechet:
+//            self.emailField.text = "nechetmykhailo@gmail.com"
+//            self.passwordField.text = "dojomo12"
+//        
+//        }
 		
         self.addLeftImg(textField: emailField, imgName: "emailIcon")
         self.addLeftImg(textField: passwordField, imgName: "passIcon")

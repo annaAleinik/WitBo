@@ -21,7 +21,7 @@ DEPENDENCIES:
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Google-Mobile-Ads-SDK
     - NoChat
@@ -52,4 +52,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: faba3852cb31a44055c460865c3dbb2e14c9b3a4
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0
